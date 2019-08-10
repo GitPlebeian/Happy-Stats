@@ -8,15 +8,16 @@
 
 import UIKit
 
-class ActionsViewTableViewCell: UITableViewCell {
+class ActivityViewTableViewCell: UITableViewCell {
 
     // MARK: - Outlets
-    @IBOutlet weak var actionNameLabel: UILabel!
-    @IBOutlet weak var actionRatingLabel: UILabel!
+    @IBOutlet weak var activityNameLabel: UILabel!
     @IBOutlet weak var numDaysAppliedLabel: UILabel!
+    @IBOutlet weak var averageRatingLabel: UILabel!
+    
     
     // MARK: - Reveivers
-    var action: Action? {
+    var activity: Activity? {
         didSet {
             updateView()
         }
@@ -24,12 +25,12 @@ class ActionsViewTableViewCell: UITableViewCell {
     // MARK: - Updating View
     
     func updateView() {
-        guard let action = action else {return}
-        actionNameLabel.text = action.name
-        if action.averageRating == -1 {
-            actionRatingLabel.text = ""
+        guard let activity = activity else {return}
+        activityNameLabel.text = activity.title
+        if activity.averageRating == -1 {
+            averageRatingLabel.text = ""
         } else {
-            actionRatingLabel.text = String(action.averageRating)            
+            averageRatingLabel.text = String(activity.averageRating)
         }
     }
 //    override func setSelected(_ selected: Bool, animated: Bool) {

@@ -11,7 +11,8 @@ import UIKit
 class ActionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     // MARK: - Outlets
-    @IBOutlet weak var actionsTableView: UITableView!
+    @IBOutlet weak var activityTableView: UITableView!
+    
     
     
     // MARK: - Properties
@@ -19,14 +20,14 @@ class ActionsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        actionsTableView.separatorStyle = .none
+        activityTableView.separatorStyle = .none
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        actionsTableView.reloadData()
-        ActionController.shared.calculateHappinessForActions()
-        actionsTableView.estimatedRowHeight = UITableView.automaticDimension
+        activityTableView.reloadData()
+//        ActivityController.shared.calculateHappinessForActions()
+        activityTableView.estimatedRowHeight = UITableView.automaticDimension
 //        thingTableView.rowHeight = 100
     }
     
@@ -34,15 +35,15 @@ class ActionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ActionController.shared.actions.count
+        return ActivityController.shared.activities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = actionsTableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as? ActionsViewTableViewCell else {return UITableViewCell()}
+        guard let cell = activityTableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as? ActivityViewTableViewCell else {return UITableViewCell()}
         
-        let action = ActionController.shared.actions[indexPath.row]
+        let activity = ActivityController.shared.activities[indexPath.row]
         
-        cell.action = action
+        cell.activity = activity
         cell.backgroundColor = UIColor(displayP3Red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
         cell.layer.borderColor = UIColor(displayP3Red: 0.85, green: 0.85, blue: 0.85, alpha: 1).cgColor
         cell.layer.borderWidth = 0.5
@@ -51,7 +52,8 @@ class ActionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            ActionController.shared.deleteAction(index: indexPath.row)
+        let activityToDelete = ActivityController.shared.activities[indexPath.row]
+            ActivityController.shared.deleteActivity(activity: activityToDelete)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -61,14 +63,14 @@ class ActionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "showAction" {
+        if segue.identifier == "showActivity" {
 
-            if let index = actionsTableView.indexPathForSelectedRow {
+            if let index = activityTableView.indexPathForSelectedRow {
 
-                guard let destinationVC = segue.destination as? ActionDetailViewController else {return}
+                guard let destinationVC = segue.destination as? ActivityDetailViewController else {return}
 
-                let action = ActionController.shared.actions[index.row]
-                destinationVC.action = action
+                let activity = ActivityController.shared.activities[index.row]
+                destinationVC.activity = activity
             }
         }
     }

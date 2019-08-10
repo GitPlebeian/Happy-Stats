@@ -14,9 +14,6 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Loads in the things
-        ActionController.shared.loadFromPersistentStore()
-        LogController.shared.loadFromPersistentStore()
         self.selectedIndex = 3
         guard let tabBarItems = tabBar.items else {return}
         var index = 0

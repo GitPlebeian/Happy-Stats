@@ -14,7 +14,7 @@ class RatingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var ratingNumberLabel: UILabel!
     @IBOutlet weak var todaysDateLabel: UILabel!
-    @IBOutlet weak var actionsTableView: UITableView!
+    @IBOutlet weak var activityTableView: UITableView!
     
     
     // MARK: - Properties
@@ -26,24 +26,17 @@ class RatingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        actionsTableView.allowsMultipleSelection = true
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Will set the rating to default value
-        rating = 5
         ratingNumberLabel.text = String(rating)
-        
-        // Will set the today's date
         date = Date()
         let format = DateFormatter()
         format.dateFormat = "MM-dd-yyyy"
         todaysDateLabel.text = format.string(from: date)
-        
-        // Reload things to the table view
-        actionsTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        activityTableView.reloadData()
     }
     
     // MARK: - Actions
@@ -56,31 +49,32 @@ class RatingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func saveLogButtonTapped(_ sender: Any) {
-        LogController.shared.createNewLog(rating: rating, date: date)
-        ActionController.shared.dislectAllActions()
+        StatController.shared.createLog(date: date, rating: rating)
+//        ActivityController.shared.dislectAllActions()
     }
     
     // MARK: - Table View Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ActionController.shared.actions.count
+//        return ActivityController.shared.actions.count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as? ActionForRatingViewTableViewCell else {return UITableViewCell()}
         
-        let action = ActionController.shared.actions[indexPath.row]
-        cell.action = action
+//        let action = ActivityController.shared.actions[indexPath.row]
+//        cell.action = action
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ActionController.shared.toggleSelection(index: indexPath.row)
+//        ActivityController.shared.toggleSelection(index: indexPath.row)
     }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    }
 } // End of class

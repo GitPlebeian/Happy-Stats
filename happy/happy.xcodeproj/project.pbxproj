@@ -8,44 +8,44 @@
 
 /* Begin PBXBuildFile section */
 		862998B422F747E000B74809 /* ActionForRatingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862998B322F747E000B74809 /* ActionForRatingViewTableViewCell.swift */; };
-		862998B722F75D0A00B74809 /* HistoricalRatingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862998B622F75D0A00B74809 /* HistoricalRatingsViewController.swift */; };
-		862998B922F76CEF00B74809 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862998B822F76CEF00B74809 /* LogDetailViewController.swift */; };
 		864D198622F63429009368ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D198522F63429009368ED /* AppDelegate.swift */; };
 		864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D198E22F6342A009368ED /* LaunchScreen.storyboard */; };
-		864D199B22F6348A009368ED /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D199A22F6348A009368ED /* Log.swift */; };
-		864D199D22F63499009368ED /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D199C22F63499009368ED /* Action.swift */; };
-		864D199F22F634A3009368ED /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D199E22F634A3009368ED /* LogController.swift */; };
-		864D19A122F634D4009368ED /* ActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A022F634D4009368ED /* ActionController.swift */; };
+		864D199F22F634A3009368ED /* StatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D199E22F634A3009368ED /* StatController.swift */; };
+		864D19A122F634D4009368ED /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A022F634D4009368ED /* ActivityController.swift */; };
 		864D19A622F6423E009368ED /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A522F6423E009368ED /* RatingViewController.swift */; };
 		864D19A822F65033009368ED /* ActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A722F65033009368ED /* ActionsViewController.swift */; };
-		864D19AA22F65789009368ED /* ActionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A922F65789009368ED /* ActionDetailViewController.swift */; };
+		864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A922F65789009368ED /* ActivityDetailViewController.swift */; };
 		864D19AC22F66B72009368ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D19AB22F66B72009368ED /* Main.storyboard */; };
 		864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19AD22F67378009368ED /* MainTabBarController.swift */; };
-		865311FA22FA3D0800E198BC /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 865311F922FA3D0800E198BC /* SF-Pro-Display-Light.otf */; };
 		865311FC22FA3D2500E198BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 865311FB22FA3D2500E198BC /* Assets.xcassets */; };
-		8687258222F8798C00E1F674 /* ActionsViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8687258122F8798C00E1F674 /* ActionsViewTableViewCell.swift */; };
+		8687258222F8798C00E1F674 /* ActivityViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */; };
+		868E7CE322FE4F0A000C8D10 /* HapiStats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE122FE4F0A000C8D10 /* HapiStats.xcdatamodeld */; };
+		868E7CE522FE6300000C8D10 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE422FE6300000C8D10 /* CoreDataStack.swift */; };
+		868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */; };
+		868E7CE922FE65A7000C8D10 /* Log+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */; };
+		86915A3622FDDE5D003BDE51 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86915A3522FDDE5D003BDE51 /* SF-Pro-Display-Light.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		862998B322F747E000B74809 /* ActionForRatingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionForRatingViewTableViewCell.swift; sourceTree = "<group>"; };
-		862998B622F75D0A00B74809 /* HistoricalRatingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalRatingsViewController.swift; sourceTree = "<group>"; };
-		862998B822F76CEF00B74809 /* LogDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
 		864D198222F63429009368ED /* happy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		864D198522F63429009368ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		864D198F22F6342A009368ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		864D199122F6342A009368ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		864D199A22F6348A009368ED /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		864D199C22F63499009368ED /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		864D199E22F634A3009368ED /* LogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
-		864D19A022F634D4009368ED /* ActionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionController.swift; sourceTree = "<group>"; };
+		864D199E22F634A3009368ED /* StatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatController.swift; sourceTree = "<group>"; };
+		864D19A022F634D4009368ED /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		864D19A522F6423E009368ED /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		864D19A722F65033009368ED /* ActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewController.swift; sourceTree = "<group>"; };
-		864D19A922F65789009368ED /* ActionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDetailViewController.swift; sourceTree = "<group>"; };
+		864D19A922F65789009368ED /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		864D19AB22F66B72009368ED /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		864D19AD22F67378009368ED /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		865311F922FA3D0800E198BC /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Light.otf"; path = "../../../../../San Francisco Pro/SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		865311FB22FA3D2500E198BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
-		8687258122F8798C00E1F674 /* ActionsViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewTableViewCell.swift; sourceTree = "<group>"; };
+		8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewTableViewCell.swift; sourceTree = "<group>"; };
+		868E7CE222FE4F0A000C8D10 /* happyStats.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = happyStats.xcdatamodel; sourceTree = "<group>"; };
+		868E7CE422FE6300000C8D10 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+Convenience.swift"; sourceTree = "<group>"; };
+		868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Convenience.swift"; sourceTree = "<group>"; };
+		86915A3522FDDE5D003BDE51 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Light.otf"; path = "../../../../../Other Files/San Francisco Pro/SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				862998B322F747E000B74809 /* ActionForRatingViewTableViewCell.swift */,
-				8687258122F8798C00E1F674 /* ActionsViewTableViewCell.swift */,
+				8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -92,6 +92,7 @@
 				864D19A422F641B5009368ED /* View Controllers */,
 				864D199822F6345A009368ED /* Model Controllers */,
 				864D199722F6344F009368ED /* Resources */,
+				868E7CE122FE4F0A000C8D10 /* HapiStats.xcdatamodeld */,
 			);
 			path = happy;
 			sourceTree = "<group>";
@@ -99,7 +100,7 @@
 		864D199722F6344F009368ED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				865311F922FA3D0800E198BC /* SF-Pro-Display-Light.otf */,
+				86915A3522FDDE5D003BDE51 /* SF-Pro-Display-Light.otf */,
 				865311FB22FA3D2500E198BC /* Assets.xcassets */,
 				864D198522F63429009368ED /* AppDelegate.swift */,
 				864D198E22F6342A009368ED /* LaunchScreen.storyboard */,
@@ -111,8 +112,8 @@
 		864D199822F6345A009368ED /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				864D199E22F634A3009368ED /* LogController.swift */,
-				864D19A022F634D4009368ED /* ActionController.swift */,
+				864D199E22F634A3009368ED /* StatController.swift */,
+				864D19A022F634D4009368ED /* ActivityController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -120,8 +121,9 @@
 		864D199922F63471009368ED /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				864D199A22F6348A009368ED /* Log.swift */,
-				864D199C22F63499009368ED /* Action.swift */,
+				868E7CE422FE6300000C8D10 /* CoreDataStack.swift */,
+				868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */,
+				868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -132,9 +134,7 @@
 				865311F822FA33DB00E198BC /* Navigation Controllers */,
 				864D19A522F6423E009368ED /* RatingViewController.swift */,
 				864D19A722F65033009368ED /* ActionsViewController.swift */,
-				864D19A922F65789009368ED /* ActionDetailViewController.swift */,
-				862998B622F75D0A00B74809 /* HistoricalRatingsViewController.swift */,
-				862998B822F76CEF00B74809 /* LogDetailViewController.swift */,
+				864D19A922F65789009368ED /* ActivityDetailViewController.swift */,
 				862998B522F747E300B74809 /* Custom Cells */,
 			);
 			path = "View Controllers";
@@ -207,8 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				864D19AC22F66B72009368ED /* Main.storyboard in Resources */,
-				865311FA22FA3D0800E198BC /* SF-Pro-Display-Light.otf in Resources */,
 				864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */,
+				86915A3622FDDE5D003BDE51 /* SF-Pro-Display-Light.otf in Resources */,
 				865311FC22FA3D2500E198BC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,19 +220,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				864D199F22F634A3009368ED /* LogController.swift in Sources */,
-				864D199B22F6348A009368ED /* Log.swift in Sources */,
+				864D199F22F634A3009368ED /* StatController.swift in Sources */,
+				868E7CE922FE65A7000C8D10 /* Log+Convenience.swift in Sources */,
 				864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */,
-				864D19A122F634D4009368ED /* ActionController.swift in Sources */,
-				862998B922F76CEF00B74809 /* LogDetailViewController.swift in Sources */,
-				862998B722F75D0A00B74809 /* HistoricalRatingsViewController.swift in Sources */,
-				8687258222F8798C00E1F674 /* ActionsViewTableViewCell.swift in Sources */,
+				864D19A122F634D4009368ED /* ActivityController.swift in Sources */,
+				8687258222F8798C00E1F674 /* ActivityViewTableViewCell.swift in Sources */,
+				868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */,
+				868E7CE522FE6300000C8D10 /* CoreDataStack.swift in Sources */,
 				864D19A822F65033009368ED /* ActionsViewController.swift in Sources */,
+				868E7CE322FE4F0A000C8D10 /* HapiStats.xcdatamodeld in Sources */,
 				864D19A622F6423E009368ED /* RatingViewController.swift in Sources */,
 				864D198622F63429009368ED /* AppDelegate.swift in Sources */,
-				864D19AA22F65789009368ED /* ActionDetailViewController.swift in Sources */,
+				864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */,
 				862998B422F747E000B74809 /* ActionForRatingViewTableViewCell.swift in Sources */,
-				864D199D22F63499009368ED /* Action.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +424,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		868E7CE122FE4F0A000C8D10 /* HapiStats.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				868E7CE222FE4F0A000C8D10 /* happyStats.xcdatamodel */,
+			);
+			currentVersion = 868E7CE222FE4F0A000C8D10 /* happyStats.xcdatamodel */;
+			path = HapiStats.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 864D197A22F63429009368ED /* Project object */;
 }

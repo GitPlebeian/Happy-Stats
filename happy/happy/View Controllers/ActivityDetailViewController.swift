@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ActionDetailViewController: UIViewController {
+class ActivityDetailViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var actionNameTextField: UITextField!
+    @IBOutlet weak var activityTitleTextField: UITextField!
+    
     
     // Receivers
-    var action: Action? {
+    var activity: Activity? {
         didSet {
             updateView()
         }
@@ -27,10 +28,10 @@ class ActionDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        self.tabBarItem.image = UIImage(named: "reportIcon")
-        if let action = action {
-            self.title = action.name
+        if let activity = activity {
+            self.title = activity.title
         } else {
-            self.title = "New Action"
+            self.title = "New Activity"
         }
     }
     
@@ -38,15 +39,15 @@ class ActionDetailViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         // Checks to make sure that there is a value inside of the text field
-        guard let actionName = actionNameTextField.text else {return}
-        if actionName.isEmpty {return}
+        guard let activityTitle = activityTitleTextField.text else {return}
+        if activityTitle.isEmpty {return}
         
-        if let action = action {
+        if let activity = activity {
             // Will update existing thing name if a thing object is loaded
-            ActionController.shared.updateExistingAction(action: action, name: actionName)
+//            ActivityController.shared.updateExistingAction(action: action, name: actionName)
         } else {
             // Will create a new thing if there is no thing object loaded in the receiver
-            ActionController.shared.createAction(name: actionName)
+            ActivityController.shared.createActivity(title: activityTitle)
         }
         navigationController?.popViewController(animated: true)
     }
@@ -55,7 +56,7 @@ class ActionDetailViewController: UIViewController {
     
     func updateView() {
         loadViewIfNeeded()
-        actionNameTextField.text = action?.name
+        activityTitleTextField.text = activity?.title
     }
     
 } // End Class
