@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		862998B422F747E000B74809 /* ActionForRatingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862998B322F747E000B74809 /* ActionForRatingViewTableViewCell.swift */; };
+		862998B422F747E000B74809 /* ActivityForRatingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */; };
 		864D198622F63429009368ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D198522F63429009368ED /* AppDelegate.swift */; };
 		864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D198E22F6342A009368ED /* LaunchScreen.storyboard */; };
-		864D199F22F634A3009368ED /* StatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D199E22F634A3009368ED /* StatController.swift */; };
+		864D199F22F634A3009368ED /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D199E22F634A3009368ED /* LogController.swift */; };
 		864D19A122F634D4009368ED /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A022F634D4009368ED /* ActivityController.swift */; };
 		864D19A622F6423E009368ED /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A522F6423E009368ED /* RatingViewController.swift */; };
-		864D19A822F65033009368ED /* ActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A722F65033009368ED /* ActionsViewController.swift */; };
+		864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A722F65033009368ED /* ActivitiesViewController.swift */; };
 		864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A922F65789009368ED /* ActivityDetailViewController.swift */; };
 		864D19AC22F66B72009368ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D19AB22F66B72009368ED /* Main.storyboard */; };
 		864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19AD22F67378009368ED /* MainTabBarController.swift */; };
@@ -24,18 +24,19 @@
 		868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */; };
 		868E7CE922FE65A7000C8D10 /* Log+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */; };
 		86915A3622FDDE5D003BDE51 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86915A3522FDDE5D003BDE51 /* SF-Pro-Display-Light.otf */; };
+		86D11AD222FF9C330059A0B3 /* HistoricalLogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		862998B322F747E000B74809 /* ActionForRatingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionForRatingViewTableViewCell.swift; sourceTree = "<group>"; };
+		862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityForRatingViewTableViewCell.swift; sourceTree = "<group>"; };
 		864D198222F63429009368ED /* happy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		864D198522F63429009368ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		864D198F22F6342A009368ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		864D199122F6342A009368ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		864D199E22F634A3009368ED /* StatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatController.swift; sourceTree = "<group>"; };
+		864D199E22F634A3009368ED /* LogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
 		864D19A022F634D4009368ED /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		864D19A522F6423E009368ED /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
-		864D19A722F65033009368ED /* ActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewController.swift; sourceTree = "<group>"; };
+		864D19A722F65033009368ED /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 		864D19A922F65789009368ED /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		864D19AB22F66B72009368ED /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		864D19AD22F67378009368ED /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -46,6 +47,7 @@
 		868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+Convenience.swift"; sourceTree = "<group>"; };
 		868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Convenience.swift"; sourceTree = "<group>"; };
 		86915A3522FDDE5D003BDE51 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Light.otf"; path = "../../../../../Other Files/San Francisco Pro/SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalLogsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,7 @@
 		862998B522F747E300B74809 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
-				862998B322F747E000B74809 /* ActionForRatingViewTableViewCell.swift */,
+				862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */,
 				8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */,
 			);
 			path = "Custom Cells";
@@ -112,7 +114,7 @@
 		864D199822F6345A009368ED /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				864D199E22F634A3009368ED /* StatController.swift */,
+				864D199E22F634A3009368ED /* LogController.swift */,
 				864D19A022F634D4009368ED /* ActivityController.swift */,
 			);
 			path = "Model Controllers";
@@ -133,8 +135,9 @@
 			children = (
 				865311F822FA33DB00E198BC /* Navigation Controllers */,
 				864D19A522F6423E009368ED /* RatingViewController.swift */,
-				864D19A722F65033009368ED /* ActionsViewController.swift */,
+				864D19A722F65033009368ED /* ActivitiesViewController.swift */,
 				864D19A922F65789009368ED /* ActivityDetailViewController.swift */,
+				86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */,
 				862998B522F747E300B74809 /* Custom Cells */,
 			);
 			path = "View Controllers";
@@ -220,19 +223,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				864D199F22F634A3009368ED /* StatController.swift in Sources */,
+				864D199F22F634A3009368ED /* LogController.swift in Sources */,
+				86D11AD222FF9C330059A0B3 /* HistoricalLogsViewController.swift in Sources */,
 				868E7CE922FE65A7000C8D10 /* Log+Convenience.swift in Sources */,
 				864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */,
 				864D19A122F634D4009368ED /* ActivityController.swift in Sources */,
 				8687258222F8798C00E1F674 /* ActivityViewTableViewCell.swift in Sources */,
 				868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */,
 				868E7CE522FE6300000C8D10 /* CoreDataStack.swift in Sources */,
-				864D19A822F65033009368ED /* ActionsViewController.swift in Sources */,
+				864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */,
 				868E7CE322FE4F0A000C8D10 /* HapiStats.xcdatamodeld in Sources */,
 				864D19A622F6423E009368ED /* RatingViewController.swift in Sources */,
 				864D198622F63429009368ED /* AppDelegate.swift in Sources */,
 				864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */,
-				862998B422F747E000B74809 /* ActionForRatingViewTableViewCell.swift in Sources */,
+				862998B422F747E000B74809 /* ActivityForRatingViewTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

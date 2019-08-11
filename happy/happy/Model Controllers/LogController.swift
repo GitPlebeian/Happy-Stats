@@ -9,15 +9,15 @@
 import Foundation
 import CoreData
 
-class StatController {
+class LogController {
     
     // MARK: - Class Properties
     
-    static var shared = StatController()
+    static var shared = LogController()
     
     // MARK: - Properties
     
-    var stats: [Log] {
+    var logs: [Log] {
         // Creates a new fetchRequest that only handles EntityName entity types
         let fetchRequest: NSFetchRequest<Log> = Log.fetchRequest()
         return (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
@@ -26,9 +26,9 @@ class StatController {
     // MARK: - CRUD
     
     // Create
-    func createLog(date: Date, rating: Int) {
-        // Instructions: Initialize a new Enitity
-        Log(date: date, rating: rating)
+    func createLog(date: Date, rating: Int, activities: [Activity] = []) {
+        let log = Log(date: date, rating: rating, activities: activities)
+        ActivityController.shared.addLogToActivities(log: log, activities: activities)
         saveToPersistentStore()
     }
     // Delete

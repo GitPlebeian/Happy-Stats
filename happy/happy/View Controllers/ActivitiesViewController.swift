@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ActivitiesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     // MARK: - Outlets
     @IBOutlet weak var activityTableView: UITableView!

@@ -12,6 +12,7 @@ class ActivityDetailViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var activityTitleTextField: UITextField!
+    @IBOutlet weak var numLogsLabel: UILabel!
     
     
     // Receivers
@@ -56,7 +57,9 @@ class ActivityDetailViewController: UIViewController {
     
     func updateView() {
         loadViewIfNeeded()
-        activityTitleTextField.text = activity?.title
+        guard let activity = activity else {return}
+        activityTitleTextField.text = activity.title
+        numLogsLabel.text = String(activity.logs!.count)
     }
     
 } // End Class

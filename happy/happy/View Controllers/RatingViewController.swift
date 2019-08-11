@@ -49,28 +49,27 @@ class RatingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func saveLogButtonTapped(_ sender: Any) {
-        StatController.shared.createLog(date: date, rating: rating)
-//        ActivityController.shared.dislectAllActions()
+        LogController.shared.createLog(date: date, rating: rating,activities: ActivityController.shared.getAllSelectedActivities())
+        ActivityController.shared.dislectAllActivities()
     }
     
     // MARK: - Table View Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return ActivityController.shared.actions.count
-        return 0
+        return ActivityController.shared.activities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as? ActionForRatingViewTableViewCell else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as? ActivityForRatingViewTableViewCell else {return UITableViewCell()}
         
-//        let action = ActivityController.shared.actions[indexPath.row]
-//        cell.action = action
+        let activity = ActivityController.shared.activities[indexPath.row]
+        cell.activity = activity
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        ActivityController.shared.toggleSelection(index: indexPath.row)
+        ActivityController.shared.toggleSelection(indexOfActivity: indexPath.row)
     }
     // MARK: - Navigation
 

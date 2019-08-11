@@ -35,6 +35,41 @@ class ActivityController {
         CoreDataStack.context.delete(activity)
         saveToPersistentStore()
     }
+    
+    // MARK: - Selection Methods
+    
+    // Will toggle selection of activity
+    func toggleSelection(indexOfActivity index: Int) {
+        let activity = activities[index]
+        activity.isSelected = !activity.isSelected
+        saveToPersistentStore()
+    }
+
+    func dislectAllActivities() {
+        for activity in activities {
+            activity.isSelected = false
+        }
+        saveToPersistentStore()
+    }
+    
+    func getAllSelectedActivities() -> [Activity] {
+        var arrayOfActivities: [Activity] = []
+        for activity in activities {
+            if activity.isSelected {arrayOfActivities.append(activity)}
+        }
+        return arrayOfActivities
+    }
+    
+    func addLogToActivities(log: Log, activities: [Activity]) {
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        for activity in activities {
+            var array = activity.logs?.sortedArray(using: [sortDescriptor])
+            array?.append(log)
+            guard let nonOptionalArray = array else {return}
+            activity.logs = NSOrderedSet(array: nonOptionalArray)
+        }
+//        saveToPersistentStore()
+    }
 
     // MARK: - Persistence
     

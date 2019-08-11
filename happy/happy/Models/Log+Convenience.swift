@@ -12,9 +12,10 @@ import CoreData
 extension Log {
     
     @discardableResult
-    convenience init(date: Date, rating: Int, context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(date: Date, rating: Int, activities: [Activity] = [], context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.date = date
         self.rating = Int64(rating)
+        self.activities = NSOrderedSet(array: activities)
     }
 }
