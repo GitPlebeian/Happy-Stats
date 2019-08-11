@@ -21,7 +21,8 @@ class RatingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var rating: Int = 5
     var date = Date()
-    
+    var numbersOfActivitiesSelected: [IndexPath] = []
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -51,6 +52,9 @@ class RatingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func saveLogButtonTapped(_ sender: Any) {
         LogController.shared.createLog(date: date, rating: rating,activities: ActivityController.shared.getAllSelectedActivities())
         ActivityController.shared.dislectAllActivities()
+        for row in numbersOfActivitiesSelected {
+            activityTableView.deselectRow(at: row, animated: true)
+        }
     }
     
     // MARK: - Table View Functions
@@ -70,6 +74,12 @@ class RatingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ActivityController.shared.toggleSelection(indexOfActivity: indexPath.row)
+        numbersOfActivitiesSelected.append(indexPath)
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        ActivityController.shared.toggleSelection(indexOfActivity: indexPath.row)
+        guard let index = numbersOfActivitiesSelected.firstIndex(of: indexPath) else {return}
+        numbersOfActivitiesSelected.remove(at: index)
     }
     // MARK: - Navigation
 

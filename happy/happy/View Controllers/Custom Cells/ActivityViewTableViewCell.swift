@@ -32,6 +32,7 @@ class ActivityViewTableViewCell: UITableViewCell {
         } else {
             averageRatingLabel.text = String(activity.averageRating)
         }
+        numDaysAppliedLabel.text = activity.timesSelected > 0 ? String(activity.timesSelected) : ""
     }
 //    override func setSelected(_ selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)

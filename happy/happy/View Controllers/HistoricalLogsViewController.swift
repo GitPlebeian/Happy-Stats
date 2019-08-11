@@ -23,7 +23,6 @@ class HistoricalLogsViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(LogController.shared.logs.count)
         return LogController.shared.logs.count
     }
     

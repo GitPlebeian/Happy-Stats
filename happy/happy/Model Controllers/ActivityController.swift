@@ -67,6 +67,9 @@ class ActivityController {
             array?.append(log)
             guard let nonOptionalArray = array else {return}
             activity.logs = NSOrderedSet(array: nonOptionalArray)
+            activity.totalRating += log.rating
+            activity.timesSelected += 1
+            activity.averageRating = round((Double(activity.totalRating) / Double(activity.timesSelected)) * 100) / 100
         }
 //        saveToPersistentStore()
     }
