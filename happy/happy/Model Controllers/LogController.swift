@@ -28,11 +28,13 @@ class LogController {
     // Create
     func createLog(date: Date, rating: Int, activities: [Activity] = []) {
         let log = Log(date: date, rating: rating, activities: activities)
-        ActivityController.shared.addLogToActivities(log: log, activities: activities)
+        log.addToActivities(NSOrderedSet(array: activities))
+        ActivityController.shared.addLogDataToActivities(log: log, activities: activities)
         saveToPersistentStore()
     }
     // Delete
     func deleteLog(log: Log) {
+        ActivityController.shared.deleteLogDataFromActivities(log: log)
         CoreDataStack.context.delete(log)
         saveToPersistentStore()
     }
@@ -41,10 +43,12 @@ class LogController {
     
     // Attempts to save to the stack
     func saveToPersistentStore() {
-        do {
-            try CoreDataStack.context.save()
-        } catch {
-            print("There was an error saving the objects in \(#function): \(error.localizedDescription)")
+        if CoreDataStack.context.hasChanges {
+            do {
+                try CoreDataStack.context.save()
+            } catch {
+                print("There was an error saving the objects in \(#function): \(error.localizedDescription)")
+            }
         }
     }
 } // Class End

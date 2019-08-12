@@ -36,7 +36,7 @@ class ActivityController {
         saveToPersistentStore()
     }
     
-    // MARK: - Selection Methods
+    // MARK: - Activity selection methods
     
     // Will toggle selection of activity
     func toggleSelection(indexOfActivity index: Int) {
@@ -60,28 +60,46 @@ class ActivityController {
         return arrayOfActivities
     }
     
-    func addLogToActivities(log: Log, activities: [Activity]) {
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+    // MARK: - Activity Data Function
+    
+    // Calculates the activity's new data based on the addition of a log
+    func addLogDataToActivities(log: Log, activities: [Activity]) {
         for activity in activities {
-            var array = activity.logs?.sortedArray(using: [sortDescriptor])
-            array?.append(log)
-            guard let nonOptionalArray = array else {return}
-            activity.logs = NSOrderedSet(array: nonOptionalArray)
             activity.totalRating += log.rating
             activity.timesSelected += 1
             activity.averageRating = round((Double(activity.totalRating) / Double(activity.timesSelected)) * 100) / 100
         }
-//        saveToPersistentStore()
+    }
+    
+    // Calculates the activitiy's new data based on the deletion of a log
+    func deleteLogDataFromActivities(log: Log) {
+        for activity in activities {
+            guard let logs = activity.logs else {return}
+            if logs.contains(log) {
+                activity.totalRating -= log.rating
+                activity.timesSelected -= 1
+                if activity.timesSelected == 0 {
+                    activity.averageRating = -1
+                } else if activity.timesSelected < 0 {
+                    // Error type handling
+                    print("-Inside of \(#function), the number of times selected was less than 0")
+                } else {
+                    activity.averageRating = round((Double(activity.totalRating) / Double(activity.timesSelected)) * 100) / 100
+                }
+            }
+        }
     }
 
     // MARK: - Persistence
     
     // Attempts to save to the stack
     func saveToPersistentStore() {
-        do {
-            try CoreDataStack.context.save()
-        } catch {
-            print("There was an error saving the objects in \(#function): \(error.localizedDescription)")
+        if CoreDataStack.context.hasChanges {
+            do {
+                try CoreDataStack.context.save()
+            } catch {
+                print("There was an error saving the objects in \(#function): \(error.localizedDescription)")
+            }
         }
     }
 } // End of class
