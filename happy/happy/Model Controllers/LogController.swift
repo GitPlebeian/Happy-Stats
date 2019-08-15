@@ -34,8 +34,19 @@ class LogController {
     }
     // Delete
     func deleteLog(log: Log) {
-        ActivityController.shared.deleteLogDataFromActivities(log: log)
+        ActivityController.shared.deleteLogDataFromAllActivities(log: log)
         CoreDataStack.context.delete(log)
+        saveToPersistentStore()
+    }
+    
+    // Update
+    func updateLog(log: Log, selectedActivities: [Activity], rating: Int) {
+        
+        ActivityController.shared.deleteLogDataFromAllActivities(log: log)
+        ActivityController.shared.addLogDataToActivities(log: log, activities: selectedActivities)
+        
+        log.activities = NSOrderedSet(array: selectedActivities)
+        log.rating = Int64(rating)
         saveToPersistentStore()
     }
     

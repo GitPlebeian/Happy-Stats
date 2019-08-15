@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActivitiesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ActivitiesViewController: UIViewController{
     
     // MARK: - Outlets
     @IBOutlet weak var activityTableView: UITableView!
@@ -32,7 +32,26 @@ class ActivitiesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    // MARK: - Table View
+
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showActivity" {
+
+            if let index = activityTableView.indexPathForSelectedRow {
+
+                guard let destinationVC = segue.destination as? ActivityDetailViewController else {return}
+
+                let activity = ActivityController.shared.activities[index.row]
+                destinationVC.activity = activity
+            }
+        }
+    }
+} // End Class
+
+extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ActivityController.shared.activities.count
@@ -52,26 +71,9 @@ class ActivitiesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-        let activityToDelete = ActivityController.shared.activities[indexPath.row]
+            let activityToDelete = ActivityController.shared.activities[indexPath.row]
             ActivityController.shared.deleteActivity(activity: activityToDelete)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "showActivity" {
-
-            if let index = activityTableView.indexPathForSelectedRow {
-
-                guard let destinationVC = segue.destination as? ActivityDetailViewController else {return}
-
-                let activity = ActivityController.shared.activities[index.row]
-                destinationVC.activity = activity
-            }
-        }
-    }
-} // End Class
+}

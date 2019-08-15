@@ -30,9 +30,15 @@ class ActivityController {
         Activity(title: title)
         saveToPersistentStore()
     }
+    
     // Delete Activity
     func deleteActivity(activity: Activity) {
         CoreDataStack.context.delete(activity)
+        saveToPersistentStore()
+    }
+    
+    func updateActivity(activity: Activity, title: String) {
+        activity.title = title
         saveToPersistentStore()
     }
     
@@ -72,7 +78,7 @@ class ActivityController {
     }
     
     // Calculates the activitiy's new data based on the deletion of a log
-    func deleteLogDataFromActivities(log: Log) {
+    func deleteLogDataFromAllActivities(log: Log) {
         for activity in activities {
             guard let logs = activity.logs else {return}
             if logs.contains(log) {
@@ -88,6 +94,21 @@ class ActivityController {
                 }
             }
         }
+    }
+    
+    // Gives back an array of activities
+    func getActivitiesNotInLog(log: Log) -> [Activity] {
+        guard let TestingActivities = log.activities?.array as? [Activity] else {return []}
+        
+        var activitiesNotInLog: [Activity] = []
+        
+        for activity in activities {
+            if !TestingActivities.contains(activity) {
+                activitiesNotInLog.append(activity)
+            }
+        }
+        
+        return activitiesNotInLog
     }
 
     // MARK: - Persistence

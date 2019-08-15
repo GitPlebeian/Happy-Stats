@@ -46,13 +46,13 @@ class HistoricalLogsViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showLog" {
+            guard let index = logsTableView.indexPathForSelectedRow, let destinationViewController = segue.destination as? LogDetailViewController else {return}
+            let log = LogController.shared.logs[index.row]
+            destinationViewController.log = log
+        }
     }
-    */
 }

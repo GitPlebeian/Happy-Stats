@@ -29,7 +29,7 @@ class MainTabBarController: UITabBarController {
             case 1:
                 item.selectedImage = UIImage(named: "calendarIconDark")
             case 2:
-                item.selectedImage = UIImage(named: "plusIconDark")
+                item.selectedImage = UIImage(named: "plusIconSelected")
             case 3:
                 item.selectedImage = UIImage(named: "menuIconDark")
             default:

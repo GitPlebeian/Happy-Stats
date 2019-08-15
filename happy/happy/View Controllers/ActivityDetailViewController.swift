@@ -44,8 +44,8 @@ class ActivityDetailViewController: UIViewController {
         if activityTitle.isEmpty {return}
         
         if let activity = activity {
-            // Will update existing thing name if a thing object is loaded
-//            ActivityController.shared.updateExistingAction(action: action, name: actionName)
+//             Will update existing thing name if a thing object is loaded
+            ActivityController.shared.updateActivity(activity: activity, title: activityTitle)
         } else {
             // Will create a new thing if there is no thing object loaded in the receiver
             ActivityController.shared.createActivity(title: activityTitle)

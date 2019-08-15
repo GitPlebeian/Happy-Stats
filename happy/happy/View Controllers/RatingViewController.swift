@@ -8,13 +8,14 @@
 
 import UIKit
 
-class RatingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RatingViewController: UIViewController{
     
     // MARK: - Outlets
     
     @IBOutlet weak var ratingNumberLabel: UILabel!
     @IBOutlet weak var todaysDateLabel: UILabel!
     @IBOutlet weak var activityTableView: UITableView!
+    @IBOutlet weak var ratingSlider: UISlider!
     
     
     // MARK: - Properties
@@ -36,8 +37,7 @@ class RatingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        activityTableView.reloadData()
+            activityTableView.reloadData()
     }
     
     // MARK: - Actions
@@ -56,9 +56,9 @@ class RatingViewController: UIViewController, UITableViewDelegate, UITableViewDa
             activityTableView.deselectRow(at: row, animated: true)
         }
     }
-    
-    // MARK: - Table View Functions
-    
+} // End of class
+
+extension RatingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ActivityController.shared.activities.count
     }
@@ -81,9 +81,4 @@ class RatingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         guard let index = numbersOfActivitiesSelected.firstIndex(of: indexPath) else {return}
         numbersOfActivitiesSelected.remove(at: index)
     }
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    }
-} // End of class
+}
