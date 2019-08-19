@@ -14,7 +14,7 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selectedIndex = 3
+        self.selectedIndex = 1
         guard let tabBarItems = tabBar.items else {return}
         var index = 0
         for item in tabBarItems {

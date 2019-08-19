@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,17 +18,22 @@
 		864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A922F65789009368ED /* ActivityDetailViewController.swift */; };
 		864D19AC22F66B72009368ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D19AB22F66B72009368ED /* Main.storyboard */; };
 		864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19AD22F67378009368ED /* MainTabBarController.swift */; };
+		8654FC20230B5E5100A6202C /* DateHeaderForCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654FC1F230B5E5100A6202C /* DateHeaderForCalendar.swift */; };
+		867A488E230B28DC003A58A5 /* DateDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A488D230B28DC003A58A5 /* DateDayCollectionViewCell.swift */; };
 		8687258222F8798C00E1F674 /* ActivityViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */; };
 		868E7CE322FE4F0A000C8D10 /* HapiStats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE122FE4F0A000C8D10 /* HapiStats.xcdatamodeld */; };
 		868E7CE522FE6300000C8D10 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE422FE6300000C8D10 /* CoreDataStack.swift */; };
 		868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */; };
 		868E7CE922FE65A7000C8D10 /* Log+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */; };
 		86915A3622FDDE5D003BDE51 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86915A3522FDDE5D003BDE51 /* SF-Pro-Display-Light.otf */; };
+		86CCFD352306045800CDCC21 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCFD342306045800CDCC21 /* ReportsViewController.swift */; };
 		86D11AD222FF9C330059A0B3 /* HistoricalLogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */; };
 		86E2D4082305936A00E9A910 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86E2D4072305936A00E9A910 /* Assets.xcassets */; };
+		D1A2D665FF7D512048A9F823 /* Pods_happy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A2462517429F1E4DCAC21F /* Pods_happy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28A2462517429F1E4DCAC21F /* Pods_happy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_happy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8626DEC423024D7B00BF6909 /* LogDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
 		862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityForRatingViewTableViewCell.swift; sourceTree = "<group>"; };
 		864D198222F63429009368ED /* happy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,14 +47,19 @@
 		864D19A922F65789009368ED /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		864D19AB22F66B72009368ED /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		864D19AD22F67378009368ED /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8654FC1F230B5E5100A6202C /* DateHeaderForCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderForCalendar.swift; sourceTree = "<group>"; };
+		867A488D230B28DC003A58A5 /* DateDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewTableViewCell.swift; sourceTree = "<group>"; };
 		868E7CE222FE4F0A000C8D10 /* happyStats.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = happyStats.xcdatamodel; sourceTree = "<group>"; };
 		868E7CE422FE6300000C8D10 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+Convenience.swift"; sourceTree = "<group>"; };
 		868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Convenience.swift"; sourceTree = "<group>"; };
 		86915A3522FDDE5D003BDE51 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Light.otf"; path = "../../../../../Other Files/San Francisco Pro/SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		86CCFD342306045800CDCC21 /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
 		86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalLogsViewController.swift; sourceTree = "<group>"; };
 		86E2D4072305936A00E9A910 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8E48C279B72E691845044878 /* Pods-happy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-happy.release.xcconfig"; path = "Target Support Files/Pods-happy/Pods-happy.release.xcconfig"; sourceTree = "<group>"; };
+		F6AE235A82B3965561E8C7EC /* Pods-happy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-happy.debug.xcconfig"; path = "Target Support Files/Pods-happy/Pods-happy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,17 +67,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1A2D665FF7D512048A9F823 /* Pods_happy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		413FA60942D03AE6C814026D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F6AE235A82B3965561E8C7EC /* Pods-happy.debug.xcconfig */,
+				8E48C279B72E691845044878 /* Pods-happy.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8083CE1DDB815430FA4B22E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28A2462517429F1E4DCAC21F /* Pods_happy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		862998B522F747E300B74809 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
 				862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */,
 				8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */,
+				867A488D230B28DC003A58A5 /* DateDayCollectionViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -77,6 +106,8 @@
 			children = (
 				864D198422F63429009368ED /* happy */,
 				864D198322F63429009368ED /* Products */,
+				413FA60942D03AE6C814026D /* Pods */,
+				8083CE1DDB815430FA4B22E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,7 +172,9 @@
 				864D19A922F65789009368ED /* ActivityDetailViewController.swift */,
 				86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */,
 				8626DEC423024D7B00BF6909 /* LogDetailViewController.swift */,
+				86CCFD342306045800CDCC21 /* ReportsViewController.swift */,
 				862998B522F747E300B74809 /* Custom Cells */,
+				8654FC1E230B5E1700A6202C /* Other */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -154,6 +187,14 @@
 			path = "Navigation Controllers";
 			sourceTree = "<group>";
 		};
+		8654FC1E230B5E1700A6202C /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				8654FC1F230B5E5100A6202C /* DateHeaderForCalendar.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -161,9 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 864D199422F6342A009368ED /* Build configuration list for PBXNativeTarget "happy" */;
 			buildPhases = (
+				AB16B0398A177D7D29D17951 /* [CP] Check Pods Manifest.lock */,
 				864D197E22F63429009368ED /* Sources */,
 				864D197F22F63429009368ED /* Frameworks */,
 				864D198022F63429009368ED /* Resources */,
+				8A7035DF6F4B7965F6E3342B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -221,6 +264,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8A7035DF6F4B7965F6E3342B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-happy/Pods-happy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-happy/Pods-happy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-happy/Pods-happy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB16B0398A177D7D29D17951 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-happy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		864D197E22F63429009368ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -230,14 +315,17 @@
 				86D11AD222FF9C330059A0B3 /* HistoricalLogsViewController.swift in Sources */,
 				868E7CE922FE65A7000C8D10 /* Log+Convenience.swift in Sources */,
 				864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */,
+				86CCFD352306045800CDCC21 /* ReportsViewController.swift in Sources */,
 				864D19A122F634D4009368ED /* ActivityController.swift in Sources */,
 				8687258222F8798C00E1F674 /* ActivityViewTableViewCell.swift in Sources */,
 				868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */,
 				8626DEC523024D7B00BF6909 /* LogDetailViewController.swift in Sources */,
 				868E7CE522FE6300000C8D10 /* CoreDataStack.swift in Sources */,
+				8654FC20230B5E5100A6202C /* DateHeaderForCalendar.swift in Sources */,
 				864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */,
 				868E7CE322FE4F0A000C8D10 /* HapiStats.xcdatamodeld in Sources */,
 				864D19A622F6423E009368ED /* RatingViewController.swift in Sources */,
+				867A488E230B28DC003A58A5 /* DateDayCollectionViewCell.swift in Sources */,
 				864D198622F63429009368ED /* AppDelegate.swift in Sources */,
 				864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */,
 				862998B422F747E000B74809 /* ActivityForRatingViewTableViewCell.swift in Sources */,
@@ -376,6 +464,7 @@
 		};
 		864D199522F6342A009368ED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6AE235A82B3965561E8C7EC /* Pods-happy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -394,6 +483,7 @@
 		};
 		864D199622F6342A009368ED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E48C279B72E691845044878 /* Pods-happy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
