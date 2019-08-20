@@ -12,17 +12,55 @@ import JTAppleCalendar
 class HistoricalLogsViewController: UIViewController{
     
     // MARK: - Outlets
-    
-//    @IBOutlet weak var calendar: JTACMonthView!
+    @IBOutlet weak var happinessLabel: UILabel!
+    @IBOutlet weak var ratingLabelView: UIView!
+    @IBOutlet weak var happinessSlider: UISlider!
     @IBOutlet weak var calendar: JTACMonthView!
+    
+    //MARK: - Propertiess
+    
+    var selectedDate: Date = Date()
+    var selectedDateBool: Bool = false
+    var rating: Int = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.showsVerticalScrollIndicator = false
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    // MARK: - Actions
+
+    @IBAction func ratingSliderValueChanged(_ sender: UISlider) {
+        sender.value = round(sender.value)
+        happinessLabel.text = String(Int(round(sender.value)))
+        rating = Int(round(sender.value))
+        updateRatingLabelView(rating: Int(round(sender.value)))
+    }
+    
+    @IBAction func saveDateButtonTapped(_ sender: Any) {
+        if selectedDateBool {
+            if let log = LogController.shared.getLogForDate(date: selectedDate) {
+                LogController.shared.updateLog(log: log, selectedActivities: [], rating: rating)
+                print("updating")
+            } else {
+                LogController.shared.createLog(date: selectedDate, rating: rating)
+                print("Saving New log")
+            }
+        }
+    }
+    
+    // MARK: - Custom Functions {
+    
+    func updateRatingLabelView(rating: Int) {
+        ratingLabelView.layer.backgroundColor = happinessColors.getColorFoInt(number: rating).cgColor
+        ratingLabelView.layer.cornerRadius = 15
+    }
+    
+    // MARK: - Calendar Functions
     
     func configureCell(view: JTACDayCell?, cellState: CellState) {
         guard let cell = view as? DateDayCollectionViewCell  else { return }
@@ -43,19 +81,22 @@ class HistoricalLogsViewController: UIViewController{
     
     func calendar(_ calendar: JTACMonthView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTACMonthReusableView {
         let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
-        formatter.dateFormat = "MMMM yyyy"
-        
+        formatter.dateFormat = "MMMM"
         let header = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: "DateHeader", for: indexPath) as! DateHeaderForCalendar
         header.monthTitle.text = formatter.string(from: range.start)
+        formatter.dateFormat = "yyyy"
+        header.yearLabel.text = formatter.string(from: range.start)
         return header
     }
     
     func calendarSizeForMonths(_ calendar: JTACMonthView?) -> MonthSize? {
-        return MonthSize(defaultSize: 60)
+        return MonthSize(defaultSize: 55)
     }
     
     func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         configureCell(view: cell, cellState: cellState)
+        selectedDate = cellState.date
+        selectedDateBool = true
     }
     
     func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {

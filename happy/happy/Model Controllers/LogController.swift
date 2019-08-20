@@ -50,6 +50,30 @@ class LogController {
         saveToPersistentStore()
     }
     
+    // MARK: - Custom Functions
+    
+    func getLogForDate(date: Date) -> Log? {
+        
+        for log in logs {
+            guard let logDate = log.date else {continue}
+            let calendar = Calendar.current
+            
+            let year1 = calendar.component(.year, from: date)
+            let year2 = calendar.component(.year, from: logDate)
+            let month1 = calendar.component(.month, from: date)
+            let month2 = calendar.component(.month, from: logDate)
+            let day1 = calendar.component(.day, from: date)
+            let day2 = calendar.component(.day, from: logDate)
+            
+            if year1 == year2 &&
+                month1 == month2 &&
+                day1 == day2 {
+                return log
+            }
+        }
+        return nil
+    }
+    
     // MARK: - Persistence
     
     // Attempts to save to the stack

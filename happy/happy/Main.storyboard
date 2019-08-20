@@ -13,6 +13,9 @@
         <array key="SF-Pro-Display-Light.otf">
             <string>SFProDisplay-Light</string>
         </array>
+        <array key="SF-Pro-Display-Medium.otf">
+            <string>SFProDisplay-Medium</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Reports View Controller-->
@@ -181,11 +184,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Cf-5j-fsh" customClass="JTACMonthView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="-0.5" y="44" width="415" height="380"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BH-zz-JP1">
+                                <rect key="frame" x="41.5" y="639" width="331" height="30"/>
+                                <state key="normal" title="Edit Actions"/>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Cf-5j-fsh" customClass="JTACMonthView" customModule="JTAppleCalendar">
+                                <rect key="frame" x="-7" y="14" width="415" height="415"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="380" id="CoN-oB-kEY"/>
+                                    <constraint firstAttribute="width" secondItem="5Cf-5j-fsh" secondAttribute="height" multiplier="1:1" id="Q47-Pr-bBS"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KR9-O7-gvK">
                                     <size key="itemSize" width="50" height="50"/>
@@ -201,14 +208,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uuv-2Q-Rxl">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uuv-2Q-Rxl">
                                                     <rect key="frame" x="8" y="8" width="34" height="34"/>
-                                                    <color key="backgroundColor" red="1" green="0.40810195049999998" blue="0.21983081230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Date)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNm-N2-rGR">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -224,8 +231,8 @@
                                             <constraint firstAttribute="bottom" secondItem="Uuv-2Q-Rxl" secondAttribute="bottom" constant="8" id="yga-rj-dmD"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="dateColorView" destination="Uuv-2Q-Rxl" id="E1q-X7-Ry8"/>
                                             <outlet property="dateLabel" destination="zNm-N2-rGR" id="0vi-6y-dr7"/>
-                                            <outlet property="selectedView" destination="Uuv-2Q-Rxl" id="E1q-X7-Ry8"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -233,20 +240,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="415" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Year)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcq-94-xdf">
+                                            <rect key="frame" x="16" y="33" width="34" height="17"/>
+                                            <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Month YEar thing)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6z-gG-tGQ">
-                                            <rect key="frame" x="135" y="14.5" width="145" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <rect key="frame" x="16" y="0.0" width="252.5" height="37"/>
+                                            <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="31"/>
+                                            <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.1003823194" green="0.67502776019999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="J6z-gG-tGQ" firstAttribute="centerY" secondItem="Y15-r7-sYu" secondAttribute="centerY" id="m2h-Ad-1f6"/>
-                                        <constraint firstItem="J6z-gG-tGQ" firstAttribute="centerX" secondItem="Y15-r7-sYu" secondAttribute="centerX" id="mRF-79-YEF"/>
+                                        <constraint firstItem="J6z-gG-tGQ" firstAttribute="top" secondItem="Y15-r7-sYu" secondAttribute="top" id="D8x-Hr-qCX"/>
+                                        <constraint firstAttribute="bottom" secondItem="Bcq-94-xdf" secondAttribute="bottom" id="IpJ-kc-Hhf"/>
+                                        <constraint firstItem="J6z-gG-tGQ" firstAttribute="leading" secondItem="Y15-r7-sYu" secondAttribute="leading" constant="16" id="Jnm-BP-wOP"/>
+                                        <constraint firstItem="Bcq-94-xdf" firstAttribute="leading" secondItem="Y15-r7-sYu" secondAttribute="leading" constant="16" id="jme-yU-Jl6"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="monthTitle" destination="J6z-gG-tGQ" id="cIR-jH-Utf"/>
+                                        <outlet property="yearLabel" destination="Bcq-94-xdf" id="l70-3a-ql7"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>
@@ -254,23 +269,72 @@
                                     <outlet property="ibCalendarDelegate" destination="dYV-1r-0gp" id="4oK-2M-J3t"/>
                                 </connections>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="JXZ-d5-7B3">
+                                <rect key="frame" x="41.5" y="599" width="331" height="30"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="puH-Tp-HtU">
+                                        <rect key="frame" x="-2" y="0.0" width="294" height="31"/>
+                                        <connections>
+                                            <action selector="ratingSliderValueChanged:" destination="dYV-1r-0gp" eventType="valueChanged" id="Ea4-Ql-xFV"/>
+                                        </connections>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGf-K1-JuJ">
+                                        <rect key="frame" x="297" y="0.0" width="34" height="30"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveDateButtonTapped:" destination="dYV-1r-0gp" eventType="touchUpInside" id="qow-DC-HKS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ys-bx-hYg">
+                                <rect key="frame" x="41.5" y="493" width="331" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhA-jg-oBn">
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="50"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YGl-Bo-XtD"/>
+                                    <constraint firstItem="hhA-jg-oBn" firstAttribute="width" secondItem="6ys-bx-hYg" secondAttribute="width" id="gca-Kf-Bud"/>
+                                    <constraint firstItem="hhA-jg-oBn" firstAttribute="height" secondItem="6ys-bx-hYg" secondAttribute="height" id="lnE-rF-gyh"/>
+                                    <constraint firstItem="hhA-jg-oBn" firstAttribute="centerY" secondItem="6ys-bx-hYg" secondAttribute="centerY" id="mgY-2X-5d0"/>
+                                    <constraint firstItem="hhA-jg-oBn" firstAttribute="centerX" secondItem="6ys-bx-hYg" secondAttribute="centerX" id="vJG-Fo-pQe"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="JXZ-d5-7B3" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="12l-Sh-uqT"/>
                             <constraint firstItem="5Cf-5j-fsh" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="8t5-ZE-o2u"/>
+                            <constraint firstItem="JXZ-d5-7B3" firstAttribute="top" secondItem="6ys-bx-hYg" secondAttribute="bottom" constant="56" id="9Tl-8W-BYQ"/>
+                            <constraint firstItem="6BH-zz-JP1" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="NII-bt-4k3"/>
                             <constraint firstItem="5Cf-5j-fsh" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" constant="1" id="NKY-fw-DwG"/>
+                            <constraint firstItem="6ys-bx-hYg" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="Viz-Mb-adw"/>
+                            <constraint firstItem="JXZ-d5-7B3" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.8" id="f5Y-3u-N10"/>
+                            <constraint firstItem="6BH-zz-JP1" firstAttribute="top" secondItem="JXZ-d5-7B3" secondAttribute="bottom" constant="10" id="hej-6d-XEt"/>
+                            <constraint firstItem="6ys-bx-hYg" firstAttribute="top" secondItem="5Cf-5j-fsh" secondAttribute="bottom" constant="34" id="ktb-O3-9th"/>
                             <constraint firstItem="5Cf-5j-fsh" firstAttribute="top" secondItem="A9P-L1-ocC" secondAttribute="top" id="qM1-k5-nEP"/>
+                            <constraint firstItem="6ys-bx-hYg" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.8" id="tWF-Cu-cBx"/>
+                            <constraint firstItem="6BH-zz-JP1" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.8" id="wWL-tn-FPo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A9P-L1-ocC"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="calendarIcon" id="4Pu-g7-7kf"/>
                     <connections>
                         <outlet property="calendar" destination="5Cf-5j-fsh" id="Ebe-OD-nGG"/>
+                        <outlet property="happinessLabel" destination="hhA-jg-oBn" id="ARp-EF-9HD"/>
+                        <outlet property="happinessSlider" destination="puH-Tp-HtU" id="qlk-MU-jE9"/>
+                        <outlet property="ratingLabelView" destination="6ys-bx-hYg" id="S37-eZ-kDO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWf-f1-ZV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1529" y="613"/>
+            <point key="canvasLocation" x="1528.985507246377" y="612.72321428571422"/>
         </scene>
         <!--Rating View Controller-->
         <scene sceneID="lff-WX-LLq">

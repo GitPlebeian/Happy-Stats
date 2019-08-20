@@ -14,22 +14,24 @@ class DateDayCollectionViewCell: JTACDayCell {
     // MARK: - Outlets
     
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var selectedView: UIView!
+    @IBOutlet weak var dateColorView: UIView!
+    
     
     
     func setupCellBeforeDisplay(cellState: CellState) {
         dateLabel.text = cellState.text
         
         if cellState.isSelected {
-            dateLabel.textColor = .white
-            selectedView.backgroundColor = UIColor(red:1.00, green:0.34, blue:0.34, alpha:1.0)
-            selectedView.layer.cornerRadius = selectedView.frame.size.width / 2.05
-            selectedView.isHidden = false
-            print("\(selectedView.frame.size.width)")
-            print("\(selectedView.frame.size.height)")
+
+
         } else {
-            selectedView.isHidden = true
+            let log = LogController.shared.getLogForDate(date: cellState.date)
+            if let log = log {
+                dateColorView.backgroundColor = happinessColors.getColorFoInt(number: Int(log.rating))
+            } else {
+                dateColorView.backgroundColor = .clear
+            }
         }
+        dateColorView.layer.cornerRadius = dateColorView.frame.size.width / 2.0
     }
-    
 }
