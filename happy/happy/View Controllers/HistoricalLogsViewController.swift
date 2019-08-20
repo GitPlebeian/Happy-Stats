@@ -20,7 +20,7 @@ class HistoricalLogsViewController: UIViewController{
     //MARK: - Propertiess
     
     var selectedDate: Date = Date()
-    var selectedDateBool: Bool = false
+    var selectedCell: JTACDayCell?
     var rating: Int = 5
     
     override func viewDidLoad() {
@@ -39,16 +39,15 @@ class HistoricalLogsViewController: UIViewController{
         happinessLabel.text = String(Int(round(sender.value)))
         rating = Int(round(sender.value))
         updateRatingLabelView(rating: Int(round(sender.value)))
+//        updateCellColorForSlider()
     }
     
     @IBAction func saveDateButtonTapped(_ sender: Any) {
-        if selectedDateBool {
+        if selectedCell != nil {
             if let log = LogController.shared.getLogForDate(date: selectedDate) {
                 LogController.shared.updateLog(log: log, selectedActivities: [], rating: rating)
-                print("updating")
             } else {
                 LogController.shared.createLog(date: selectedDate, rating: rating)
-                print("Saving New log")
             }
         }
     }
@@ -62,12 +61,17 @@ class HistoricalLogsViewController: UIViewController{
     
     // MARK: - Calendar Functions
     
-    func configureCell(view: JTACDayCell?, cellState: CellState) {
+    func configureCell(view: JTACDayCell?, cellState: CellState, rating: Int? = nil) {
         guard let cell = view as? DateDayCollectionViewCell  else { return }
         //        cell.dateLabel.text = cellState.text
         handleCellTextColor(cell: cell, cellState: cellState)
-        cell.setupCellBeforeDisplay(cellState: cellState)
+        cell.setupCellBeforeDisplay(cellState: cellState, rating: rating)
     }
+    
+//    func updateCellColorForSlider() {
+//        guard let cell = selectedCell else {return}
+////        cell.changeBackgroundColor(rating: rating)
+//    }
     
     func handleCellTextColor(cell: DateDayCollectionViewCell, cellState: CellState) {
         if cellState.dateBelongsTo == .thisMonth {
@@ -94,13 +98,24 @@ class HistoricalLogsViewController: UIViewController{
     }
     
     func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
-        configureCell(view: cell, cellState: cellState)
-        selectedDate = cellState.date
-        selectedDateBool = true
+        let impactGenerator = UISelectionFeedbackGenerator()
+        impactGenerator.selectionChanged()
+//        selectedDate = cellState.date
+//        guard let cell = cell as? JTACDayCell else {return}
+//        selectedCell = cell
+//        if let log = LogController.shared.getLogForDate(date: cellState.date) {
+//            configureCell(view: cell, cellState: cellState, rating: Int(log.rating))
+//        } else {
+//            configureCell(view: cell, cellState: cellState, rating: rating)
+//        }
     }
     
     func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
-        configureCell(view: cell, cellState: cellState)
+//        if let log = LogController.shared.getLogForDate(date: cellState.date) {
+//            configureCell(view: cell, cellState: cellState, rating: Int(log.rating))
+//        } else {
+//            configureCell(view: cell, cellState: cellState, rating: -1)
+//        }
     }
 
     // MARK: - Navigation
@@ -135,6 +150,12 @@ extension HistoricalLogsViewController: JTACMonthViewDelegate {
     }
     
     func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        configureCell(view: cell, cellState: cellState)
+        let log = LogController.shared.getLogForDate(date: cellState.date)
+        if let log = log {
+            configureCell(view: cell, cellState: cellState, rating: Int(log.rating))
+        } else {
+            configureCell(view: cell, cellState: cellState)
+        }
+//        configureCell(view: cell, cellState: cellState)
     }
 }

@@ -49,8 +49,7 @@ class happinessColors {
         case 10:
             return happinessColors.ten
         default:
-            print("Invalid Number")
-            return UIColor.black
+            return UIColor.clear
         }
     }
     /*

@@ -18,20 +18,23 @@ class DateDayCollectionViewCell: JTACDayCell {
     
     
     
-    func setupCellBeforeDisplay(cellState: CellState) {
+    func setupCellBeforeDisplay(cellState: CellState, rating: Int? = nil) {
         dateLabel.text = cellState.text
         
-        if cellState.isSelected {
-
-
-        } else {
-            let log = LogController.shared.getLogForDate(date: cellState.date)
-            if let log = log {
-                dateColorView.backgroundColor = happinessColors.getColorFoInt(number: Int(log.rating))
-            } else {
-                dateColorView.backgroundColor = .clear
-            }
+        if let rating = rating {
+            dateColorView.backgroundColor = happinessColors.getColorFoInt(number: rating)
         }
         dateColorView.layer.cornerRadius = dateColorView.frame.size.width / 2.0
+        if cellState.isSelected {
+            dateColorView.layer.borderWidth = 1.5
+            dateColorView.layer.borderColor = UIColor.black.cgColor
+        } else {
+            dateColorView.layer.borderWidth = 0
+            dateColorView.layer.borderColor = UIColor.clear.cgColor
+        }
+    }
+    
+    func changeBackgroundColor(rating: Int) {
+         dateColorView.backgroundColor = happinessColors.getColorFoInt(number: rating)
     }
 }
