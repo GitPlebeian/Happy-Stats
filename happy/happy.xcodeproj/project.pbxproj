@@ -102,7 +102,6 @@
 				862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */,
 				8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */,
 				867A488D230B28DC003A58A5 /* DateDayCollectionViewCell.swift */,
-				8654FC1E230B5E1700A6202C /* Other */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -182,6 +181,7 @@
 				8626DEC423024D7B00BF6909 /* LogDetailViewController.swift */,
 				86CCFD342306045800CDCC21 /* ReportsViewController.swift */,
 				862998B522F747E300B74809 /* Custom Cells */,
+				8654FC1E230B5E1700A6202C /* Other */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
