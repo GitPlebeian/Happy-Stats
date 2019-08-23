@@ -184,10 +184,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BH-zz-JP1">
-                                <rect key="frame" x="41.5" y="720" width="331" height="30"/>
-                                <state key="normal" title="Edit Actions"/>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Cf-5j-fsh" customClass="JTACMonthView" customModule="JTAppleCalendar">
                                 <rect key="frame" x="-0.5" y="44" width="415" height="415"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -269,16 +265,8 @@
                                     <outlet property="ibCalendarDelegate" destination="dYV-1r-0gp" id="4oK-2M-J3t"/>
                                 </connections>
                             </collectionView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="puH-Tp-HtU">
-                                <rect key="frame" x="39.5" y="581" width="335" height="31"/>
-                                <color key="minimumTrackTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="thumbTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="ratingSliderValueChanged:" destination="dYV-1r-0gp" eventType="valueChanged" id="Ea4-Ql-xFV"/>
-                                </connections>
-                            </slider>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ys-bx-hYg">
-                                <rect key="frame" x="41.5" y="493" width="331" height="50"/>
+                                <rect key="frame" x="41.5" y="464" width="331" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhA-jg-oBn">
                                         <rect key="frame" x="0.0" y="0.0" width="331" height="50"/>
@@ -295,40 +283,55 @@
                                     <constraint firstItem="hhA-jg-oBn" firstAttribute="centerY" secondItem="6ys-bx-hYg" secondAttribute="centerY" id="mgY-2X-5d0"/>
                                     <constraint firstItem="hhA-jg-oBn" firstAttribute="centerX" secondItem="6ys-bx-hYg" secondAttribute="centerX" id="vJG-Fo-pQe"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGf-K1-JuJ">
-                                <rect key="frame" x="32" y="652" width="331" height="34"/>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="18"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
+                            <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="puH-Tp-HtU">
+                                <rect key="frame" x="39.5" y="529" width="335" height="31"/>
+                                <color key="minimumTrackTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="thumbTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="saveDateButtonTapped:" destination="dYV-1r-0gp" eventType="touchUpInside" id="qow-DC-HKS"/>
+                                    <action selector="ratingSliderValueChanged:" destination="dYV-1r-0gp" eventType="valueChanged" id="Ea4-Ql-xFV"/>
                                 </connections>
-                            </button>
+                            </slider>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="c1m-BN-gA5">
+                                <rect key="frame" x="41.5" y="574" width="331" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGf-K1-JuJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="158" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="aNG-QB-SYB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="18"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveDateButtonTapped:" destination="dYV-1r-0gp" eventType="touchUpInside" id="qow-DC-HKS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BH-zz-JP1">
+                                        <rect key="frame" x="173" y="0.0" width="158" height="50"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="18"/>
+                                        <state key="normal" title="Edit Actions">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zGf-K1-JuJ" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.8" id="5Ig-1E-M4q"/>
-                            <constraint firstItem="6BH-zz-JP1" firstAttribute="top" secondItem="zGf-K1-JuJ" secondAttribute="bottom" constant="43" id="8mG-Ow-Dfb"/>
                             <constraint firstItem="5Cf-5j-fsh" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="8t5-ZE-o2u"/>
-                            <constraint firstItem="6BH-zz-JP1" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="NII-bt-4k3"/>
+                            <constraint firstItem="c1m-BN-gA5" firstAttribute="top" secondItem="puH-Tp-HtU" secondAttribute="bottom" constant="15" id="HI9-mq-jiF"/>
                             <constraint firstItem="5Cf-5j-fsh" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" constant="1" id="NKY-fw-DwG"/>
-                            <constraint firstItem="zGf-K1-JuJ" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="S58-8P-nLD"/>
+                            <constraint firstItem="c1m-BN-gA5" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.8" id="Qjj-hd-7II"/>
                             <constraint firstItem="6ys-bx-hYg" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="Viz-Mb-adw"/>
-                            <constraint firstItem="puH-Tp-HtU" firstAttribute="top" secondItem="6ys-bx-hYg" secondAttribute="bottom" constant="38" id="eg8-Yc-eeu"/>
+                            <constraint firstItem="c1m-BN-gA5" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="Xet-Jf-Ir9"/>
                             <constraint firstItem="puH-Tp-HtU" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="gao-oH-Ikg"/>
-                            <constraint firstItem="6ys-bx-hYg" firstAttribute="top" secondItem="5Cf-5j-fsh" secondAttribute="bottom" constant="34" id="ktb-O3-9th"/>
                             <constraint firstItem="5Cf-5j-fsh" firstAttribute="top" secondItem="A9P-L1-ocC" secondAttribute="top" id="qM1-k5-nEP"/>
+                            <constraint firstItem="6ys-bx-hYg" firstAttribute="top" secondItem="5Cf-5j-fsh" secondAttribute="bottom" constant="5" id="qgv-ae-g0m"/>
+                            <constraint firstItem="puH-Tp-HtU" firstAttribute="top" secondItem="6ys-bx-hYg" secondAttribute="bottom" constant="15" id="r9S-dx-8vr"/>
                             <constraint firstItem="puH-Tp-HtU" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.8" id="rte-R8-8gI"/>
-                            <constraint firstItem="zGf-K1-JuJ" firstAttribute="top" secondItem="puH-Tp-HtU" secondAttribute="bottom" constant="32" id="sdy-Ey-3dA"/>
                             <constraint firstItem="6ys-bx-hYg" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.8" id="tWF-Cu-cBx"/>
-                            <constraint firstItem="6BH-zz-JP1" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.8" id="wWL-tn-FPo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A9P-L1-ocC"/>
                     </view>

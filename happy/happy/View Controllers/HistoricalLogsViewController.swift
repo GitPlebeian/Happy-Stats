@@ -12,10 +12,12 @@ import JTAppleCalendar
 class HistoricalLogsViewController: UIViewController{
     
     // MARK: - Outlets
+    
+    //
+    @IBOutlet weak var calendar: JTACMonthView!
     @IBOutlet weak var happinessLabel: UILabel!
     @IBOutlet weak var ratingLabelView: UIView!
     @IBOutlet weak var happinessSlider: UISlider!
-    @IBOutlet weak var calendar: JTACMonthView!
     @IBOutlet weak var saveLogButton: UIButton!
     @IBOutlet weak var editActionsButton: UIButton!
     
@@ -34,6 +36,15 @@ class HistoricalLogsViewController: UIViewController{
         happinessSlider.isEnabled = false
         saveLogButton.isEnabled = false
         editActionsButton.isEnabled = false
+//        saveLogButton.layer.borderWidth = 4
+//        saveLogButton.layer.borderColor = happinessColors.getColorFoInt(number: 5).cgColor
+        saveLogButton.layer.cornerRadius = saveLogButton.frame.size.height / 2.0
+        saveLogButton.backgroundColor = happinessColors.getColorFoInt(number: rating)
+//        editActionsButton.layer.borderWidth = 4
+//        editActionsButton.layer.borderColor = happinessColors.getColorFoInt(number: 5).cgColor
+        editActionsButton.layer.cornerRadius = editActionsButton.frame.size.height / 2.0
+        ratingLabelView.layer.cornerRadius = ratingLabelView.frame.size.height / 2.0
+        editActionsButton.backgroundColor = happinessColors.getColorFoInt(number: rating)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,16 +59,19 @@ class HistoricalLogsViewController: UIViewController{
         updateRatingLabelView(rating: rating)
         happinessSlider.minimumTrackTintColor = happinessColors.getColorFoInt(number: rating)
         happinessSlider.thumbTintColor = happinessColors.getColorFoInt(number: rating)
+        editActionsButton.backgroundColor = happinessColors.getColorFoInt(number: rating)
+        saveLogButton.backgroundColor = happinessColors.getColorFoInt(number: rating)
 //        calendar.reloadData()
 //        updateCellColorForSlider()
     }
     
     @IBAction func saveDateButtonTapped(_ sender: Any) {
         if selectedCell != nil{
-            rating = 5
             let feedback = UINotificationFeedbackGenerator()
             feedback.notificationOccurred(.success)
-            calendar.deselectAllDates(triggerSelectionDelegate: true)
+//            calendar.deselectAllDates(triggerSelectionDelegate: true)
+            
+            calendar.deselect(dates: [selectedDate])
             if let log = LogController.shared.getLogForDate(date: selectedDate) {
                 LogController.shared.updateLog(log: log, selectedActivities: [], rating: rating)
             } else {
@@ -68,10 +82,11 @@ class HistoricalLogsViewController: UIViewController{
             saveLogButton.isEnabled = false
             editActionsButton.isEnabled = false
             ratingLabelView.isHidden = true
+            rating = 5
         }
     }
     
-    // MARK: - Custom Functions {
+    // MARK: - Custom Functions 
     
     func updateRatingLabelView(rating: Int) {
         ratingLabelView.layer.backgroundColor = happinessColors.getColorFoInt(number: rating).cgColor
@@ -94,10 +109,10 @@ class HistoricalLogsViewController: UIViewController{
     func handleCellTextColor(cell: DateDayCollectionViewCell, cellState: CellState) {
         if cellState.dateBelongsTo == .thisMonth {
             cell.dateLabel.textColor = UIColor.black
-            //            cell.isHidden = false
+                        cell.isHidden = false
         } else {
-            cell.dateLabel.textColor = UIColor.lightGray
-            //            cell.isHidden = true
+//            cell.dateLabel.textColor = UIColor.lightGray
+                        cell.isHidden = true
         }
     }
     
