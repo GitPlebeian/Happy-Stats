@@ -20,7 +20,7 @@
 		864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19AD22F67378009368ED /* MainTabBarController.swift */; };
 		8654FC20230B5E5100A6202C /* DateHeaderForCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654FC1F230B5E5100A6202C /* DateHeaderForCalendar.swift */; };
 		8654FC26230B6B5300A6202C /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8654FC25230B6B5300A6202C /* SF-Pro-Display-Medium.otf */; };
-		8675BBCF230B82AA00EE1382 /* happinessColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675BBCE230B82AA00EE1382 /* happinessColors.swift */; };
+		8675BBCF230B82AA00EE1382 /* RatingColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675BBCE230B82AA00EE1382 /* RatingColors.swift */; };
 		867A488E230B28DC003A58A5 /* DateDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A488D230B28DC003A58A5 /* DateDayCollectionViewCell.swift */; };
 		8687258222F8798C00E1F674 /* ActivityViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */; };
 		868E7CE322FE4F0A000C8D10 /* HapiStats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE122FE4F0A000C8D10 /* HapiStats.xcdatamodeld */; };
@@ -52,7 +52,7 @@
 		8654FC1F230B5E5100A6202C /* DateHeaderForCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderForCalendar.swift; sourceTree = "<group>"; };
 		8654FC22230B6B3300A6202C /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		8654FC25230B6B5300A6202C /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
-		8675BBCE230B82AA00EE1382 /* happinessColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = happinessColors.swift; sourceTree = "<group>"; };
+		8675BBCE230B82AA00EE1382 /* RatingColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingColors.swift; sourceTree = "<group>"; };
 		867A488D230B28DC003A58A5 /* DateDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewTableViewCell.swift; sourceTree = "<group>"; };
 		868E7CE222FE4F0A000C8D10 /* happyStats.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = happyStats.xcdatamodel; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 		8675BBD0230B82B200EE1382 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				8675BBCE230B82AA00EE1382 /* happinessColors.swift */,
+				8675BBCE230B82AA00EE1382 /* RatingColors.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -342,7 +342,7 @@
 				864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */,
 				86CCFD352306045800CDCC21 /* ReportsViewController.swift in Sources */,
 				864D19A122F634D4009368ED /* ActivityController.swift in Sources */,
-				8675BBCF230B82AA00EE1382 /* happinessColors.swift in Sources */,
+				8675BBCF230B82AA00EE1382 /* RatingColors.swift in Sources */,
 				8687258222F8798C00E1F674 /* ActivityViewTableViewCell.swift in Sources */,
 				868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */,
 				8626DEC523024D7B00BF6909 /* LogDetailViewController.swift in Sources */,

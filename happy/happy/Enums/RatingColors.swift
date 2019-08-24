@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class happinessColors {
+class RatingColors {
     
     static private let zero = UIColor(red:1.00, green:0.34, blue:0.34, alpha:1.0)
     static private let one = UIColor(red:1.00, green:0.47, blue:0.34, alpha:1.0)
@@ -27,27 +27,27 @@ class happinessColors {
     static func getColorFoInt(number: Int) -> UIColor {
         switch number {
         case 0:
-            return happinessColors.zero
+            return RatingColors.zero
         case 1:
-            return happinessColors.one
+            return RatingColors.one
         case 2:
-            return happinessColors.two
+            return RatingColors.two
         case 3:
-            return happinessColors.three
+            return RatingColors.three
         case 4:
-            return happinessColors.four
+            return RatingColors.four
         case 5:
-            return happinessColors.five
+            return RatingColors.five
         case 6:
-            return happinessColors.six
+            return RatingColors.six
         case 7:
-            return happinessColors.seven
+            return RatingColors.seven
         case 8:
-            return happinessColors.eight
+            return RatingColors.eight
         case 9:
-            return happinessColors.nine
+            return RatingColors.nine
         case 10:
-            return happinessColors.ten
+            return RatingColors.ten
         default:
             return UIColor.clear
         }

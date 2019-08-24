@@ -265,7 +265,7 @@
                                     <outlet property="ibCalendarDelegate" destination="dYV-1r-0gp" id="4oK-2M-J3t"/>
                                 </connections>
                             </collectionView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ys-bx-hYg">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ys-bx-hYg">
                                 <rect key="frame" x="41.5" y="464" width="331" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhA-jg-oBn">
@@ -339,9 +339,9 @@
                     <connections>
                         <outlet property="calendar" destination="5Cf-5j-fsh" id="Ebe-OD-nGG"/>
                         <outlet property="editActionsButton" destination="6BH-zz-JP1" id="vi3-6X-ozK"/>
-                        <outlet property="happinessLabel" destination="hhA-jg-oBn" id="ARp-EF-9HD"/>
-                        <outlet property="happinessSlider" destination="puH-Tp-HtU" id="qlk-MU-jE9"/>
+                        <outlet property="ratingLabel" destination="hhA-jg-oBn" id="ARp-EF-9HD"/>
                         <outlet property="ratingLabelView" destination="6ys-bx-hYg" id="S37-eZ-kDO"/>
+                        <outlet property="ratingSlider" destination="puH-Tp-HtU" id="qlk-MU-jE9"/>
                         <outlet property="saveLogButton" destination="zGf-K1-JuJ" id="4Mm-JO-7PP"/>
                     </connections>
                 </viewController>

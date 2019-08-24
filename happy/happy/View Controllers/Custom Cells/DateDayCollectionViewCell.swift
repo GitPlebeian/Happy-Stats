@@ -22,7 +22,7 @@ class DateDayCollectionViewCell: JTACDayCell {
         dateLabel.text = cellState.text
         
         if let rating = rating {
-            dateColorView.backgroundColor = happinessColors.getColorFoInt(number: rating)
+            dateColorView.backgroundColor = RatingColors.getColorFoInt(number: rating)
         } else {
             dateColorView.backgroundColor = .clear
         }
@@ -38,6 +38,6 @@ class DateDayCollectionViewCell: JTACDayCell {
     }
     
     func changeBackgroundColor(rating: Int) {
-         dateColorView.backgroundColor = happinessColors.getColorFoInt(number: rating)
+         dateColorView.backgroundColor = RatingColors.getColorFoInt(number: rating)
     }
 }
