@@ -20,12 +20,13 @@ class DateCollectionViewCell: UICollectionViewCell {
     // MARK: - Custom Functions
     
     func configure(indexPath: IndexPath) {
-        dateView.backgroundColor = .red
         if indexPath.row < CalendarHelper.shared.months[indexPath.section].days.count {
-            print("\(indexPath.section): \(indexPath.row)")
             dateNumberLabel.text = CalendarHelper.shared.stringForDateCell(date: CalendarHelper.shared.months[indexPath.section].days[indexPath.row])
+            self.isHidden = false
+            dateView.backgroundColor = .blue
         } else {
             dateNumberLabel.text = ""
+            self.isHidden = true
         }
     }
     
