@@ -180,10 +180,73 @@
                     <view key="view" contentMode="scaleToFill" id="Ptb-vH-4nZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pYt-69-O6e">
+                                <rect key="frame" x="0.0" y="44" width="414" height="414"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pYt-69-O6e" secondAttribute="height" multiplier="1:1" id="Qdx-mP-JZg"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ZQl-xg-ziP">
+                                    <size key="itemSize" width="115" height="115"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dateCell" id="6so-zb-P3K" customClass="DateCollectionViewCell" customModule="happy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2oD-aT-5zS">
+                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(#)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KE2-1K-foc">
+                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="KE2-1K-foc" firstAttribute="width" secondItem="2oD-aT-5zS" secondAttribute="width" id="N7v-I1-MxO"/>
+                                                        <constraint firstItem="KE2-1K-foc" firstAttribute="centerY" secondItem="2oD-aT-5zS" secondAttribute="centerY" id="d4q-S3-4Gb"/>
+                                                        <constraint firstItem="KE2-1K-foc" firstAttribute="height" secondItem="2oD-aT-5zS" secondAttribute="height" id="xRj-Me-MTN"/>
+                                                        <constraint firstItem="KE2-1K-foc" firstAttribute="centerX" secondItem="2oD-aT-5zS" secondAttribute="centerX" id="zrn-IJ-uG1"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="centerX" secondItem="6so-zb-P3K" secondAttribute="centerX" id="BW7-gO-gpU"/>
+                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="width" secondItem="6so-zb-P3K" secondAttribute="width" id="Mj8-EF-ugn"/>
+                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="centerY" secondItem="6so-zb-P3K" secondAttribute="centerY" id="ZP8-i1-Wzg"/>
+                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="height" secondItem="6so-zb-P3K" secondAttribute="height" id="eNJ-0x-d4u"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dateNumberLabel" destination="KE2-1K-foc" id="vuM-Pu-O1H"/>
+                                            <outlet property="dateView" destination="2oD-aT-5zS" id="1HH-tC-Cry"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pYt-69-O6e" firstAttribute="top" secondItem="A9P-L1-ocC" secondAttribute="top" id="0PL-Pn-lA2"/>
+                            <constraint firstItem="pYt-69-O6e" firstAttribute="trailing" secondItem="A9P-L1-ocC" secondAttribute="trailing" id="hiV-3P-fkS"/>
+                            <constraint firstItem="pYt-69-O6e" firstAttribute="leading" secondItem="A9P-L1-ocC" secondAttribute="leading" id="ymS-L8-Wek"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="A9P-L1-ocC"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="calendarIcon" id="4Pu-g7-7kf"/>
+                    <connections>
+                        <outlet property="calendarCollectionView" destination="pYt-69-O6e" id="sbu-xD-AEq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWf-f1-ZV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
