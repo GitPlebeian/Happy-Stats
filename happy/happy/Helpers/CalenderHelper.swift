@@ -57,8 +57,13 @@ class CalendarHelper {
         }
     }
     
-    func stringForDateCell(date: Date) -> String{
+    func stringOfDayNumberForDate(date: Date) -> String {
         dateFormatter.dateFormat = "d"
+        return dateFormatter.string(from: date)
+    }
+    
+    func stringDayNameForDate(date: Date) -> String {
+        dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: date)
     }
 }

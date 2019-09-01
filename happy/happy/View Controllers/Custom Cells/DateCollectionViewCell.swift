@@ -21,23 +21,69 @@ class DateCollectionViewCell: UICollectionViewCell {
     
     func configure(indexPath: IndexPath, calendar: UICollectionView) {
         
-//        dateView.frame = CGRect(x: 0, y: 0, width: calendar.frame.width / 7, height: calendar.frame.height / 6)
-//        dateView.layer.frame
-//        dateView.layer.frame = dateView.layer.bounds
-//        dateView.layer.cornerRadius = dateView.layer.frame.width / 2
         dateView.layer.cornerRadius = (calendar.frame.width / 14) - 3
-//        print("\(calendar.frame.width)")
-//        print("\(dateView.bounds.width)")
-//        print("\(dateView.frame.width)")
-//        print("\(dateView.layer.bounds.width)")
-        if indexPath.row < CalendarHelper.shared.months[indexPath.section].days.count {
-            dateNumberLabel.text = CalendarHelper.shared.stringForDateCell(date: CalendarHelper.shared.months[indexPath.section].days[indexPath.row])
+        
+//        let startingColumn = indexPath.row - columnNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[0])
+//        if indexPath.row - startingColumn < CalendarHelper.shared.months[indexPath.section].days.count  &&
+//            isDateInCorrectColumn(indexPath: indexPath){
+//            dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[indexPath.row])
+//            self.isHidden = false
+//            dateView.backgroundColor = .blue
+//        } else {
+//            dateNumberLabel.text = ""
+//            self.isHidden = true
+//        }
+
+        
+        let startingColumn = columnNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[0])
+        
+        if indexPath.row - startingColumn < CalendarHelper.shared.months[indexPath.section].days.count && indexPath.row - startingColumn >= 0{
+            let indexForDay = indexPath.row - startingColumn
+            dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[indexForDay])
+            dateView.backgroundColor = .red
+            
             self.isHidden = false
-            dateView.backgroundColor = .blue
         } else {
-            dateNumberLabel.text = ""
             self.isHidden = true
+            dateNumberLabel.text = ""
+        }
+        
+        
+//        if  isDateInCorrectColumn(indexPath: indexPath){
+//            dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[0])
+//            self.isHidden = false
+//            dateView.backgroundColor = .blue
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "MM/dd/yyy EEEE"
+//            print(dateFormatter.string(from: CalendarHelper.shared.months[indexPath.section].days[0]))
+//        } else {
+//            dateNumberLabel.text = ""
+//            self.isHidden = true
+//        }
+    }
+    
+    // MARK: - Helper Functions
+    
+    func isDateInCorrectColumn(indexPath: IndexPath) -> Bool{
+        let columnNumber = indexPath.row % 7
+        
+        if columnNumber == columnNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[indexPath.row]){
+            return true
+        } else {
+            return false
         }
     }
     
+    func columnNumberForDate(date: Date) -> Int {
+        switch CalendarHelper.shared.stringDayNameForDate(date: date) {
+        case "Sunday": return 0
+        case "Monday": return 1
+        case "Tuesday": return 2
+        case "Wednesday": return 3
+        case "Thursday": return 4
+        case "Friday": return 5
+        case "Saturday": return 6
+        default: print("MASSIVE ERROR AT \(#function) \(CalendarHelper.shared.stringDayNameForDate(date: date))" ); return -1
+        }
+    }
 }
