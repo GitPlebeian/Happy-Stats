@@ -41,7 +41,6 @@ class DateCollectionViewCell: UICollectionViewCell {
             let indexForDay = indexPath.row - startingColumn
             dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[indexForDay])
             dateView.backgroundColor = .red
-            
             self.isHidden = false
         } else {
             self.isHidden = true
