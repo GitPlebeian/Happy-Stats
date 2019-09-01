@@ -26,6 +26,10 @@ class HistoricalLogsViewController: UIViewController{
         calendarCollectionView.dataSource = self
         calendarCollectionView.isPagingEnabled = true
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        calendarCollectionView.reloadData()
+    }
 }// End of class
 
 // MARK: - Extensions
@@ -36,7 +40,7 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = calendarCollectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as? DateCollectionViewCell else {return UICollectionViewCell()}
         
-        cell.configure(indexPath: indexPath)
+        cell.configure(indexPath: indexPath, calendar: calendarCollectionView)
         
         return cell
     }

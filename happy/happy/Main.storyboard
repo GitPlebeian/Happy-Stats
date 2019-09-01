@@ -182,10 +182,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pYt-69-O6e">
-                                <rect key="frame" x="0.0" y="44" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="355"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="pYt-69-O6e" secondAttribute="height" multiplier="1:1" id="Qdx-mP-JZg"/>
+                                    <constraint firstAttribute="width" secondItem="pYt-69-O6e" secondAttribute="height" multiplier="7:6" id="Qdx-mP-JZg"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ZQl-xg-ziP">
                                     <size key="itemSize" width="115" height="115"/>
@@ -202,10 +202,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2oD-aT-5zS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
+                                                    <rect key="frame" x="3" y="3" width="109" height="109"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(#)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KE2-1K-foc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="109" height="109"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -222,10 +222,10 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="centerX" secondItem="6so-zb-P3K" secondAttribute="centerX" id="BW7-gO-gpU"/>
-                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="width" secondItem="6so-zb-P3K" secondAttribute="width" id="Mj8-EF-ugn"/>
-                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="centerY" secondItem="6so-zb-P3K" secondAttribute="centerY" id="ZP8-i1-Wzg"/>
-                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="height" secondItem="6so-zb-P3K" secondAttribute="height" id="eNJ-0x-d4u"/>
+                                            <constraint firstAttribute="bottom" secondItem="2oD-aT-5zS" secondAttribute="bottom" constant="3" id="8Kd-ZD-1Xk"/>
+                                            <constraint firstAttribute="trailing" secondItem="2oD-aT-5zS" secondAttribute="trailing" constant="3" id="DiL-uN-t5Q"/>
+                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="leading" secondItem="6so-zb-P3K" secondAttribute="leading" constant="3" id="LxL-As-Lfw"/>
+                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="top" secondItem="6so-zb-P3K" secondAttribute="top" constant="3" id="Oyk-mZ-AiS"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="dateNumberLabel" destination="KE2-1K-foc" id="vuM-Pu-O1H"/>
