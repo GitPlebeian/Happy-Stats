@@ -22,6 +22,7 @@ class HistoricalLogsViewController: UIViewController{
     var currentSection = 0
     var numCellsInCurrentSection = 0
     var numCellsNotInCurrentSection = 0
+    var scrolledToBottom = false
     
     // MARK: - Lifecycle
     
@@ -31,11 +32,26 @@ class HistoricalLogsViewController: UIViewController{
         calendarCollectionView.dataSource = self
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.showsVerticalScrollIndicator = false
-//        calendarCollectionView.
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         calendarCollectionView.reloadData()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !scrolledToBottom {
+            scrollToBottom()
+        }
+    }
+    
+    // MARK: - Custom Funcitons
+    
+    func scrollToBottom() {
+        scrolledToBottom = true
+        let contentSize = calendarCollectionView.contentSize
+        let targetContentOffset = CGPoint(x: 0, y: contentSize.height - calendarCollectionView.bounds.size.height)
+        calendarCollectionView.setContentOffset(targetContentOffset, animated: false)
     }
 }// End of class
 
@@ -49,23 +65,7 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
         
         cell.configure(indexPath: indexPath, calendar: calendarCollectionView)
         
-//        if indexPath.section == currentSection && numCellsInCurrentSection <= 42{
-//            numCellsInCurrentSection += 1
-//            print("In: \(numCellsInCurrentSection) Not: \(numCellsNotInCurrentSection) Section: \(indexPath.section)")
-//            numCellsNotInCurrentSection -= 1
-//            if numCellsNotInCurrentSection > 0 {
-//            }
-//        } else {
-//            numCellsNotInCurrentSection += 1
-//            numCellsInCurrentSection -= 1
-//            print("In: \(numCellsInCurrentSection) Not: \(numCellsNotInCurrentSection) Section: \(indexPath.section)")
-//        }
-//        if numCellsNotInCurrentSection > numCellsInCurrentSection {
-//            print("Change to section: \(indexPath.section)")
-//            numCellsInCurrentSection = 0
-//            numCellsNotInCurrentSection = 0
-//            currentSection = indexPath.section
-//        }
+        
         
         return cell
     }
@@ -89,15 +89,6 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
         return size
     }
     
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        print("Did End Dragging")
-//    }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        print("Did Begin Dragging")
-    }
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-
-    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let sectionHeight = scrollView.contentSize.height / CGFloat(CalendarHelper.shared.months.count)
         let section = Int(round(scrollView.contentOffset.y  / sectionHeight))
@@ -106,5 +97,5 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
             yearLabel.text = CalendarHelper.shared.months[section].year
         }
     }
-    
+
 }

@@ -39,8 +39,8 @@ class CalendarHelper {
         guard let startDate = calendar.date(from: dateComponents) else {return}
         
         var monthIndex = -1
-        var incrementDate = Date()
-        while incrementDate >= startDate {
+        var incrementDate = startDate
+        while incrementDate <= Date() {
             dateFormatter.dateFormat = "d"
             if Int(dateFormatter.string(from: incrementDate)) == 1 {
                 dateFormatter.dateFormat = "MMMM"
@@ -52,7 +52,7 @@ class CalendarHelper {
                 monthIndex += 1
             }
             months[monthIndex].days.append(incrementDate)
-            guard let newIncrementDate = calendar.date(byAdding: .day, value: -1, to: incrementDate) else {return}
+            guard let newIncrementDate = calendar.date(byAdding: .day, value: 1, to: incrementDate) else {return}
             incrementDate = newIncrementDate
         }
     }

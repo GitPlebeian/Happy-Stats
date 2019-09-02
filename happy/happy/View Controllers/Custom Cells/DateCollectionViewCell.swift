@@ -22,12 +22,14 @@ class DateCollectionViewCell: UICollectionViewCell {
     func configure(indexPath: IndexPath, calendar: UICollectionView) {
         
         dateView.layer.cornerRadius = (calendar.frame.width / 14) - 3
-        let startingColumn = columnNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[0])
         
+        let startingColumn = columnNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[0])
         if indexPath.row - startingColumn < CalendarHelper.shared.months[indexPath.section].days.count && indexPath.row - startingColumn >= 0{
-            let indexForDay = indexPath.row - startingColumn
-            dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[indexForDay])
-            dateView.backgroundColor = .red
+            let date = CalendarHelper.shared.months[indexPath.section].days[indexPath.row - startingColumn]
+            dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: date)
+            if let log = LogController.shared.getLogForDate(date: date) {
+                dateView.backgroundColor = RatingColors.getColorFoInt(number: Int(log.rating))
+            }
             self.isHidden = false
         } else {
             self.isHidden = true
