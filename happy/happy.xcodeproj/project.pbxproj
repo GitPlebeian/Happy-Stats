@@ -10,6 +10,7 @@
 		8626DEC523024D7B00BF6909 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626DEC423024D7B00BF6909 /* LogDetailViewController.swift */; };
 		862998B422F747E000B74809 /* ActivityForRatingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */; };
 		86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */; };
+		863D965C231D98AE00B722AB /* ShowActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863D965B231D98AE00B722AB /* ShowActionsViewController.swift */; };
 		864D198622F63429009368ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D198522F63429009368ED /* AppDelegate.swift */; };
 		864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D198E22F6342A009368ED /* LaunchScreen.storyboard */; };
 		864D199F22F634A3009368ED /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D199E22F634A3009368ED /* LogController.swift */; };
@@ -36,6 +37,7 @@
 		8626DEC423024D7B00BF6909 /* LogDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
 		862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityForRatingViewTableViewCell.swift; sourceTree = "<group>"; };
 		86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		863D965B231D98AE00B722AB /* ShowActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowActionsViewController.swift; sourceTree = "<group>"; };
 		864D198222F63429009368ED /* happy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		864D198522F63429009368ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		864D198F22F6342A009368ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				8626DEC423024D7B00BF6909 /* LogDetailViewController.swift */,
 				86CCFD342306045800CDCC21 /* ReportsViewController.swift */,
 				862998B522F747E300B74809 /* Custom Cells */,
+				863D965B231D98AE00B722AB /* ShowActionsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				868E7CE322FE4F0A000C8D10 /* HapiStats.xcdatamodeld in Sources */,
 				864D19A622F6423E009368ED /* RatingViewController.swift in Sources */,
 				864D198622F63429009368ED /* AppDelegate.swift in Sources */,
+				863D965C231D98AE00B722AB /* ShowActionsViewController.swift in Sources */,
 				866CAE722319A35C00C85FF8 /* CalenderHelper.swift in Sources */,
 				864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */,
 				86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */,

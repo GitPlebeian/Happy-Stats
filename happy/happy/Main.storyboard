@@ -301,28 +301,52 @@
                                     <constraint firstAttribute="width" constant="100" id="eme-y9-NkB"/>
                                 </constraints>
                             </stackView>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="leZ-k4-rF0">
-                                <rect key="frame" x="0.0" y="476" width="414" height="178.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="leZ-k4-rF0">
+                                <rect key="frame" x="41.5" y="463" width="331" height="134"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8N-2T-IBp">
-                                        <rect key="frame" x="186" y="0.0" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wCh-p5-sC6">
-                                        <rect key="frame" x="136" y="69.5" width="142" height="31"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohh-du-4Y8">
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8N-2T-IBp">
+                                                <rect key="frame" x="0.0" y="0.0" width="331" height="44"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="w8N-2T-IBp" firstAttribute="height" secondItem="ohh-du-4Y8" secondAttribute="height" id="Ih2-50-f7E"/>
+                                            <constraint firstAttribute="height" constant="44" id="kMk-Lq-EwN"/>
+                                            <constraint firstItem="w8N-2T-IBp" firstAttribute="width" secondItem="ohh-du-4Y8" secondAttribute="width" id="nVR-ul-pzO"/>
+                                            <constraint firstItem="w8N-2T-IBp" firstAttribute="centerY" secondItem="ohh-du-4Y8" secondAttribute="centerY" id="uyB-4F-Toa"/>
+                                            <constraint firstItem="w8N-2T-IBp" firstAttribute="centerX" secondItem="ohh-du-4Y8" secondAttribute="centerX" id="veM-r7-qE2"/>
+                                        </constraints>
+                                    </view>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="wCh-p5-sC6">
+                                        <rect key="frame" x="-2" y="52" width="335" height="31"/>
+                                        <connections>
+                                            <action selector="ratingSliderValueChanged:" destination="dYV-1r-0gp" eventType="valueChanged" id="de7-H6-7YN"/>
+                                        </connections>
                                     </slider>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="OeW-aG-OlL">
-                                        <rect key="frame" x="149.5" y="148.5" width="115" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OeW-aG-OlL">
+                                        <rect key="frame" x="0.0" y="90" width="331" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtY-rQ-DnW">
-                                                <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="161.5" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="pEi-98-QCm"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhy-WT-AKj">
-                                                <rect key="frame" x="69" y="0.0" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <rect key="frame" x="169.5" y="0.0" width="161.5" height="44"/>
+                                                <state key="normal" title="Update">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -333,22 +357,28 @@
                         <constraints>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="0P5-Tt-p3N"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.95" id="9bI-jY-e1k"/>
+                            <constraint firstItem="leZ-k4-rF0" firstAttribute="top" secondItem="pYt-69-O6e" secondAttribute="bottom" constant="10" id="HC2-5B-Nm2"/>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.92" id="Hn2-wi-krV"/>
                             <constraint firstItem="Vfe-6A-vBU" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="NFL-PD-2hZ"/>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="top" secondItem="Vfe-6A-vBU" secondAttribute="bottom" constant="8" id="Nim-fw-33a"/>
                             <constraint firstItem="leZ-k4-rF0" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="Xcc-9U-sUr"/>
                             <constraint firstItem="A9P-L1-ocC" firstAttribute="top" secondItem="Vfe-6A-vBU" secondAttribute="top" id="giL-uO-fDh"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="top" secondItem="Mv3-HO-ccC" secondAttribute="bottom" id="msP-Yd-s0m"/>
-                            <constraint firstItem="leZ-k4-rF0" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" id="o9r-V1-xTd"/>
-                            <constraint firstItem="leZ-k4-rF0" firstAttribute="top" secondItem="pYt-69-O6e" secondAttribute="bottom" constant="74" id="pdR-lU-5TX"/>
+                            <constraint firstItem="leZ-k4-rF0" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.8" id="o9r-V1-xTd"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="uQs-aR-L93"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A9P-L1-ocC"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="calendarIcon" id="4Pu-g7-7kf"/>
                     <connections>
+                        <outlet property="actionsButton" destination="yhy-WT-AKj" id="aGx-Us-12p"/>
                         <outlet property="calendarCollectionView" destination="pYt-69-O6e" id="sbu-xD-AEq"/>
                         <outlet property="monthLabel" destination="DgI-LC-tLY" id="ZXa-fP-JIG"/>
+                        <outlet property="ratingEditStackView" destination="leZ-k4-rF0" id="baB-Z9-GTj"/>
+                        <outlet property="ratingLabel" destination="w8N-2T-IBp" id="ex1-Qp-YHC"/>
+                        <outlet property="ratingLabelView" destination="ohh-du-4Y8" id="yvA-pn-SSu"/>
+                        <outlet property="ratingSlider" destination="wCh-p5-sC6" id="Ubq-1x-axa"/>
+                        <outlet property="saveLogButton" destination="gtY-rQ-DnW" id="H6a-ZH-n9z"/>
                         <outlet property="yearLabel" destination="qld-1S-kt2" id="IGl-sK-pp6"/>
                     </connections>
                 </viewController>
