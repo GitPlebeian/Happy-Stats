@@ -14,51 +14,44 @@ class DateCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dateNumberLabel: UILabel!
     @IBOutlet weak var dateView: UIView!
-    
-    // MARK: - Properties
+
     
     // MARK: - Custom Functions
     
+    // Shows the border to the user to indicate that the date has been selected
     override var isSelected: Bool {
         didSet {
             dateView.layer.borderWidth = self.isSelected ? 1.5 : 0
-            
         }
     }
     
     func configure(indexPath: IndexPath, calendar: UICollectionView, selectedIndexPath: IndexPath?) {
         
+        // Makes the cell a circle
         dateView.layer.cornerRadius = (calendar.frame.width / 14) - 6
         dateView.layer.borderColor = UIColor.black.cgColor
         
+        // Function makes sure that the date will appear in their respective columns. Example: Sundays you always be in the first column and mondays in the second etc.
         let startingColumn = columnNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[0])
         if indexPath.row - startingColumn < CalendarHelper.shared.months[indexPath.section].days.count && indexPath.row - startingColumn >= 0{
             let date = CalendarHelper.shared.months[indexPath.section].days[indexPath.row - startingColumn]
+            // Sets date label to the date number
             dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: date)
             if let log = LogController.shared.getLogForDate(date: date) {
                 dateView.backgroundColor = RatingColors.getColorFoInt(number: Int(log.rating))
             } else {
                 dateView.backgroundColor = .clear
             }
-
             self.isHidden = false
         } else {
             self.isHidden = true
             dateNumberLabel.text = ""
         }
-        
-//        if let selectedIndexPath = selectedIndexPath {
-//            if selectedIndexPath == indexPath {
-//                dateView.layer.borderColor = UIColor.black.cgColor
-//                dateView.layer.borderWidth = 2
-//            } else {
-//                dateView.layer.borderWidth = 0
-//            }
-//        }
     }
     
     // MARK: - Helper Functions
     
+    // Checks to see if date Name (sunday) would be in first column
     func isDateInCorrectColumn(indexPath: IndexPath) -> Bool{
         let columnNumber = indexPath.row % 7
         
@@ -69,6 +62,7 @@ class DateCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    // Returns the column number for respective day
     func columnNumberForDate(date: Date) -> Int {
         switch CalendarHelper.shared.stringDayNameForDate(date: date) {
         case "Sunday": return 0
