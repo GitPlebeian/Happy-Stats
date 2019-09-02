@@ -22,19 +22,6 @@ class DateCollectionViewCell: UICollectionViewCell {
     func configure(indexPath: IndexPath, calendar: UICollectionView) {
         
         dateView.layer.cornerRadius = (calendar.frame.width / 14) - 3
-        
-//        let startingColumn = indexPath.row - columnNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[0])
-//        if indexPath.row - startingColumn < CalendarHelper.shared.months[indexPath.section].days.count  &&
-//            isDateInCorrectColumn(indexPath: indexPath){
-//            dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[indexPath.row])
-//            self.isHidden = false
-//            dateView.backgroundColor = .blue
-//        } else {
-//            dateNumberLabel.text = ""
-//            self.isHidden = true
-//        }
-
-        
         let startingColumn = columnNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[0])
         
         if indexPath.row - startingColumn < CalendarHelper.shared.months[indexPath.section].days.count && indexPath.row - startingColumn >= 0{
@@ -46,19 +33,6 @@ class DateCollectionViewCell: UICollectionViewCell {
             self.isHidden = true
             dateNumberLabel.text = ""
         }
-        
-        
-//        if  isDateInCorrectColumn(indexPath: indexPath){
-//            dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[0])
-//            self.isHidden = false
-//            dateView.backgroundColor = .blue
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "MM/dd/yyy EEEE"
-//            print(dateFormatter.string(from: CalendarHelper.shared.months[indexPath.section].days[0]))
-//        } else {
-//            dateNumberLabel.text = ""
-//            self.isHidden = true
-//        }
     }
     
     // MARK: - Helper Functions
