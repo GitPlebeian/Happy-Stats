@@ -1,5 +1,5 @@
 //
-//  ShowActionsViewController.swift
+//  SelectedActivitiesViewController.swift
 //  happy
 //
 //  Created by Jackson Tubbs on 9/2/19.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ShowActionsViewController: UIViewController {
+class SelectActivitiesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
 

@@ -173,7 +173,7 @@
             </objects>
             <point key="canvasLocation" x="4051" y="-91"/>
         </scene>
-        <!--Item-->
+        <!--HapiStats-->
         <scene sceneID="gUS-B5-S9d">
             <objects>
                 <viewController id="dYV-1r-0gp" customClass="HistoricalLogsViewController" customModule="happy" customModuleProvider="target" sceneMemberID="viewController">
@@ -182,7 +182,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pYt-69-O6e">
-                                <rect key="frame" x="10.5" y="116" width="393" height="337"/>
+                                <rect key="frame" x="10.5" y="160" width="393" height="337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pYt-69-O6e" secondAttribute="height" multiplier="7:6" id="Qdx-mP-JZg"/>
@@ -235,7 +235,7 @@
                                 </cells>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Mv3-HO-ccC">
-                                <rect key="frame" x="16.5" y="100" width="381" height="16"/>
+                                <rect key="frame" x="16.5" y="144" width="381" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkW-9A-xRn">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="16"/>
@@ -282,7 +282,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vfe-6A-vBU">
-                                <rect key="frame" x="157" y="44" width="100" height="48"/>
+                                <rect key="frame" x="157" y="88" width="100" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Month)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgI-LC-tLY">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="24"/>
@@ -302,7 +302,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="leZ-k4-rF0">
-                                <rect key="frame" x="41.5" y="463" width="331" height="134"/>
+                                <rect key="frame" x="41.5" y="507" width="331" height="134"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohh-du-4Y8">
                                         <rect key="frame" x="0.0" y="0.0" width="331" height="44"/>
@@ -347,6 +347,9 @@
                                                 <state key="normal" title="Update">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="XPa-t9-vHz" kind="show" id="9Pm-8n-zVF"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -369,10 +372,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A9P-L1-ocC"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="calendarIcon" id="4Pu-g7-7kf"/>
+                    <navigationItem key="navigationItem" title="HapiStats" id="Vai-ga-mCa"/>
                     <connections>
                         <outlet property="actionsButton" destination="yhy-WT-AKj" id="aGx-Us-12p"/>
                         <outlet property="calendarCollectionView" destination="pYt-69-O6e" id="sbu-xD-AEq"/>
+                        <outlet property="calendarNavigationItem" destination="Vai-ga-mCa" id="aQV-g3-Xno"/>
                         <outlet property="monthLabel" destination="DgI-LC-tLY" id="ZXa-fP-JIG"/>
                         <outlet property="ratingEditStackView" destination="leZ-k4-rF0" id="baB-Z9-GTj"/>
                         <outlet property="ratingLabel" destination="w8N-2T-IBp" id="ex1-Qp-YHC"/>
@@ -384,7 +388,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWf-f1-ZV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1528.985507246377" y="612.72321428571422"/>
+            <point key="canvasLocation" x="2270" y="613"/>
+        </scene>
+        <!--Select Activities View Controller-->
+        <scene sceneID="aSX-bt-gAK">
+            <objects>
+                <viewController id="XPa-t9-vHz" customClass="SelectActivitiesViewController" customModule="happy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n83-BI-ujU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8hD-UY-wi9"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T9L-eN-PJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2994" y="613"/>
         </scene>
         <!--Rating View Controller-->
         <scene sceneID="lff-WX-LLq">
@@ -504,7 +523,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="1FB-9U-O3M" kind="relationship" relationship="viewControllers" id="uEj-ps-nL5"/>
-                        <segue destination="dYV-1r-0gp" kind="relationship" relationship="viewControllers" id="peA-m3-QoO"/>
+                        <segue destination="S1U-zX-KjM" kind="relationship" relationship="viewControllers" id="peA-m3-QoO"/>
                         <segue destination="aDt-Mg-okx" kind="relationship" relationship="viewControllers" id="ow6-XF-ShS"/>
                         <segue destination="bWK-p2-ziE" kind="relationship" relationship="viewControllers" id="GAo-Ut-mS6"/>
                     </connections>
@@ -618,6 +637,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PNj-uW-69c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3037.68115942029" y="-91.071428571428569"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="lmh-yh-a43">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S1U-zX-KjM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="calendarIcon" id="4Pu-g7-7kf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="x5p-So-IoC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dYV-1r-0gp" kind="relationship" relationship="rootViewController" id="erx-bT-2bt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kyy-5Q-wef" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1528.985507246377" y="612.72321428571422"/>
         </scene>
     </scenes>
     <resources>

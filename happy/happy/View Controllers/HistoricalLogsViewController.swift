@@ -17,6 +17,8 @@ class HistoricalLogsViewController: UIViewController{
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     
+
+    @IBOutlet weak var calendarNavigationItem: UINavigationItem!
     @IBOutlet weak var ratingEditStackView: UIStackView!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var ratingLabelView: UIView!
@@ -42,9 +44,9 @@ class HistoricalLogsViewController: UIViewController{
         calendarCollectionView.dataSource = self
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.showsVerticalScrollIndicator = false
-        
-        ratingEditStackView.isUserInteractionEnabled = false
-        ratingEditStackView.alpha = 0.5
+        // FIXME: User Interactions
+//        ratingEditStackView.isUserInteractionEnabled = false
+//        ratingEditStackView.alpha = 0.5
         ratingLabel.text = "Select Date"
         ratingLabelView.layer.cornerRadius = ratingLabel.frame.height / 2
         ratingSlider.thumbTintColor = .black
@@ -63,6 +65,7 @@ class HistoricalLogsViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         calendarCollectionView.reloadData()
+    self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
