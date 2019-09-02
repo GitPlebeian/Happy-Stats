@@ -23,6 +23,7 @@ class HistoricalLogsViewController: UIViewController{
     var numCellsInCurrentSection = 0
     var numCellsNotInCurrentSection = 0
     var scrolledToBottom = false
+    var selectedIndexPath: IndexPath?
     
     // MARK: - Lifecycle
     
@@ -32,7 +33,12 @@ class HistoricalLogsViewController: UIViewController{
         calendarCollectionView.dataSource = self
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.showsVerticalScrollIndicator = false
-        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        monthLabel.text = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "yyyy"
+        yearLabel.text = dateFormatter.string(from: date)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,26 +65,30 @@ class HistoricalLogsViewController: UIViewController{
 
 extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = calendarCollectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as? DateCollectionViewCell else {return UICollectionViewCell()}
-        
-        cell.configure(indexPath: indexPath, calendar: calendarCollectionView)
-        
-        
-        
-        return cell
-    }
-    
-    
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return CalendarHelper.shared.months.count
+        //        return CalendarHelper.shared.months.count
         return CalendarHelper.shared.months.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 42
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = calendarCollectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as? DateCollectionViewCell else {return UICollectionViewCell()}
+        
+        cell.configure(indexPath: indexPath, calendar: calendarCollectionView, selectedIndexPath: selectedIndexPath)
+
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = calendarCollectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as? DateCollectionViewCell else {return}
+        
+        selectedIndexPath = indexPath
+//        cell.configure(indexPath: indexPath, calendar: calendarCollectionView, selectedIndexPath: selectedIndexPath)
+    }
+    
     
     
     // MARK: - Flowlayout

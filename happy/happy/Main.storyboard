@@ -182,7 +182,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pYt-69-O6e">
-                                <rect key="frame" x="10.5" y="121" width="393" height="337"/>
+                                <rect key="frame" x="10.5" y="116" width="393" height="337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pYt-69-O6e" secondAttribute="height" multiplier="7:6" id="Qdx-mP-JZg"/>
@@ -202,10 +202,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2oD-aT-5zS">
-                                                    <rect key="frame" x="3" y="3" width="109" height="109"/>
+                                                    <rect key="frame" x="6" y="6" width="103" height="103"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(#)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KE2-1K-foc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="109" height="109"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="103" height="103"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -222,10 +222,10 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="2oD-aT-5zS" secondAttribute="bottom" constant="3" id="8Kd-ZD-1Xk"/>
-                                            <constraint firstAttribute="trailing" secondItem="2oD-aT-5zS" secondAttribute="trailing" constant="3" id="DiL-uN-t5Q"/>
-                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="leading" secondItem="6so-zb-P3K" secondAttribute="leading" constant="3" id="LxL-As-Lfw"/>
-                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="top" secondItem="6so-zb-P3K" secondAttribute="top" constant="3" id="Oyk-mZ-AiS"/>
+                                            <constraint firstAttribute="bottom" secondItem="2oD-aT-5zS" secondAttribute="bottom" constant="6" id="8Kd-ZD-1Xk"/>
+                                            <constraint firstAttribute="trailing" secondItem="2oD-aT-5zS" secondAttribute="trailing" constant="6" id="DiL-uN-t5Q"/>
+                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="leading" secondItem="6so-zb-P3K" secondAttribute="leading" constant="6" id="LxL-As-Lfw"/>
+                                            <constraint firstItem="2oD-aT-5zS" firstAttribute="top" secondItem="6so-zb-P3K" secondAttribute="top" constant="6" id="Oyk-mZ-AiS"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="dateNumberLabel" destination="KE2-1K-foc" id="vuM-Pu-O1H"/>
@@ -235,7 +235,7 @@
                                 </cells>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Mv3-HO-ccC">
-                                <rect key="frame" x="16.5" y="105" width="381" height="16"/>
+                                <rect key="frame" x="16.5" y="100" width="381" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkW-9A-xRn">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="16"/>
@@ -282,32 +282,34 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vfe-6A-vBU">
-                                <rect key="frame" x="10.5" y="44" width="393" height="53"/>
+                                <rect key="frame" x="157" y="44" width="100" height="48"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Month)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgI-LC-tLY">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="29"/>
-                                        <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Month)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgI-LC-tLY">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="24"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Year)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qld-1S-kt2">
-                                        <rect key="frame" x="0.0" y="37" width="393" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Year)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qld-1S-kt2">
+                                        <rect key="frame" x="0.0" y="32" width="100" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="eme-y9-NkB"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="0P5-Tt-p3N"/>
-                            <constraint firstItem="Mv3-HO-ccC" firstAttribute="top" secondItem="Vfe-6A-vBU" secondAttribute="bottom" constant="8" id="0PI-gy-Dhf"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.95" id="9bI-jY-e1k"/>
-                            <constraint firstItem="Vfe-6A-vBU" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="ATg-ch-yge"/>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.92" id="Hn2-wi-krV"/>
-                            <constraint firstItem="Vfe-6A-vBU" firstAttribute="top" secondItem="A9P-L1-ocC" secondAttribute="top" id="Mhi-Ju-KNs"/>
-                            <constraint firstItem="Vfe-6A-vBU" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.95" id="OmL-qp-Syo"/>
+                            <constraint firstItem="Vfe-6A-vBU" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="NFL-PD-2hZ"/>
+                            <constraint firstItem="Mv3-HO-ccC" firstAttribute="top" secondItem="Vfe-6A-vBU" secondAttribute="bottom" constant="8" id="Nim-fw-33a"/>
+                            <constraint firstItem="A9P-L1-ocC" firstAttribute="top" secondItem="Vfe-6A-vBU" secondAttribute="top" id="giL-uO-fDh"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="top" secondItem="Mv3-HO-ccC" secondAttribute="bottom" id="msP-Yd-s0m"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="uQs-aR-L93"/>
                         </constraints>

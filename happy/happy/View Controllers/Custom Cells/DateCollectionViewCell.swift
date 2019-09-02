@@ -19,9 +19,17 @@ class DateCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Custom Functions
     
-    func configure(indexPath: IndexPath, calendar: UICollectionView) {
+    override var isSelected: Bool {
+        didSet {
+            dateView.layer.borderWidth = self.isSelected ? 1.5 : 0
+            
+        }
+    }
+    
+    func configure(indexPath: IndexPath, calendar: UICollectionView, selectedIndexPath: IndexPath?) {
         
-        dateView.layer.cornerRadius = (calendar.frame.width / 14) - 3
+        dateView.layer.cornerRadius = (calendar.frame.width / 14) - 6
+        dateView.layer.borderColor = UIColor.black.cgColor
         
         let startingColumn = columnNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[0])
         if indexPath.row - startingColumn < CalendarHelper.shared.months[indexPath.section].days.count && indexPath.row - startingColumn >= 0{
@@ -29,12 +37,24 @@ class DateCollectionViewCell: UICollectionViewCell {
             dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: date)
             if let log = LogController.shared.getLogForDate(date: date) {
                 dateView.backgroundColor = RatingColors.getColorFoInt(number: Int(log.rating))
+            } else {
+                dateView.backgroundColor = .clear
             }
+
             self.isHidden = false
         } else {
             self.isHidden = true
             dateNumberLabel.text = ""
         }
+        
+//        if let selectedIndexPath = selectedIndexPath {
+//            if selectedIndexPath == indexPath {
+//                dateView.layer.borderColor = UIColor.black.cgColor
+//                dateView.layer.borderWidth = 2
+//            } else {
+//                dateView.layer.borderWidth = 0
+//            }
+//        }
     }
     
     // MARK: - Helper Functions
