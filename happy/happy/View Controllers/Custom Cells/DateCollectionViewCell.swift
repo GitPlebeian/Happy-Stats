@@ -15,6 +15,7 @@ class DateCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dateNumberLabel: UILabel!
     @IBOutlet weak var dateView: UIView!
 
+    // MARK: - Static Functions
     
     // MARK: - Custom Functions
     

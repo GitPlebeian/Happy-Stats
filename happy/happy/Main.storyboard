@@ -301,6 +301,33 @@
                                     <constraint firstAttribute="width" constant="100" id="eme-y9-NkB"/>
                                 </constraints>
                             </stackView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="leZ-k4-rF0">
+                                <rect key="frame" x="0.0" y="476" width="414" height="178.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8N-2T-IBp">
+                                        <rect key="frame" x="186" y="0.0" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wCh-p5-sC6">
+                                        <rect key="frame" x="136" y="69.5" width="142" height="31"/>
+                                    </slider>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="OeW-aG-OlL">
+                                        <rect key="frame" x="149.5" y="148.5" width="115" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtY-rQ-DnW">
+                                                <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhy-WT-AKj">
+                                                <rect key="frame" x="69" y="0.0" width="46" height="30"/>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -309,8 +336,11 @@
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.92" id="Hn2-wi-krV"/>
                             <constraint firstItem="Vfe-6A-vBU" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="NFL-PD-2hZ"/>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="top" secondItem="Vfe-6A-vBU" secondAttribute="bottom" constant="8" id="Nim-fw-33a"/>
+                            <constraint firstItem="leZ-k4-rF0" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="Xcc-9U-sUr"/>
                             <constraint firstItem="A9P-L1-ocC" firstAttribute="top" secondItem="Vfe-6A-vBU" secondAttribute="top" id="giL-uO-fDh"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="top" secondItem="Mv3-HO-ccC" secondAttribute="bottom" id="msP-Yd-s0m"/>
+                            <constraint firstItem="leZ-k4-rF0" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" id="o9r-V1-xTd"/>
+                            <constraint firstItem="leZ-k4-rF0" firstAttribute="top" secondItem="pYt-69-O6e" secondAttribute="bottom" constant="74" id="pdR-lU-5TX"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="uQs-aR-L93"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A9P-L1-ocC"/>
