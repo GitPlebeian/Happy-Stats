@@ -25,7 +25,7 @@ class DateCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(indexPath: IndexPath, calendar: UICollectionView, selectedIndexPath: IndexPath?) {
+    func configure(indexPath: IndexPath, calendar: UICollectionView) {
         
         // Makes the cell a circle
         dateView.layer.cornerRadius = (calendar.frame.width / 14) - 6

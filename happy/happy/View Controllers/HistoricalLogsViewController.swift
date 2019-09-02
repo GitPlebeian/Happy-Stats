@@ -76,17 +76,15 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = calendarCollectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as? DateCollectionViewCell else {return UICollectionViewCell()}
         
-        cell.configure(indexPath: indexPath, calendar: calendarCollectionView, selectedIndexPath: selectedIndexPath)
+        cell.configure(indexPath: indexPath, calendar: calendarCollectionView)
 
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = calendarCollectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as? DateCollectionViewCell else {return}
+
         
-        selectedIndexPath = indexPath
-//        cell.configure(indexPath: indexPath, calendar: calendarCollectionView, selectedIndexPath: selectedIndexPath)
     }
     
     
