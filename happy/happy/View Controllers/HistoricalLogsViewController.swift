@@ -88,8 +88,9 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedDate = CalendarHelper.shared.months[indexPath.section].days[CalendarHelper.shared.getIndexForRow(indexPath: indexPath)]
         
-        selectedDate = CalendarHelper.shared.months[indexPath.section].days[indexPath.row]
+        
     }
     
     // MARK: - Flowlayout

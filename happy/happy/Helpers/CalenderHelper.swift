@@ -66,4 +66,34 @@ class CalendarHelper {
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: date)
     }
+    
+    // Checks to see if date Name (sunday) would be in first column
+    func isDateInCorrectColumn(indexPath: IndexPath) -> Bool{
+        let columnNumber = indexPath.row % 7
+        
+        if columnNumber == columnNumberForDate(date: months[indexPath.section].days[indexPath.row]){
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    // Returns the column number for respective day
+    func columnNumberForDate(date: Date) -> Int {
+        switch CalendarHelper.shared.stringDayNameForDate(date: date) {
+        case "Sunday": return 0
+        case "Monday": return 1
+        case "Tuesday": return 2
+        case "Wednesday": return 3
+        case "Thursday": return 4
+        case "Friday": return 5
+        case "Saturday": return 6
+        default: print("MASSIVE ERROR AT \(#function) \(CalendarHelper.shared.stringDayNameForDate(date: date))" ); return -1
+        }
+    }
+    
+    func getIndexForRow(indexPath: IndexPath) -> Int {
+        let startinColumn = columnNumberForDate(date: months[indexPath.section].days[0])
+        return indexPath.row - startinColumn
+    }
 }
