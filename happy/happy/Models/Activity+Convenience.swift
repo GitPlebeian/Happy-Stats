@@ -12,7 +12,7 @@ import CoreData
 extension Activity {
     
     @discardableResult
-    convenience init(title: String,context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(title: String, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.title = title
         self.isSelected = false

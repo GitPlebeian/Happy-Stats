@@ -17,7 +17,7 @@ class HistoricalLogsViewController: UIViewController{
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     
-
+    
     @IBOutlet weak var calendarNavigationItem: UINavigationItem!
     @IBOutlet weak var ratingEditStackView: UIStackView!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -26,33 +26,41 @@ class HistoricalLogsViewController: UIViewController{
     @IBOutlet weak var saveLogButton: UIButton!
     @IBOutlet weak var actionsButton: UIButton!
     
+    
     // MARK: - Properties
     
     var rating = 5
     
     // Used to only scroll to the bottom when the view firsts loads.
     var scrolledToBottom = false
-    
     var selectedDate: Date?
     var currentLog: Log?
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        self.tabBarController?.tabBar.barTintColor = .white
+        
         calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.showsVerticalScrollIndicator = false
         // FIXME: User Interactions
-//        ratingEditStackView.isUserInteractionEnabled = false
-//        ratingEditStackView.alpha = 0.5
+        //        ratingEditStackView.isUserInteractionEnabled = false
+        //        ratingEditStackView.alpha = 0.5
         ratingLabel.text = "Select Date"
         ratingLabelView.layer.cornerRadius = ratingLabel.frame.height / 2
         ratingSlider.thumbTintColor = .black
         ratingSlider.minimumTrackTintColor = .black
         saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
         actionsButton.layer.cornerRadius = actionsButton.frame.height / 2
+        
+//        activitiesViewSaveButton.layer.shadowColor = UIColor.black.cgColor
+//        activitiesViewSaveButton.layer.shadowOffset = CGSize(width: 0, height: -0)
+//        activitiesViewSaveButton.layer.shadowOpacity = 0.3
+//        activitiesViewSaveButton.layer.shadowRadius = 2
         
         // Sets the month label and year label equal to todays date
         let date = Date()
@@ -61,11 +69,17 @@ class HistoricalLogsViewController: UIViewController{
         monthLabel.text = dateFormatter.string(from: date)
         dateFormatter.dateFormat = "yyyy"
         yearLabel.text = dateFormatter.string(from: date)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         calendarCollectionView.reloadData()
-    self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,8 +98,9 @@ class HistoricalLogsViewController: UIViewController{
         updateViewsForRating()
     }
     
+
     
-    // MARK: - Custom Funcitons
+    // MARK: - Custom Functions
     
     // Used because the most current date is at the bottom of the collections view. I set it to the bottom of the collection view because I think it is more intuitive to the user. Easier user experience
     func scrollToBottom() {
@@ -96,17 +111,25 @@ class HistoricalLogsViewController: UIViewController{
     }
     
     func updateViewsForRating() {
-        ratingLabelView.backgroundColor = RatingColors.getColorFoInt(number: rating)
+        let color = RatingColors.getColorFoInt(number: rating)
         ratingLabel.text = "\(rating)"
-        ratingSlider.minimumTrackTintColor = RatingColors.getColorFoInt(number: rating)
         ratingSlider.value = Float(rating)
-        ratingSlider.thumbTintColor = RatingColors.getColorFoInt(number: rating)
-        saveLogButton.backgroundColor = RatingColors.getColorFoInt(number: rating)
-        actionsButton.backgroundColor = RatingColors.getColorFoInt(number: rating)
+        ratingLabelView.backgroundColor = color
+        ratingSlider.minimumTrackTintColor = color
+        ratingSlider.thumbTintColor = color
+        saveLogButton.backgroundColor = color
+        actionsButton.backgroundColor = color
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSelectActivities" {
+            guard let log = currentLog,
+                let destinationVC = segue.destination as? SelectActivitiesViewController else {return}
+            
+            destinationVC.log = log
+        }
     }
+    
 } // End of class
 
 // MARK: - Extensions
@@ -166,5 +189,11 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
             yearLabel.text = CalendarHelper.shared.months[section].year
         }
     }
+    
+}
 
+extension HistoricalLogsViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
