@@ -31,7 +31,7 @@ class SelectActivitiesViewController: UIViewController {
     var allApplied = false
     var allActivities = false
     var searchedActivities: [Activity] = []
-    var resultSearchController = UISearchController()
+    var isSearching = false
     
     var rating = 5
     
@@ -52,11 +52,6 @@ class SelectActivitiesViewController: UIViewController {
         logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
         saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
         
-        resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchResultsUpdater = self
-            return controller
-        })()
     }
     
     // MARK: - Actions
@@ -132,11 +127,18 @@ class SelectActivitiesViewController: UIViewController {
 extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if isSearching {
+            return 0
+        }
         return 24
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    
+        
+        if isSearching {
+            return nil
+        }
+        
         let headerView = UIView()
         headerView.backgroundColor = .white
         let headerLabel: UILabel = {
@@ -163,6 +165,10 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if isSearching {
+            return 1
+        }
+        
         if allApplied || allActivities{
             return 1
         } else {
@@ -171,6 +177,10 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearching {
+            return searchedActivities.count
+        }
+        
         if allApplied {
             return displayActivities[0].count
         }
@@ -182,6 +192,17 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = activitiesTableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as? ActivityTableViewCell else {return UITableViewCell()}
+        
+        if isSearching {
+            let activity = searchedActivities[indexPath.row]
+            cell.activitiy = activity
+            if displayActivities[0].contains(activity) {
+                cell.appliedToLog = true
+            } else {
+                cell.appliedToLog = false
+            }
+            return cell
+        }
         
         if allApplied {
             let activity = displayActivities[0][indexPath.row]
@@ -213,6 +234,10 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
         let feedback = UISelectionFeedbackGenerator()
         feedback.selectionChanged()
         
+        if isSearching {
+            
+        }
+        
         if allApplied {
             let movingActivity = displayActivities[0][indexPath.row]
             displayActivities[0].remove(at: indexPath.row)
@@ -235,17 +260,31 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
     }
 }
 
-extension SelectActivitiesViewController: UISearchBarDelegate, UISearchResultsUpdating{
-    func updateSearchResults(for searchController: UISearchController) {
-        print("Boi")
+extension SelectActivitiesViewController: UISearchBarDelegate{
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        isSearching = true
+        
+        searchedActivities.removeAll(keepingCapacity: false)
+        
+        for activity in ActivityController.shared.activities {
+            if activity.title?.lowercased().contains(searchText.lowercased()) ?? false {
+                searchedActivities.append(activity)
+            }
+        }
+        if searchText == "" {
+            searchedActivities = ActivityController.shared.activities
+        }
+        
+        activitiesTableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         activitiesSearchBar.resignFirstResponder()
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("Starting")
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        isSearching = false
+        activitiesTableView.reloadData()
     }
-    
 }
