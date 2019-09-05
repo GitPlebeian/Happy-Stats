@@ -235,10 +235,16 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
         feedback.selectionChanged()
         
         if isSearching {
-            
-        }
-        
-        if allApplied {
+            if let index = displayActivities[0].firstIndex(of: searchedActivities[indexPath.row]) {
+                let movingActivity = displayActivities[0][index]
+                displayActivities[0].remove(at: index)
+                displayActivities[1].append(movingActivity)
+            } else if let index = displayActivities[1].firstIndex(of: searchedActivities[indexPath.row]) {
+                let movingActivity = displayActivities[1][index]
+                displayActivities[1].remove(at: index)
+                displayActivities[0].append(movingActivity)
+            }
+        } else if allApplied {
             let movingActivity = displayActivities[0][indexPath.row]
             displayActivities[0].remove(at: indexPath.row)
             displayActivities[1].append(movingActivity)
@@ -273,7 +279,7 @@ extension SelectActivitiesViewController: UISearchBarDelegate{
             }
         }
         if searchText == "" {
-            searchedActivities = ActivityController.shared.activities
+            isSearching = false
         }
         
         activitiesTableView.reloadData()
