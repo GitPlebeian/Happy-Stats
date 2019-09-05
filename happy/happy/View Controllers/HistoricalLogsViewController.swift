@@ -87,6 +87,13 @@ class HistoricalLogsViewController: UIViewController{
         if !scrolledToBottom {
             scrollToBottom()
         }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM dd yyyy"
+        if let selectedDate = selectedDate {
+            print(dateFormatter.string(from: selectedDate))
+        } else {
+            print("-- NO SELECTED DATE --")
+        }
     }
     
     // MARK: - Actions {
@@ -151,7 +158,7 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = calendarCollectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as? DateCollectionViewCell else {return UICollectionViewCell()}
         
-        cell.configure(indexPath: indexPath, calendar: calendarCollectionView)
+        cell.configure(indexPath: indexPath, calendar: calendarCollectionView, selectedDate: selectedDate)
         
         return cell
     }
@@ -171,6 +178,7 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
         
         ratingEditStackView.isUserInteractionEnabled = true
         ratingEditStackView.alpha = 1
+        calendarCollectionView.reloadData()
     }
     
     // MARK: - Flowlayout

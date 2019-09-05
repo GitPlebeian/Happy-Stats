@@ -54,6 +54,11 @@ class SelectActivitiesViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateViewsForLog()
+    }
+    
     // MARK: - Actions
     
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
@@ -122,10 +127,14 @@ class SelectActivitiesViewController: UIViewController {
             activitiesTableView.reloadData()
         }
     }
-}
+} // End Of Class
 
+// MARK: - Extensions
+
+// TableView Controller for all activities
 extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDelegate {
     
+    // Height for header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if isSearching {
             return 0
@@ -133,19 +142,18 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
         return 24
     }
     
+    // Sets header view
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if isSearching {
             return nil
         }
-        
         let headerView = UIView()
         headerView.backgroundColor = .white
         let headerLabel: UILabel = {
             let label = UILabel()
             label.frame = CGRect(x: 2, y: 0, width: 150, height: 24)
-            label.font = UIFont(name: "SFProDisplay-Medium", size: 18)
-            
+            label.font = UIFont(name: "SFProDisplay-Medium", size: 17)
             if allActivities {
                 label.text = "Activities"
             } else if allApplied {
@@ -157,18 +165,15 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
             }
             return label
         }()
-        
         headerView.addSubview(headerLabel)
-        
-        
         return headerView
     }
     
+    // Number of sections
     func numberOfSections(in tableView: UITableView) -> Int {
         if isSearching {
             return 1
         }
-        
         if allApplied || allActivities{
             return 1
         } else {
@@ -176,11 +181,11 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
         }
     }
     
+    // Num row for section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
             return searchedActivities.count
         }
-        
         if allApplied {
             return displayActivities[0].count
         }
@@ -190,9 +195,9 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
         return displayActivities[section].count
     }
     
+    // Configure cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = activitiesTableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as? ActivityTableViewCell else {return UITableViewCell()}
-        
         if isSearching {
             let activity = searchedActivities[indexPath.row]
             cell.activitiy = activity
@@ -203,7 +208,6 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
             }
             return cell
         }
-        
         if allApplied {
             let activity = displayActivities[0][indexPath.row]
             cell.activitiy = activity
@@ -214,9 +218,7 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
             cell.activitiy = activity
             cell.appliedToLog = false
             return cell
-        }
-        
-        if indexPath.section == 0 {
+        } else if indexPath.section == 0 {
             let activity = displayActivities[0][indexPath.row]
             cell.activitiy = activity
             cell.appliedToLog = true
@@ -229,11 +231,13 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
         }
     }
     
+    // Did select row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let feedback = UISelectionFeedbackGenerator()
         feedback.selectionChanged()
         
+        // Moves selected and unselected activities into their own groups
         if isSearching {
             if let index = displayActivities[0].firstIndex(of: searchedActivities[indexPath.row]) {
                 let movingActivity = displayActivities[0][index]
@@ -268,6 +272,7 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
 
 extension SelectActivitiesViewController: UISearchBarDelegate{
     
+    // Searchbar text did change
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearching = true
         
@@ -291,6 +296,7 @@ extension SelectActivitiesViewController: UISearchBarDelegate{
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         isSearching = false
+        searchBar.text = ""
         activitiesTableView.reloadData()
     }
 }

@@ -14,19 +14,10 @@ class DateCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dateNumberLabel: UILabel!
     @IBOutlet weak var dateView: UIView!
-
-    // MARK: - Static Functions
     
     // MARK: - Custom Functions
     
-    // Shows the border to the user to indicate that the date has been selected
-    override var isSelected: Bool {
-        didSet {
-            dateView.layer.borderWidth = self.isSelected ? 1.5 : 0
-        }
-    }
-    
-    func configure(indexPath: IndexPath, calendar: UICollectionView) {
+    func configure(indexPath: IndexPath, calendar: UICollectionView, selectedDate: Date?) {
         
         // Makes the cell a circle
         dateView.layer.cornerRadius = (calendar.frame.width / 14) - 6
@@ -43,37 +34,16 @@ class DateCollectionViewCell: UICollectionViewCell {
             } else {
                 dateView.backgroundColor = .clear
             }
+            
+            if let selectedDate = selectedDate, date == selectedDate {
+                dateView.layer.borderWidth = 1.5
+            } else {
+                dateView.layer.borderWidth = 0
+            }
             self.isHidden = false
         } else {
             self.isHidden = true
             dateNumberLabel.text = ""
         }
     }
-    
-    // MARK: - Helper Functions
-//
-//    // Checks to see if date Name (sunday) would be in first column
-//    func isDateInCorrectColumn(indexPath: IndexPath) -> Bool{
-//        let columnNumber = indexPath.row % 7
-//
-//        if columnNumber == columnNumberForDate(date: CalendarHelper.shared.months[indexPath.section].days[indexPath.row]){
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
-//
-//    // Returns the column number for respective day
-//    func columnNumberForDate(date: Date) -> Int {
-//        switch CalendarHelper.shared.stringDayNameForDate(date: date) {
-//        case "Sunday": return 0
-//        case "Monday": return 1
-//        case "Tuesday": return 2
-//        case "Wednesday": return 3
-//        case "Thursday": return 4
-//        case "Friday": return 5
-//        case "Saturday": return 6
-//        default: print("MASSIVE ERROR AT \(#function) \(CalendarHelper.shared.stringDayNameForDate(date: date))" ); return -1
-//        }
-//    }
 }
