@@ -47,9 +47,8 @@ class HistoricalLogsViewController: UIViewController{
         calendarCollectionView.dataSource = self
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.showsVerticalScrollIndicator = false
-        // FIXME: User Interactions
-        //        ratingEditStackView.isUserInteractionEnabled = false
-        //        ratingEditStackView.alpha = 0.5
+        ratingEditStackView.isUserInteractionEnabled = false
+        ratingEditStackView.alpha = 0.5
         ratingLabel.text = "Select Date"
         ratingLabelView.layer.cornerRadius = ratingLabel.frame.height / 2
         ratingSlider.thumbTintColor = .black
@@ -57,10 +56,10 @@ class HistoricalLogsViewController: UIViewController{
         saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
         actionsButton.layer.cornerRadius = actionsButton.frame.height / 2
         
-//        activitiesViewSaveButton.layer.shadowColor = UIColor.black.cgColor
-//        activitiesViewSaveButton.layer.shadowOffset = CGSize(width: 0, height: -0)
-//        activitiesViewSaveButton.layer.shadowOpacity = 0.3
-//        activitiesViewSaveButton.layer.shadowRadius = 2
+        //        activitiesViewSaveButton.layer.shadowColor = UIColor.black.cgColor
+        //        activitiesViewSaveButton.layer.shadowOffset = CGSize(width: 0, height: -0)
+        //        activitiesViewSaveButton.layer.shadowOpacity = 0.3
+        //        activitiesViewSaveButton.layer.shadowRadius = 2
         
         // Sets the month label and year label equal to todays date
         let date = Date()
@@ -98,7 +97,7 @@ class HistoricalLogsViewController: UIViewController{
         updateViewsForRating()
     }
     
-
+    
     
     // MARK: - Custom Functions
     
@@ -123,10 +122,14 @@ class HistoricalLogsViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSelectActivities" {
-            guard let log = currentLog,
-                let destinationVC = segue.destination as? SelectActivitiesViewController else {return}
+            guard let destinationVC = segue.destination as? SelectActivitiesViewController else {return}
+            if let log = currentLog {
+                destinationVC.log = log
+            } else {
+                guard let selectedDate = selectedDate else {return}
+                destinationVC.selectedDate = selectedDate
+            }
             
-            destinationVC.log = log
         }
     }
     

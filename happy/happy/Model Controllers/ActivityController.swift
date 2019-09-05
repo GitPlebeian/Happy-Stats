@@ -75,6 +75,7 @@ class ActivityController {
             activity.timesSelected += 1
             activity.averageRating = round((Double(activity.totalRating) / Double(activity.timesSelected)) * 100) / 100
         }
+        saveToPersistentStore()
     }
     
     // Calculates the activitiy's new data based on the deletion of a log
@@ -94,6 +95,7 @@ class ActivityController {
                 }
             }
         }
+        saveToPersistentStore()
     }
     
     // Gives back an array of activities

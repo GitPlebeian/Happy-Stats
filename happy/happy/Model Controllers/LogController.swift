@@ -55,12 +55,13 @@ class LogController {
     
     // Update
     func updateLog(log: Log, selectedActivities: [Activity], rating: Int) {
-        
+   
         ActivityController.shared.deleteLogDataFromAllActivities(log: log)
+        
+        log.rating = Int64(rating)
+        log.activities = NSOrderedSet(array: selectedActivities)
         ActivityController.shared.addLogDataToActivities(log: log, activities: selectedActivities)
         
-        log.activities = NSOrderedSet(array: selectedActivities)
-        log.rating = Int64(rating)
         saveToPersistentStore()
     }
     

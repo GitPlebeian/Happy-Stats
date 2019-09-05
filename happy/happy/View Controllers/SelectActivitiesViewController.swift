@@ -21,11 +21,8 @@ class SelectActivitiesViewController: UIViewController {
     
     // MARK: - Properties
     
-    var log: Log? {
-        didSet {
-            updateViewsForLog()
-        }
-    }
+    var log: Log?
+    var selectedDate: Date?
     var displayActivities: [[Activity]] = [[],[]]
     var allApplied = false
     var allActivities = false
@@ -44,6 +41,7 @@ class SelectActivitiesViewController: UIViewController {
         setupSearchBar()
         
         updateViewsForRatingChange()
+        updateViewsForLog()
         logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
         saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
     }
@@ -51,6 +49,16 @@ class SelectActivitiesViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
+        
+        let feedback = UINotificationFeedbackGenerator()
+        feedback.notificationOccurred(.success)
+        
+        if let log = log {
+            LogController.shared.updateLog(log: log, selectedActivities: displayActivities[0], rating: rating)
+        } else {
+            guard let selectedDate = selectedDate else {return}
+            LogController.shared.createLog(date: selectedDate, rating: rating, activities: displayActivities[0])
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -92,13 +100,18 @@ class SelectActivitiesViewController: UIViewController {
     
     func updateViewsForLog() {
         loadViewIfNeeded()
-        guard let log = log,
+        if let log = log,
             let nsLogActivities = log.activities,
-            let logActivities = Array(nsLogActivities) as? [Activity] else {return}
-        displayActivities[0] = logActivities
-        displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
-        setAppliedVariables()
-        activitiesTableView.reloadData()
+            let logActivities = Array(nsLogActivities) as? [Activity] {
+            displayActivities[0] = logActivities
+            displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
+            setAppliedVariables()
+            activitiesTableView.reloadData()
+        } else {
+            displayActivities[1] = ActivityController.shared.activities
+            setAppliedVariables()
+            activitiesTableView.reloadData()
+        }
     }
 }
 
@@ -112,10 +125,8 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
     
         let headerView = UIView()
         headerView.backgroundColor = .white
-
         let headerLabel: UILabel = {
             let label = UILabel()
-            
             label.frame = CGRect(x: 2, y: 0, width: 150, height: 24)
             label.font = UIFont(name: "SFProDisplay-Medium", size: 18)
             
@@ -184,6 +195,10 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let feedback = UISelectionFeedbackGenerator()
+        feedback.selectionChanged()
+        
         if allApplied {
             let movingActivity = displayActivities[0][indexPath.row]
             displayActivities[0].remove(at: indexPath.row)

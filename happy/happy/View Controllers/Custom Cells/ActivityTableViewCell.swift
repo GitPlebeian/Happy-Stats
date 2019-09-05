@@ -33,7 +33,7 @@ class ActivityTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         activityView.layer.cornerRadius = activityView.frame.height / 2
-        selectionDotView.backgroundColor = .black
+        selectionDotView.backgroundColor = .white
         selectionDotView.layer.cornerRadius = selectionDotView.frame.width / 2
     }
     
