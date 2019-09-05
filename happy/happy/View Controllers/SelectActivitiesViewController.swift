@@ -21,11 +21,17 @@ class SelectActivitiesViewController: UIViewController {
     
     // MARK: - Properties
     
-    var log: Log?
+    var log: Log? {
+        didSet {
+            rating = Int(log!.rating)
+        }
+    }
     var selectedDate: Date?
     var displayActivities: [[Activity]] = [[],[]]
     var allApplied = false
     var allActivities = false
+    var searchedActivities: [Activity] = []
+    var resultSearchController = UISearchController()
     
     var rating = 5
     
@@ -37,6 +43,7 @@ class SelectActivitiesViewController: UIViewController {
         
         activitiesTableView.delegate = self
         activitiesTableView.dataSource = self
+        activitiesTableView.showsVerticalScrollIndicator = false
         activitiesSearchBar.delegate = self
         setupSearchBar()
         
@@ -44,6 +51,12 @@ class SelectActivitiesViewController: UIViewController {
         updateViewsForLog()
         logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
         saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
+        
+        resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            return controller
+        })()
     }
     
     // MARK: - Actions
@@ -72,6 +85,7 @@ class SelectActivitiesViewController: UIViewController {
     
     func updateViewsForRatingChange() {
         logRatingLabel.text = "\(rating)"
+        logRatingSlider.value = Float(rating)
         saveLogButton.backgroundColor = RatingColors.getColorFoInt(number: rating)
         logRatingView.backgroundColor = RatingColors.getColorFoInt(number: rating)
         logRatingSlider.minimumTrackTintColor = RatingColors.getColorFoInt(number: rating)
@@ -94,7 +108,7 @@ class SelectActivitiesViewController: UIViewController {
     func setupSearchBar() {
         if let searchBarTextField = activitiesSearchBar.value(forKey: "searchField") as? UITextField {
             searchBarTextField.textColor = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-            searchBarTextField.font = UIFont(name: "SFProDisplay-Light", size: 15)
+            searchBarTextField.font = UIFont(name: "SFProDisplay-Light", size: 17)
         }
     }
     
@@ -221,8 +235,17 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
     }
 }
 
-extension SelectActivitiesViewController: UISearchBarDelegate {
+extension SelectActivitiesViewController: UISearchBarDelegate, UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        print("Boi")
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         activitiesSearchBar.resignFirstResponder()
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("Starting")
+    }
+    
 }
