@@ -12,8 +12,12 @@ class SelectActivitiesViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var saveLogButton: UIButton!
     @IBOutlet weak var activitiesTableView: UITableView!
     @IBOutlet weak var activitiesSearchBar: UISearchBar!
+    @IBOutlet weak var logRatingSlider: UISlider!
+    @IBOutlet weak var logRatingLabel: UILabel!
+    @IBOutlet weak var logRatingView: UIView!
     
     // MARK: - Properties
     
@@ -23,6 +27,10 @@ class SelectActivitiesViewController: UIViewController {
         }
     }
     var displayActivities: [[Activity]] = [[],[]]
+    var allApplied = false
+    var allActivities = false
+    
+    var rating = 5
     
     // MARK: - Lifecycle
     
@@ -32,20 +40,48 @@ class SelectActivitiesViewController: UIViewController {
         
         activitiesTableView.delegate = self
         activitiesTableView.dataSource = self
-        
         activitiesSearchBar.delegate = self
-        
         setupSearchBar()
+        
+        updateViewsForRatingChange()
+        logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
+        saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
     }
     
     // MARK: - Actions
     
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
-        
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func ratingSliderValueChanged(_ sender: Any) {
+        rating = Int(logRatingSlider.value.rounded())
+        logRatingSlider.value = Float(rating)
+        updateViewsForRatingChange()
+    }
+    
     // MARK: - Custom Functions
+    
+    func updateViewsForRatingChange() {
+        logRatingLabel.text = "\(rating)"
+        saveLogButton.backgroundColor = RatingColors.getColorFoInt(number: rating)
+        logRatingView.backgroundColor = RatingColors.getColorFoInt(number: rating)
+        logRatingSlider.minimumTrackTintColor = RatingColors.getColorFoInt(number: rating)
+        logRatingSlider.thumbTintColor = RatingColors.getColorFoInt(number: rating)
+    }
+    
+    func setAppliedVariables() {
+        if displayActivities[0].count == 0 && displayActivities[1].count > 0{
+            allApplied = false
+            allActivities = true
+        } else if displayActivities[1].count == 0 && displayActivities[0].count > 0 {
+            allApplied = true
+            allActivities = false
+        } else {
+            allApplied = false
+            allActivities = false
+        }
+    }
     
     func setupSearchBar() {
         if let searchBarTextField = activitiesSearchBar.value(forKey: "searchField") as? UITextField {
@@ -61,41 +97,113 @@ class SelectActivitiesViewController: UIViewController {
             let logActivities = Array(nsLogActivities) as? [Activity] else {return}
         displayActivities[0] = logActivities
         displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
+        setAppliedVariables()
         activitiesTableView.reloadData()
     }
 }
 
 extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 24
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    
+        let headerView = UIView()
+        headerView.backgroundColor = .white
+
+        let headerLabel: UILabel = {
+            let label = UILabel()
+            
+            label.frame = CGRect(x: 2, y: 0, width: 150, height: 24)
+            label.font = UIFont(name: "SFProDisplay-Medium", size: 18)
+            
+            if allActivities {
+                label.text = "Activities"
+            } else if allApplied {
+                label.text = "Applied"
+            } else if section == 0 {
+                label.text = "Applied"
+            } else {
+                label.text = "Activities"
+            }
+            return label
+        }()
+        
+        headerView.addSubview(headerLabel)
+        
+        
+        return headerView
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if allApplied || allActivities{
+            return 1
+        } else {
+            return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return displayActivities[section].count
-        } else {
-            return displayActivities[section].count
+        if allApplied {
+            return displayActivities[0].count
         }
+        if allActivities {
+            return displayActivities[1].count
+        }
+        return displayActivities[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = activitiesTableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath)
+        guard let cell = activitiesTableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as? ActivityTableViewCell else {return UITableViewCell()}
+        
+        if allApplied {
+            let activity = displayActivities[0][indexPath.row]
+            cell.activitiy = activity
+            cell.appliedToLog = true
+            return cell
+        } else if allActivities {
+            let activity = displayActivities[1][indexPath.row]
+            cell.activitiy = activity
+            cell.appliedToLog = false
+            return cell
+        }
         
         if indexPath.section == 0 {
             let activity = displayActivities[0][indexPath.row]
-            cell.textLabel?.text = "\(activity.title!)"
-            
+            cell.activitiy = activity
+            cell.appliedToLog = true
             return cell
         } else {
             let activity = displayActivities[1][indexPath.row]
-            cell.textLabel?.text = "\(activity.title!)"
-            
+            cell.activitiy = activity
+            cell.appliedToLog = false
             return cell
         }
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if allApplied {
+            let movingActivity = displayActivities[0][indexPath.row]
+            displayActivities[0].remove(at: indexPath.row)
+            displayActivities[1].append(movingActivity)
+        } else if allActivities {
+            let movingActivity = displayActivities[1][indexPath.row]
+            displayActivities[1].remove(at: indexPath.row)
+            displayActivities[0].append(movingActivity)
+        } else if indexPath.section == 0 {
+            let movingActivity = displayActivities[indexPath.section][indexPath.row]
+            displayActivities[indexPath.section].remove(at: indexPath.row)
+            displayActivities[1].append(movingActivity)
+        } else {
+            let movingActivity = displayActivities[indexPath.section][indexPath.row]
+            displayActivities[indexPath.section].remove(at: indexPath.row)
+            displayActivities[0].append(movingActivity)
+        }
+        setAppliedVariables()
+        activitiesTableView.reloadData()
+    }
 }
 
 extension SelectActivitiesViewController: UISearchBarDelegate {

@@ -19,7 +19,6 @@
 		864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A922F65789009368ED /* ActivityDetailViewController.swift */; };
 		864D19AC22F66B72009368ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D19AB22F66B72009368ED /* Main.storyboard */; };
 		864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19AD22F67378009368ED /* MainTabBarController.swift */; };
-		8654FC26230B6B5300A6202C /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8654FC25230B6B5300A6202C /* SF-Pro-Display-Medium.otf */; };
 		866CAE722319A35C00C85FF8 /* CalenderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866CAE712319A35C00C85FF8 /* CalenderHelper.swift */; };
 		8675BBCF230B82AA00EE1382 /* RatingColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675BBCE230B82AA00EE1382 /* RatingColors.swift */; };
 		8687258222F8798C00E1F674 /* ActivityViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */; };
@@ -27,6 +26,9 @@
 		868E7CE522FE6300000C8D10 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE422FE6300000C8D10 /* CoreDataStack.swift */; };
 		868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */; };
 		868E7CE922FE65A7000C8D10 /* Log+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */; };
+		86904034231F700A004C2633 /* UiVewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86904033231F700A004C2633 /* UiVewExtension.swift */; };
+		8690403723200F1C004C2633 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690403623200F1C004C2633 /* ActivityTableViewCell.swift */; };
+		8690403923200F63004C2633 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8690403823200F63004C2633 /* SF-Pro-Display-Medium.otf */; };
 		86CCFD352306045800CDCC21 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCFD342306045800CDCC21 /* ReportsViewController.swift */; };
 		86D11AD222FF9C330059A0B3 /* HistoricalLogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */; };
 		86E0F828231F36930025DE0E /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8654FC22230B6B3300A6202C /* SF-Pro-Display-Light.otf */; };
@@ -50,7 +52,6 @@
 		864D19AB22F66B72009368ED /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		864D19AD22F67378009368ED /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8654FC22230B6B3300A6202C /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
-		8654FC25230B6B5300A6202C /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		866CAE712319A35C00C85FF8 /* CalenderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderHelper.swift; sourceTree = "<group>"; };
 		8675BBCE230B82AA00EE1382 /* RatingColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingColors.swift; sourceTree = "<group>"; };
 		8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -58,6 +59,9 @@
 		868E7CE422FE6300000C8D10 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+Convenience.swift"; sourceTree = "<group>"; };
 		868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Convenience.swift"; sourceTree = "<group>"; };
+		86904033231F700A004C2633 /* UiVewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiVewExtension.swift; sourceTree = "<group>"; };
+		8690403623200F1C004C2633 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		8690403823200F63004C2633 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		86CCFD342306045800CDCC21 /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
 		86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalLogsViewController.swift; sourceTree = "<group>"; };
 		86E0F829231F41A80025DE0E /* SelectActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectActivitiesViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 				862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */,
 				8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */,
 				86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */,
+				8690403623200F1C004C2633 /* ActivityTableViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 				864D19A422F641B5009368ED /* View Controllers */,
 				864D199822F6345A009368ED /* Model Controllers */,
 				864D199722F6344F009368ED /* Resources */,
+				86904032231F6FF3004C2633 /* Extensions */,
 				866CAE702319A33100C85FF8 /* Helpers */,
 				868E7CE122FE4F0A000C8D10 /* HapiStats.xcdatamodeld */,
 			);
@@ -140,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				868E7CE422FE6300000C8D10 /* CoreDataStack.swift */,
+				866920A323208616007F05C4 /* View Controllers */,
 				868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */,
 				868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */,
 			);
@@ -173,10 +180,17 @@
 		8654FC21230B6B2F00A6202C /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				8654FC25230B6B5300A6202C /* SF-Pro-Display-Medium.otf */,
+				8690403823200F63004C2633 /* SF-Pro-Display-Medium.otf */,
 				8654FC22230B6B3300A6202C /* SF-Pro-Display-Light.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		866920A323208616007F05C4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		866CAE702319A33100C85FF8 /* Helpers */ = {
@@ -186,6 +200,14 @@
 				866CAE712319A35C00C85FF8 /* CalenderHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		86904032231F6FF3004C2633 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				86904033231F700A004C2633 /* UiVewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,11 +268,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				864D19AC22F66B72009368ED /* Main.storyboard in Resources */,
 				86E0F828231F36930025DE0E /* SF-Pro-Display-Light.otf in Resources */,
+				864D19AC22F66B72009368ED /* Main.storyboard in Resources */,
 				864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */,
 				86E2D4082305936A00E9A910 /* Assets.xcassets in Resources */,
-				8654FC26230B6B5300A6202C /* SF-Pro-Display-Medium.otf in Resources */,
+				8690403923200F63004C2633 /* SF-Pro-Display-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,12 +287,14 @@
 				86D11AD222FF9C330059A0B3 /* HistoricalLogsViewController.swift in Sources */,
 				868E7CE922FE65A7000C8D10 /* Log+Convenience.swift in Sources */,
 				864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */,
+				8690403723200F1C004C2633 /* ActivityTableViewCell.swift in Sources */,
 				86CCFD352306045800CDCC21 /* ReportsViewController.swift in Sources */,
 				864D19A122F634D4009368ED /* ActivityController.swift in Sources */,
 				8675BBCF230B82AA00EE1382 /* RatingColors.swift in Sources */,
 				86E0F82A231F41A80025DE0E /* SelectActivitiesViewController.swift in Sources */,
 				8687258222F8798C00E1F674 /* ActivityViewTableViewCell.swift in Sources */,
 				868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */,
+				86904034231F700A004C2633 /* UiVewExtension.swift in Sources */,
 				8626DEC523024D7B00BF6909 /* LogDetailViewController.swift in Sources */,
 				868E7CE522FE6300000C8D10 /* CoreDataStack.swift in Sources */,
 				864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */,

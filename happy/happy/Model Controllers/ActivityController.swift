@@ -17,13 +17,12 @@ class ActivityController {
     
     // MARK: - Properties
     
-//    var activities: [Activity] {
-//        // Creates a new fetchRequest that only handles EntityName entity types
-//        let fetchRequest: NSFetchRequest<Activity> = Activity.fetchRequest()
-//        return (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
-//    }
+    var activities: [Activity] {
+        // Creates a new fetchRequest that only handles EntityName entity types
+        let fetchRequest: NSFetchRequest<Activity> = Activity.fetchRequest()
+        return (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
+    }
 
-    var activities: [Activity] = []
     // MARK: - CRUD
     
     // Create Activity

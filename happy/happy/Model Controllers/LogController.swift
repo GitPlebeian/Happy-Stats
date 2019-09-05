@@ -17,25 +17,25 @@ class LogController {
     
     // MARK: - Properties
     
-//    var logs: [Log] {
-//        // Creates a new fetchRequest that only handles EntityName entity types
-//        let fetchRequest: NSFetchRequest<Log> = Log.fetchRequest()
-//        return (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
-//    }
-    var logs: [Log] = []
-    
-    init() {
-        let activity = Activity(title: "Work")
-        let activity2 = Activity(title: "Play")
-        let activity3 = Activity(title: "Tacos")
-        let activity4 = Activity(title: "Gym")
-        let log = Log(date: Date(), rating: 10, activities: [activity])
-        logs.append(log)
-        ActivityController.shared.activities.append(activity)
-        ActivityController.shared.activities.append(activity2)
-        ActivityController.shared.activities.append(activity3)
-        ActivityController.shared.activities.append(activity4)
+    var logs: [Log] {
+        // Creates a new fetchRequest that only handles EntityName entity types
+        let fetchRequest: NSFetchRequest<Log> = Log.fetchRequest()
+        return (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
     }
+//    var logs: [Log] = []
+//
+//    init() {
+//        let activity = Activity(title: "Work")
+//        let activity2 = Activity(title: "Play")
+//        let activity3 = Activity(title: "Tacos")
+//        let activity4 = Activity(title: "Gym")
+//        let log = Log(date: Date(), rating: 10, activities: [activity])
+//        logs.append(log)
+//        ActivityController.shared.activities.append(activity)
+//        ActivityController.shared.activities.append(activity2)
+//        ActivityController.shared.activities.append(activity3)
+//        ActivityController.shared.activities.append(activity4)
+//    }
 
     // MARK: - CRUD
     
