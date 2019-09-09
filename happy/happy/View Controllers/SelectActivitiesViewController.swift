@@ -24,6 +24,7 @@ class SelectActivitiesViewController: UIViewController {
     var log: Log? {
         didSet {
             rating = Int(log!.rating)
+            updateViewsForLog()
         }
     }
     var selectedDate: Date?
@@ -48,7 +49,6 @@ class SelectActivitiesViewController: UIViewController {
         setupSearchBar()
         
         updateViewsForRatingChange()
-        updateViewsForLog()
         logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
         saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
         
@@ -56,10 +56,15 @@ class SelectActivitiesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateViewsForLog()
+//        updateViewsForLog()
+        // FIXME: - Relaod on view will appear
     }
     
     // MARK: - Actions
+    
+    @IBAction func deleteLogButtonTapped(_ sender: Any) {
+        presentDeleteLogAlert()
+    }
     
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
         
@@ -82,6 +87,20 @@ class SelectActivitiesViewController: UIViewController {
     }
     
     // MARK: - Custom Functions
+    
+    func presentDeleteLogAlert() {
+        let alertController = UIAlertController(title: "Delete Log", message: "Are you sure?", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            guard let log = self.log else {return}
+            LogController.shared.deleteLog(log: log)
+            self.navigationController?.popViewController(animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancelAction.setValue(UIColor.black, forKey: "titleTextColor")
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
     
     func updateViewsForRatingChange() {
         logRatingLabel.text = "\(rating)"
@@ -121,6 +140,8 @@ class SelectActivitiesViewController: UIViewController {
             displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
             setAppliedVariables()
             activitiesTableView.reloadData()
+            let deleteLogNavigationBarItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(deleteLogButtonTapped(_:)))
+            self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
         } else {
             displayActivities[1] = ActivityController.shared.activities
             setAppliedVariables()

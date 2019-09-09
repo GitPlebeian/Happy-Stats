@@ -7,18 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8626DEC523024D7B00BF6909 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626DEC423024D7B00BF6909 /* LogDetailViewController.swift */; };
-		862998B422F747E000B74809 /* ActivityForRatingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */; };
 		86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */; };
 		864D198622F63429009368ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D198522F63429009368ED /* AppDelegate.swift */; };
 		864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D198E22F6342A009368ED /* LaunchScreen.storyboard */; };
 		864D199F22F634A3009368ED /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D199E22F634A3009368ED /* LogController.swift */; };
 		864D19A122F634D4009368ED /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A022F634D4009368ED /* ActivityController.swift */; };
-		864D19A622F6423E009368ED /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A522F6423E009368ED /* RatingViewController.swift */; };
 		864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A722F65033009368ED /* ActivitiesViewController.swift */; };
 		864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A922F65789009368ED /* ActivityDetailViewController.swift */; };
 		864D19AC22F66B72009368ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D19AB22F66B72009368ED /* Main.storyboard */; };
 		864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19AD22F67378009368ED /* MainTabBarController.swift */; };
+		8650F1972321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8650F1962321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift */; };
 		866CAE722319A35C00C85FF8 /* CalenderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866CAE712319A35C00C85FF8 /* CalenderHelper.swift */; };
 		8675BBCF230B82AA00EE1382 /* RatingColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675BBCE230B82AA00EE1382 /* RatingColors.swift */; };
 		8687258222F8798C00E1F674 /* ActivityViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */; };
@@ -26,7 +24,6 @@
 		868E7CE522FE6300000C8D10 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE422FE6300000C8D10 /* CoreDataStack.swift */; };
 		868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */; };
 		868E7CE922FE65A7000C8D10 /* Log+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */; };
-		86904034231F700A004C2633 /* UiVewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86904033231F700A004C2633 /* UiVewExtension.swift */; };
 		8690403723200F1C004C2633 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690403623200F1C004C2633 /* ActivityTableViewCell.swift */; };
 		8690403923200F63004C2633 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8690403823200F63004C2633 /* SF-Pro-Display-Medium.otf */; };
 		86CCFD352306045800CDCC21 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCFD342306045800CDCC21 /* ReportsViewController.swift */; };
@@ -37,8 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8626DEC423024D7B00BF6909 /* LogDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
-		862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityForRatingViewTableViewCell.swift; sourceTree = "<group>"; };
 		86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		864D198222F63429009368ED /* happy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		864D198522F63429009368ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,11 +41,11 @@
 		864D199122F6342A009368ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		864D199E22F634A3009368ED /* LogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
 		864D19A022F634D4009368ED /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
-		864D19A522F6423E009368ED /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		864D19A722F65033009368ED /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 		864D19A922F65789009368ED /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		864D19AB22F66B72009368ED /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		864D19AD22F67378009368ED /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8650F1962321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityForActivityViewTableViewCell.swift; sourceTree = "<group>"; };
 		8654FC22230B6B3300A6202C /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		866CAE712319A35C00C85FF8 /* CalenderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderHelper.swift; sourceTree = "<group>"; };
 		8675BBCE230B82AA00EE1382 /* RatingColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingColors.swift; sourceTree = "<group>"; };
@@ -59,7 +54,6 @@
 		868E7CE422FE6300000C8D10 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+Convenience.swift"; sourceTree = "<group>"; };
 		868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Convenience.swift"; sourceTree = "<group>"; };
-		86904033231F700A004C2633 /* UiVewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiVewExtension.swift; sourceTree = "<group>"; };
 		8690403623200F1C004C2633 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		8690403823200F63004C2633 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		86CCFD342306045800CDCC21 /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
@@ -82,10 +76,10 @@
 		862998B522F747E300B74809 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
-				862998B322F747E000B74809 /* ActivityForRatingViewTableViewCell.swift */,
-				8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */,
 				86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */,
 				8690403623200F1C004C2633 /* ActivityTableViewCell.swift */,
+				8687258122F8798C00E1F674 /* ActivityViewTableViewCell.swift */,
+				8650F1962321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -157,12 +151,10 @@
 			isa = PBXGroup;
 			children = (
 				865311F822FA33DB00E198BC /* Navigation Controllers */,
-				864D19A522F6423E009368ED /* RatingViewController.swift */,
 				864D19A722F65033009368ED /* ActivitiesViewController.swift */,
 				864D19A922F65789009368ED /* ActivityDetailViewController.swift */,
 				86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */,
 				86E0F829231F41A80025DE0E /* SelectActivitiesViewController.swift */,
-				8626DEC423024D7B00BF6909 /* LogDetailViewController.swift */,
 				86CCFD342306045800CDCC21 /* ReportsViewController.swift */,
 				862998B522F747E300B74809 /* Custom Cells */,
 			);
@@ -205,7 +197,6 @@
 		86904032231F6FF3004C2633 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				86904033231F700A004C2633 /* UiVewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -289,22 +280,19 @@
 				864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */,
 				8690403723200F1C004C2633 /* ActivityTableViewCell.swift in Sources */,
 				86CCFD352306045800CDCC21 /* ReportsViewController.swift in Sources */,
+				8650F1972321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift in Sources */,
 				864D19A122F634D4009368ED /* ActivityController.swift in Sources */,
 				8675BBCF230B82AA00EE1382 /* RatingColors.swift in Sources */,
 				86E0F82A231F41A80025DE0E /* SelectActivitiesViewController.swift in Sources */,
 				8687258222F8798C00E1F674 /* ActivityViewTableViewCell.swift in Sources */,
 				868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */,
-				86904034231F700A004C2633 /* UiVewExtension.swift in Sources */,
-				8626DEC523024D7B00BF6909 /* LogDetailViewController.swift in Sources */,
 				868E7CE522FE6300000C8D10 /* CoreDataStack.swift in Sources */,
 				864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */,
 				868E7CE322FE4F0A000C8D10 /* HapiStats.xcdatamodeld in Sources */,
-				864D19A622F6423E009368ED /* RatingViewController.swift in Sources */,
 				864D198622F63429009368ED /* AppDelegate.swift in Sources */,
 				866CAE722319A35C00C85FF8 /* CalenderHelper.swift in Sources */,
 				864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */,
 				86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */,
-				862998B422F747E000B74809 /* ActivityForRatingViewTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
