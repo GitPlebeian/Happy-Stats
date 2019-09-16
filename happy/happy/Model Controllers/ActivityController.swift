@@ -1,5 +1,5 @@
 //
-//  LogController.swift
+//  ActivityController.swift
 //  happy
 //
 //  Created by Jackson Tubbs on 9/16/19.
@@ -9,37 +9,37 @@
 import Foundation
 import CloudKit
 
-class LogController {
+class ActivityController {
     
     let privateDB = CKContainer.default().privateCloudDatabase
     
-    static let shared = LogController()
+    static let shared = ActivityController()
     
-    var logs: [Log] = []
+    var activities: [Activity] = []
     
     // MARK: - CRUD
     
-    func createLog(date: Date, rating: Int, activities: [Activity] = [], completion: @escaping (Bool) -> Void) {
-        let log = Log(date: date, rating: rating, activities: activities)
-        let record = CKRecord(log: log)
+    func createActivity(title: String, completion: @escaping (Bool) -> Void) {
+        let activity = Activity(title: title)
+        let record = CKRecord(activity: activity)
         privateDB.save(record) { (record, error) in
             if let error = error {
                 print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
                 completion(false)
                 return
             }
-            guard let record = record, let log = Log(record: record) else {
+            guard let record = record, let activity = Activity(record: record) else {
                 completion(false)
                 return
             }
-            self.logs.append(log)
+            self.activities.append(activity)
             completion(true)
         }
     }
     
-    func fetchAllLogs(completion: @escaping (Bool) -> Void) {
+    func fetchAllActivities(completion: @escaping (Bool) -> Void) {
         let predicate = NSPredicate(value: true)
-        let query = CKQuery(recordType: LogConstants.recordTypeKey, predicate: predicate)
+        let query = CKQuery(recordType: ActivityConstants.recordTypeKey, predicate: predicate)
         privateDB.perform(query, inZoneWith: nil) { (records, error) in
             if let error = error {
                 print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
@@ -51,14 +51,14 @@ class LogController {
                 return
             }
             
-            let logs: [Log] = records.compactMap({Log(record: $0)})
-            self.logs = logs
+            let activities: [Activity] = records.compactMap({Activity(record: $0)})
+            self.activities = activities
             completion(true)
         }
     }
     
-    func updateLog(log: Log, completion: @escaping (Bool) -> Void) {
-        let modificationOP = CKModifyRecordsOperation(recordsToSave: [CKRecord(log: log)], recordIDsToDelete: nil)
+    func updateActivity(activity: Activity, completion: @escaping (Bool) -> Void) {
+        let modificationOP = CKModifyRecordsOperation(recordsToSave: [CKRecord(activity: activity)], recordIDsToDelete: nil)
         modificationOP.savePolicy = .changedKeys
         modificationOP.queuePriority = .veryHigh
         modificationOP.qualityOfService = .userInitiated
@@ -74,20 +74,20 @@ class LogController {
         privateDB.add(modificationOP)
     }
     
-    func deleteLog(log: Log, completion: @escaping (Bool) -> Void) {
-        guard let index = logs.firstIndex(of: log) else {
+    func deleteActivity(activity: Activity, completion: @escaping (Bool) -> Void) {
+        guard let index = activities.firstIndex(of: activity) else {
             completion(false)
             return
         }
         
-        privateDB.delete(withRecordID: log.recordID) { (_, error) in
+        privateDB.delete(withRecordID: activity.recordID) { (_, error) in
             if let error = error {
                 print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
                 completion(false)
                 return
             } else {
                 completion(true)
-                self.logs.remove(at: index)
+                self.activities.remove(at: index)
             }
         }
     }

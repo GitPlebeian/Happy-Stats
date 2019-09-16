@@ -10,6 +10,7 @@
 		8624C445232FE62C00B60BE7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C444232FE62C00B60BE7 /* Log.swift */; };
 		8624C447232FE88300B60BE7 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C446232FE88300B60BE7 /* Activity.swift */; };
 		8624C449232FF62E00B60BE7 /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C448232FF62E00B60BE7 /* LogController.swift */; };
+		8624C44B232FFCB000B60BE7 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C44A232FFCB000B60BE7 /* ActivityController.swift */; };
 		86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */; };
 		864D198622F63429009368ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D198522F63429009368ED /* AppDelegate.swift */; };
 		864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D198E22F6342A009368ED /* LaunchScreen.storyboard */; };
@@ -39,6 +40,7 @@
 		8624C444232FE62C00B60BE7 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		8624C446232FE88300B60BE7 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		8624C448232FF62E00B60BE7 /* LogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
+		8624C44A232FFCB000B60BE7 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		864D198222F63429009368ED /* happy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		864D198522F63429009368ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				864D199E22F634A3009368ED /* LogControllerCoreData.swift */,
 				864D19A022F634D4009368ED /* ActivityControllerCoreData.swift */,
 				8624C448232FF62E00B60BE7 /* LogController.swift */,
+				8624C44A232FFCB000B60BE7 /* ActivityController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				864D198622F63429009368ED /* AppDelegate.swift in Sources */,
 				866CAE722319A35C00C85FF8 /* CalenderHelper.swift in Sources */,
 				864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */,
+				8624C44B232FFCB000B60BE7 /* ActivityController.swift in Sources */,
 				86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
