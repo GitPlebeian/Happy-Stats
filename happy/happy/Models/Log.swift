@@ -30,7 +30,7 @@ class Log {
         return references
     }
     
-    init(date: Date, rating: Int, activities: [Activity] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
+    init(date: Date, rating: Int, activities: [Activity], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
         self.date = date
         self.rating = rating
         self.activities = activities
