@@ -36,10 +36,14 @@ class MainTabBarController: UITabBarController {
             index += 1
         }
         LogController.shared.fetchAllLogs { (success) in
-            print("\(LogController.shared.logs[0].activityReferences[0].recordID.recordName)")
+            if success && ActivityController.shared.activities.count > 0 {
+                LogController.shared.pairLogsAndActivities()
+            }
         }
         ActivityController.shared.fetchAllActivities { (success) in
-            
+            if success && LogController.shared.logs.count > 0 {
+                LogController.shared.pairLogsAndActivities()
+            }
         }
     }
 } // End of Class

@@ -17,6 +17,8 @@ class LogController {
     
     var logs: [Log] = []
     
+    // MARK: - Functions
+    
     // Get log for date is complicated due to the seconds and minutes and hours that would screw things up
     func getLogForDate(date: Date) -> Log? {
         for log in logs {
@@ -37,6 +39,19 @@ class LogController {
             }
         }
         return nil
+    }
+    
+    // Adds activities to logs bases on the log references
+    func pairLogsAndActivities() {
+        for log in logs {
+            for activityReference in log.activityReferences {
+                for activity in ActivityController.shared.activities {
+                    if activityReference.recordID == activity.recordID {
+                        log.activities.append(activity)
+                    }
+                }
+            }
+        }
     }
     
     // MARK: - CRUD
@@ -84,6 +99,7 @@ class LogController {
     }
     
     func updateLog(log: Log, completion: @escaping (Bool) -> Void) {
+        updateActivityReferences(log: log)
         let modificationOP = CKModifyRecordsOperation(recordsToSave: [CKRecord(log: log)], recordIDsToDelete: nil)
         modificationOP.savePolicy = .changedKeys
         modificationOP.queuePriority = .veryHigh
@@ -98,6 +114,14 @@ class LogController {
             completion(true)
         }
         privateDB.add(modificationOP)
+    }
+    
+    private func updateActivityReferences(log: Log) {
+        var activityReferences: [CKRecord.Reference] = []
+        for activity in log.activities {
+            activityReferences.append(CKRecord.Reference(recordID: activity.recordID, action: .none))
+        }
+        log.activityReferences = activityReferences
     }
     
     func deleteLog(log: Log, completion: @escaping (Bool) -> Void) {

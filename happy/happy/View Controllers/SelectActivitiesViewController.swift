@@ -71,8 +71,8 @@ class SelectActivitiesViewController: UIViewController {
         feedback.prepare()
 
         if let log = log {
-            log.activities = displayActivities[0]
             log.rating = rating
+            log.activities = displayActivities[0]
             LogController.shared.updateLog(log: log) { (success) in
                 DispatchQueue.main.async {
                     if success {
@@ -119,17 +119,17 @@ class SelectActivitiesViewController: UIViewController {
     }
     
     func presentDeleteLogAlert() {
-//        let alertController = UIAlertController(title: "Delete Log", message: "Are you sure?", preferredStyle: .alert)
-//        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
-//            guard let log = self.log else {return}
-//            LogController.shared.deleteLog(log: log)
-//            self.navigationController?.popViewController(animated: true)
-//        }
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        cancelAction.setValue(UIColor.black, forKey: "titleTextColor")
-//        alertController.addAction(deleteAction)
-//        alertController.addAction(cancelAction)
-//        present(alertController, animated: true)
+        let alertController = UIAlertController(title: "Delete Log", message: "Are you sure?", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            guard let log = self.log else {return}
+            LogController.shared.deleteLog(log: log)
+            self.navigationController?.popViewController(animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancelAction.setValue(UIColor.black, forKey: "titleTextColor")
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
     }
     
     func updateViewsForRatingChange() {
