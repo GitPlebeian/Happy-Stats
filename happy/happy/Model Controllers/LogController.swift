@@ -17,6 +17,28 @@ class LogController {
     
     var logs: [Log] = []
     
+    // Get log for date is complicated due to the seconds and minutes and hours that would screw things up
+    func getLogForDate(date: Date) -> Log? {
+        for log in logs {
+            let logDate = log.date
+            let calendar = Calendar.current
+            
+            let year1 = calendar.component(.year, from: date)
+            let year2 = calendar.component(.year, from: logDate)
+            let month1 = calendar.component(.month, from: date)
+            let month2 = calendar.component(.month, from: logDate)
+            let day1 = calendar.component(.day, from: date)
+            let day2 = calendar.component(.day, from: logDate)
+            
+            if year1 == year2 &&
+                month1 == month2 &&
+                day1 == day2 {
+                return log
+            }
+        }
+        return nil
+    }
+    
     // MARK: - CRUD
     
     func createLog(date: Date, rating: Int, activities: [Activity] = [], completion: @escaping (Bool) -> Void) {

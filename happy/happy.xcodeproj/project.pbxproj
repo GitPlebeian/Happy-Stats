@@ -11,6 +11,7 @@
 		8624C447232FE88300B60BE7 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C446232FE88300B60BE7 /* Activity.swift */; };
 		8624C449232FF62E00B60BE7 /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C448232FF62E00B60BE7 /* LogController.swift */; };
 		8624C44B232FFCB000B60BE7 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C44A232FFCB000B60BE7 /* ActivityController.swift */; };
+		8624C44F2330072500B60BE7 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8624C44E2330072500B60BE7 /* CloudKit.framework */; };
 		86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */; };
 		864D198622F63429009368ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D198522F63429009368ED /* AppDelegate.swift */; };
 		864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D198E22F6342A009368ED /* LaunchScreen.storyboard */; };
@@ -41,6 +42,8 @@
 		8624C446232FE88300B60BE7 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		8624C448232FF62E00B60BE7 /* LogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
 		8624C44A232FFCB000B60BE7 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
+		8624C44C2330072200B60BE7 /* happy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = happy.entitlements; sourceTree = "<group>"; };
+		8624C44E2330072500B60BE7 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		864D198222F63429009368ED /* happy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		864D198522F63429009368ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,12 +76,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8624C44F2330072500B60BE7 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8624C44D2330072500B60BE7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8624C44E2330072500B60BE7 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		862998B522F747E300B74809 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +107,7 @@
 			children = (
 				864D198422F63429009368ED /* happy */,
 				864D198322F63429009368ED /* Products */,
+				8624C44D2330072500B60BE7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +122,7 @@
 		864D198422F63429009368ED /* happy */ = {
 			isa = PBXGroup;
 			children = (
+				8624C44C2330072200B60BE7 /* happy.entitlements */,
 				864D19AB22F66B72009368ED /* Main.storyboard */,
 				864D199922F63471009368ED /* Models */,
 				864D19A422F641B5009368ED /* View Controllers */,
@@ -234,6 +248,14 @@
 				TargetAttributes = {
 					864D198122F63429009368ED = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -261,10 +283,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				86E0F828231F36930025DE0E /* SF-Pro-Display-Light.otf in Resources */,
+				8690403923200F63004C2633 /* SF-Pro-Display-Medium.otf in Resources */,
 				864D19AC22F66B72009368ED /* Main.storyboard in Resources */,
 				864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */,
 				86E2D4082305936A00E9A910 /* Assets.xcassets in Resources */,
-				8690403923200F63004C2633 /* SF-Pro-Display-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = happy/happy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2WP5X762NJ;
 				INFOPLIST_FILE = "$(SRCROOT)/happy/Resources/Info.plist";
@@ -452,6 +475,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = happy/happy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2WP5X762NJ;
 				INFOPLIST_FILE = "$(SRCROOT)/happy/Resources/Info.plist";

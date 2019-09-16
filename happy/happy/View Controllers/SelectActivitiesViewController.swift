@@ -67,17 +67,17 @@ class SelectActivitiesViewController: UIViewController {
     }
     
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
-        
-        let feedback = UINotificationFeedbackGenerator()
-        feedback.notificationOccurred(.success)
-        
-        if let log = log {
-            LogController.shared.updateLog(log: log, selectedActivities: displayActivities[0], rating: rating)
-        } else {
-            guard let selectedDate = selectedDate else {return}
-            LogController.shared.createLog(date: selectedDate, rating: rating, activities: displayActivities[0])
-        }
-        navigationController?.popViewController(animated: true)
+//
+//        let feedback = UINotificationFeedbackGenerator()
+//        feedback.notificationOccurred(.success)
+//
+//        if let log = log {
+//            LogController.shared.updateLog(log: log, selectedActivities: displayActivities[0], rating: rating)
+//        } else {
+//            guard let selectedDate = selectedDate else {return}
+//            LogController.shared.createLog(date: selectedDate, rating: rating, activities: displayActivities[0])
+//        }
+//        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func ratingSliderValueChanged(_ sender: Any) {
@@ -89,17 +89,17 @@ class SelectActivitiesViewController: UIViewController {
     // MARK: - Custom Functions
     
     func presentDeleteLogAlert() {
-        let alertController = UIAlertController(title: "Delete Log", message: "Are you sure?", preferredStyle: .alert)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
-            guard let log = self.log else {return}
-            LogController.shared.deleteLog(log: log)
-            self.navigationController?.popViewController(animated: true)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        cancelAction.setValue(UIColor.black, forKey: "titleTextColor")
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true)
+//        let alertController = UIAlertController(title: "Delete Log", message: "Are you sure?", preferredStyle: .alert)
+//        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+//            guard let log = self.log else {return}
+//            LogController.shared.deleteLog(log: log)
+//            self.navigationController?.popViewController(animated: true)
+//        }
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        cancelAction.setValue(UIColor.black, forKey: "titleTextColor")
+//        alertController.addAction(deleteAction)
+//        alertController.addAction(cancelAction)
+//        present(alertController, animated: true)
     }
     
     func updateViewsForRatingChange() {
@@ -132,21 +132,21 @@ class SelectActivitiesViewController: UIViewController {
     }
     
     func updateViewsForLog() {
-        loadViewIfNeeded()
-        if let log = log,
-            let nsLogActivities = log.activities,
-            let logActivities = Array(nsLogActivities) as? [Activity] {
-            displayActivities[0] = logActivities
-            displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
-            setAppliedVariables()
-            activitiesTableView.reloadData()
-            let deleteLogNavigationBarItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(deleteLogButtonTapped(_:)))
-            self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
-        } else {
-            displayActivities[1] = ActivityController.shared.activities
-            setAppliedVariables()
-            activitiesTableView.reloadData()
-        }
+//        loadViewIfNeeded()
+//        if let log = log,
+//            let nsLogActivities = log.activities,
+//            let logActivities = Array(nsLogActivities) as? [Activity] {
+//            displayActivities[0] = logActivities
+//            displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
+//            setAppliedVariables()
+//            activitiesTableView.reloadData()
+//            let deleteLogNavigationBarItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(deleteLogButtonTapped(_:)))
+//            self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
+//        } else {
+//            displayActivities[1] = ActivityController.shared.activities
+//            setAppliedVariables()
+//            activitiesTableView.reloadData()
+//        }
     }
 } // End Of Class
 
@@ -295,20 +295,20 @@ extension SelectActivitiesViewController: UISearchBarDelegate{
     
     // Searchbar text did change
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        isSearching = true
-        
-        searchedActivities.removeAll(keepingCapacity: false)
-        
-        for activity in ActivityController.shared.activities {
-            if activity.title?.lowercased().contains(searchText.lowercased()) ?? false {
-                searchedActivities.append(activity)
-            }
-        }
-        if searchText == "" {
-            isSearching = false
-        }
-        
-        activitiesTableView.reloadData()
+//        isSearching = true
+//
+//        searchedActivities.removeAll(keepingCapacity: false)
+//
+//        for activity in ActivityController.shared.activities {
+//            if activity.title?.lowercased().contains(searchText.lowercased()) ?? false {
+//                searchedActivities.append(activity)
+//            }
+//        }
+//        if searchText == "" {
+//            isSearching = false
+//        }
+//
+//        activitiesTableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

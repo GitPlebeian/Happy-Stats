@@ -37,8 +37,13 @@ class ActivitiesViewController: UIViewController{
     }
     
     @IBAction func createNewActivityButtonTapped(_ sender: Any) {
+        createActivityAlert()
+    }
+    
+    // MARK: - Custom Functions
+    
+    func createActivityAlert() {
         alertController = UIAlertController(title: "New Activity", message: nil, preferredStyle: .alert)
-//        alertController?.view.backgroundColor = .blue
         alertController?.addTextField { (textField) in
             textField.font = UIFont(name: "SFProDisplay-Light", size: 15)
             textField.placeholder = "Title"
@@ -48,9 +53,19 @@ class ActivitiesViewController: UIViewController{
         let addActivityAction = UIAlertAction(title: "Add", style: .default) { (_) in
             guard let activityTitle = self.alertController?.textFields?[0].text else {return}
             if !activityTitle.isEmpty {
-                ActivityController.shared.createActivity(title: activityTitle)
                 let feedback = UINotificationFeedbackGenerator()
-                feedback.notificationOccurred(.success)
+                feedback.prepare()
+                ActivityController.shared.createActivity(title: activityTitle, completion: { (success) in
+                    DispatchQueue.main.async {
+                        if success {
+                            feedback.notificationOccurred(.success)
+                            self.activityTableView.reloadData()
+                        } else {
+                            feedback.notificationOccurred(.error)
+                            self.errorAlert(message: "Error Saving To Database. Sorry, I'm working on it")
+                        }
+                    }
+                })
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -60,6 +75,15 @@ class ActivitiesViewController: UIViewController{
         
         alertController?.addAction(addActivityAction)
         alertController?.addAction(cancelAction)
+        guard let alertController = alertController else {return}
+        present(alertController, animated: true)
+    }
+    
+    // Presents a message to the user via alert
+    func errorAlert(message: String) {
+        alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController?.addAction(okAction)
         guard let alertController = alertController else {return}
         present(alertController, animated: true)
     }
@@ -100,8 +124,18 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let activityToDelete = ActivityController.shared.activities[indexPath.row]
-            ActivityController.shared.deleteActivity(activity: activityToDelete)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let feedback = UINotificationFeedbackGenerator()
+            feedback.prepare()
+            ActivityController.shared.deleteActivity(activity: activityToDelete) { (success) in
+                DispatchQueue.main.async {
+                    if success {
+                        feedback.notificationOccurred(.success)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                    } else {
+                        self.errorAlert(message: "Error Deleting Form Database")
+                    }
+                }
+            }
         }
     }
 }

@@ -1,13 +1,13 @@
+////
+////  Stat+Convenience.swift
+////  happy
+////
+////  Created by Jackson Tubbs on 8/9/19.
+////  Copyright © 2019 Jax Tubbs. All rights reserved.
+////
 //
-//  Stat+Convenience.swift
-//  happy
-//
-//  Created by Jackson Tubbs on 8/9/19.
-//  Copyright © 2019 Jax Tubbs. All rights reserved.
-//
-
-import Foundation
-import CoreData
+//import Foundation
+//import CoreData
 //
 //extension Log {
 //

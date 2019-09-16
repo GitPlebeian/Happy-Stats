@@ -166,19 +166,19 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
     // Did Select
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Updates Selectedate. The cell has a did set on the isSelected and will update the view based on that
-        selectedDate = CalendarHelper.shared.months[indexPath.section].days[CalendarHelper.shared.getIndexForRow(indexPath: indexPath)]
-        guard let selectedDate = selectedDate else {return}
-        currentLog = LogController.shared.getLogForDate(date: selectedDate)
-        if let currentLog = currentLog {
-            rating = Int(currentLog.rating)
-            updateViewsForRating()
-        }
-        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
-        selectionFeedbackGenerator.selectionChanged()
-        
-        ratingEditStackView.isUserInteractionEnabled = true
-        ratingEditStackView.alpha = 1
-        calendarCollectionView.reloadData()
+//        selectedDate = CalendarHelper.shared.months[indexPath.section].days[CalendarHelper.shared.getIndexForRow(indexPath: indexPath)]
+//        guard let selectedDate = selectedDate else {return}
+//        currentLog = LogController.shared.getLogForDate(date: selectedDate)
+//        if let currentLog = currentLog {
+//            rating = Int(currentLog.rating)
+//            updateViewsForRating()
+//        }
+//        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+//        selectionFeedbackGenerator.selectionChanged()
+//
+//        ratingEditStackView.isUserInteractionEnabled = true
+//        ratingEditStackView.alpha = 1
+//        calendarCollectionView.reloadData()
     }
     
     // MARK: - Flowlayout
