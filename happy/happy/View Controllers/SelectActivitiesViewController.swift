@@ -24,7 +24,7 @@ class SelectActivitiesViewController: UIViewController {
     var log: Log? {
         didSet {
             rating = Int(log!.rating)
-            updateViewsForLog()
+            updateCellsWithActivities()
         }
     }
     var selectedDate: Date?
@@ -56,8 +56,7 @@ class SelectActivitiesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        updateViewsForLog()
-        // FIXME: - Relaod on view will appear
+        updateCellsWithActivities()
     }
     
     // MARK: - Actions
@@ -67,17 +66,38 @@ class SelectActivitiesViewController: UIViewController {
     }
     
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
-//
-//        let feedback = UINotificationFeedbackGenerator()
-//        feedback.notificationOccurred(.success)
-//
-//        if let log = log {
-//            LogController.shared.updateLog(log: log, selectedActivities: displayActivities[0], rating: rating)
-//        } else {
-//            guard let selectedDate = selectedDate else {return}
-//            LogController.shared.createLog(date: selectedDate, rating: rating, activities: displayActivities[0])
-//        }
-//        navigationController?.popViewController(animated: true)
+
+        let feedback = UINotificationFeedbackGenerator()
+        feedback.prepare()
+
+        if let log = log {
+            log.activities = displayActivities[0]
+            log.rating = rating
+            LogController.shared.updateLog(log: log) { (success) in
+                DispatchQueue.main.async {
+                    if success {
+                        feedback.notificationOccurred(.success)
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                        feedback.notificationOccurred(.error)
+                        self.presentErrorAlert(message: "Error Updating Log In Database. Sorry ;(")
+                    }
+                }
+            }
+        } else {
+            guard let selectedDate = selectedDate else {return}
+            LogController.shared.createLog(date: selectedDate, rating: rating, activities: displayActivities[0]) { (success) in
+                DispatchQueue.main.async {
+                    if success {
+                        feedback.notificationOccurred(.success)
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                        feedback.notificationOccurred(.error)
+                        self.presentErrorAlert(message: "Error Saving Log In Database. Sorry ;(")
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func ratingSliderValueChanged(_ sender: Any) {
@@ -87,6 +107,16 @@ class SelectActivitiesViewController: UIViewController {
     }
     
     // MARK: - Custom Functions
+    
+    // Presents a message to the user via alert
+    func presentErrorAlert(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
+    }
     
     func presentDeleteLogAlert() {
 //        let alertController = UIAlertController(title: "Delete Log", message: "Are you sure?", preferredStyle: .alert)
@@ -131,22 +161,20 @@ class SelectActivitiesViewController: UIViewController {
         }
     }
     
-    func updateViewsForLog() {
-//        loadViewIfNeeded()
-//        if let log = log,
-//            let nsLogActivities = log.activities,
-//            let logActivities = Array(nsLogActivities) as? [Activity] {
-//            displayActivities[0] = logActivities
-//            displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
-//            setAppliedVariables()
-//            activitiesTableView.reloadData()
-//            let deleteLogNavigationBarItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(deleteLogButtonTapped(_:)))
-//            self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
-//        } else {
-//            displayActivities[1] = ActivityController.shared.activities
-//            setAppliedVariables()
-//            activitiesTableView.reloadData()
-//        }
+    func updateCellsWithActivities() {
+        loadViewIfNeeded()
+        if let log = log {
+            displayActivities[0] = log.activities
+            displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
+            setAppliedVariables()
+            let deleteLogNavigationBarItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(deleteLogButtonTapped(_:)))
+            self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
+            activitiesTableView.reloadData()
+        } else {
+            displayActivities[1] = ActivityController.shared.activities
+            setAppliedVariables()
+            activitiesTableView.reloadData()
+        }
     }
 } // End Of Class
 

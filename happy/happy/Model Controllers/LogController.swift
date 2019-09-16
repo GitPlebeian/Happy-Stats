@@ -42,7 +42,11 @@ class LogController {
     // MARK: - CRUD
     
     func createLog(date: Date, rating: Int, activities: [Activity] = [], completion: @escaping (Bool) -> Void) {
-        let log = Log(date: date, rating: rating, activities: activities)
+        var activityReferences: [CKRecord.Reference] = []
+        for activity in activities {
+            activityReferences.append(CKRecord.Reference(recordID: activity.recordID, action: .none))
+        }
+        let log = Log(date: date, rating: rating, activityReferences: activityReferences)
         let record = CKRecord(log: log)
         privateDB.save(record) { (record, error) in
             if let error = error {

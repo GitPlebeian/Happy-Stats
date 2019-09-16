@@ -14,7 +14,7 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selectedIndex = 2
+        self.selectedIndex = 1
         guard let tabBarItems = tabBar.items else {return}
         var index = 0
         for item in tabBarItems {
@@ -34,6 +34,12 @@ class MainTabBarController: UITabBarController {
                 print("Extra Tab Bar With No Selection Image")
             }
             index += 1
+        }
+        LogController.shared.fetchAllLogs { (success) in
+            print("\(LogController.shared.logs[0].activityReferences[0].recordID.recordName)")
+        }
+        ActivityController.shared.fetchAllActivities { (success) in
+            
         }
     }
 } // End of Class

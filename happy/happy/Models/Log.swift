@@ -13,28 +13,22 @@ struct LogConstants {
     static let recordTypeKey = "Log"
     fileprivate static let dateKey = "date"
     fileprivate static let ratingKey = "rating"
-    fileprivate static let activitiesKey = "activities"
-    
+    fileprivate static let activityReferencesKey = "activityReferences"
 }
 
 class Log {
     let date: Date
-    let rating: Int
-    let activities: [Activity]
+    var rating: Int
+    var activities: [Activity]
     let recordID: CKRecord.ID
-    var activityReferences: [CKRecord.Reference] {
-        var references: [CKRecord.Reference] = []
-        for activity in activities {
-            references.append(CKRecord.Reference(recordID: activity.recordID, action: .none))
-        }
-        return references
-    }
+    var activityReferences: [CKRecord.Reference]
     
-    init(date: Date, rating: Int, activities: [Activity], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
+    init(date: Date, rating: Int, activityReferences: [CKRecord.Reference], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
         self.date = date
         self.rating = rating
-        self.activities = activities
         self.recordID = recordID
+        self.activities = []
+        self.activityReferences = activityReferences
     }
 }
 
@@ -42,10 +36,9 @@ extension Log {
     convenience init?(record: CKRecord) {
         guard let date = record[LogConstants.dateKey] as? Date,
         let rating = record[LogConstants.ratingKey] as? Int,
-        let activities = record[LogConstants.activitiesKey] as? [Activity]
+        let activityReferences = record[LogConstants.activityReferencesKey] as? [CKRecord.Reference]
             else {return nil}
-        
-        self.init(date: date, rating: rating, activities: activities, recordID: record.recordID)
+        self.init(date: date, rating: rating, activityReferences: activityReferences, recordID: record.recordID)
     }
 }
 
@@ -54,7 +47,7 @@ extension CKRecord {
         self.init(recordType: LogConstants.recordTypeKey, recordID: log.recordID)
         self.setValue(log.date, forKey: LogConstants.dateKey)
         self.setValue(log.rating, forKey: LogConstants.ratingKey)
-        self.setValue(log.activities, forKey: LogConstants.activitiesKey)
+        self.setValue(log.activityReferences, forKey: LogConstants.activityReferencesKey)
     }
 }
 

@@ -17,6 +17,16 @@ class ActivityController {
     
     var activities: [Activity] = []
     
+    func getActivitiesNotInLog(log: Log) -> [Activity] {
+        var activitiesNotInLog: [Activity] = []
+        for activity in activities {
+            if !log.activities.contains(activity) {
+                activitiesNotInLog.append(activity)
+            }
+        }
+        return activitiesNotInLog
+    }
+    
     // MARK: - CRUD
     
     func createActivity(title: String, completion: @escaping (Bool) -> Void) {
