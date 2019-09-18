@@ -54,9 +54,18 @@ class LogController {
         }
     }
     
+    func pairLogAndActivities(log: Log) {
+        for activityReference in log.activityReferences {
+            for activity in ActivityController.shared.activities {
+                if activityReference.recordID == activity.recordID {
+                    log.activities.append(activity)
+                }
+            }
+        }
+    }
     // MARK: - CRUD
     
-    func createLog(date: Date, rating: Int, activities: [Activity] = [], completion: @escaping (Bool) -> Void) {
+    func createLog(date: Date, rating: Int, activities: [Activity] = [], completion: @escaping (Log?) -> Void) {
         var activityReferences: [CKRecord.Reference] = []
         for activity in activities {
             activityReferences.append(CKRecord.Reference(recordID: activity.recordID, action: .none))
@@ -66,15 +75,17 @@ class LogController {
         privateDB.save(record) { (record, error) in
             if let error = error {
                 print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
-                completion(false)
+                completion(nil)
                 return
             }
             guard let record = record, let log = Log(record: record) else {
-                completion(false)
+                completion(nil)
                 return
             }
+            self.pairLogAndActivities(log: log)
+            ActivityController.shared.logCreated(rating: log.rating, activities: activities)
             self.logs.append(log)
-            completion(true)
+            completion(log)
         }
     }
     
@@ -98,20 +109,30 @@ class LogController {
         }
     }
     
-    func updateLog(log: Log, completion: @escaping (Bool) -> Void) {
+    func updateLog(log: Log, newRating: Int, activities: [Activity], completion: @escaping (Log?) -> Void) {
+        let oldRating = log.rating
+        log.rating = newRating
+        log.activities = activities
         updateActivityReferences(log: log)
         let modificationOP = CKModifyRecordsOperation(recordsToSave: [CKRecord(log: log)], recordIDsToDelete: nil)
         modificationOP.savePolicy = .changedKeys
         modificationOP.queuePriority = .veryHigh
         modificationOP.qualityOfService = .userInitiated
         
-        modificationOP.modifyRecordsCompletionBlock = {(_, _, error) in
+        modificationOP.modifyRecordsCompletionBlock = {(records, _, error) in
             if let error = error {
                 print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
-                completion(false)
+                completion(nil)
                 return
             }
-            completion(true)
+            
+            guard let records = records, let log = Log(record: records[0]) else {
+                completion(nil)
+                return
+            }
+            self.pairLogAndActivities(log: log)
+            ActivityController.shared.logChanged(oldRating: oldRating, newRating: log.rating, activities: log.activities)
+            completion(log)
         }
         privateDB.add(modificationOP)
     }
@@ -137,6 +158,7 @@ class LogController {
                 return
             } else {
                 completion(true)
+                ActivityController.shared.logDeleted(rating: log.rating, activities: log.activities)
                 self.logs.remove(at: index)
             }
         }

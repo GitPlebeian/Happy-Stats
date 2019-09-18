@@ -43,6 +43,7 @@ class HistoricalLogsViewController: UIViewController{
         super.viewDidLoad()
         self.tabBarController?.tabBar.barTintColor = .white
         
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!]
         calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
         calendarCollectionView.isPagingEnabled = true
@@ -78,7 +79,7 @@ class HistoricalLogsViewController: UIViewController{
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,13 +88,13 @@ class HistoricalLogsViewController: UIViewController{
         if !scrolledToBottom {
             scrollToBottom()
         }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM dd yyyy"
-        if let selectedDate = selectedDate {
-            print(dateFormatter.string(from: selectedDate))
-        } else {
-            print("-- NO SELECTED DATE --")
-        }
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "MM dd yyyy"
+//        if let selectedDate = selectedDate {
+//            print(dateFormatter.string(from: selectedDate))
+//        } else {
+//            print("-- NO SELECTED DATE --")
+//        }
     }
     
     // MARK: - Actions {
@@ -130,6 +131,7 @@ class HistoricalLogsViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSelectActivities" {
             guard let destinationVC = segue.destination as? SelectActivitiesViewController else {return}
+            destinationVC.delegate = self
             if let log = currentLog {
                 destinationVC.log = log
             } else {
@@ -143,6 +145,16 @@ class HistoricalLogsViewController: UIViewController{
 } // End of class
 
 // MARK: - Extensions
+
+extension HistoricalLogsViewController: SelectActivitiesViewControllerDelegate {
+    func setCurrentLog(log: Log?) {
+        if let log = log {
+            currentLog = log
+        } else {
+            currentLog = nil
+        }
+    }
+}
 
 extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     

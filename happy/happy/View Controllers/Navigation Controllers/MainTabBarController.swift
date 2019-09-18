@@ -10,7 +10,6 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    // MARK: - Private Variables
 
     override func viewDidLoad() {
         super.viewDidLoad()

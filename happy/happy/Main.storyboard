@@ -376,7 +376,7 @@
             </objects>
             <point key="canvasLocation" x="2207" y="603"/>
         </scene>
-        <!--(SelectedDate)-->
+        <!--New Log-->
         <scene sceneID="xS0-rh-3oX">
             <objects>
                 <viewController id="LCB-ky-qZD" customClass="SelectActivitiesViewController" customModule="happy" customModuleProvider="target" sceneMemberID="viewController">
@@ -513,7 +513,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yJ1-7Y-DMs"/>
                     </view>
-                    <navigationItem key="navigationItem" title="(SelectedDate)" id="wqq-Kn-3cZ"/>
+                    <navigationItem key="navigationItem" title="New Log" id="wqq-Kn-3cZ"/>
                     <connections>
                         <outlet property="activitiesSearchBar" destination="5LC-gM-a8x" id="kmY-DG-XPY"/>
                         <outlet property="activitiesTableView" destination="tKj-Ew-Md4" id="mnk-GN-V7Z"/>
@@ -521,6 +521,7 @@
                         <outlet property="logRatingSlider" destination="wZt-kV-QHY" id="RBV-3J-ugX"/>
                         <outlet property="logRatingView" destination="VKU-Me-3oj" id="Wzf-Ji-ClP"/>
                         <outlet property="saveLogButton" destination="vIa-Um-203" id="ZoL-kb-Rvk"/>
+                        <outlet property="titleNavigationItem" destination="wqq-Kn-3cZ" id="7ow-ah-4fd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMB-92-inu" userLabel="First Responder" sceneMemberID="firstResponder"/>

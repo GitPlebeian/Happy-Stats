@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SelectActivitiesViewControllerDelegate {
+    func setCurrentLog(log: Log?)
+}
+
 class SelectActivitiesViewController: UIViewController {
     
     // MARK: - Outlets
@@ -18,16 +22,24 @@ class SelectActivitiesViewController: UIViewController {
     @IBOutlet weak var logRatingSlider: UISlider!
     @IBOutlet weak var logRatingLabel: UILabel!
     @IBOutlet weak var logRatingView: UIView!
+    @IBOutlet weak var titleNavigationItem: UINavigationItem!
     
     // MARK: - Properties
     
+    var delegate: SelectActivitiesViewControllerDelegate?
     var log: Log? {
         didSet {
             rating = Int(log!.rating)
             updateCellsWithActivities()
         }
     }
-    var selectedDate: Date?
+    var selectedDate: Date? {
+        didSet {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MM yyyy"
+            updateNavBarTitle(title: dateFormatter.string(from: selectedDate!))
+        }
+    }
     var displayActivities: [[Activity]] = [[],[]]
     var allApplied = false
     var allActivities = false
@@ -48,15 +60,24 @@ class SelectActivitiesViewController: UIViewController {
         activitiesSearchBar.delegate = self
         setupSearchBar()
         
+        updateCellsWithActivities()
         updateViewsForRatingChange()
         logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
         saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateCellsWithActivities()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        if let log = log {
+//            let calendarViewController = navigationController?.viewControllers[0] as! HistoricalLogsViewController
+//            calendarViewController.currentLog = log
+//        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Actions
@@ -71,11 +92,10 @@ class SelectActivitiesViewController: UIViewController {
         feedback.prepare()
 
         if let log = log {
-            log.rating = rating
-            log.activities = displayActivities[0]
-            LogController.shared.updateLog(log: log) { (success) in
+            LogController.shared.updateLog(log: log, newRating: rating, activities: displayActivities[0]) { (log) in
                 DispatchQueue.main.async {
-                    if success {
+                    if let log = log {
+                        self.delegate?.setCurrentLog(log: log)
                         feedback.notificationOccurred(.success)
                         self.navigationController?.popViewController(animated: true)
                     } else {
@@ -86,11 +106,14 @@ class SelectActivitiesViewController: UIViewController {
             }
         } else {
             guard let selectedDate = selectedDate else {return}
-            LogController.shared.createLog(date: selectedDate, rating: rating, activities: displayActivities[0]) { (success) in
+            LogController.shared.createLog(date: selectedDate, rating: rating, activities: displayActivities[0]) { (log) in
                 DispatchQueue.main.async {
-                    if success {
+                    if let log = log {
+                        self.delegate?.setCurrentLog(log: log)
                         feedback.notificationOccurred(.success)
                         self.navigationController?.popViewController(animated: true)
+//                        let calendarViewController = self.navigationController?.viewControllers[0] as! HistoricalLogsViewController
+//                        calendarViewController.currentLog = log
                     } else {
                         feedback.notificationOccurred(.error)
                         self.presentErrorAlert(message: "Error Saving Log In Database. Sorry ;(")
@@ -108,6 +131,10 @@ class SelectActivitiesViewController: UIViewController {
     
     // MARK: - Custom Functions
     
+    func updateNavBarTitle(title: String) {
+        self.title = title
+    }
+    
     // Presents a message to the user via alert
     func presentErrorAlert(message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
@@ -122,11 +149,22 @@ class SelectActivitiesViewController: UIViewController {
         let alertController = UIAlertController(title: "Delete Log", message: "Are you sure?", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             guard let log = self.log else {return}
-            LogController.shared.deleteLog(log: log)
-            self.navigationController?.popViewController(animated: true)
+            let feedback = UINotificationFeedbackGenerator()
+            feedback.prepare()
+            LogController.shared.deleteLog(log: log, completion: { (success) in
+                DispatchQueue.main.async {
+                    if success {
+                        self.delegate?.setCurrentLog(log: nil)
+                        feedback.notificationOccurred(.success)
+                    } else {
+                        feedback.notificationOccurred(.error)
+                    }
+                    self.navigationController?.popViewController(animated: true)
+                }
+            })
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        cancelAction.setValue(UIColor.black, forKey: "titleTextColor")
+//        cancelAction.setValue(UIColor.black, forKey: "titleTextColor")
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
@@ -323,20 +361,20 @@ extension SelectActivitiesViewController: UISearchBarDelegate{
     
     // Searchbar text did change
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        isSearching = true
-//
-//        searchedActivities.removeAll(keepingCapacity: false)
-//
-//        for activity in ActivityController.shared.activities {
-//            if activity.title?.lowercased().contains(searchText.lowercased()) ?? false {
-//                searchedActivities.append(activity)
-//            }
-//        }
-//        if searchText == "" {
-//            isSearching = false
-//        }
-//
-//        activitiesTableView.reloadData()
+        isSearching = true
+
+        searchedActivities.removeAll(keepingCapacity: false)
+
+        for activity in ActivityController.shared.activities {
+            if activity.title.lowercased().contains(searchText.lowercased()){
+                searchedActivities.append(activity)
+            }
+        }
+        if searchText == "" {
+            isSearching = false
+        }
+
+        activitiesTableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

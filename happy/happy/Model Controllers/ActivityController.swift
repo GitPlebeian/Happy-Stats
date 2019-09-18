@@ -27,6 +27,20 @@ class ActivityController {
         return activitiesNotInLog
     }
     
+    // MARK: - Updating Average Rating
+    
+    func logChanged(oldRating: Int, newRating: Int, activities: [Activity]) {
+        
+    }
+    
+    func logDeleted(rating: Int, activities: [Activity]) {
+        
+    }
+    
+    func logCreated(rating: Int, activities: [Activity]) {
+        
+    }
+    
     // MARK: - CRUD
     
     func createActivity(title: String, completion: @escaping (Bool) -> Void) {
