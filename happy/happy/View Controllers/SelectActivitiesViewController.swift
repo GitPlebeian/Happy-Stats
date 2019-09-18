@@ -92,7 +92,7 @@ class SelectActivitiesViewController: UIViewController {
         feedback.prepare()
 
         if let log = log {
-            LogController.shared.updateLog(log: log, newRating: rating, activities: displayActivities[0]) { (log) in
+            LogController.shared.updateLog(log: log, newRating: rating, newActivities: displayActivities[0]) { (log) in
                 DispatchQueue.main.async {
                     if let log = log {
                         self.delegate?.setCurrentLog(log: log)

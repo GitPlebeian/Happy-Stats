@@ -29,19 +29,36 @@ class ActivityController {
     
     // MARK: - Updating Average Rating
     
-    func logChanged(oldRating: Int, newRating: Int, activities: [Activity]) {
-        
+    func removeLogData(rating: Int, activities: [Activity]) {
+        for activity in activities {
+            activity.totalRating -= rating
+            activity.timesSelected -= 1
+            calculateAverageRating(activity: activity)
+        }
     }
     
-    func logDeleted(rating: Int, activities: [Activity]) {
-        
+    func addLogData(rating: Int, activities: [Activity]) {
+        for activity in activities {
+            activity.totalRating += rating
+            activity.timesSelected += 1
+            calculateAverageRating(activity: activity)
+        }
     }
     
-    func logCreated(rating: Int, activities: [Activity]) {
-        
+    func calculateAverageRating(activity: Activity) {
+        if activity.timesSelected == 0 {
+            activity.averageRating = -1
+        } else {
+            let averageRating = floor((Double(activity.totalRating) / Double(activity.timesSelected) * 100)) / 100
+            activity.averageRating = averageRating
+        }
     }
     
     // MARK: - CRUD
+    
+    func copyActivity(activity: Activity) -> Activity {
+        return Activity(title: activity.title, totalRating: activity.totalRating, timesSelected: activity.timesSelected, averageRating: activity.averageRating, recordID: activity.recordID)
+    }
     
     func createActivity(title: String, completion: @escaping (Bool) -> Void) {
         let activity = Activity(title: title)
@@ -81,8 +98,8 @@ class ActivityController {
         }
     }
     
-    func updateActivity(activity: Activity, completion: @escaping (Bool) -> Void) {
-        let modificationOP = CKModifyRecordsOperation(recordsToSave: [CKRecord(activity: activity)], recordIDsToDelete: nil)
+    func updateActivities(activities: [Activity], completion: @escaping (Bool) -> Void) {
+        let modificationOP = CKModifyRecordsOperation(recordsToSave: activities.compactMap({CKRecord(activity: $0)}), recordIDsToDelete: nil)
         modificationOP.savePolicy = .changedKeys
         modificationOP.queuePriority = .veryHigh
         modificationOP.qualityOfService = .userInitiated
@@ -110,8 +127,15 @@ class ActivityController {
                 completion(false)
                 return
             } else {
-                completion(true)
-                self.activities.remove(at: index)
+                LogController.shared.deleteActivityFromLogs(activity: self.activities[index], completion: { (success) in
+                    if success {
+                        self.activities.remove(at: index)
+                        completion(true)
+                    } else {
+                        completion(false)
+                        return
+                    }
+                })
             }
         }
     }

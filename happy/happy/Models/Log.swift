@@ -23,11 +23,11 @@ class Log {
     let recordID: CKRecord.ID
     var activityReferences: [CKRecord.Reference]
     
-    init(date: Date, rating: Int, activityReferences: [CKRecord.Reference], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
+    init(date: Date, rating: Int, activityReferences: [CKRecord.Reference], activities: [Activity] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
         self.date = date
         self.rating = rating
         self.recordID = recordID
-        self.activities = []
+        self.activities = activities
         self.activityReferences = activityReferences
     }
 }

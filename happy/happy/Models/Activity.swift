@@ -19,13 +19,13 @@ struct ActivityConstants {
 
 class Activity {
     
-    let title: String
-    let totalRating: Int
-    let timesSelected: Int
-    let averageRating: Double
+    var title: String
+    var totalRating: Int
+    var timesSelected: Int
+    var averageRating: Double
     let recordID: CKRecord.ID
     
-    init(title: String, totalRating: Int = 0, timesSelected: Int = 0, averageRating: Double = 0, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
+    init(title: String, totalRating: Int = 0, timesSelected: Int = 0, averageRating: Double = -1, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
         self.title = title
         self.totalRating = totalRating
         self.timesSelected = timesSelected
