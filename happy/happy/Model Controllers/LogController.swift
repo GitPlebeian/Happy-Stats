@@ -54,6 +54,7 @@ class LogController {
         }
     }
     
+    // Will update a log with activities
     func pairLogAndActivities(log: Log) {
         for activityReference in log.activityReferences {
             for activity in ActivityController.shared.activities {
@@ -63,12 +64,16 @@ class LogController {
             }
         }
     }
+    
     // MARK: - CRUD
     
+    // Creates a new log with a the information coppied
     func copyLog(log: Log) -> Log{
         return Log(date: log.date, rating: log.rating, activityReferences: log.activityReferences, activities: log.activities, recordID: log.recordID)
     }
     
+    
+    // Creates a log and will update the activities average happiness based on the log
     func createLog(date: Date, rating: Int, activities: [Activity] = [], completion: @escaping (Log?) -> Void) {
         var readyToComplete = false
         var activityReferences: [CKRecord.Reference] = []
@@ -119,6 +124,7 @@ class LogController {
         })
     }
     
+    // Will Fetch all of the logs from the users Cloud Storage
     func fetchAllLogs(completion: @escaping (Bool) -> Void) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: LogConstants.recordTypeKey, predicate: predicate)
@@ -139,6 +145,7 @@ class LogController {
         }
     }
     
+    // Will update the log and will update the activities' values based on the logs rating
     func updateLog(log: Log, newRating: Int, newActivities: [Activity], completion: @escaping (Log?) -> Void) {
         let oldLogCopy = copyLog(log: log)
         log.rating = newRating
@@ -169,6 +176,7 @@ class LogController {
         privateDB.add(modificationOP)
     }
     
+    // Used by the updateLog function to revert back to the old status
     func revertLogChanges(log: Log, oldLogCopy: Log) {
         ActivityController.shared.removeLogData(rating: log.rating, activities: log.activities)
         ActivityController.shared.addLogData(rating: oldLogCopy.rating, activities: oldLogCopy.activities)
@@ -177,6 +185,7 @@ class LogController {
         log.activityReferences = oldLogCopy.activityReferences
     }
     
+    // Update activityReferences
     private func updateActivityReferences(log: Log) {
         var activityReferences: [CKRecord.Reference] = []
         for activity in log.activities {
@@ -186,6 +195,7 @@ class LogController {
     }
     
     func deleteLog(log: Log, completion: @escaping (Bool) -> Void) {
+        var readyToComplete = false
         guard let index = logs.firstIndex(of: log) else {
             completion(false)
             return
@@ -197,6 +207,11 @@ class LogController {
                 completion(false)
                 return
             } else {
+                if readyToComplete == true {
+                    
+                } else {
+                    readyToComplete = true
+                }
                 completion(true)
                 ActivityController.shared.removeLogData(rating: log.rating, activities: log.activities)
                 self.logs.remove(at: index)
