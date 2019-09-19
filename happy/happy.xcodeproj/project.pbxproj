@@ -18,7 +18,6 @@
 		864D199F22F634A3009368ED /* LogControllerCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D199E22F634A3009368ED /* LogControllerCoreData.swift */; };
 		864D19A122F634D4009368ED /* ActivityControllerCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A022F634D4009368ED /* ActivityControllerCoreData.swift */; };
 		864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A722F65033009368ED /* ActivitiesViewController.swift */; };
-		864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A922F65789009368ED /* ActivityDetailViewController.swift */; };
 		864D19AC22F66B72009368ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D19AB22F66B72009368ED /* Main.storyboard */; };
 		864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19AD22F67378009368ED /* MainTabBarController.swift */; };
 		8650F1972321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8650F1962321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift */; };
@@ -51,7 +50,6 @@
 		864D199E22F634A3009368ED /* LogControllerCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogControllerCoreData.swift; sourceTree = "<group>"; };
 		864D19A022F634D4009368ED /* ActivityControllerCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityControllerCoreData.swift; sourceTree = "<group>"; };
 		864D19A722F65033009368ED /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
-		864D19A922F65789009368ED /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		864D19AB22F66B72009368ED /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		864D19AD22F67378009368ED /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8650F1962321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityForActivityViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 			children = (
 				865311F822FA33DB00E198BC /* Navigation Controllers */,
 				864D19A722F65033009368ED /* ActivitiesViewController.swift */,
-				864D19A922F65789009368ED /* ActivityDetailViewController.swift */,
 				86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */,
 				86E0F829231F41A80025DE0E /* SelectActivitiesViewController.swift */,
 				86CCFD342306045800CDCC21 /* ReportsViewController.swift */,
@@ -312,7 +309,6 @@
 				864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */,
 				864D198622F63429009368ED /* AppDelegate.swift in Sources */,
 				866CAE722319A35C00C85FF8 /* CalenderHelper.swift in Sources */,
-				864D19AA22F65789009368ED /* ActivityDetailViewController.swift in Sources */,
 				8624C44B232FFCB000B60BE7 /* ActivityController.swift in Sources */,
 				86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */,
 			);

@@ -178,15 +178,6 @@ class LogController {
         privateDB.add(modificationOP)
     }
     
-    // Used by the updateLog function to revert back to the old status
-    func revertLogChanges(log: Log, oldLogCopy: Log) {
-        ActivityController.shared.removeLogData(rating: log.rating, activities: log.activities)
-        ActivityController.shared.addLogData(rating: oldLogCopy.rating, activities: oldLogCopy.activities)
-        log.rating = oldLogCopy.rating
-        log.activities = oldLogCopy.activities
-        log.activityReferences = oldLogCopy.activityReferences
-    }
-    
     // Delete Log
     func deleteLog(log: Log, completion: @escaping (Bool) -> Void) {
         var readyToComplete = false
@@ -287,4 +278,12 @@ class LogController {
         return Log(date: log.date, rating: log.rating, activityReferences: log.activityReferences, activities: log.activities, recordID: log.recordID)
     }
     
+    // Used by the updateLog function to revert back to the old status
+    private func revertLogChanges(log: Log, oldLogCopy: Log) {
+        ActivityController.shared.removeLogData(rating: log.rating, activities: log.activities)
+        ActivityController.shared.addLogData(rating: oldLogCopy.rating, activities: oldLogCopy.activities)
+        log.rating = oldLogCopy.rating
+        log.activities = oldLogCopy.activities
+        log.activityReferences = oldLogCopy.activityReferences
+    }
 }

@@ -32,6 +32,8 @@ class ActivityForActivityViewTableViewCell: UITableViewCell {
         super.awakeFromNib()
         activityView.layer.cornerRadius = activityView.frame.height / 2
         ratingView.layer.cornerRadius = ratingView.frame.height / 2
+        activityView.layer.borderWidth = 1.5
+        activityView.layer.borderColor = UIColor.black.cgColor
         ratingView.backgroundColor = .white
     }
     
@@ -39,10 +41,16 @@ class ActivityForActivityViewTableViewCell: UITableViewCell {
     
     func updateViewForActivity() {
         guard let activity = activity else {return}
+        if activity.timesSelected == 0 {
+            daysAppliedLabel.text = "No Days Selected"
+//            daysAppliedLabel.isHidden = true
+            ratingLabel.isHidden = true
+        } else {
+            ratingLabel.isHidden = false
+            daysAppliedLabel.text = "\(activity.timesSelected)"
+        }
         titleLabel.text = activity.title
-        daysAppliedLabel.text = String(activity.timesSelected)
         activityView.backgroundColor = RatingColors.getColorFoInt(number: Int(activity.averageRating.rounded()))
-        let rating = (activity.averageRating * 100).rounded() / 100
-        ratingLabel.text = "\(rating)"
+        ratingLabel.text = "\(activity.averageRating)"
     }
 }

@@ -70,8 +70,6 @@ class ActivitiesViewController: UIViewController{
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         addActivityAction.isEnabled = false
-        cancelAction.setValue(UIColor.black, forKey: "titleTextColor")
-        addActivityAction.setValue(UIColor.black, forKey: "titleTextColor")
         
         alertController?.addAction(addActivityAction)
         alertController?.addAction(cancelAction)

@@ -31,12 +31,15 @@ class SelectActivitiesViewController: UIViewController {
         didSet {
             rating = Int(log!.rating)
             updateCellsWithActivities()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            updateNavBarTitle(title: dateFormatter.string(from: log!.date))
         }
     }
     var selectedDate: Date? {
         didSet {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd MM yyyy"
+            dateFormatter.dateFormat = "MM-dd-yyyy"
             updateNavBarTitle(title: dateFormatter.string(from: selectedDate!))
         }
     }
@@ -60,24 +63,14 @@ class SelectActivitiesViewController: UIViewController {
         activitiesSearchBar.delegate = self
         setupSearchBar()
         
+        updateViews()
         updateCellsWithActivities()
         updateViewsForRatingChange()
-        logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
-        saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
-        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        if let log = log {
-//            let calendarViewController = navigationController?.viewControllers[0] as! HistoricalLogsViewController
-//            calendarViewController.currentLog = log
-//        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        navigationController?.popViewController(animated: true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateCellsWithActivities()
     }
     
     // MARK: - Actions
@@ -112,8 +105,6 @@ class SelectActivitiesViewController: UIViewController {
                         self.delegate?.setCurrentLog(log: log)
                         feedback.notificationOccurred(.success)
                         self.navigationController?.popViewController(animated: true)
-//                        let calendarViewController = self.navigationController?.viewControllers[0] as! HistoricalLogsViewController
-//                        calendarViewController.currentLog = log
                     } else {
                         feedback.notificationOccurred(.error)
                         self.presentErrorAlert(message: "Error Saving Log In Database. Sorry ;(")
@@ -130,6 +121,15 @@ class SelectActivitiesViewController: UIViewController {
     }
     
     // MARK: - Custom Functions
+    
+    func updateViews() {
+        logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
+        saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
+        logRatingView.layer.borderWidth = 1.5
+        logRatingView.layer.borderColor = UIColor.black.cgColor
+        saveLogButton.layer.borderWidth = 1.5
+        saveLogButton.layer.borderColor = UIColor.black.cgColor
+    }
     
     func updateNavBarTitle(title: String) {
         self.title = title
@@ -212,6 +212,11 @@ class SelectActivitiesViewController: UIViewController {
             displayActivities[1] = ActivityController.shared.activities
             setAppliedVariables()
             activitiesTableView.reloadData()
+        }
+        if displayActivities[0].count == 0 && displayActivities[1].count == 0 {
+            activitiesTableView.isHidden = true
+        } else {
+            activitiesTableView.isHidden = false
         }
     }
 } // End Of Class

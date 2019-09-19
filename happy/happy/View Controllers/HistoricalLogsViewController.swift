@@ -10,7 +10,6 @@ import UIKit
 
 class HistoricalLogsViewController: UIViewController{
     
-    
     // MARK: - Outlets
     
     @IBOutlet weak var calendarCollectionView: UICollectionView!
@@ -19,12 +18,7 @@ class HistoricalLogsViewController: UIViewController{
     
     
     @IBOutlet weak var calendarNavigationItem: UINavigationItem!
-    @IBOutlet weak var ratingEditStackView: UIStackView!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var ratingLabelView: UIView!
-    @IBOutlet weak var ratingSlider: UISlider!
-    @IBOutlet weak var saveLogButton: UIButton!
-    @IBOutlet weak var actionsButton: UIButton!
+    @IBOutlet weak var editLogButton: UIButton!
     
     
     // MARK: - Properties
@@ -39,28 +33,13 @@ class HistoricalLogsViewController: UIViewController{
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        self.tabBarController?.tabBar.barTintColor = .white
-        
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!]
+        updateViews()
         calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.showsVerticalScrollIndicator = false
-        ratingEditStackView.isUserInteractionEnabled = false
-        ratingEditStackView.alpha = 0.5
-        ratingLabel.text = "Select Date"
-        ratingLabelView.layer.cornerRadius = ratingLabel.frame.height / 2
-        ratingSlider.thumbTintColor = .black
-        ratingSlider.minimumTrackTintColor = .black
-        saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
-        actionsButton.layer.cornerRadius = actionsButton.frame.height / 2
-        
-        //        activitiesViewSaveButton.layer.shadowColor = UIColor.black.cgColor
-        //        activitiesViewSaveButton.layer.shadowOffset = CGSize(width: 0, height: -0)
-        //        activitiesViewSaveButton.layer.shadowOpacity = 0.3
-        //        activitiesViewSaveButton.layer.shadowRadius = 2
+        calendarCollectionView.scrollsToTop = false
         
         // Sets the month label and year label equal to todays date
         let date = Date()
@@ -84,48 +63,35 @@ class HistoricalLogsViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // Used inside of didappear because the collectionview cannot be modified in the scrolling way unless it has appeared
-        if !scrolledToBottom {
-            scrollToBottom()
+        if scrolledToBottom == false {
+            scrolledToBottom = true
+            calendarCollectionView.scrollToItem(at: IndexPath(row: 41, section: CalendarHelper.shared.months.count - 1), at: UICollectionView.ScrollPosition.bottom, animated: false)
         }
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "MM dd yyyy"
-//        if let selectedDate = selectedDate {
-//            print(dateFormatter.string(from: selectedDate))
-//        } else {
-//            print("-- NO SELECTED DATE --")
-//        }
     }
-    
-    // MARK: - Actions {
-    
-    @IBAction func ratingSliderValueChanged(_ sender: UISlider) {
-        rating = Int(round(sender.value))
-        ratingSlider.value = Float(rating)
-        updateViewsForRating()
-    }
-    
-    
     
     // MARK: - Custom Functions
     
-    // Used because the most current date is at the bottom of the collections view. I set it to the bottom of the collection view because I think it is more intuitive to the user. Easier user experience
-    func scrollToBottom() {
-        scrolledToBottom = true
-        let contentSize = calendarCollectionView.contentSize
-        let targetContentOffset = CGPoint(x: 0, y: contentSize.height - calendarCollectionView.bounds.size.height)
-        calendarCollectionView.setContentOffset(targetContentOffset, animated: false)
+    func updateViews() {
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!]
+        self.tabBarController?.tabBar.barTintColor = .white
+        editLogButton.layer.cornerRadius = editLogButton.frame.height / 2
+        editLogButton.layer.borderColor = UIColor.black.cgColor
+        editLogButton.layer.borderWidth = 1.5
+        editLogButton.isHidden = true
     }
     
     func updateViewsForRating() {
         let color = RatingColors.getColorFoInt(number: rating)
-        ratingLabel.text = "\(rating)"
-        ratingSlider.value = Float(rating)
-        ratingLabelView.backgroundColor = color
-        ratingSlider.minimumTrackTintColor = color
-        ratingSlider.thumbTintColor = color
-        saveLogButton.backgroundColor = color
-        actionsButton.backgroundColor = color
+        editLogButton.backgroundColor = color
+    }
+    
+    func presentAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -150,8 +116,12 @@ extension HistoricalLogsViewController: SelectActivitiesViewControllerDelegate {
     func setCurrentLog(log: Log?) {
         if let log = log {
             currentLog = log
+            rating = log.rating
+            updateViewsForRating()
         } else {
             currentLog = nil
+            rating = -1
+            updateViewsForRating()
         }
     }
 }
@@ -169,7 +139,6 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
     // Cell For Item At
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = calendarCollectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as? DateCollectionViewCell else {return UICollectionViewCell()}
-        
         cell.configure(indexPath: indexPath, calendar: calendarCollectionView, selectedDate: selectedDate)
         
         return cell
@@ -184,12 +153,14 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
         if let currentLog = currentLog {
             rating = Int(currentLog.rating)
             updateViewsForRating()
+        } else {
+            rating = -1
+            updateViewsForRating()
         }
         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         selectionFeedbackGenerator.selectionChanged()
 
-        ratingEditStackView.isUserInteractionEnabled = true
-        ratingEditStackView.alpha = 1
+        editLogButton.isHidden = false
         calendarCollectionView.reloadData()
     }
     
@@ -213,10 +184,4 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
         }
     }
     
-}
-
-extension HistoricalLogsViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
 }
