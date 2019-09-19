@@ -19,7 +19,7 @@ class LogController {
     
     // MARK: - Functions
     
-    // Get log for date is complicated due to the seconds and minutes and hours that would screw things up
+    // Get log for date
     func getLogForDate(date: Date) -> Log? {
         for log in logs {
             let logDate = log.date
@@ -67,59 +67,61 @@ class LogController {
     
     // MARK: - CRUD
     
-    // Creates a new log with a the information coppied
-    func copyLog(log: Log) -> Log{
-        return Log(date: log.date, rating: log.rating, activityReferences: log.activityReferences, activities: log.activities, recordID: log.recordID)
-    }
-    
-    
     // Creates a log and will update the activities average happiness based on the log
     func createLog(date: Date, rating: Int, activities: [Activity] = [], completion: @escaping (Log?) -> Void) {
         var readyToComplete = false
+        var errorOccured = false
         var activityReferences: [CKRecord.Reference] = []
         for activity in activities {
             activityReferences.append(CKRecord.Reference(recordID: activity.recordID, action: .none))
         }
         let log = Log(date: date, rating: rating, activityReferences: activityReferences)
         let record = CKRecord(log: log)
-        privateDB.save(record) { (record, error) in
-            if let error = error {
-                print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
-                ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
-                completion(nil)
-                return
-            }
-            guard let record = record, let savedLog = Log(record: record) else {
-                ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
-                completion(nil)
-                return
-            }
-            DispatchQueue.main.async {
-                if readyToComplete == true {
-                    self.pairLogAndActivities(log: savedLog)
-                    self.logs.append(savedLog)
-                    completion(savedLog)
-                } else {
-                    readyToComplete = true
-                }
-            }
-        }
         ActivityController.shared.addLogData(rating: log.rating, activities: activities)
-        ActivityController.shared.updateActivities(activities: activities, completion: { (success) in
-            if success {
-                DispatchQueue.main.async {
+        privateDB.save(record) { (record, error) in
+            DispatchQueue.main.async {
+                if errorOccured == false {
+                    if let error = error {
+                        print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
+                        errorOccured = true
+                        ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
+                        completion(nil)
+                        return
+                    }
+                    guard let record = record, let savedLog = Log(record: record) else {
+                        ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
+                        errorOccured = true
+                        completion(nil)
+                        return
+                    }
                     if readyToComplete == true {
-                        self.pairLogAndActivities(log: log)
-                        self.logs.append(log)
-                        completion(log)
+                        self.pairLogAndActivities(log: savedLog)
+                        self.logs.append(savedLog)
+                        completion(savedLog)
                     } else {
                         readyToComplete = true
                     }
                 }
-            } else {
-                ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
-                completion(nil)
-                return
+            }
+        }
+        ActivityController.shared.updateActivities(activities: activities, completion: { (success) in
+            DispatchQueue.main.async {
+                if errorOccured == false {
+                    if success {
+                        if readyToComplete == true {
+                            self.pairLogAndActivities(log: log)
+                            self.logs.append(log)
+                            completion(log)
+                        } else {
+                            readyToComplete = true
+                        }
+                    } else {
+                        ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
+                        errorOccured = true
+                        completion(nil)
+                        return
+                    }
+                }
             }
         })
     }
@@ -145,7 +147,7 @@ class LogController {
         }
     }
     
-    // Will update the log and will update the activities' values based on the logs rating
+    // Updates Log - Used when you press save on an existing log
     func updateLog(log: Log, newRating: Int, newActivities: [Activity], completion: @escaping (Log?) -> Void) {
         let oldLogCopy = copyLog(log: log)
         log.rating = newRating
@@ -185,40 +187,59 @@ class LogController {
         log.activityReferences = oldLogCopy.activityReferences
     }
     
-    // Update activityReferences
-    private func updateActivityReferences(log: Log) {
-        var activityReferences: [CKRecord.Reference] = []
-        for activity in log.activities {
-            activityReferences.append(CKRecord.Reference(recordID: activity.recordID, action: .none))
-        }
-        log.activityReferences = activityReferences
-    }
-    
+    // Delete Log
     func deleteLog(log: Log, completion: @escaping (Bool) -> Void) {
         var readyToComplete = false
+        var errorOccured = false
         guard let index = logs.firstIndex(of: log) else {
             completion(false)
             return
         }
+        ActivityController.shared.removeLogData(rating: log.rating, activities: log.activities)
         
         privateDB.delete(withRecordID: log.recordID) { (_, error) in
-            if let error = error {
-                print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
-                completion(false)
-                return
-            } else {
-                if readyToComplete == true {
-                    
+            DispatchQueue.main.async {
+                if let error = error {
+                    if errorOccured == false {
+                        print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
+                        errorOccured = true
+                        ActivityController.shared.addLogData(rating: log.rating, activities: log.activities)
+                        completion(false)
+                        return
+                    } else {
+                        print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
+                    }
                 } else {
-                    readyToComplete = true
+                    if readyToComplete == true {
+                        completion(true)
+                        self.logs.remove(at: index)
+                    } else {
+                        readyToComplete = true
+                    }
+                    
                 }
-                completion(true)
-                ActivityController.shared.removeLogData(rating: log.rating, activities: log.activities)
-                self.logs.remove(at: index)
+            }
+        }
+        ActivityController.shared.updateActivities(activities: log.activities) { (success) in
+            DispatchQueue.main.async {
+                if success && errorOccured == false {
+                    if readyToComplete == true {
+                        completion(true)
+                        self.logs.remove(at: index)
+                    } else {
+                        readyToComplete = true
+                    }
+                } else if errorOccured == false {
+                    errorOccured = true
+                    ActivityController.shared.addLogData(rating: log.rating, activities: log.activities)
+                    completion(false)
+                    return
+                }
             }
         }
     }
     
+    // Delete Activity From Logs - Used when you delete an activity
     func deleteActivityFromLogs(activity: Activity, completion: @escaping (Bool) -> Void) {
         var changedLogs: [Log] = []
         var changedLogsIndexes: [Int] = []
@@ -249,4 +270,21 @@ class LogController {
         }
         privateDB.add(modificationOP)
     }
+    
+    // MARK: - Helpers
+    
+    // Updates activity references
+    private func updateActivityReferences(log: Log) {
+        var activityReferences: [CKRecord.Reference] = []
+        for activity in log.activities {
+            activityReferences.append(CKRecord.Reference(recordID: activity.recordID, action: .none))
+        }
+        log.activityReferences = activityReferences
+    }
+    
+    // Creates a new log with a the information coppied
+    private func copyLog(log: Log) -> Log{
+        return Log(date: log.date, rating: log.rating, activityReferences: log.activityReferences, activities: log.activities, recordID: log.recordID)
+    }
+    
 }

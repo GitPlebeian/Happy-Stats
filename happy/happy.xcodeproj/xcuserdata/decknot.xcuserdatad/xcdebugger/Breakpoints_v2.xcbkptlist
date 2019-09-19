@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happy/Model Controllers/ActivityController.swift"
-            timestampString = "590532383.420452"
+            timestampString = "590615433.5247101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "deleteActivity(activity:completion:)"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "copyActivity(activity:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
