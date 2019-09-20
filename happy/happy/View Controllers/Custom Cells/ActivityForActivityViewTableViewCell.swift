@@ -50,7 +50,7 @@ class ActivityForActivityViewTableViewCell: UITableViewCell {
             daysAppliedLabel.text = "\(activity.timesSelected)"
         }
         titleLabel.text = activity.title
-        activityView.backgroundColor = RatingColors.getColorFoInt(number: Int(activity.averageRating.rounded()))
+        activityView.backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
         ratingLabel.text = "\(activity.averageRating)"
     }
 }

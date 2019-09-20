@@ -8,6 +8,8 @@
 
 import UIKit
 
+//protocol MainTabBarControlle
+
 class MainTabBarController: UITabBarController {
     
 
@@ -34,15 +36,19 @@ class MainTabBarController: UITabBarController {
             }
             index += 1
         }
-        LogController.shared.fetchAllLogs { (success) in
-            if success && ActivityController.shared.activities.count > 0 {
-                LogController.shared.pairLogsAndActivities()
-            }
-        }
-        ActivityController.shared.fetchAllActivities { (success) in
-            if success && LogController.shared.logs.count > 0 {
-                LogController.shared.pairLogsAndActivities()
-            }
-        }
+//        LogController.shared.fetchAllLogs { (success) in
+//            if success && ActivityController.shared.activities.count > 0 {
+//                LogController.shared.pairLogsAndActivities()
+//            }
+//        }
+//        ActivityController.shared.fetchAllActivities { (success) in
+//            if success && LogController.shared.logs.count > 0 {
+//                LogController.shared.pairLogsAndActivities()
+//            }
+//        }
+//
+//        SettingsController.shared.fetchSettings { (success) in
+//
+//        }
     }
 } // End of Class

@@ -30,7 +30,7 @@ class DateCollectionViewCell: UICollectionViewCell {
             // Sets date label to the date number
             dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: date)
             if let log = LogController.shared.getLogForDate(date: date) {
-                dateView.backgroundColor = RatingColors.getColorFoInt(number: Int(log.rating))
+                dateView.backgroundColor = ColorHelper.getColorFoInt(number: Int(log.rating))
             } else {
                 dateView.backgroundColor = .clear
             }

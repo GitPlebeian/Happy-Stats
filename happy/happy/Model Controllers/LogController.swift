@@ -42,7 +42,7 @@ class LogController {
     }
     
     // Adds activities to logs bases on the log references
-    func pairLogsAndActivities() {
+    func pairLogsAndActivities(completion: () -> Void) {
         for log in logs {
             for activityReference in log.activityReferences {
                 for activity in ActivityController.shared.activities {
@@ -52,6 +52,7 @@ class LogController {
                 }
             }
         }
+        completion()
     }
     
     // Will update a log with activities

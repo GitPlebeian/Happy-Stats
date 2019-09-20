@@ -12,6 +12,7 @@ class HistoricalLogsViewController: UIViewController{
     
     // MARK: - Outlets
     
+    @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
@@ -67,6 +68,17 @@ class HistoricalLogsViewController: UIViewController{
             scrolledToBottom = true
             calendarCollectionView.scrollToItem(at: IndexPath(row: 41, section: CalendarHelper.shared.months.count - 1), at: UICollectionView.ScrollPosition.bottom, animated: false)
         }
+        coverView.isHidden = false
+        UIView.animate(withDuration: 0.2) {
+            self.coverView.alpha = 0.0
+        }
+        UIView.animate(withDuration: 0.2, animations: {
+            self.coverView.alpha = 0.0
+        }) { (success) in
+            if success {
+                self.coverView.isHidden = true
+            }
+        }
     }
     
     // MARK: - Custom Functions
@@ -81,7 +93,7 @@ class HistoricalLogsViewController: UIViewController{
     }
     
     func updateViewsForRating() {
-        let color = RatingColors.getColorFoInt(number: rating)
+        let color = ColorHelper.getColorFoInt(number: rating)
         editLogButton.backgroundColor = color
     }
     

@@ -173,10 +173,10 @@ class SelectActivitiesViewController: UIViewController {
     func updateViewsForRatingChange() {
         logRatingLabel.text = "\(rating)"
         logRatingSlider.value = Float(rating)
-        saveLogButton.backgroundColor = RatingColors.getColorFoInt(number: rating)
-        logRatingView.backgroundColor = RatingColors.getColorFoInt(number: rating)
-        logRatingSlider.minimumTrackTintColor = RatingColors.getColorFoInt(number: rating)
-        logRatingSlider.thumbTintColor = RatingColors.getColorFoInt(number: rating)
+        saveLogButton.backgroundColor = ColorHelper.getColorFoInt(number: rating)
+        logRatingView.backgroundColor = ColorHelper.getColorFoInt(number: rating)
+        logRatingSlider.minimumTrackTintColor = ColorHelper.getColorFoInt(number: rating)
+        logRatingSlider.thumbTintColor = ColorHelper.getColorFoInt(number: rating)
     }
     
     func setAppliedVariables() {

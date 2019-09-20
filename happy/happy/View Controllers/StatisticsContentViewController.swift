@@ -1,17 +1,26 @@
 //
-//  ReportsViewController.swift
+//  StatisticsContentViewController.swift
 //  happy
 //
-//  Created by Jackson Tubbs on 8/15/19.
+//  Created by Jackson Tubbs on 9/20/19.
 //  Copyright © 2019 Jax Tubbs. All rights reserved.
 //
 
 import UIKit
 
-class ReportsViewController: UIViewController {
+class StatisticsContentViewController: UIViewController {
 
+    @IBOutlet weak var thing: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let color = 0
+        thing.backgroundColor = ColorHelper.getColorFoInt(number: color)
+        if ColorHelper.getColorFoInt(number: color).useDarkText() {
+            print("Use dark text")
+        } else {
+            print("Use Light text")
+        }
     }
     
 

@@ -45,12 +45,12 @@ class ActivityTableViewCell: UITableViewCell {
         guard let activity = activitiy else {return}
         activityTitleLabel.text = activity.title
         if activity.averageRating > -1 {
-            activityView.backgroundColor = RatingColors.getColorFoInt(number: Int(activity.averageRating.rounded()))
+            activityView.backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
             selectionDotView.backgroundColor = .white
         } else {
             activityView.backgroundColor = .white
             activityView.layer.borderColor = UIColor.black.cgColor
-            selectionDotView.backgroundColor = RatingColors.getColorFoInt(number: 10)
+            selectionDotView.backgroundColor = ColorHelper.getColorFoInt(number: 10)
         }
     }
     
