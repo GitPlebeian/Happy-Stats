@@ -62,7 +62,7 @@ class ActivitiesViewController: UIViewController{
                             self.activityTableView.reloadData()
                         } else {
                             feedback.notificationOccurred(.error)
-                            self.errorAlert(message: "Error Saving To Database. Sorry, I'm working on it")
+                            self.presentBasicAlert(title: "Error", message: "Could not save to database")
                         }
                     }
                 })
@@ -78,11 +78,83 @@ class ActivitiesViewController: UIViewController{
     }
     
     // Presents a message to the user via alert
-    func errorAlert(message: String) {
-        alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+    func presentBasicAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alertController?.addAction(okAction)
-        guard let alertController = alertController else {return}
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
+    }
+    
+    func presentActivitySelectionAlert(activity: Activity) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            self.presentDeleteAlert(activity: activity)
+        }
+        let renameAction = UIAlertAction(title: "Rename", style: .default) { (_) in
+            self.presentRenameAlert(activity: activity)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(renameAction)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    
+    func presentDeleteAlert(activity: Activity) {
+        let alertController = UIAlertController(title: "Delete Activity", message: "Are you sure you want to delete this activity? This will remove the activity from any logs it has been applied too.", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "I'm Sure", style: .destructive) { (_) in
+            let feedback = UINotificationFeedbackGenerator()
+            feedback.prepare()
+            ActivityController.shared.deleteActivity(activity: activity, completion: { (success) in
+                DispatchQueue.main.async {
+                    if success {
+                        feedback.notificationOccurred(.success)
+                        self.activityTableView.reloadData()
+                    } else {
+                        feedback.notificationOccurred(.error)
+                        self.presentBasicAlert(title: "Error", message: "Could not delete activity from iCloud")
+                    }
+                }
+            })
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        present(alertController, animated: true)
+    }
+    
+    func presentRenameAlert(activity: Activity) {
+        let alertController = UIAlertController(title: "Rename Activity", message: nil, preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.text = activity.title
+            textField.font = UIFont(name: "SFProDisplay-Light", size: 15)
+            textField.placeholder = "Title"
+            textField.addTarget(self, action: #selector(self.alertTextFieldDidChange(_:)), for: .editingChanged)
+        }
+        let renameAction = UIAlertAction(title: "Rename", style: .default) { (_) in
+            guard let activityTitle = alertController.textFields?[0].text else {return}
+            if !activityTitle.isEmpty {
+                let feedback = UINotificationFeedbackGenerator()
+                feedback.prepare()
+                let oldTitle = activity.title
+                activity.title = activityTitle
+                ActivityController.shared.updateActivities(activities: [activity], completion: { (success) in
+                    DispatchQueue.main.async {
+                        if success {
+                            feedback.notificationOccurred(.success)
+                            self.activityTableView.reloadData()
+                        } else {
+                            feedback.notificationOccurred(.error)
+                            self.presentBasicAlert(title: "Error", message: "Could not rename activity to iCloud")
+                            activity.title = oldTitle
+                        }
+                    }
+                })
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(renameAction)
         present(alertController, animated: true)
     }
     
@@ -119,21 +191,25 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let activityToDelete = ActivityController.shared.activities[indexPath.row]
-            let feedback = UINotificationFeedbackGenerator()
-            feedback.prepare()
-            ActivityController.shared.deleteActivity(activity: activityToDelete) { (success) in
-                DispatchQueue.main.async {
-                    if success {
-                        feedback.notificationOccurred(.success)
-                        tableView.deleteRows(at: [indexPath], with: .fade)
-                    } else {
-                        self.errorAlert(message: "Error Deleting Form Database")
-                    }
-                }
-            }
-        }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let activityToDelete = ActivityController.shared.activities[indexPath.row]
+//            let feedback = UINotificationFeedbackGenerator()
+//            feedback.prepare()
+//            ActivityController.shared.deleteActivity(activity: activityToDelete) { (success) in
+//                DispatchQueue.main.async {
+//                    if success {
+//                        feedback.notificationOccurred(.success)
+//                        tableView.deleteRows(at: [indexPath], with: .fade)
+//                    } else {
+//                        self.errorAlert(message: "Error Deleting Form Database")
+//                    }
+//                }
+//            }
+//        }
+//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let activity = ActivityController.shared.activities[indexPath.row]
+        presentActivitySelectionAlert(activity: activity)
     }
 }

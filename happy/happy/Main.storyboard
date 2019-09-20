@@ -472,7 +472,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yJ1-7Y-DMs"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Log" id="wqq-Kn-3cZ"/>
+                    <navigationItem key="navigationItem" title="New Log" id="wqq-Kn-3cZ">
+                        <barButtonItem key="backBarButtonItem" title="bbb" image="plusIcon" id="xdA-bj-xUQ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activitiesSearchBar" destination="5LC-gM-a8x" id="kmY-DG-XPY"/>
                         <outlet property="activitiesTableView" destination="tKj-Ew-Md4" id="mnk-GN-V7Z"/>
@@ -529,6 +531,7 @@
     <resources>
         <image name="calendarIcon" width="30" height="30"/>
         <image name="menuIcon" width="30" height="30"/>
+        <image name="plusIcon" width="30" height="30"/>
         <image name="reportIcon" width="30" height="30"/>
     </resources>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
