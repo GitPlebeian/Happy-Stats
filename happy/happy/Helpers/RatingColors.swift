@@ -11,16 +11,16 @@ import UIKit
 
 class RatingColors {
     
-    static private let zero = UIColor(red:1.00, green:0.34, blue:0.34, alpha:1.0)
-    static private let one = UIColor(red:1.00, green:0.47, blue:0.34, alpha:1.0)
-    static private let two = UIColor(red:0.99, green:0.60, blue:0.34, alpha:1.0)
-    static private let three = UIColor(red:0.99, green:0.73, blue:0.34, alpha:1.0)
-    static private let four = UIColor(red:0.99, green:0.87, blue:0.34, alpha:1.0)
-    static private let five = UIColor(red:0.99, green:1.00, blue:0.34, alpha:1.0)
-    static private let six = UIColor(red:0.85, green:1.00, blue:0.35, alpha:1.0)
-    static private let seven = UIColor(red:0.72, green:1.00, blue:0.37, alpha:1.0)
-    static private let eight = UIColor(red:0.59, green:1.00, blue:0.38, alpha:1.0)
-    static private let nine = UIColor(red:0.46, green:1.00, blue:0.40, alpha:1.0)
+    static private let zero = UIColor(red:1.00, green:1.00, blue:0.34, alpha:1.0)
+    static private let one = UIColor(red:0.93, green:1.00, blue:0.35, alpha:1.0)
+    static private let two = UIColor(red:0.87, green:1.00, blue:0.36, alpha:1.0)
+    static private let three = UIColor(red:0.80, green:1.00, blue:0.36, alpha:1.0)
+    static private let four = UIColor(red:0.73, green:1.00, blue:0.37, alpha:1.0)
+    static private let five = UIColor(red:0.67, green:1.00, blue:0.38, alpha:1.0)
+    static private let six = UIColor(red:0.60, green:1.00, blue:0.39, alpha:1.0)
+    static private let seven = UIColor(red:0.53, green:1.00, blue:0.40, alpha:1.0)
+    static private let eight = UIColor(red:0.46, green:1.00, blue:0.40, alpha:1.0)
+    static private let nine = UIColor(red:0.40, green:1.00, blue:0.41, alpha:1.0)
     static private let ten = UIColor(red:0.33, green:1.00, blue:0.42, alpha:1.0)
     
     
