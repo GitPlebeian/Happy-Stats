@@ -67,16 +67,12 @@ class HistoricalLogsViewController: UIViewController{
         if scrolledToBottom == false {
             scrolledToBottom = true
             calendarCollectionView.scrollToItem(at: IndexPath(row: 41, section: CalendarHelper.shared.months.count - 1), at: UICollectionView.ScrollPosition.bottom, animated: false)
-        }
-        coverView.isHidden = false
-        UIView.animate(withDuration: 0.2) {
-            self.coverView.alpha = 0.0
-        }
-        UIView.animate(withDuration: 0.2, animations: {
-            self.coverView.alpha = 0.0
-        }) { (success) in
-            if success {
-                self.coverView.isHidden = true
+            UIView.animate(withDuration: 0.2, animations: {
+                self.coverView.alpha = 0.0
+            }) { (success) in
+                if success {
+                    self.coverView.isHidden = true
+                }
             }
         }
     }

@@ -344,9 +344,8 @@
                                     <segue destination="LCB-ky-qZD" kind="show" identifier="showSelectActivities" id="Rf0-IF-9NF"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vc9-Ls-fhe">
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vc9-Ls-fhe">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -361,9 +360,13 @@
                             <constraint firstItem="Vfe-6A-vBU" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="NFL-PD-2hZ"/>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="top" secondItem="Vfe-6A-vBU" secondAttribute="bottom" constant="8" id="Nim-fw-33a"/>
                             <constraint firstItem="yhy-WT-AKj" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="cBJ-ls-Ex5"/>
+                            <constraint firstItem="vc9-Ls-fhe" firstAttribute="bottom" secondItem="A9P-L1-ocC" secondAttribute="bottom" id="cQ2-AW-7aH"/>
+                            <constraint firstItem="vc9-Ls-fhe" firstAttribute="trailing" secondItem="A9P-L1-ocC" secondAttribute="trailing" id="fLj-5T-Vjp"/>
+                            <constraint firstItem="vc9-Ls-fhe" firstAttribute="leading" secondItem="A9P-L1-ocC" secondAttribute="leading" id="gFg-Wq-PMa"/>
                             <constraint firstItem="A9P-L1-ocC" firstAttribute="top" secondItem="Vfe-6A-vBU" secondAttribute="top" id="giL-uO-fDh"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="top" secondItem="Mv3-HO-ccC" secondAttribute="bottom" id="msP-Yd-s0m"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="uQs-aR-L93"/>
+                            <constraint firstItem="vc9-Ls-fhe" firstAttribute="top" secondItem="A9P-L1-ocC" secondAttribute="top" id="uhb-xN-9Pb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A9P-L1-ocC"/>
                     </view>
@@ -569,6 +572,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E85-6a-icT"/>
                     </view>
+                    <connections>
+                        <outlet property="loadingDataStackView" destination="Il0-ZO-kxc" id="PeV-oR-cb6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFE-5G-9yK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
