@@ -39,6 +39,7 @@ class LoadingDataViewController: UIViewController {
                 if loadedAllData {
                     var viewController: UIViewController
                     viewController = mainStoryboard.instantiateViewController(withIdentifier: "mainTabBar")
+                    viewController.modalPresentationStyle = .fullScreen
                     self.present(viewController, animated: true, completion: nil)
                 } else {
                     self.presentErrorAlert()

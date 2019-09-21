@@ -18,6 +18,12 @@ class DateCollectionViewCell: UICollectionViewCell {
     // MARK: - Custom Functions
     
     func configure(indexPath: IndexPath, calendar: UICollectionView, selectedDate: Date?) {
+        guard let settings = SettingsController.shared.settings else {return}
+        if settings.darkMode == true {
+            dateNumberLabel.textColor = .white
+        } else {
+            dateNumberLabel.textColor = .black
+        }
         
         // Makes the cell a circle
         dateView.layer.cornerRadius = (calendar.frame.width / 14) - 6
@@ -28,9 +34,16 @@ class DateCollectionViewCell: UICollectionViewCell {
         if indexForRow < CalendarHelper.shared.months[indexPath.section].days.count && indexForRow >= 0{
             let date = CalendarHelper.shared.months[indexPath.section].days[indexForRow]
             // Sets date label to the date number
+            
             dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: date)
             if let log = LogController.shared.getLogForDate(date: date) {
-                dateView.backgroundColor = ColorHelper.getColorFoInt(number: Int(log.rating))
+                let color = ColorHelper.getColorFoInt(number: Int(log.rating))
+                dateView.backgroundColor = color
+                if color.useDarkText() {
+                    dateNumberLabel.textColor = .black
+                } else {
+                    dateNumberLabel.textColor = .white
+                }
             } else {
                 dateView.backgroundColor = .clear
             }
