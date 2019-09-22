@@ -9,12 +9,38 @@
 import UIKit
 
 class LoadingDataViewController: UIViewController {
-
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var loadingDataStackView: UIStackView!
+    
+    // MARK: - Properties
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        guard let settings = SettingsController.shared.settings else {
+            if #available(iOS 13.0, *) {
+                return .lightContent
+            } else {
+                return .default
+            }
+            
+        }
+        if settings.darkMode == true {
+            return .lightContent
+        } else {
+            if #available(iOS 13.0, *) {
+                return .darkContent
+            } else {
+                return .default
+            }
+        }
+    }
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         loadData()
     }
     

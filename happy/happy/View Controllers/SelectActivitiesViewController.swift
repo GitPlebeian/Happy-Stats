@@ -55,7 +55,7 @@ class SelectActivitiesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: true)
+//        navigationController?.setNavigationBarHidden(false, animated: false)
         
         activitiesTableView.delegate = self
         activitiesTableView.dataSource = self
@@ -71,6 +71,12 @@ class SelectActivitiesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateCellsWithActivities()
+//        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     // MARK: - Actions
@@ -123,6 +129,17 @@ class SelectActivitiesViewController: UIViewController {
     // MARK: - Custom Functions
     
     func updateViews() {
+        guard let settings = SettingsController.shared.settings else {return}
+        if settings.darkMode  {
+            activitiesSearchBar.searchTextField.backgroundColor = .black
+        } else {
+//            activitiesSearchBar.searchTextField.backgroundColor = .white
+            activitiesSearchBar.searchTextField.leftView = nil
+//            activitiesSearchBar.searchTextField.backgroundColor = UIColor(displayP3Red: 0.9999, green: 0.9999, blue: 0.9999, alpha: 1)
+            activitiesSearchBar.searchTextField.backgroundColor = UIColor(displayP3Red: 0.9, green: 0.9, blue: 0.9, alpha: 0.2)
+            activitiesTableView.backgroundColor = .white
+            logRatingLabel.textColor = .black
+        }
         logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
         saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
         logRatingView.layer.borderWidth = 1.5
@@ -206,6 +223,7 @@ class SelectActivitiesViewController: UIViewController {
             displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
             setAppliedVariables()
             let deleteLogNavigationBarItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(deleteLogButtonTapped(_:)))
+            deleteLogNavigationBarItem.tintColor = .black
             self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
             activitiesTableView.reloadData()
         } else {
@@ -246,6 +264,7 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
             let label = UILabel()
             label.frame = CGRect(x: 2, y: 0, width: 150, height: 24)
             label.font = UIFont(name: "SFProDisplay-Medium", size: 17)
+            label.textColor = .black
             if allActivities {
                 label.text = "Activities"
             } else if allApplied {

@@ -19,6 +19,19 @@ class ActivitiesViewController: UIViewController{
 
     var alertController: UIAlertController?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        guard let settings = SettingsController.shared.settings else {return .lightContent}
+        if settings.darkMode == true {
+            return .lightContent
+        } else {
+            if #available(iOS 13.0, *) {
+                return .darkContent
+            } else {
+                return .default
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityTableView.separatorStyle = .none

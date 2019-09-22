@@ -32,14 +32,26 @@ class ActivityTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        updateViews()
+    }
+    
+    // MARK: - Custom Functions
+    
+    func updateViews() {
+        guard let settings = SettingsController.shared.settings else {return}
+        if settings.darkMode {
+            backgroundColor = .black
+            activityTitleLabel.textColor = .white
+        } else {
+            backgroundColor = .white
+            activityTitleLabel.textColor = .black
+        }
         activityView.layer.cornerRadius = activityView.frame.height / 2
         selectionDotView.backgroundColor = .white
         selectionDotView.layer.cornerRadius = selectionDotView.frame.width / 2
         activityView.layer.borderColor = UIColor.black.cgColor
         activityView.layer.borderWidth = 1.5
     }
-    
-    // MARK: - Custom Functions
     
     func updateViewForActivity() {
         guard let activity = activitiy else {return}

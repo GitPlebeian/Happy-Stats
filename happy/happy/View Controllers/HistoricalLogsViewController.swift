@@ -17,6 +17,13 @@ class HistoricalLogsViewController: UIViewController{
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     
+    @IBOutlet weak var sundayLabel: UILabel!
+    @IBOutlet weak var mondayLabel: UILabel!
+    @IBOutlet weak var tuesdayLabel: UILabel!
+    @IBOutlet weak var wednesdayLabel: UILabel!
+    @IBOutlet weak var thursdayLabel: UILabel!
+    @IBOutlet weak var fridayLabel: UILabel!
+    @IBOutlet weak var saturdayLabel: UILabel!
     
     @IBOutlet weak var calendarNavigationItem: UINavigationItem!
     @IBOutlet weak var editLogButton: UIButton!
@@ -46,20 +53,19 @@ class HistoricalLogsViewController: UIViewController{
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM"
-        monthLabel.text = dateFormatter.string(from: date)
-        dateFormatter.dateFormat = "yyyy"
-        yearLabel.text = dateFormatter.string(from: date)
-        
+//        title = dateFormatter.string(from: date)
+//        dateFormatter.dateFormat = "yyyy"
+//        yearLabel.text = dateFormatter.string(from: date)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         calendarCollectionView.reloadData()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+//        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,10 +83,54 @@ class HistoricalLogsViewController: UIViewController{
         }
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        guard let settings = SettingsController.shared.settings else {return .lightContent}
+        if settings.darkMode == true {
+            return .lightContent
+        } else {
+            if #available(iOS 13.0, *) {
+                return .darkContent
+            } else {
+                return .default
+            }
+        }
+    }
+    
     // MARK: - Custom Functions
     
     func updateViews() {
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!]
+        setNeedsStatusBarAppearanceUpdate()
+        guard let settings = SettingsController.shared.settings else {return}
+        var titleColor: UIColor = UIColor.black
+        if settings.darkMode {
+            monthLabel.textColor = .white
+            yearLabel.textColor = .white
+            sundayLabel.textColor = .white
+            mondayLabel.textColor = .white
+            tuesdayLabel.textColor = .white
+            wednesdayLabel.textColor = .white
+            thursdayLabel.textColor = .white
+            fridayLabel.textColor = .white
+            saturdayLabel.textColor = .white
+            navigationController?.navigationBar.barTintColor = UIColor.black
+            navigationController?.navigationBar.tintColor = .black
+            titleColor = .white
+        } else {
+            monthLabel.textColor = .black
+            yearLabel.textColor = .black
+            sundayLabel.textColor = .black
+            mondayLabel.textColor = .black
+            tuesdayLabel.textColor = .black
+            wednesdayLabel.textColor = .black
+            thursdayLabel.textColor = .black
+            fridayLabel.textColor = .black
+            saturdayLabel.textColor = .black
+            navigationController?.navigationBar.barTintColor = UIColor.white
+            navigationController?.navigationBar.tintColor = .white
+            titleColor = .black
+            
+        }
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!, NSAttributedString.Key.foregroundColor : titleColor]
         self.tabBarController?.tabBar.barTintColor = .white
         editLogButton.layer.cornerRadius = editLogButton.frame.height / 2
         editLogButton.layer.borderColor = UIColor.black.cgColor
@@ -106,6 +156,7 @@ class HistoricalLogsViewController: UIViewController{
         if segue.identifier == "showSelectActivities" {
             guard let destinationVC = segue.destination as? SelectActivitiesViewController else {return}
             destinationVC.delegate = self
+//            self.navigationController?.setNavigationBarHidden(false, animated: false)
             if let log = currentLog {
                 destinationVC.log = log
             } else {
