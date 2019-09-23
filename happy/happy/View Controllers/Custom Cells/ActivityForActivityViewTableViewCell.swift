@@ -30,8 +30,7 @@ class ActivityForActivityViewTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        guard let settings = SettingsController.shared.settings else {return}
-        if settings.darkMode {
+        if DarkModeController.shared.darkMode.enabled {
             
         } else {
             titleLabel.textColor = .black

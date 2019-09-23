@@ -128,8 +128,7 @@ class SelectActivitiesViewController: UIViewController {
     // MARK: - Custom Functions
     
     func updateViews() {
-        guard let settings = SettingsController.shared.settings else {return}
-        if settings.darkMode  {
+        if DarkModeController.shared.darkMode.enabled  {
             activitiesSearchBar.searchTextField.backgroundColor = .black
         } else {
             activitiesSearchBar.searchTextField.leftView = nil

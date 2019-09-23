@@ -21,17 +21,14 @@
 		86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */; };
 		864D198622F63429009368ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D198522F63429009368ED /* AppDelegate.swift */; };
 		864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D198E22F6342A009368ED /* LaunchScreen.storyboard */; };
-		864D199F22F634A3009368ED /* LogControllerCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D199E22F634A3009368ED /* LogControllerCoreData.swift */; };
-		864D19A122F634D4009368ED /* ActivityControllerCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A022F634D4009368ED /* ActivityControllerCoreData.swift */; };
 		864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A722F65033009368ED /* ActivitiesViewController.swift */; };
 		864D19AC22F66B72009368ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D19AB22F66B72009368ED /* Main.storyboard */; };
 		864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19AD22F67378009368ED /* MainTabBarController.swift */; };
 		8650F1972321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8650F1962321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift */; };
+		866354E4233940C8005805F7 /* DarkModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866354E3233940C8005805F7 /* DarkModeController.swift */; };
+		866354E6233940DB005805F7 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866354E5233940DB005805F7 /* DarkMode.swift */; };
 		866CAE722319A35C00C85FF8 /* CalenderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866CAE712319A35C00C85FF8 /* CalenderHelper.swift */; };
 		8675BBCF230B82AA00EE1382 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675BBCE230B82AA00EE1382 /* ColorHelper.swift */; };
-		868E7CE522FE6300000C8D10 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE422FE6300000C8D10 /* CoreDataStack.swift */; };
-		868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */; };
-		868E7CE922FE65A7000C8D10 /* Log+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */; };
 		8690403723200F1C004C2633 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690403623200F1C004C2633 /* ActivityTableViewCell.swift */; };
 		8690403923200F63004C2633 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8690403823200F63004C2633 /* SF-Pro-Display-Medium.otf */; };
 		86CCFD352306045800CDCC21 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCFD342306045800CDCC21 /* StatisticsViewController.swift */; };
@@ -59,18 +56,15 @@
 		864D198522F63429009368ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		864D198F22F6342A009368ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		864D199122F6342A009368ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		864D199E22F634A3009368ED /* LogControllerCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogControllerCoreData.swift; sourceTree = "<group>"; };
-		864D19A022F634D4009368ED /* ActivityControllerCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityControllerCoreData.swift; sourceTree = "<group>"; };
 		864D19A722F65033009368ED /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 		864D19AB22F66B72009368ED /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		864D19AD22F67378009368ED /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8650F1962321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityForActivityViewTableViewCell.swift; sourceTree = "<group>"; };
 		8654FC22230B6B3300A6202C /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		866354E3233940C8005805F7 /* DarkModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeController.swift; sourceTree = "<group>"; };
+		866354E5233940DB005805F7 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		866CAE712319A35C00C85FF8 /* CalenderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderHelper.swift; sourceTree = "<group>"; };
 		8675BBCE230B82AA00EE1382 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
-		868E7CE422FE6300000C8D10 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+Convenience.swift"; sourceTree = "<group>"; };
-		868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Convenience.swift"; sourceTree = "<group>"; };
 		8690403623200F1C004C2633 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		8690403823200F63004C2633 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		86CCFD342306045800CDCC21 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
@@ -156,12 +150,11 @@
 		864D199822F6345A009368ED /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				864D199E22F634A3009368ED /* LogControllerCoreData.swift */,
-				864D19A022F634D4009368ED /* ActivityControllerCoreData.swift */,
 				8624C448232FF62E00B60BE7 /* LogController.swift */,
 				8624C44A232FFCB000B60BE7 /* ActivityController.swift */,
 				861E112B23356CF000F627BC /* SettingsController.swift */,
 				861E112D23357A0300F627BC /* LoadDataController.swift */,
+				866354E3233940C8005805F7 /* DarkModeController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -169,12 +162,10 @@
 		864D199922F63471009368ED /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				868E7CE422FE6300000C8D10 /* CoreDataStack.swift */,
-				868E7CE622FE659A000C8D10 /* Activity+Convenience.swift */,
-				868E7CE822FE65A7000C8D10 /* Log+Convenience.swift */,
 				8624C444232FE62C00B60BE7 /* Log.swift */,
 				8624C446232FE88300B60BE7 /* Activity.swift */,
 				861E11292335699100F627BC /* Settings.swift */,
+				866354E5233940DB005805F7 /* DarkMode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -311,22 +302,19 @@
 			files = (
 				861E112C23356CF000F627BC /* SettingsController.swift in Sources */,
 				861E11302335825000F627BC /* LoadingDataViewController.swift in Sources */,
-				864D199F22F634A3009368ED /* LogControllerCoreData.swift in Sources */,
 				86D11AD222FF9C330059A0B3 /* HistoricalLogsViewController.swift in Sources */,
 				861E112E23357A0300F627BC /* LoadDataController.swift in Sources */,
 				8624C445232FE62C00B60BE7 /* Log.swift in Sources */,
-				868E7CE922FE65A7000C8D10 /* Log+Convenience.swift in Sources */,
+				866354E4233940C8005805F7 /* DarkModeController.swift in Sources */,
 				864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */,
 				8690403723200F1C004C2633 /* ActivityTableViewCell.swift in Sources */,
 				86CCFD352306045800CDCC21 /* StatisticsViewController.swift in Sources */,
 				8650F1972321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift in Sources */,
-				864D19A122F634D4009368ED /* ActivityControllerCoreData.swift in Sources */,
+				866354E6233940DB005805F7 /* DarkMode.swift in Sources */,
 				8624C449232FF62E00B60BE7 /* LogController.swift in Sources */,
 				8624C447232FE88300B60BE7 /* Activity.swift in Sources */,
 				8675BBCF230B82AA00EE1382 /* ColorHelper.swift in Sources */,
 				86E0F82A231F41A80025DE0E /* SelectActivitiesViewController.swift in Sources */,
-				868E7CE722FE659A000C8D10 /* Activity+Convenience.swift in Sources */,
-				868E7CE522FE6300000C8D10 /* CoreDataStack.swift in Sources */,
 				861E11242335515300F627BC /* UIColorExtensions.swift in Sources */,
 				864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */,
 				861E112A2335699100F627BC /* Settings.swift in Sources */,

@@ -13,19 +13,12 @@ class LoadingDataViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var loadingDataStackView: UIStackView!
+    @IBOutlet weak var loadingDataLabel: UILabel!
     
     // MARK: - Properties
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        guard let settings = SettingsController.shared.settings else {
-            if #available(iOS 13.0, *) {
-                return .lightContent
-            } else {
-                return .default
-            }
-            
-        }
-        if settings.darkMode == true {
+        if DarkModeController.shared.darkMode.enabled {
             return .lightContent
         } else {
             if #available(iOS 13.0, *) {
@@ -40,8 +33,10 @@ class LoadingDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadData()
+        DarkModeController.shared.loadFromPersistentStore {
+            updateViews()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,6 +45,15 @@ class LoadingDataViewController: UIViewController {
     }
     
     // MARK: - Custom Functions
+    
+    func updateViews() {
+        setNeedsStatusBarAppearanceUpdate()
+        if DarkModeController.shared.darkMode.enabled {
+            
+        } else {
+            loadingDataLabel.textColor = .black
+        }
+    }
     
     func presentErrorAlert() {
         let alertController = UIAlertController(title: "Error", message: "Unable To retreive data", preferredStyle: .alert)

@@ -84,8 +84,7 @@ class HistoricalLogsViewController: UIViewController{
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        guard let settings = SettingsController.shared.settings else {return .lightContent}
-        if settings.darkMode == true {
+        if DarkModeController.shared.darkMode.enabled {
             return .lightContent
         } else {
             if #available(iOS 13.0, *) {
@@ -144,9 +143,8 @@ class HistoricalLogsViewController: UIViewController{
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backArrow")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backArrow")
         setNeedsStatusBarAppearanceUpdate()
-        guard let settings = SettingsController.shared.settings else {return}
         var titleColor: UIColor = UIColor.black
-        if settings.darkMode {
+        if DarkModeController.shared.darkMode.enabled {
             monthLabel.textColor = .white
             yearLabel.textColor = .white
             sundayLabel.textColor = .white

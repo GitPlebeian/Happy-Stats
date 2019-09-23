@@ -20,7 +20,7 @@ class SettingsController {
     // MARK: - CRUD
     
     func saveDefaultSettings(completion: @escaping (Bool) -> Void) {
-        let settings = Settings(rollingRatingAveragePeriod: SettingsConstants.defaultRollingRatingAveragePeriod, rollingRatingAverageComparisonPeriod: SettingsConstants.defaultRollingRatingAverageComparisonPeriod, darkMode: SettingsConstants.defaultDarkMode)
+        let settings = Settings(rollingRatingAveragePeriod: SettingsConstants.defaultRollingRatingAveragePeriod, rollingRatingAverageComparisonPeriod: SettingsConstants.defaultRollingRatingAverageComparisonPeriod)
         let record = CKRecord(settings: settings)
         privateDB.save(record) { (record, error) in
             if let error = error {

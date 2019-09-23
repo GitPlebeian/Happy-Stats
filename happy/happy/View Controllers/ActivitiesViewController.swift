@@ -21,8 +21,7 @@ class ActivitiesViewController: UIViewController{
     var alertController: UIAlertController?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        guard let settings = SettingsController.shared.settings else {return .lightContent}
-        if settings.darkMode == true {
+        if DarkModeController.shared.darkMode.enabled {
             return .lightContent
         } else {
             if #available(iOS 13.0, *) {
@@ -56,8 +55,7 @@ class ActivitiesViewController: UIViewController{
     // MARK: - Custom Functions
     
     func updateViews() {
-        guard let settings = SettingsController.shared.settings else {return}
-        if settings.darkMode {
+        if DarkModeController.shared.darkMode.enabled {
             
         } else {
             activityTableView.backgroundColor = .white

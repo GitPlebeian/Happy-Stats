@@ -13,7 +13,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Statistics View Controller-->
+        <!--Statistics-->
         <scene sceneID="iHj-O6-lux">
             <objects>
                 <viewController id="1FB-9U-O3M" customClass="StatisticsViewController" customModule="happy" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,15 +21,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Kg-f9-3th">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Statistics" id="xKY-Wm-Djk"/>
-                                </items>
-                            </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zLl-XE-ufy">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
@@ -54,21 +45,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2Kg-f9-3th" firstAttribute="top" secondItem="J9N-Di-JgO" secondAttribute="top" id="Luh-qK-q4Z"/>
                             <constraint firstItem="zLl-XE-ufy" firstAttribute="bottom" secondItem="J9N-Di-JgO" secondAttribute="bottom" id="Ype-LQ-RgT"/>
                             <constraint firstItem="zLl-XE-ufy" firstAttribute="trailing" secondItem="J9N-Di-JgO" secondAttribute="trailing" id="deK-1x-voP"/>
-                            <constraint firstItem="2Kg-f9-3th" firstAttribute="leading" secondItem="J9N-Di-JgO" secondAttribute="leading" id="foY-zf-ieg"/>
-                            <constraint firstItem="2Kg-f9-3th" firstAttribute="trailing" secondItem="J9N-Di-JgO" secondAttribute="trailing" id="sMh-LV-d1u"/>
                             <constraint firstItem="zLl-XE-ufy" firstAttribute="leading" secondItem="J9N-Di-JgO" secondAttribute="leading" id="sXE-RV-leN"/>
-                            <constraint firstItem="zLl-XE-ufy" firstAttribute="top" secondItem="2Kg-f9-3th" secondAttribute="bottom" id="vVP-gx-nN8"/>
+                            <constraint firstItem="zLl-XE-ufy" firstAttribute="top" secondItem="J9N-Di-JgO" secondAttribute="top" id="v06-Ye-dVt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="J9N-Di-JgO"/>
                     </view>
-                    <tabBarItem key="tabBarItem" image="reportIcon" id="DN3-uN-2ur"/>
+                    <navigationItem key="navigationItem" title="Statistics" id="lEk-AZ-Rte">
+                        <barButtonItem key="rightBarButtonItem" id="Ips-BR-X2k">
+                            <connections>
+                                <segue destination="gkL-7D-Q9q" kind="show" id="sYa-j6-Lhy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="settingsBarButtonItem" destination="Ips-BR-X2k" id="G0G-fE-9DO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lti-q2-qoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.91304347826087" y="-91.071428571428569"/>
+            <point key="canvasLocation" x="72" y="-91"/>
         </scene>
         <!--Item-->
         <scene sceneID="pOS-PR-pS7">
@@ -200,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ava-6t-vjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2418.840579710145" y="-91.071428571428569"/>
+            <point key="canvasLocation" x="3328.985507246377" y="-91.071428571428569"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="gUS-B5-S9d">
@@ -556,20 +553,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Il0-ZO-kxc">
-                                <rect key="frame" x="157" y="425" width="100" height="56.5"/>
+                                <rect key="frame" x="157" y="403" width="100" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gc-sn-r1j">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="64"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3ic-Jp-t9G">
-                                        <rect key="frame" x="0.0" y="36.5" width="100" height="20"/>
+                                        <rect key="frame" x="0.0" y="80" width="100" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="AIL-lv-ZYF"/>
+                                    <constraint firstAttribute="height" constant="100" id="JuY-Wj-UIp"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -581,6 +579,7 @@
                         <viewLayoutGuide key="safeArea" id="E85-6a-icT"/>
                     </view>
                     <connections>
+                        <outlet property="loadingDataLabel" destination="0Gc-sn-r1j" id="MQp-kh-nPY"/>
                         <outlet property="loadingDataStackView" destination="Il0-ZO-kxc" id="PeV-oR-cb6"/>
                     </connections>
                 </viewController>
@@ -598,7 +597,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="1FB-9U-O3M" kind="relationship" relationship="viewControllers" id="uEj-ps-nL5"/>
+                        <segue destination="3yq-yD-ycW" kind="relationship" relationship="viewControllers" id="uEj-ps-nL5"/>
                         <segue destination="o2q-ii-NiJ" kind="relationship" relationship="viewControllers" id="IN3-wR-0Rs"/>
                         <segue destination="Hpj-me-0G6" kind="relationship" relationship="viewControllers" id="Bo4-ro-ypX"/>
                     </connections>
@@ -606,6 +605,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CpI-RT-rQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1530" y="-788"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5Y9-vX-xlx">
+            <objects>
+                <viewController id="gkL-7D-Q9q" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZHL-MV-4A9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7MH-z3-94P"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dzz-XM-0Ef"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qbh-hh-MJc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="71" y="652"/>
         </scene>
         <!--Item-->
         <scene sceneID="x3c-up-Tro">
@@ -678,7 +693,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nu4-Cs-8gp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-123.18840579710145" y="-56.919642857142854"/>
+            <point key="canvasLocation" x="-599" y="-57"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jfh-p1-0xP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3yq-yD-ycW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" image="reportIcon" id="DN3-uN-2ur"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bLi-y2-gvg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1FB-9U-O3M" kind="relationship" relationship="rootViewController" id="Onz-PA-xQX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lBq-fu-TdK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773.91304347826087" y="-91.071428571428569"/>
         </scene>
     </scenes>
     <resources>

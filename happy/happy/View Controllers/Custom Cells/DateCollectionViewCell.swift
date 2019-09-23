@@ -18,8 +18,7 @@ class DateCollectionViewCell: UICollectionViewCell {
     // MARK: - Custom Functions
     
     func configure(indexPath: IndexPath, calendar: UICollectionView, selectedDate: Date?) {
-        guard let settings = SettingsController.shared.settings else {return}
-        if settings.darkMode == true {
+        if DarkModeController.shared.darkMode.enabled {
             dateNumberLabel.textColor = .white
         } else {
             dateNumberLabel.textColor = .black
