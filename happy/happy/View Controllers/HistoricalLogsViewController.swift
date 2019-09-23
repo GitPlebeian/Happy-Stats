@@ -96,9 +96,53 @@ class HistoricalLogsViewController: UIViewController{
         }
     }
     
+    // MARK: - Actions
+    
+    @IBAction func deleteLogButtonTapped(_ sender: Any) {
+        presentDeleteLogAlert()
+    }
+    
     // MARK: - Custom Functions
     
+    func presentDeleteLogAlert() {
+        let alertController = UIAlertController(title: "Delete Log", message: "Are you sure?", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            guard let log = self.currentLog else {return}
+            let feedback = UINotificationFeedbackGenerator()
+            feedback.prepare()
+            LogController.shared.deleteLog(log: log, completion: { (success) in
+                DispatchQueue.main.async {
+                    if success {
+                        self.currentLog = nil
+                        feedback.notificationOccurred(.success)
+                        self.rating = -1
+                        self.updateDeleteLogBarButtonItem()
+                        self.calendarCollectionView.reloadData()
+                        self.updateViewsForRating()
+                    } else {
+                        feedback.notificationOccurred(.error)
+                    }
+                }
+            })
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    
+    func updateDeleteLogBarButtonItem() {
+        if currentLog != nil {
+            let deleteLogNavigationBarItem = UIBarButtonItem(image: UIImage(named: "deleteIcon"), style: .done, target: self, action: #selector(deleteLogButtonTapped(_:)))
+            self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
     func updateViews() {
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backArrow")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backArrow")
         setNeedsStatusBarAppearanceUpdate()
         guard let settings = SettingsController.shared.settings else {return}
         var titleColor: UIColor = UIColor.black
@@ -182,6 +226,7 @@ extension HistoricalLogsViewController: SelectActivitiesViewControllerDelegate {
             rating = -1
             updateViewsForRating()
         }
+        updateDeleteLogBarButtonItem()
     }
 }
 
@@ -209,6 +254,7 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
         selectedDate = CalendarHelper.shared.months[indexPath.section].days[CalendarHelper.shared.getIndexForRow(indexPath: indexPath)]
         guard let selectedDate = selectedDate else {return}
         currentLog = LogController.shared.getLogForDate(date: selectedDate)
+        updateDeleteLogBarButtonItem()
         if let currentLog = currentLog {
             rating = Int(currentLog.rating)
             updateViewsForRating()

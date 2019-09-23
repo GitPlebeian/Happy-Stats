@@ -32,14 +32,14 @@ class SelectActivitiesViewController: UIViewController {
             rating = Int(log!.rating)
             updateCellsWithActivities()
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM-dd-yyyy"
+            dateFormatter.dateFormat = "M-d-yyyy"
             updateNavBarTitle(title: dateFormatter.string(from: log!.date))
         }
     }
     var selectedDate: Date? {
         didSet {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM-dd-yyyy"
+            dateFormatter.dateFormat = "M-d-yyyy"
             updateNavBarTitle(title: dateFormatter.string(from: selectedDate!))
         }
     }
@@ -86,7 +86,6 @@ class SelectActivitiesViewController: UIViewController {
     }
     
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
-
         let feedback = UINotificationFeedbackGenerator()
         feedback.prepare()
 
@@ -133,10 +132,8 @@ class SelectActivitiesViewController: UIViewController {
         if settings.darkMode  {
             activitiesSearchBar.searchTextField.backgroundColor = .black
         } else {
-//            activitiesSearchBar.searchTextField.backgroundColor = .white
             activitiesSearchBar.searchTextField.leftView = nil
-//            activitiesSearchBar.searchTextField.backgroundColor = UIColor(displayP3Red: 0.9999, green: 0.9999, blue: 0.9999, alpha: 1)
-            activitiesSearchBar.searchTextField.backgroundColor = UIColor(displayP3Red: 0.9, green: 0.9, blue: 0.9, alpha: 0.2)
+            activitiesSearchBar.searchTextField.tintColor = .black
             activitiesTableView.backgroundColor = .white
             logRatingLabel.textColor = .black
         }
@@ -181,7 +178,6 @@ class SelectActivitiesViewController: UIViewController {
             })
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        cancelAction.setValue(UIColor.black, forKey: "titleTextColor")
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
@@ -219,11 +215,26 @@ class SelectActivitiesViewController: UIViewController {
     func updateCellsWithActivities() {
         loadViewIfNeeded()
         if let log = log {
-            displayActivities[0] = log.activities
+            if displayActivities[0].count == 0 {
+                displayActivities[0] = log.activities
+            } else {
+                let activitiesNotInLog = ActivityController.shared.getActivitiesNotInLog(log: log)
+                for displayActivity in displayActivities[0] {
+                    if activitiesNotInLog.contains(displayActivity) == false && log.activities.contains(displayActivity) == false {
+                        let indexToRemove = displayActivities[0].firstIndex(of: displayActivity)
+                        displayActivities[0].remove(at: indexToRemove!)
+                    }
+                }
+            }
             displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
+            for displayActivity in displayActivities[0] {
+                if displayActivities[1].contains(displayActivity) {
+                    let indexToRemove = displayActivities[1].firstIndex(of: displayActivity)
+                    displayActivities[1].remove(at: indexToRemove!)
+                }
+            }
             setAppliedVariables()
-            let deleteLogNavigationBarItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(deleteLogButtonTapped(_:)))
-            deleteLogNavigationBarItem.tintColor = .black
+            let deleteLogNavigationBarItem = UIBarButtonItem(image: UIImage(named: "deleteIcon"), style: .done, target: self, action: #selector(deleteLogButtonTapped(_:)))
             self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
             activitiesTableView.reloadData()
         } else {

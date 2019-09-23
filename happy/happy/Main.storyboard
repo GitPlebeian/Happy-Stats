@@ -201,7 +201,7 @@
             </objects>
             <point key="canvasLocation" x="2418.840579710145" y="-91.071428571428569"/>
         </scene>
-        <!--HapiStats-->
+        <!--Calendar-->
         <scene sceneID="gUS-B5-S9d">
             <objects>
                 <viewController id="dYV-1r-0gp" customClass="HistoricalLogsViewController" customModule="happy" customModuleProvider="target" sceneMemberID="viewController">
@@ -368,7 +368,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A9P-L1-ocC"/>
                     </view>
-                    <navigationItem key="navigationItem" title="HapiStats" id="Vai-ga-mCa"/>
+                    <navigationItem key="navigationItem" title="Calendar" id="Vai-ga-mCa"/>
                     <connections>
                         <outlet property="calendarCollectionView" destination="pYt-69-O6e" id="sbu-xD-AEq"/>
                         <outlet property="calendarNavigationItem" destination="Vai-ga-mCa" id="aQV-g3-Xno"/>
