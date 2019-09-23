@@ -552,7 +552,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Il0-ZO-kxc">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Il0-ZO-kxc">
                                 <rect key="frame" x="157" y="403" width="100" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gc-sn-r1j">
@@ -649,51 +649,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8M-Fy-msF">
-                                <rect key="frame" x="103.5" y="44" width="207" height="207"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SzC-3M-JTj">
+                                <rect key="frame" x="20.5" y="60" width="373" height="110"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kHi-wd-0je">
-                                        <rect key="frame" x="0.0" y="74.5" width="207" height="58"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJ8-vT-PG4">
+                                        <rect key="frame" x="282" y="22.5" width="65" height="65"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Average Rating)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ac-kq-H0h">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="29"/>
-                                                <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="24"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Percent Change)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mA2-m2-IX1">
-                                                <rect key="frame" x="0.0" y="29" width="207" height="29"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Average)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4i-7S-eiY">
+                                                <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                    </stackView>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="hJ8-vT-PG4" secondAttribute="height" multiplier="1:1" id="1J5-s5-xLM"/>
+                                            <constraint firstItem="H4i-7S-eiY" firstAttribute="centerY" secondItem="hJ8-vT-PG4" secondAttribute="centerY" id="CYl-aW-woP"/>
+                                            <constraint firstItem="H4i-7S-eiY" firstAttribute="centerX" secondItem="hJ8-vT-PG4" secondAttribute="centerX" id="Ia0-Yb-9ko"/>
+                                            <constraint firstItem="H4i-7S-eiY" firstAttribute="width" secondItem="hJ8-vT-PG4" secondAttribute="width" id="OCo-BS-mg6"/>
+                                            <constraint firstAttribute="height" constant="65" id="m2e-ZW-L38"/>
+                                            <constraint firstItem="H4i-7S-eiY" firstAttribute="height" secondItem="hJ8-vT-PG4" secondAttribute="height" id="zQZ-EY-lgW"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Past X Days)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlS-m7-fa0">
+                                        <rect key="frame" x="12" y="0.0" width="200" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="OdC-fs-1VL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="z8M-Fy-msF" secondAttribute="height" multiplier="1:1" id="2RR-7g-hl5"/>
-                                    <constraint firstItem="kHi-wd-0je" firstAttribute="centerX" secondItem="z8M-Fy-msF" secondAttribute="centerX" id="QjP-FD-0k2"/>
-                                    <constraint firstItem="kHi-wd-0je" firstAttribute="centerY" secondItem="z8M-Fy-msF" secondAttribute="centerY" id="dcF-gS-4hR"/>
-                                    <constraint firstItem="kHi-wd-0je" firstAttribute="width" secondItem="z8M-Fy-msF" secondAttribute="width" id="zUe-9l-Szg"/>
+                                    <constraint firstItem="hJ8-vT-PG4" firstAttribute="centerY" secondItem="SzC-3M-JTj" secondAttribute="centerY" id="2D9-G8-SMl"/>
+                                    <constraint firstItem="PlS-m7-fa0" firstAttribute="leading" secondItem="SzC-3M-JTj" secondAttribute="leading" constant="12" id="LQl-n9-lkN"/>
+                                    <constraint firstAttribute="bottom" secondItem="PlS-m7-fa0" secondAttribute="bottom" id="Lwp-r6-uOK"/>
+                                    <constraint firstItem="PlS-m7-fa0" firstAttribute="top" secondItem="SzC-3M-JTj" secondAttribute="top" id="Vm3-Z8-NAG"/>
+                                    <constraint firstAttribute="trailing" secondItem="hJ8-vT-PG4" secondAttribute="trailing" constant="26" id="XhU-7Q-NES"/>
+                                    <constraint firstAttribute="height" constant="110" id="p4g-Is-Nu4"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="z8M-Fy-msF" firstAttribute="centerX" secondItem="2kk-St-ahX" secondAttribute="centerX" id="N9A-wG-UvY"/>
-                            <constraint firstItem="z8M-Fy-msF" firstAttribute="width" secondItem="2kk-St-ahX" secondAttribute="width" multiplier="0.5" id="ckR-Yg-vtL"/>
-                            <constraint firstItem="z8M-Fy-msF" firstAttribute="top" secondItem="2kk-St-ahX" secondAttribute="topMargin" id="xfB-Z3-VXR"/>
+                            <constraint firstItem="SzC-3M-JTj" firstAttribute="top" secondItem="z2q-Wd-i3D" secondAttribute="top" constant="16" id="3jB-Y6-IqL"/>
+                            <constraint firstItem="SzC-3M-JTj" firstAttribute="centerX" secondItem="z2q-Wd-i3D" secondAttribute="centerX" id="9Ct-wk-Up0"/>
+                            <constraint firstItem="SzC-3M-JTj" firstAttribute="width" secondItem="z2q-Wd-i3D" secondAttribute="width" multiplier="0.9" id="g7F-sf-jLI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z2q-Wd-i3D"/>
                     </view>
                     <connections>
-                        <outlet property="thing" destination="z8M-Fy-msF" id="BQq-Px-Toy"/>
+                        <outlet property="averageXDaysResultLabel" destination="H4i-7S-eiY" id="Did-LZ-3Ml"/>
+                        <outlet property="averageXDaysResultView" destination="hJ8-vT-PG4" id="i8r-7I-goB"/>
+                        <outlet property="averageXDaysView" destination="SzC-3M-JTj" id="z0A-ZA-H93"/>
+                        <outlet property="pastXDaysLabel" destination="PlS-m7-fa0" id="Wkh-i2-WrX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nu4-Cs-8gp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-599" y="-57"/>
+            <point key="canvasLocation" x="-600" y="-57.589285714285708"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jfh-p1-0xP">

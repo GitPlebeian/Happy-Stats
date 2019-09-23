@@ -27,6 +27,7 @@
 		8650F1972321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8650F1962321871A0016F2D3 /* ActivityForActivityViewTableViewCell.swift */; };
 		866354E4233940C8005805F7 /* DarkModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866354E3233940C8005805F7 /* DarkModeController.swift */; };
 		866354E6233940DB005805F7 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866354E5233940DB005805F7 /* DarkMode.swift */; };
+		866354E823397ECB005805F7 /* StatisticsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866354E723397ECB005805F7 /* StatisticsFunctions.swift */; };
 		866CAE722319A35C00C85FF8 /* CalenderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866CAE712319A35C00C85FF8 /* CalenderHelper.swift */; };
 		8675BBCF230B82AA00EE1382 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675BBCE230B82AA00EE1382 /* ColorHelper.swift */; };
 		8690403723200F1C004C2633 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690403623200F1C004C2633 /* ActivityTableViewCell.swift */; };
@@ -63,6 +64,7 @@
 		8654FC22230B6B3300A6202C /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		866354E3233940C8005805F7 /* DarkModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeController.swift; sourceTree = "<group>"; };
 		866354E5233940DB005805F7 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
+		866354E723397ECB005805F7 /* StatisticsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsFunctions.swift; sourceTree = "<group>"; };
 		866CAE712319A35C00C85FF8 /* CalenderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderHelper.swift; sourceTree = "<group>"; };
 		8675BBCE230B82AA00EE1382 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		8690403623200F1C004C2633 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				8675BBCE230B82AA00EE1382 /* ColorHelper.swift */,
 				866CAE712319A35C00C85FF8 /* CalenderHelper.swift */,
+				866354E723397ECB005805F7 /* StatisticsFunctions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				8675BBCF230B82AA00EE1382 /* ColorHelper.swift in Sources */,
 				86E0F82A231F41A80025DE0E /* SelectActivitiesViewController.swift in Sources */,
 				861E11242335515300F627BC /* UIColorExtensions.swift in Sources */,
+				866354E823397ECB005805F7 /* StatisticsFunctions.swift in Sources */,
 				864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */,
 				861E112A2335699100F627BC /* Settings.swift in Sources */,
 				864D198622F63429009368ED /* AppDelegate.swift in Sources */,

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CloudKit
+import Foundation
 
 class LoadingDataViewController: UIViewController {
     
@@ -16,6 +18,9 @@ class LoadingDataViewController: UIViewController {
     @IBOutlet weak var loadingDataLabel: UILabel!
     
     // MARK: - Properties
+    
+    var connectedToInternet = true
+    var connectedToICloud = true
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if DarkModeController.shared.darkMode.enabled {
@@ -33,15 +38,26 @@ class LoadingDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-        DarkModeController.shared.loadFromPersistentStore {
-            updateViews()
+        updateICloudAvailable()
+        if connectedToICloud == true {
+            loadData()
         }
+        DarkModeController.shared.loadFromPersistentStore()
+        updateViews()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         hideLoadingDataStackView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if connectedToICloud == false{
+            presentSignInToICloudAlert()
+        } else {
+            showLoadingDataStackView()
+        }
     }
     
     // MARK: - Custom Functions
@@ -55,8 +71,35 @@ class LoadingDataViewController: UIViewController {
         }
     }
     
-    func presentErrorAlert() {
-        let alertController = UIAlertController(title: "Error", message: "Unable To retreive data", preferredStyle: .alert)
+    func presentSignInToICloudAlert() {
+        let alertController = UIAlertController(title: "ICloud", message: "This app uses ICloud to sync data across your devices. All data will not be saved unless you sign in to ICloud", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            var viewController: UIViewController
+            viewController = mainStoryboard.instantiateViewController(withIdentifier: "mainTabBar")
+            viewController.modalPresentationStyle = .fullScreen
+            self.present(viewController, animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
+    }
+    
+    func presentInternetConnectivityAlert() {
+        
+    }
+    
+    func isConnectedToInternet() -> Bool {
+        return true
+    }
+    
+    func updateICloudAvailable() {
+        if FileManager.default.ubiquityIdentityToken == nil {
+            connectedToICloud = false
+        }
+    }
+    
+    func presentBasicAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true)
@@ -72,7 +115,7 @@ class LoadingDataViewController: UIViewController {
                     viewController.modalPresentationStyle = .fullScreen
                     self.present(viewController, animated: true, completion: nil)
                 } else {
-                    self.presentErrorAlert()
+                    self.presentBasicAlert(title: "Error", message: "Unable to get data from iCloud")
                     self.hideLoadingDataStackView()
                 }
             }
@@ -91,7 +134,7 @@ class LoadingDataViewController: UIViewController {
     func showLoadingDataStackView() {
         self.loadingDataStackView.isHidden = false
         UIView.animate(withDuration: 0.15, animations: {
-            self.loadingDataStackView.alpha = 0.0
+            self.loadingDataStackView.alpha = 1.0
         })
     }
 }

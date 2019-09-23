@@ -48,6 +48,7 @@ class SelectActivitiesViewController: UIViewController {
     var allActivities = false
     var searchedActivities: [Activity] = []
     var isSearching = false
+    var didLoad = false
     
     var rating = 5
     
@@ -66,6 +67,7 @@ class SelectActivitiesViewController: UIViewController {
         updateViews()
         updateCellsWithActivities()
         updateViewsForRatingChange()
+        didLoad = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,7 +100,7 @@ class SelectActivitiesViewController: UIViewController {
                         self.navigationController?.popViewController(animated: true)
                     } else {
                         feedback.notificationOccurred(.error)
-                        self.presentErrorAlert(message: "Error Updating Log In Database. Sorry ;(")
+                        self.presentErrorAlert(message: "Unable to save to ICloud")
                     }
                 }
             }
@@ -112,7 +114,7 @@ class SelectActivitiesViewController: UIViewController {
                         self.navigationController?.popViewController(animated: true)
                     } else {
                         feedback.notificationOccurred(.error)
-                        self.presentErrorAlert(message: "Error Saving Log In Database. Sorry ;(")
+                        self.presentErrorAlert(message: "Unable to save to ICloud")
                     }
                 }
             }
@@ -213,34 +215,49 @@ class SelectActivitiesViewController: UIViewController {
     
     func updateCellsWithActivities() {
         loadViewIfNeeded()
-        if let log = log {
-            if displayActivities[0].count == 0 {
-                displayActivities[0] = log.activities
+        if didLoad {
+            if let log = log {
+                
             } else {
-                let activitiesNotInLog = ActivityController.shared.getActivitiesNotInLog(log: log)
-                for displayActivity in displayActivities[0] {
-                    if activitiesNotInLog.contains(displayActivity) == false && log.activities.contains(displayActivity) == false {
-                        let indexToRemove = displayActivities[0].firstIndex(of: displayActivity)
-                        displayActivities[0].remove(at: indexToRemove!)
-                    }
-                }
+                
             }
-            displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
-            for displayActivity in displayActivities[0] {
-                if displayActivities[1].contains(displayActivity) {
-                    let indexToRemove = displayActivities[1].firstIndex(of: displayActivity)
-                    displayActivities[1].remove(at: indexToRemove!)
-                }
-            }
-            setAppliedVariables()
-            let deleteLogNavigationBarItem = UIBarButtonItem(image: UIImage(named: "deleteIcon"), style: .done, target: self, action: #selector(deleteLogButtonTapped(_:)))
-            self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
-            activitiesTableView.reloadData()
         } else {
-            displayActivities[1] = ActivityController.shared.activities
+            if let log = log {
+                displayActivities[0] = log.activities
+                displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
+            } else {
+                displayActivities[1] = ActivityController.shared.activities
+            }
             setAppliedVariables()
-            activitiesTableView.reloadData()
         }
+//        if let log = log {
+//            if displayActivities[0].count == 0 {
+//                displayActivities[0] = log.activities
+//            } else {
+//                let activitiesNotInLog = ActivityController.shared.getActivitiesNotInLog(log: log)
+//                for displayActivity in displayActivities[0] {
+//                    if activitiesNotInLog.contains(displayActivity) == false && log.activities.contains(displayActivity) == false {
+//                        let indexToRemove = displayActivities[0].firstIndex(of: displayActivity)
+//                        displayActivities[0].remove(at: indexToRemove!)
+//                    }
+//                }
+//            }
+//            displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
+//            for displayActivity in displayActivities[0] {
+//                if displayActivities[1].contains(displayActivity) {
+//                    let indexToRemove = displayActivities[1].firstIndex(of: displayActivity)
+//                    displayActivities[1].remove(at: indexToRemove!)
+//                }
+//            }
+//            setAppliedVariables()
+//            let deleteLogNavigationBarItem = UIBarButtonItem(image: UIImage(named: "deleteIcon"), style: .done, target: self, action: #selector(deleteLogButtonTapped(_:)))
+//            self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
+//            activitiesTableView.reloadData()
+//        } else {
+//            displayActivities[1] = ActivityController.shared.activities
+//            setAppliedVariables()
+//            activitiesTableView.reloadData()
+//        }
         if displayActivities[0].count == 0 && displayActivities[1].count == 0 {
             activitiesTableView.isHidden = true
         } else {

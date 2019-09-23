@@ -46,7 +46,7 @@ class DarkModeController {
         }
     }
     
-    func loadFromPersistentStore(completion: () -> Void) {
+    func loadFromPersistentStore() {
         // The data we want will be JSON, and I want it to be a Quote.
         let jsonDecoder = JSONDecoder()
         //Decode the data

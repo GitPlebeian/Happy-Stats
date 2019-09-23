@@ -92,7 +92,7 @@ class ActivitiesViewController: UIViewController{
                             self.activityTableView.reloadData()
                         } else {
                             feedback.notificationOccurred(.error)
-                            self.presentBasicAlert(title: "Error", message: "Could not save to database")
+                            self.presentBasicAlert(title: "Error", message: "Unable to save to ICloud")
                         }
                     }
                 })
@@ -142,7 +142,7 @@ class ActivitiesViewController: UIViewController{
                         self.activityTableView.reloadData()
                     } else {
                         feedback.notificationOccurred(.error)
-                        self.presentBasicAlert(title: "Error", message: "Could not delete activity from iCloud")
+                        self.presentBasicAlert(title: "Error", message: "Unable to delete activity from ICloud")
                     }
                 }
             })
@@ -175,7 +175,7 @@ class ActivitiesViewController: UIViewController{
                             self.activityTableView.reloadData()
                         } else {
                             feedback.notificationOccurred(.error)
-                            self.presentBasicAlert(title: "Error", message: "Could not rename activity to iCloud")
+                            self.presentBasicAlert(title: "Error", message: "Unable to update ICloud")
                             activity.title = oldTitle
                         }
                     }
