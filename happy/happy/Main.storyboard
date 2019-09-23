@@ -170,9 +170,9 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Activities" id="kjp-g6-6tC">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZbE-Xy-OuN">
+                                        <barButtonItem key="rightBarButtonItem" id="HPb-Wy-amI">
                                             <connections>
-                                                <action selector="createNewActivityButtonTapped:" destination="Hpj-me-0G6" id="nNL-RU-bMy"/>
+                                                <action selector="createNewActivityButtonTapped:" destination="Hpj-me-0G6" id="nbJ-uc-LRa"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -195,6 +195,7 @@
                     <connections>
                         <outlet property="activitiesNavigationBar" destination="P76-Vt-eM1" id="wzt-JP-Q2S"/>
                         <outlet property="activityTableView" destination="wR9-MK-rI7" id="Isx-Xp-KjD"/>
+                        <outlet property="addActivityButton" destination="HPb-Wy-amI" id="rtH-5C-e7R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ava-6t-vjf" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -30,11 +30,20 @@ class ActivityForActivityViewTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        activityView.layer.cornerRadius = activityView.frame.height / 2
-        ratingView.layer.cornerRadius = ratingView.frame.height / 2
+        guard let settings = SettingsController.shared.settings else {return}
+        if settings.darkMode {
+            
+        } else {
+            titleLabel.textColor = .black
+            daysAppliedLabel.textColor = .black
+            ratingLabel.textColor = .black
+        }
+        activityView.layer.cornerRadius = 55 / 2
+        ratingView.layer.cornerRadius = 45 / 2
         activityView.layer.borderWidth = 1.5
         activityView.layer.borderColor = UIColor.black.cgColor
         ratingView.backgroundColor = .white
+        self.backgroundColor = .white
     }
     
     // MARK: - Custom Functions

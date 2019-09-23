@@ -14,7 +14,8 @@ class ActivitiesViewController: UIViewController{
     
     @IBOutlet weak var activityTableView: UITableView!
     @IBOutlet weak var activitiesNavigationBar: UINavigationBar!
-
+    @IBOutlet weak var addActivityButton: UIBarButtonItem!
+    
     // MARK: - Properties
 
     var alertController: UIAlertController?
@@ -34,8 +35,7 @@ class ActivitiesViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityTableView.separatorStyle = .none
-        activitiesNavigationBar.barTintColor = .white
+        updateViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +54,25 @@ class ActivitiesViewController: UIViewController{
     }
     
     // MARK: - Custom Functions
+    
+    func updateViews() {
+        guard let settings = SettingsController.shared.settings else {return}
+        if settings.darkMode {
+            
+        } else {
+            activityTableView.backgroundColor = .white
+            activitiesNavigationBar.barTintColor = .white
+            if var textAttributes = activitiesNavigationBar.titleTextAttributes {
+                textAttributes[NSAttributedString.Key.foregroundColor] = UIColor.black
+                activitiesNavigationBar.titleTextAttributes = textAttributes
+                
+            }
+        }
+        activityTableView.separatorStyle = .none
+//        let addActivityBarButtonItem = UIBarButtonItem(image: UIImage(named: "AddIcon"), style: .done, target: self, action: #selector(createNewActivityButtonTapped(_:)))
+//        addActivityButton = addActivityBarButtonItem
+        addActivityButton.image = UIImage(named: "addIcon")
+    }
     
     func createActivityAlert() {
         alertController = UIAlertController(title: "New Activity", message: nil, preferredStyle: .alert)
