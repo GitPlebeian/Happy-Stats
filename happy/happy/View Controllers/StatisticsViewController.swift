@@ -48,7 +48,7 @@ class StatisticsViewController: UIViewController {
             navigationController?.navigationBar.tintColor = .white
         }
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!, NSAttributedString.Key.foregroundColor : titleColor]
-        settingsBarButtonItem.image = UIImage(named: "deleteIcon")
+        settingsBarButtonItem.image = UIImage(named: "settingsIcon")
     }
 
     /*

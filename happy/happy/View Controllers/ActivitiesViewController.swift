@@ -240,6 +240,8 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
 //    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let activity = ActivityController.shared.activities[indexPath.row]
+        let feedback = UISelectionFeedbackGenerator()
+        feedback.selectionChanged()
         presentActivitySelectionAlert(activity: activity)
     }
 }

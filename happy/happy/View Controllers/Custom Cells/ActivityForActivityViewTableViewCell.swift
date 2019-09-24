@@ -45,13 +45,21 @@ class ActivityForActivityViewTableViewCell: UITableViewCell {
         self.backgroundColor = .white
     }
     
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        guard let activity = activity else {return}
+        if highlighted {
+            activityView.backgroundColor = activityView.backgroundColor?.darker(by: 15)
+        } else {
+            activityView.backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
+        }
+    }
+    
     // MARK: - Custom Functions
     
     func updateViewForActivity() {
         guard let activity = activity else {return}
         if activity.timesSelected == 0 {
             daysAppliedLabel.text = "No Days Selected"
-//            daysAppliedLabel.isHidden = true
             ratingLabel.isHidden = true
         } else {
             ratingLabel.isHidden = false

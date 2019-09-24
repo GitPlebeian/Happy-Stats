@@ -30,7 +30,6 @@ class SelectActivitiesViewController: UIViewController {
     var log: Log? {
         didSet {
             rating = Int(log!.rating)
-            updateCellsWithActivities()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "M-d-yyyy"
             updateNavBarTitle(title: dateFormatter.string(from: log!.date))
@@ -65,9 +64,7 @@ class SelectActivitiesViewController: UIViewController {
         setupSearchBar()
         
         updateViews()
-        updateCellsWithActivities()
         updateViewsForRatingChange()
-        didLoad = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -216,11 +213,19 @@ class SelectActivitiesViewController: UIViewController {
     func updateCellsWithActivities() {
         loadViewIfNeeded()
         if didLoad {
-            if let log = log {
-                
-            } else {
-                
+            for selectedActivity in displayActivities[0] {
+                if ActivityController.shared.activities.contains(selectedActivity) == false {
+                    let indexToRemove = displayActivities[0].firstIndex(of: selectedActivity)
+                    displayActivities[0].remove(at: indexToRemove!)
+                }
             }
+            var deselectedActivities: [Activity] = []
+            for activity in ActivityController.shared.activities {
+                if displayActivities[0].contains(activity) == false {
+                    deselectedActivities.append(activity)
+                }
+            }
+            displayActivities[1] = deselectedActivities
         } else {
             if let log = log {
                 displayActivities[0] = log.activities
@@ -228,41 +233,19 @@ class SelectActivitiesViewController: UIViewController {
             } else {
                 displayActivities[1] = ActivityController.shared.activities
             }
-            setAppliedVariables()
         }
-//        if let log = log {
-//            if displayActivities[0].count == 0 {
-//                displayActivities[0] = log.activities
-//            } else {
-//                let activitiesNotInLog = ActivityController.shared.getActivitiesNotInLog(log: log)
-//                for displayActivity in displayActivities[0] {
-//                    if activitiesNotInLog.contains(displayActivity) == false && log.activities.contains(displayActivity) == false {
-//                        let indexToRemove = displayActivities[0].firstIndex(of: displayActivity)
-//                        displayActivities[0].remove(at: indexToRemove!)
-//                    }
-//                }
-//            }
-//            displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
-//            for displayActivity in displayActivities[0] {
-//                if displayActivities[1].contains(displayActivity) {
-//                    let indexToRemove = displayActivities[1].firstIndex(of: displayActivity)
-//                    displayActivities[1].remove(at: indexToRemove!)
-//                }
-//            }
-//            setAppliedVariables()
-//            let deleteLogNavigationBarItem = UIBarButtonItem(image: UIImage(named: "deleteIcon"), style: .done, target: self, action: #selector(deleteLogButtonTapped(_:)))
-//            self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
-//            activitiesTableView.reloadData()
-//        } else {
-//            displayActivities[1] = ActivityController.shared.activities
-//            setAppliedVariables()
-//            activitiesTableView.reloadData()
-//        }
+        if log != nil {
+            let deleteLogNavigationBarItem = UIBarButtonItem(image: UIImage(named: "deleteIcon"), style: .done, target: self, action: #selector(deleteLogButtonTapped(_:)))
+            self.navigationItem.rightBarButtonItem = deleteLogNavigationBarItem
+        }
+        setAppliedVariables()
+        activitiesTableView.reloadData()
         if displayActivities[0].count == 0 && displayActivities[1].count == 0 {
             activitiesTableView.isHidden = true
         } else {
             activitiesTableView.isHidden = false
         }
+        didLoad = true
     }
 } // End Of Class
 
