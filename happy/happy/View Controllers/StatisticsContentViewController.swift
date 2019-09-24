@@ -97,18 +97,49 @@ class StatisticsContentViewController: UIViewController {
         loadViewIfNeeded()
         past30DaysLabel.text = "30 Day Average"
         past30DaysView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(average30).rounded()))
-        past30DaysResultsLabel.text = "\(average30)"
+        if average30 == -1 {
+            past30DaysView.layer.borderColor = UIColor.black.cgColor
+            past30DaysView.layer.borderWidth = 1.5
+            past30DaysResultsLabel.text = ""
+        } else {
+            past30DaysView.layer.borderWidth = 0
+            past30DaysResultsLabel.text = "\(average30)"
+        }
     
         past90DaysLabel.text = "90 Day Average"
         past90DaysView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(average90).rounded()))
         past90DaysResultsLabel.text = "\(average90)"
+        if average90 == -1 {
+            past90DaysView.layer.borderColor = UIColor.black.cgColor
+            past90DaysView.layer.borderWidth = 1.5
+            past90DaysResultsLabel.text = ""
+        } else {
+            past90DaysView.layer.borderWidth = 0
+            past90DaysResultsLabel.text = "\(average90)"
+        }
         
         past180DaysLabel.text = "180 Day Average"
         past180DaysView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(average180).rounded()))
         past180DaysResultsLabel.text = "\(average180)"
+        if average180 == -1 {
+            past180DaysView.layer.borderColor = UIColor.black.cgColor
+            past180DaysView.layer.borderWidth = 1.5
+            past180DaysResultsLabel.text = ""
+        } else {
+            past180DaysView.layer.borderWidth = 0
+            past180DaysResultsLabel.text = "\(average180)"
+        }
         
         pastYearLabel.text = "Year Average"
         pastYearView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(averageYear).rounded()))
         pastYearResultsLabel.text = "\(averageYear)"
+        if averageYear == -1 {
+            pastYearView.layer.borderColor = UIColor.black.cgColor
+            pastYearView.layer.borderWidth = 1.5
+            pastYearResultsLabel.text = ""
+        } else {
+            pastYearView.layer.borderWidth = 0
+            pastYearResultsLabel.text = "\(averageYear)"
+        }
     }
 }

@@ -48,7 +48,7 @@ class ColorHelper {
         case 10:
             return ColorHelper.ten
         default:
-            return UIColor.clear
+            return UIColor.white
         }
     }
 

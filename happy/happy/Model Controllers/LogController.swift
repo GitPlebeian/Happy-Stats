@@ -103,8 +103,6 @@ class LogController {
     
     // Creates a log and will update the activities average happiness based on the log
     func createLog(date: Date, rating: Int, activities: [Activity] = [], completion: @escaping (Log?) -> Void) {
-        var readyToComplete = false
-        var errorOccured = false
         var activityReferences: [CKRecord.Reference] = []
         for activity in activities {
             activityReferences.append(CKRecord.Reference(recordID: activity.recordID, action: .none))
@@ -114,50 +112,32 @@ class LogController {
         ActivityController.shared.addLogData(rating: log.rating, activities: activities)
         privateDB.save(record) { (record, error) in
             DispatchQueue.main.async {
-                if errorOccured == false {
-                    if let error = error {
-                        print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
-                        errorOccured = true
-                        ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
-                        completion(nil)
-                        return
-                    }
-                    guard let record = record, let savedLog = Log(record: record) else {
-                        ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
-                        errorOccured = true
-                        completion(nil)
-                        return
-                    }
-                    if readyToComplete == true {
-                        self.pairLogAndActivities(log: savedLog)
-                        self.logs.append(savedLog)
-                        completion(savedLog)
-                    } else {
-                        readyToComplete = true
-                    }
+                if let error = error {
+                    print("Error in \(#function)\nError: \(error)\nSmall Error: \(error.localizedDescription)")
+                    ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
+                    completion(nil)
+                    return
                 }
+                guard let record = record, let savedLog = Log(record: record) else {
+                    ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
+                    completion(nil)
+                    return
+                }
+                ActivityController.shared.updateActivities(activities: activities, completion: { (success) in
+                    DispatchQueue.main.async {
+                        if success {
+                            self.pairLogAndActivities(log: savedLog)
+                            self.logs.append(savedLog)
+                            completion(savedLog)
+                        } else {
+                            ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
+                            completion(nil)
+                            return
+                        }
+                    }
+                })
             }
         }
-        ActivityController.shared.updateActivities(activities: activities, completion: { (success) in
-            DispatchQueue.main.async {
-                if errorOccured == false {
-                    if success {
-                        if readyToComplete == true {
-                            self.pairLogAndActivities(log: log)
-                            self.logs.append(log)
-                            completion(log)
-                        } else {
-                            readyToComplete = true
-                        }
-                    } else {
-                        ActivityController.shared.removeLogData(rating: log.rating, activities: activities)
-                        errorOccured = true
-                        completion(nil)
-                        return
-                    }
-                }
-            }
-        })
     }
     
     // Will Fetch all of the logs from the users Cloud Storage

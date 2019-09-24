@@ -59,9 +59,12 @@ class ActivityForActivityViewTableViewCell: UITableViewCell {
         if activity.timesSelected == 0 {
             daysAppliedLabel.text = "No Days Selected"
             ratingLabel.isHidden = true
+            activityView.layer.borderWidth = 1.5
+            activityView.layer.borderColor = UIColor.black.cgColor
         } else {
             ratingLabel.isHidden = false
             daysAppliedLabel.text = "\(activity.timesSelected)"
+            activityView.layer.borderWidth = 0
         }
         titleLabel.text = activity.title
         activityView.backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
