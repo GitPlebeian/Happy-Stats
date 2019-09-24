@@ -16,6 +16,8 @@ class HistoricalLogsViewController: UIViewController{
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var monthAverageHappinessView: UIView!
+    @IBOutlet weak var monthAverageHappinessLabel: UILabel!
     
     @IBOutlet weak var sundayLabel: UILabel!
     @IBOutlet weak var mondayLabel: UILabel!
@@ -37,6 +39,8 @@ class HistoricalLogsViewController: UIViewController{
     var scrolledToBottom = false
     var selectedDate: Date?
     var currentLog: Log?
+    var viewMonth: String?
+    var viewYear: String?
     
     // MARK: - Lifecycle
     
@@ -60,12 +64,11 @@ class HistoricalLogsViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         calendarCollectionView.reloadData()
-//        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        calculateMonthAverage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -118,6 +121,7 @@ class HistoricalLogsViewController: UIViewController{
                         self.updateDeleteLogBarButtonItem()
                         self.calendarCollectionView.reloadData()
                         self.updateViewsForRating()
+                        self.calculateMonthAverage()
                     } else {
                         feedback.notificationOccurred(.error)
                     }
@@ -170,7 +174,7 @@ class HistoricalLogsViewController: UIViewController{
             navigationController?.navigationBar.barTintColor = UIColor.white
             navigationController?.navigationBar.tintColor = .white
             titleColor = .black
-            
+            monthAverageHappinessLabel.textColor = .black
         }
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!, NSAttributedString.Key.foregroundColor : titleColor]
         self.tabBarController?.tabBar.barTintColor = .white
@@ -178,6 +182,25 @@ class HistoricalLogsViewController: UIViewController{
         editLogButton.layer.borderColor = UIColor.black.cgColor
         editLogButton.layer.borderWidth = 1.5
         editLogButton.isHidden = true
+        monthAverageHappinessView.layer.cornerRadius = 15
+    }
+    
+    func updateMonthAverageViews(month: String, year: String) {
+        let averageHappiness = StatisticFunctions.getAverageHappinessForMonth(month: month, year: year)
+        if averageHappiness == -1 {
+            monthAverageHappinessLabel.text = "No Logs"
+            monthAverageHappinessView.layer.borderColor = UIColor.black.cgColor
+            monthAverageHappinessView.layer.borderWidth = 1.5
+        } else {
+            monthAverageHappinessLabel.text = "\(averageHappiness)"
+            monthAverageHappinessView.layer.borderWidth = 0
+        }
+        monthAverageHappinessView.backgroundColor = ColorHelper.getColorFoInt(number: Int(averageHappiness.rounded()))
+    }
+    
+    func calculateMonthAverage() {
+        guard let month = viewMonth, let year = viewYear else {return}
+        updateMonthAverageViews(month: month, year: year)
     }
     
     func updateViewsForRating() {
@@ -282,8 +305,11 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
         let sectionHeight = scrollView.contentSize.height / CGFloat(CalendarHelper.shared.months.count)
         let section = Int(round(scrollView.contentOffset.y  / sectionHeight))
         if section >= 0 && section < CalendarHelper.shared.months.count {
-            monthLabel.text = CalendarHelper.shared.months[section].monthName
-            yearLabel.text = CalendarHelper.shared.months[section].year
+            viewMonth = CalendarHelper.shared.months[section].monthName
+            viewYear = CalendarHelper.shared.months[section].year
+            monthLabel.text = viewMonth!
+            yearLabel.text = viewYear!
+            calculateMonthAverage()
         }
     }
     

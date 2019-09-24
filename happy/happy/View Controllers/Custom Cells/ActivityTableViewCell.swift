@@ -48,8 +48,6 @@ class ActivityTableViewCell: UITableViewCell {
         activityView.layer.cornerRadius = activityView.frame.height / 2
         selectionDotView.backgroundColor = .white
         selectionDotView.layer.cornerRadius = selectionDotView.frame.width / 2
-        activityView.layer.borderColor = UIColor.black.cgColor
-        activityView.layer.borderWidth = 1.5
     }
     
     func updateViewForActivity() {
@@ -61,6 +59,7 @@ class ActivityTableViewCell: UITableViewCell {
         } else {
             activityView.backgroundColor = .white
             activityView.layer.borderColor = UIColor.black.cgColor
+            activityView.layer.borderWidth = 1.5
             selectionDotView.backgroundColor = ColorHelper.getColorFoInt(number: 10)
         }
     }

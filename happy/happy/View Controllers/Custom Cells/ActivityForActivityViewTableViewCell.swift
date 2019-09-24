@@ -39,8 +39,6 @@ class ActivityForActivityViewTableViewCell: UITableViewCell {
         }
         activityView.layer.cornerRadius = 55 / 2
         ratingView.layer.cornerRadius = 45 / 2
-        activityView.layer.borderWidth = 1.5
-        activityView.layer.borderColor = UIColor.black.cgColor
         ratingView.backgroundColor = .white
         self.backgroundColor = .white
     }

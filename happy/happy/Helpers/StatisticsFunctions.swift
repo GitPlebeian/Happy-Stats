@@ -11,6 +11,31 @@ import Foundation
 class StatisticFunctions {
     
     static func getAverageHappinessForDays(numDays: Int) -> Double {
-        return 7.23
+        let logRatings = LogController.shared.getRatingsForTimePeriod(days: numDays)
+        if logRatings.count == 0 {
+            return -1
+        }
+        return getAverageInts(array: logRatings)
+    }
+    
+    static func getAverageHappinessForMonth(month: String, year: String) -> Double {
+        let logRatings = LogController.shared.getRatingsForMonth(month: month, year: year)
+        if logRatings.count == 0 {
+            return -1
+        }
+        return getAverageInts(array: logRatings)
+    }
+    
+    static func getPercentageChangeComparison(period: Int, comparisonPeriod: Int) -> Double {
+        
+        return 5.5
+    }
+
+    private static func getAverageInts(array: [Int]) -> Double {
+        var totalNumber: Int = 0
+        for number in array {
+            totalNumber += number
+        }
+        return ((Double(totalNumber) / Double(array.count) * 100).rounded()) / 100
     }
 }

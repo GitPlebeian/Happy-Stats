@@ -19,6 +19,7 @@
 		8624C44B232FFCB000B60BE7 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C44A232FFCB000B60BE7 /* ActivityController.swift */; };
 		8624C44F2330072500B60BE7 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8624C44E2330072500B60BE7 /* CloudKit.framework */; };
 		86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */; };
+		864B2EFA233AA9CF00463549 /* EditStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2EF9233AA9CF00463549 /* EditStatisticsViewController.swift */; };
 		864D198622F63429009368ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D198522F63429009368ED /* AppDelegate.swift */; };
 		864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D198E22F6342A009368ED /* LaunchScreen.storyboard */; };
 		864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A722F65033009368ED /* ActivitiesViewController.swift */; };
@@ -53,6 +54,7 @@
 		8624C44C2330072200B60BE7 /* happy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = happy.entitlements; sourceTree = "<group>"; };
 		8624C44E2330072500B60BE7 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		864B2EF9233AA9CF00463549 /* EditStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStatisticsViewController.swift; sourceTree = "<group>"; };
 		864D198222F63429009368ED /* happy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		864D198522F63429009368ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		864D198F22F6342A009368ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				86CCFD342306045800CDCC21 /* StatisticsViewController.swift */,
 				861E11252335559800F627BC /* StatisticsContentViewController.swift */,
 				861E112F2335825000F627BC /* LoadingDataViewController.swift */,
+				864B2EF9233AA9CF00463549 /* EditStatisticsViewController.swift */,
 				862998B522F747E300B74809 /* Custom Cells */,
 			);
 			path = "View Controllers";
@@ -305,6 +308,7 @@
 			files = (
 				861E112C23356CF000F627BC /* SettingsController.swift in Sources */,
 				861E11302335825000F627BC /* LoadingDataViewController.swift in Sources */,
+				864B2EFA233AA9CF00463549 /* EditStatisticsViewController.swift in Sources */,
 				86D11AD222FF9C330059A0B3 /* HistoricalLogsViewController.swift in Sources */,
 				861E112E23357A0300F627BC /* LoadDataController.swift in Sources */,
 				8624C445232FE62C00B60BE7 /* Log.swift in Sources */,

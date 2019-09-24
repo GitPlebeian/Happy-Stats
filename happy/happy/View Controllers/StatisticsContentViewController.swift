@@ -12,62 +12,103 @@ class StatisticsContentViewController: UIViewController {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var averageXDaysView: UIView!
-    @IBOutlet weak var averageXDaysResultView: UIView!
-    @IBOutlet weak var pastXDaysLabel: UILabel!
-    @IBOutlet weak var averageXDaysResultLabel: UILabel!
+    @IBOutlet weak var past30DaysView: UIView!
+    @IBOutlet weak var past30DaysLabel: UILabel!
+    @IBOutlet weak var past30DaysResultsView: UIView!
+    @IBOutlet weak var past30DaysResultsLabel: UILabel!
+    
+    @IBOutlet weak var past90DaysView: UIView!
+    @IBOutlet weak var past90DaysLabel: UILabel!
+    @IBOutlet weak var past90DaysResultsView: UIView!
+    @IBOutlet weak var past90DaysResultsLabel: UILabel!
+    
+    @IBOutlet weak var past180DaysView: UIView!
+    @IBOutlet weak var past180DaysLabel: UILabel!
+    @IBOutlet weak var past180DaysResultsView: UIView!
+    @IBOutlet weak var past180DaysResultsLabel: UILabel!
+    
+    @IBOutlet weak var pastYearView: UIView!
+    @IBOutlet weak var pastYearLabel: UILabel!
+    @IBOutlet weak var pastYearResultsView: UIView!
+    @IBOutlet weak var pastYearResultsLabel: UILabel!
     
     // MARK: - Properties
     
-    var rollingRatingAveragePeriod: Int = -1
-    var averageForXDays: Double = -1
+    var average30: Double = -1
+    var average90: Double = -1
+    var average180: Double = -1
+    var averageYear: Double = -1
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         runCalculations()
         updateViewsForCalculations()
     }
-    
-
     // MARK: - Custom Functions
     
     func updateViews() {
         if DarkModeController.shared.darkMode.enabled {
             
         } else {
-            pastXDaysLabel.textColor = .black
-            averageXDaysResultLabel.textColor = .black
-            averageXDaysResultView.backgroundColor = .white
+            past30DaysLabel.textColor = .black
+            past30DaysResultsLabel.textColor = .black
+            past30DaysResultsView.backgroundColor = .white
+            
+            past90DaysResultsView.backgroundColor = .white
+            past90DaysLabel.textColor = .black
+            past90DaysResultsLabel.textColor = .black
+            
+            past180DaysLabel.textColor = .black
+            past180DaysResultsLabel.textColor = .black
+            past180DaysResultsView.backgroundColor = .white
+            
+            pastYearLabel.textColor = .black
+            pastYearResultsLabel.textColor = .black
+            pastYearResultsView.backgroundColor = .white
         }
-        averageXDaysView.layer.cornerRadius = 15
-        averageXDaysResultView.layer.cornerRadius = averageXDaysResultView.frame.height / 2
+        past30DaysView.layer.cornerRadius = 15
+        past30DaysResultsView.layer.cornerRadius = past30DaysResultsView.frame.height / 2
+        
+        past90DaysView.layer.cornerRadius = 15
+        past90DaysResultsView.layer.cornerRadius = past90DaysResultsView.frame.height / 2
+        
+        past180DaysView.layer.cornerRadius = 15
+        past180DaysResultsView.layer.cornerRadius = past180DaysResultsView.frame.height / 2
+        
+        pastYearView.layer.cornerRadius = 15
+        pastYearResultsView.layer.cornerRadius = pastYearResultsView.frame.height / 2
     }
     
     func runCalculations() {
-        guard let settings = SettingsController.shared.settings else {return}
-        rollingRatingAveragePeriod = settings.rollingRatingAveragePeriod
-        averageForXDays = StatisticFunctions.getAverageHappinessForDays(numDays:
-            rollingRatingAveragePeriod)
-        
+        average30 = StatisticFunctions.getAverageHappinessForDays(numDays: 30)
+        average90 = StatisticFunctions.getAverageHappinessForDays(numDays: 90)
+        average180 = StatisticFunctions.getAverageHappinessForDays(numDays: 180)
+        averageYear = StatisticFunctions.getAverageHappinessForDays(numDays: 365)
     }
     
     func updateViewsForCalculations() {
         loadViewIfNeeded()
-        pastXDaysLabel.text = "Past \(rollingRatingAveragePeriod) Days"
-        averageXDaysView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(averageForXDays).rounded()))
-        averageXDaysResultLabel.text = "\(averageForXDays)"
+        past30DaysLabel.text = "30 Day Average"
+        past30DaysView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(average30).rounded()))
+        past30DaysResultsLabel.text = "\(average30)"
+    
+        past90DaysLabel.text = "90 Day Average"
+        past90DaysView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(average90).rounded()))
+        past90DaysResultsLabel.text = "\(average90)"
+        
+        past180DaysLabel.text = "180 Day Average"
+        past180DaysView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(average180).rounded()))
+        past180DaysResultsLabel.text = "\(average180)"
+        
+        pastYearLabel.text = "Year Average"
+        pastYearView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(averageYear).rounded()))
+        pastYearResultsLabel.text = "\(averageYear)"
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

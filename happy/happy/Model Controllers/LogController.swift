@@ -66,6 +66,39 @@ class LogController {
         }
     }
     
+    func getRatingsForTimePeriod(days: Int) -> [Int] {
+        var arrayOfAllowedDates: [String] = []
+        var resultsArray: [Int] = []
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        var incrementDate = Date()
+        var count = 0
+        while count < days {
+            arrayOfAllowedDates.append(formatter.string(from: incrementDate))
+            incrementDate = Calendar.current.date(byAdding: .day, value: -1, to: incrementDate) ?? Date()
+            count += 1
+        }
+        for log in logs {
+            if arrayOfAllowedDates.contains(formatter.string(from: log.date)) {
+                resultsArray.append(log.rating)
+            }
+        }
+        return resultsArray
+    }
+    
+    func getRatingsForMonth(month: String, year: String) -> [Int] {
+        var resultsArray: [Int] = []
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        let allowedDate = "\(month) \(year)"
+        for log in logs {
+            if formatter.string(from: log.date) == allowedDate {
+                resultsArray.append(log.rating)
+            }
+        }
+        return resultsArray
+    }
+    
     // MARK: - CRUD
     
     // Creates a log and will update the activities average happiness based on the log

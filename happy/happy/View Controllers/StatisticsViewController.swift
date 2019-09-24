@@ -12,8 +12,6 @@ class StatisticsViewController: UIViewController {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
-    
     // MARK: - Properties
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -35,7 +33,6 @@ class StatisticsViewController: UIViewController {
         updateViews()
     }
     
-    // MARK: - A
     
     // MARK: - Custom Functions
     
@@ -48,7 +45,6 @@ class StatisticsViewController: UIViewController {
             navigationController?.navigationBar.tintColor = .white
         }
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!, NSAttributedString.Key.foregroundColor : titleColor]
-        settingsBarButtonItem.image = UIImage(named: "settingsIcon")
     }
 
     /*
