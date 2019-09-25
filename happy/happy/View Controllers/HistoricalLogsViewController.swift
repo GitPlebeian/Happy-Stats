@@ -35,7 +35,6 @@ class HistoricalLogsViewController: UIViewController{
     // MARK: - Properties
     
     var rating = 5
-    
     // Used to only scroll to the bottom when the view firsts loads.
     var scrolledToBottom = false
     var selectedDate: Date?
@@ -53,14 +52,6 @@ class HistoricalLogsViewController: UIViewController{
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.showsVerticalScrollIndicator = false
         calendarCollectionView.scrollsToTop = false
-        os_log("This is a log")
-        // Sets the month label and year label equal to todays date
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM"
-//        title = dateFormatter.string(from: date)
-//        dateFormatter.dateFormat = "yyyy"
-//        yearLabel.text = dateFormatter.string(from: date)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -68,12 +59,9 @@ class HistoricalLogsViewController: UIViewController{
         calculateMonthAverage()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // Will fade in the content on first appearance
         if scrolledToBottom == false {
             scrolledToBottom = true
             calendarCollectionView.scrollToItem(at: IndexPath(row: 41, section: CalendarHelper.shared.months.count - 1), at: UICollectionView.ScrollPosition.bottom, animated: false)
@@ -87,18 +75,6 @@ class HistoricalLogsViewController: UIViewController{
         }
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        if DarkModeController.shared.darkMode.enabled {
-            return .lightContent
-        } else {
-            if #available(iOS 13.0, *) {
-                return .darkContent
-            } else {
-                return .default
-            }
-        }
-    }
-    
     // MARK: - Actions
     
     @IBAction func deleteLogButtonTapped(_ sender: Any) {
@@ -107,6 +83,7 @@ class HistoricalLogsViewController: UIViewController{
     
     // MARK: - Custom Functions
     
+    // Alert for deleting a log and its data
     func presentDeleteLogAlert() {
         let alertController = UIAlertController(title: "Delete Log", message: "Are you sure?", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
@@ -135,6 +112,7 @@ class HistoricalLogsViewController: UIViewController{
         present(alertController, animated: true)
     }
     
+    // Enables bar button item if log is selected
     func updateDeleteLogBarButtonItem() {
         if currentLog != nil {
             let deleteLogNavigationBarItem = UIBarButtonItem(image: UIImage(named: "deleteIcon"), style: .done, target: self, action: #selector(deleteLogButtonTapped(_:)))
@@ -186,6 +164,7 @@ class HistoricalLogsViewController: UIViewController{
         monthAverageHappinessView.layer.cornerRadius = 15
     }
     
+    // Will update the month average label and view
     func updateMonthAverageViews(month: String, year: String) {
         let averageHappiness = StatisticFunctions.getAverageHappinessForMonth(month: month, year: year)
         if averageHappiness == -1 {
@@ -204,25 +183,17 @@ class HistoricalLogsViewController: UIViewController{
         updateMonthAverageViews(month: month, year: year)
     }
     
+    // Updates colors for when the rating is changed
     func updateViewsForRating() {
         let color = ColorHelper.getColorFoInt(number: rating)
         editLogButton.backgroundColor = color
     }
     
-    func presentAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
-            self.navigationController?.popViewController(animated: true)
-        }
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
-    }
-    
+    // Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSelectActivities" {
             guard let destinationVC = segue.destination as? SelectActivitiesViewController else {return}
             destinationVC.delegate = self
-//            self.navigationController?.setNavigationBarHidden(false, animated: false)
             if let log = currentLog {
                 destinationVC.log = log
             } else {
@@ -237,6 +208,7 @@ class HistoricalLogsViewController: UIViewController{
 
 // MARK: - Extensions
 
+// Protocol used for when the logDetailView/SelectActivitesView save or deletes the log. It will update views acordingly
 extension HistoricalLogsViewController: SelectActivitiesViewControllerDelegate {
     func setCurrentLog(log: Log?) {
         if let log = log {
@@ -254,9 +226,12 @@ extension HistoricalLogsViewController: SelectActivitiesViewControllerDelegate {
 
 extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    // Num Sections
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return CalendarHelper.shared.months.count
     }
+    
+    // Num Rows for calendar
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // 42 because there is 7 columns and 6 rows. 6 * 7 = 42
         return 42
@@ -300,7 +275,7 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
         return size
     }
     
-    // Did Scoll. Primary funciton is to update the month and year label when sections are changed
+    // Did Scoll. Function is to update the month and year label when sections are changed
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Sets the month label to the current month in view
         let sectionHeight = scrollView.contentSize.height / CGFloat(CalendarHelper.shared.months.count)
