@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class HistoricalLogsViewController: UIViewController{
     
@@ -52,7 +53,7 @@ class HistoricalLogsViewController: UIViewController{
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.showsVerticalScrollIndicator = false
         calendarCollectionView.scrollsToTop = false
-        
+        os_log("This is a log")
         // Sets the month label and year label equal to todays date
         let date = Date()
         let dateFormatter = DateFormatter()

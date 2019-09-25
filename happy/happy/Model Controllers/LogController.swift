@@ -166,6 +166,7 @@ class LogController {
         let oldLogCopy = copyLog(log: log)
         log.rating = newRating
         log.activities = newActivities
+        updateActivityReferences(log: log)
         ActivityController.shared.removeLogData(rating: oldLogCopy.rating, activities: oldLogCopy.activities)
         ActivityController.shared.addLogData(rating: log.rating, activities: log.activities)
 
@@ -221,7 +222,6 @@ class LogController {
                     } else {
                         readyToComplete = true
                     }
-                    
                 }
             }
         }

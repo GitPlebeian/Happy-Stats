@@ -30,18 +30,25 @@ class ActivityController {
     // MARK: - Updating Average Rating
     
     func removeLogData(rating: Int, activities: [Activity]) {
+        print("---------------\nDELETING DATA)\nLog Count: \(LogController.shared.logs.count)")
         for activity in activities {
+            print("\(activity.title)\nTotal rating: \(activity.totalRating)\nTimes Selected: \(activity.timesSelected)\n\n")
             activity.totalRating -= rating
             activity.timesSelected -= 1
             calculateAverageRating(activity: activity)
+            print("\(activity.title)\nTotal rating: \(activity.totalRating)\nTimes Selected: \(activity.timesSelected)")
         }
+        print("\(LogController.shared.logs.count)\n------------------\n\n\n")
     }
     
     func addLogData(rating: Int, activities: [Activity]) {
+        print("------------\nAddingLogData")
         for activity in activities {
+            print("\(activity.title)\nTotal rating: \(activity.totalRating)\nTimes Selected: \(activity.timesSelected)\n\n")
             activity.totalRating += rating
             activity.timesSelected += 1
             calculateAverageRating(activity: activity)
+            print("\(activity.title)\nTotal rating: \(activity.totalRating)\nTimes Selected: \(activity.timesSelected)\n------------------\n\n\n")
         }
     }
     
