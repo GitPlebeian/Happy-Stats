@@ -20,18 +20,6 @@ class ActivitiesViewController: UIViewController{
 
     var alertController: UIAlertController?
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        if DarkModeController.shared.darkMode.enabled {
-            return .lightContent
-        } else {
-            if #available(iOS 13.0, *) {
-                return .darkContent
-            } else {
-                return .default
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
@@ -54,6 +42,7 @@ class ActivitiesViewController: UIViewController{
     
     // MARK: - Custom Functions
     
+    // Updates view attributes and colors
     func updateViews() {
         if DarkModeController.shared.darkMode.enabled {
             
@@ -67,11 +56,10 @@ class ActivitiesViewController: UIViewController{
             }
         }
         activityTableView.separatorStyle = .none
-//        let addActivityBarButtonItem = UIBarButtonItem(image: UIImage(named: "AddIcon"), style: .done, target: self, action: #selector(createNewActivityButtonTapped(_:)))
-//        addActivityButton = addActivityBarButtonItem
         addActivityButton.image = UIImage(named: "addIcon")
     }
     
+    // presents alert for creating an activity
     func createActivityAlert() {
         alertController = UIAlertController(title: "New Activity", message: nil, preferredStyle: .alert)
         alertController?.addTextField { (textField) in
@@ -107,7 +95,7 @@ class ActivitiesViewController: UIViewController{
         present(alertController, animated: true)
     }
     
-    // Presents a message to the user via alert
+    // Presents a basic message alert
     func presentBasicAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -115,6 +103,7 @@ class ActivitiesViewController: UIViewController{
         present(alertController, animated: true)
     }
     
+    // Presents an alert whenever you select an activity. The alert allows you to rename or delete
     func presentActivitySelectionAlert(activity: Activity) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
@@ -130,6 +119,7 @@ class ActivitiesViewController: UIViewController{
         present(alertController, animated: true)
     }
     
+    // An are you sure alert when you request to delete an activity
     func presentDeleteAlert(activity: Activity) {
         let alertController = UIAlertController(title: "Delete Activity", message: "Are you sure you want to delete this activity? This will remove the activity from any logs it has been applied too.", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "I'm Sure", style: .destructive) { (_) in
@@ -153,6 +143,7 @@ class ActivitiesViewController: UIViewController{
         present(alertController, animated: true)
     }
     
+    // An alert with text field that will change the activity's title
     func presentRenameAlert(activity: Activity) {
         let alertController = UIAlertController(title: "Rename Activity", message: nil, preferredStyle: .alert)
         alertController.addTextField { (textField) in
@@ -187,31 +178,16 @@ class ActivitiesViewController: UIViewController{
         alertController.addAction(renameAction)
         present(alertController, animated: true)
     }
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "showActivity" {
-//
-//            if let index = activityTableView.indexPathForSelectedRow {
-//
-//                guard let destinationVC = segue.destination as? ActivityDetailViewController else {return}
-//
-//                let activity = ActivityController.shared.activities[index.row]
-//                destinationVC.activity = activity
-//            }
-//        }
-//    }
 } // End Class
 
 extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
     
+    // Num Rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ActivityController.shared.activities.count
     }
     
+    // Cell for row at
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = activityTableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as? ActivityForActivityViewTableViewCell else {return UITableViewCell()}
         
@@ -221,23 +197,7 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            let activityToDelete = ActivityController.shared.activities[indexPath.row]
-//            let feedback = UINotificationFeedbackGenerator()
-//            feedback.prepare()
-//            ActivityController.shared.deleteActivity(activity: activityToDelete) { (success) in
-//                DispatchQueue.main.async {
-//                    if success {
-//                        feedback.notificationOccurred(.success)
-//                        tableView.deleteRows(at: [indexPath], with: .fade)
-//                    } else {
-//                        self.errorAlert(message: "Error Deleting Form Database")
-//                    }
-//                }
-//            }
-//        }
-//    }
+    // Did Select
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let activity = ActivityController.shared.activities[indexPath.row]
         let feedback = UISelectionFeedbackGenerator()

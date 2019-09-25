@@ -8,8 +8,6 @@
 
 import UIKit
 
-//protocol MainTabBarControlle
-
 class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
@@ -18,7 +16,7 @@ class MainTabBarController: UITabBarController {
         guard let tabBarItems = tabBar.items else {return}
         var index = 0
         for item in tabBarItems {
-            // Diables the titles of tab bar icons and centers the images
+            // Disables the titles of tab bar icons and centers the images
             item.title = ""
             item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
             
@@ -35,19 +33,5 @@ class MainTabBarController: UITabBarController {
             }
             index += 1
         }
-//        LogController.shared.fetchAllLogs { (success) in
-//            if success && ActivityController.shared.activities.count > 0 {
-//                LogController.shared.pairLogsAndActivities()
-//            }
-//        }
-//        ActivityController.shared.fetchAllActivities { (success) in
-//            if success && LogController.shared.logs.count > 0 {
-//                LogController.shared.pairLogsAndActivities()
-//            }
-//        }
-//
-//        SettingsController.shared.fetchSettings { (success) in
-//
-//        }
     }
 } // End of Class
