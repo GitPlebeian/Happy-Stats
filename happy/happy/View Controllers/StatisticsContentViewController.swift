@@ -86,6 +86,7 @@ class StatisticsContentViewController: UIViewController {
         pastYearResultsView.layer.cornerRadius = pastYearResultsView.frame.height / 2
     }
     
+    // Run calculations to average out time periods
     func runCalculations() {
         average30 = StatisticFunctions.getAverageHappinessForDays(numDays: 30)
         average90 = StatisticFunctions.getAverageHappinessForDays(numDays: 90)
@@ -93,6 +94,7 @@ class StatisticsContentViewController: UIViewController {
         averageYear = StatisticFunctions.getAverageHappinessForDays(numDays: 365)
     }
     
+    // Updates view for calculations
     func updateViewsForCalculations() {
         loadViewIfNeeded()
         past30DaysLabel.text = "30 Day Average"

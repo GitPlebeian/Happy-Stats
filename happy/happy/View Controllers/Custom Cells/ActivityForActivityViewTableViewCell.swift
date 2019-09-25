@@ -43,6 +43,7 @@ class ActivityForActivityViewTableViewCell: UITableViewCell {
         self.backgroundColor = .white
     }
     
+    // Set Highlighted
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         guard let activity = activity else {return}
         if highlighted {
@@ -54,6 +55,7 @@ class ActivityForActivityViewTableViewCell: UITableViewCell {
     
     // MARK: - Custom Functions
     
+    // Updates view for an activity
     func updateViewForActivity() {
         guard let activity = activity else {return}
         if activity.timesSelected == 0 {

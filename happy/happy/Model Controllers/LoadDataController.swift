@@ -10,6 +10,7 @@ import Foundation
 
 class LoadDataController {
     
+    // Completes true when all data has been loaded to device
     static func loadAllData(completion: @escaping (Bool) -> Void) {
         var loadedOne = false
         var loadedTwo = false

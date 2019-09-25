@@ -50,6 +50,7 @@ class ActivityTableViewCell: UITableViewCell {
         selectionDotView.layer.cornerRadius = selectionDotView.frame.width / 2
     }
     
+    // Updates View when activity is present
     func updateViewForActivity() {
         guard let activity = activitiy else {return}
         activityTitleLabel.text = activity.title
@@ -64,6 +65,7 @@ class ActivityTableViewCell: UITableViewCell {
         }
     }
     
+    // Updates the cell if it is applied to a Log
     func updateViewForAppliedToLog() {
         if appliedToLog {
             selectionDotView.isHidden = false

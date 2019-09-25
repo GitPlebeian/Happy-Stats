@@ -19,20 +19,7 @@ class LoadingDataViewController: UIViewController {
     
     // MARK: - Properties
     
-    var connectedToInternet = true
     var connectedToICloud = true
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        if DarkModeController.shared.darkMode.enabled {
-            return .lightContent
-        } else {
-            if #available(iOS 13.0, *) {
-                return .darkContent
-            } else {
-                return .default
-            }
-        }
-    }
     
     // MARK: - Lifecycle
     
@@ -71,6 +58,7 @@ class LoadingDataViewController: UIViewController {
         }
     }
     
+    // Presents alert telling the user that they need to sign into icloud in order for the app to work
     func presentSignInToICloudAlert() {
         let alertController = UIAlertController(title: "ICloud", message: "This app uses ICloud to sync data across your devices. All data will not be saved unless you sign in to ICloud", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
@@ -82,14 +70,6 @@ class LoadingDataViewController: UIViewController {
         }
         alertController.addAction(okAction)
         present(alertController, animated: true)
-    }
-    
-    func presentInternetConnectivityAlert() {
-        
-    }
-    
-    func isConnectedToInternet() -> Bool {
-        return true
     }
     
     func updateICloudAvailable() {
@@ -105,6 +85,7 @@ class LoadingDataViewController: UIViewController {
         present(alertController, animated: true)
     }
     
+    // Will load all data from user's iCloud
     func loadData() {
         LoadDataController.loadAllData { (loadedAllData) in
             DispatchQueue.main.async {
@@ -122,6 +103,7 @@ class LoadingDataViewController: UIViewController {
         }
     }
     
+    // Fades out loading data view
     func hideLoadingDataStackView() {
         UIView.animate(withDuration: 0.1, animations: {
             self.loadingDataStackView.alpha = 0.0
@@ -131,6 +113,7 @@ class LoadingDataViewController: UIViewController {
             }
         })
     }
+    
     func showLoadingDataStackView() {
         self.loadingDataStackView.isHidden = false
         UIView.animate(withDuration: 0.15, animations: {
