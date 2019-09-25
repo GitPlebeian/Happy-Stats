@@ -27,6 +27,10 @@ class ActivityController {
         return activitiesNotInLog
     }
     
+    func sortActivitesByNumTimes() {
+        
+    }
+    
     // MARK: - Updating Average Rating
     
     func removeLogData(rating: Int, activities: [Activity]) {
@@ -101,6 +105,9 @@ class ActivityController {
             
             let activities: [Activity] = records.compactMap({Activity(record: $0)})
             self.activities = activities
+            DispatchQueue.main.async {
+                self.sortActivitesByNumTimes()
+            }
             completion(true)
         }
     }

@@ -42,6 +42,7 @@ class SelectActivitiesViewController: UIViewController {
             updateNavBarTitle(title: dateFormatter.string(from: selectedDate!))
         }
     }
+    // Display activites is used to have seperate sections for selected and deselected activites
     var displayActivities: [[Activity]] = [[],[]]
     var allApplied = false
     var allActivities = false
@@ -55,7 +56,6 @@ class SelectActivitiesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationController?.setNavigationBarHidden(false, animated: false)
         
         activitiesTableView.delegate = self
         activitiesTableView.dataSource = self
@@ -70,12 +70,6 @@ class SelectActivitiesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateCellsWithActivities()
-//        navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     // MARK: - Actions
@@ -84,6 +78,7 @@ class SelectActivitiesViewController: UIViewController {
         presentDeleteLogAlert()
     }
     
+    // Saves log and updates activities
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
         let feedback = UINotificationFeedbackGenerator()
         feedback.prepare()
@@ -147,7 +142,7 @@ class SelectActivitiesViewController: UIViewController {
         self.title = title
     }
     
-    // Presents a message to the user via alert
+    // Presents an error alert
     func presentErrorAlert(message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
@@ -181,6 +176,7 @@ class SelectActivitiesViewController: UIViewController {
         present(alertController, animated: true)
     }
     
+    // Updates colors for a rating change
     func updateViewsForRatingChange() {
         logRatingLabel.text = "\(rating)"
         logRatingSlider.value = Float(rating)
@@ -190,6 +186,7 @@ class SelectActivitiesViewController: UIViewController {
         logRatingSlider.thumbTintColor = ColorHelper.getColorFoInt(number: rating)
     }
     
+    // Will set variables that control how many sections there will be in the tableview
     func setAppliedVariables() {
         if displayActivities[0].count == 0 && displayActivities[1].count > 0{
             allApplied = false
@@ -203,6 +200,7 @@ class SelectActivitiesViewController: UIViewController {
         }
     }
     
+    // Updates Search bar view
     func setupSearchBar() {
         if let searchBarTextField = activitiesSearchBar.value(forKey: "searchField") as? UITextField {
             searchBarTextField.textColor = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
@@ -411,10 +409,12 @@ extension SelectActivitiesViewController: UISearchBarDelegate{
         activitiesTableView.reloadData()
     }
     
+    // Search Return tapped
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         activitiesSearchBar.resignFirstResponder()
     }
     
+    // Search Ended
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         isSearching = false
         searchBar.text = ""
