@@ -11,6 +11,9 @@
         <array key="SF-Pro-Display-Light.otf">
             <string>SFProDisplay-Light</string>
         </array>
+        <array key="SF-Pro-Display-Medium.otf">
+            <string>SFProDisplay-Medium</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Statistics-->
@@ -353,8 +356,8 @@
                                     <constraint firstItem="I5u-cY-koN" firstAttribute="centerX" secondItem="bb2-nX-Qqh" secondAttribute="centerX" id="vyh-UV-B5R"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vc9-Ls-fhe">
-                                <rect key="frame" x="0.0" y="648" width="414" height="77"/>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vc9-Ls-fhe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -570,22 +573,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Il0-ZO-kxc">
-                                <rect key="frame" x="157" y="403" width="100" height="100"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Il0-ZO-kxc">
+                                <rect key="frame" x="157" y="388" width="100" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gc-sn-r1j">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="64"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="57"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3ic-Jp-t9G">
-                                        <rect key="frame" x="0.0" y="80" width="100" height="20"/>
+                                        <rect key="frame" x="0.0" y="73" width="100" height="57"/>
                                     </activityIndicatorView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xgc-7q-fca">
+                                        <rect key="frame" x="0.0" y="130" width="100" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="17"/>
+                                        <state key="normal" title="Refresh">
+                                            <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="refreshButtonTapped:" destination="fGl-Nr-Bc4" eventType="touchUpInside" id="FIe-eR-4Kq"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="AIL-lv-ZYF"/>
-                                    <constraint firstAttribute="height" constant="100" id="JuY-Wj-UIp"/>
+                                    <constraint firstAttribute="height" constant="130" id="JuY-Wj-UIp"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -597,8 +610,10 @@
                         <viewLayoutGuide key="safeArea" id="E85-6a-icT"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorLoadingData" destination="3ic-Jp-t9G" id="nGf-7J-iTZ"/>
                         <outlet property="loadingDataLabel" destination="0Gc-sn-r1j" id="MQp-kh-nPY"/>
                         <outlet property="loadingDataStackView" destination="Il0-ZO-kxc" id="PeV-oR-cb6"/>
+                        <outlet property="refreshButton" destination="Xgc-7q-fca" id="kry-iz-ofo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFE-5G-9yK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -823,6 +838,18 @@
                                     <constraint firstItem="z4T-TR-hZT" firstAttribute="leading" secondItem="7sc-xY-8JF" secondAttribute="leading" constant="12" id="tcd-gx-x7a"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AT-e2-sqD">
+                                <rect key="frame" x="132" y="448" width="150" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="7an-rO-Oon"/>
+                                    <constraint firstAttribute="height" constant="44" id="Z3p-NP-2GR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
+                                <state key="normal" title="Privacy Policy"/>
+                                <connections>
+                                    <action selector="privacyPolicyButtonTapped:" destination="p4z-Z8-pCE" eventType="touchUpInside" id="dgU-Sh-J8w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -831,6 +858,8 @@
                             <constraint firstItem="SzC-3M-JTj" firstAttribute="top" secondItem="z2q-Wd-i3D" secondAttribute="top" constant="16" id="3jB-Y6-IqL"/>
                             <constraint firstItem="SzC-3M-JTj" firstAttribute="centerX" secondItem="z2q-Wd-i3D" secondAttribute="centerX" id="9Ct-wk-Up0"/>
                             <constraint firstItem="ABH-VD-j1i" firstAttribute="top" secondItem="SzC-3M-JTj" secondAttribute="bottom" constant="16" id="J67-bd-lwF"/>
+                            <constraint firstItem="4AT-e2-sqD" firstAttribute="centerX" secondItem="z2q-Wd-i3D" secondAttribute="centerX" id="JhU-EG-SXk"/>
+                            <constraint firstItem="4AT-e2-sqD" firstAttribute="top" secondItem="7sc-xY-8JF" secondAttribute="bottom" constant="60" id="MsD-K2-pPb"/>
                             <constraint firstItem="ABH-VD-j1i" firstAttribute="width" secondItem="z2q-Wd-i3D" secondAttribute="width" multiplier="0.9" id="R4V-ZJ-U8j"/>
                             <constraint firstItem="ABH-VD-j1i" firstAttribute="centerX" secondItem="z2q-Wd-i3D" secondAttribute="centerX" id="R9Q-4E-x5H"/>
                             <constraint firstItem="r8j-ab-aTe" firstAttribute="top" secondItem="ABH-VD-j1i" secondAttribute="bottom" constant="16" id="cyJ-9d-9Qu"/>
@@ -858,6 +887,7 @@
                         <outlet property="pastYearResultsLabel" destination="ydk-YS-roI" id="KSQ-ki-ddV"/>
                         <outlet property="pastYearResultsView" destination="c7o-Jf-0Es" id="B7f-rU-Zdb"/>
                         <outlet property="pastYearView" destination="7sc-xY-8JF" id="qoN-Tl-faM"/>
+                        <outlet property="privacyPolicyButton" destination="4AT-e2-sqD" id="Nsg-zJ-jBf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nu4-Cs-8gp" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,6 +11,7 @@ import UIKit
 class StatisticsContentViewController: UIViewController {
 
     // MARK: - Outlets
+    @IBOutlet weak var privacyPolicyButton: UIButton!
     
     @IBOutlet weak var past30DaysView: UIView!
     @IBOutlet weak var past30DaysLabel: UILabel!
@@ -51,6 +52,16 @@ class StatisticsContentViewController: UIViewController {
         runCalculations()
         updateViewsForCalculations()
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func privacyPolicyButtonTapped(_ sender: Any) {
+        if let url = URL(string: "https://sites.google.com/view/hapistats-privacy-policy/home") {
+            UIApplication.shared.open(url)
+        }
+        
+    }
+    
     // MARK: - Custom Functions
     
     func updateViews() {
@@ -72,6 +83,8 @@ class StatisticsContentViewController: UIViewController {
             pastYearLabel.textColor = .black
             pastYearResultsLabel.textColor = .black
             pastYearResultsView.backgroundColor = .white
+            
+            privacyPolicyButton.tintColor = .systemBlue
         }
         past30DaysView.layer.cornerRadius = 15
         past30DaysResultsView.layer.cornerRadius = past30DaysResultsView.frame.height / 2

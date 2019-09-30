@@ -57,6 +57,7 @@ class ActivityTableViewCell: UITableViewCell {
         if activity.averageRating > -1 {
             activityView.backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
             selectionDotView.backgroundColor = .white
+            activityView.layer.borderWidth = 0
         } else {
             activityView.backgroundColor = .white
             activityView.layer.borderColor = UIColor.black.cgColor

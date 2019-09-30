@@ -28,31 +28,34 @@ class ActivityController {
     }
     
     func sortActivitesByNumTimes() {
-        
+        var unsortedNumbers = activities.count
+        while unsortedNumbers > 0 {
+            for index in 1..<unsortedNumbers {
+                if activities[index - 1].timesSelected < activities[index].timesSelected {
+                    let tempActivity = activities[index]
+                    activities[index] = activities[index - 1]
+                    activities[index - 1] = tempActivity
+                }
+            }
+            unsortedNumbers -= 1
+        }
     }
     
     // MARK: - Updating Average Rating
     
     func removeLogData(rating: Int, activities: [Activity]) {
-        print("---------------\nDELETING DATA)\nLog Count: \(LogController.shared.logs.count)")
         for activity in activities {
-            print("\(activity.title)\nTotal rating: \(activity.totalRating)\nTimes Selected: \(activity.timesSelected)\n\n")
             activity.totalRating -= rating
             activity.timesSelected -= 1
             calculateAverageRating(activity: activity)
-            print("\(activity.title)\nTotal rating: \(activity.totalRating)\nTimes Selected: \(activity.timesSelected)")
         }
-        print("\(LogController.shared.logs.count)\n------------------\n\n\n")
     }
     
     func addLogData(rating: Int, activities: [Activity]) {
-        print("------------\nAddingLogData")
         for activity in activities {
-            print("\(activity.title)\nTotal rating: \(activity.totalRating)\nTimes Selected: \(activity.timesSelected)\n\n")
             activity.totalRating += rating
             activity.timesSelected += 1
             calculateAverageRating(activity: activity)
-            print("\(activity.title)\nTotal rating: \(activity.totalRating)\nTimes Selected: \(activity.timesSelected)\n------------------\n\n\n")
         }
     }
     
@@ -105,10 +108,10 @@ class ActivityController {
             
             let activities: [Activity] = records.compactMap({Activity(record: $0)})
             self.activities = activities
+            completion(true)
             DispatchQueue.main.async {
                 self.sortActivitesByNumTimes()
             }
-            completion(true)
         }
     }
     
@@ -144,6 +147,7 @@ class ActivityController {
                 LogController.shared.deleteActivityFromLogs(activity: self.activities[index], completion: { (success) in
                     if success {
                         self.activities.remove(at: index)
+                        self.sortActivitesByNumTimes()
                         completion(true)
                     } else {
                         completion(false)

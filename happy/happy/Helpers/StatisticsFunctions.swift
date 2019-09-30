@@ -25,11 +25,6 @@ class StatisticFunctions {
         }
         return getAverageInts(array: logRatings)
     }
-    
-    static func getPercentageChangeComparison(period: Int, comparisonPeriod: Int) -> Double {
-        
-        return 5.5
-    }
 
     private static func getAverageInts(array: [Int]) -> Double {
         var totalNumber: Int = 0

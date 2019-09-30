@@ -9,6 +9,7 @@
 import UIKit
 import CloudKit
 import Foundation
+import Network
 
 class LoadingDataViewController: UIViewController {
     
@@ -16,10 +17,13 @@ class LoadingDataViewController: UIViewController {
     
     @IBOutlet weak var loadingDataStackView: UIStackView!
     @IBOutlet weak var loadingDataLabel: UILabel!
+    @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var activityIndicatorLoadingData: UIActivityIndicatorView!
     
     // MARK: - Properties
     
     var connectedToICloud = true
+    var couldntConnect = false
     
     // MARK: - Lifecycle
     
@@ -47,6 +51,13 @@ class LoadingDataViewController: UIViewController {
         }
     }
     
+    @IBAction func refreshButtonTapped(_ sender: Any) {
+        loadData()
+        loadingDataLabel.isHidden = false
+        activityIndicatorLoadingData.isHidden = false
+        refreshButton.isHidden = true
+    }
+    
     // MARK: - Custom Functions
     
     func updateViews() {
@@ -67,6 +78,14 @@ class LoadingDataViewController: UIViewController {
             viewController = mainStoryboard.instantiateViewController(withIdentifier: "mainTabBar")
             viewController.modalPresentationStyle = .fullScreen
             self.present(viewController, animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
+    }
+    
+    func presentInternetAlert() {
+        let alertController = UIAlertController(title: "Internet Connection", message: "Internet connection is not working or not strong enough. Please try again", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
         }
         alertController.addAction(okAction)
         present(alertController, animated: true)
@@ -96,8 +115,12 @@ class LoadingDataViewController: UIViewController {
                     viewController.modalPresentationStyle = .fullScreen
                     self.present(viewController, animated: true, completion: nil)
                 } else {
-                    self.presentBasicAlert(title: "Error", message: "Unable to get data from iCloud")
+                    self.presentBasicAlert(title: "Error", message: "Unable to get data from iCloud. Please try again in 10 seconds")
                     self.hideLoadingDataStackView()
+                    self.showLoadingDataStackView()
+                    self.refreshButton.isHidden = false
+                    self.activityIndicatorLoadingData.isHidden = true
+                    self.loadingDataLabel.isHidden = true
                 }
             }
         }

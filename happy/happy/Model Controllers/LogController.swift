@@ -126,6 +126,9 @@ class LogController {
                 ActivityController.shared.updateActivities(activities: activities, completion: { (success) in
                     DispatchQueue.main.async {
                         if success {
+                            DispatchQueue.main.async {
+                                ActivityController.shared.sortActivitesByNumTimes()
+                            }
                             self.pairLogAndActivities(log: savedLog)
                             self.logs.append(savedLog)
                             completion(savedLog)
@@ -187,6 +190,9 @@ class LogController {
                 completion(nil)
                 return
             } else {
+                DispatchQueue.main.async {
+                    ActivityController.shared.sortActivitesByNumTimes()
+                }
                 completion(log)
             }
         }
@@ -217,6 +223,9 @@ class LogController {
                     }
                 } else {
                     if readyToComplete == true {
+                        DispatchQueue.main.async {
+                            ActivityController.shared.sortActivitesByNumTimes()
+                        }
                         completion(true)
                         self.logs.remove(at: index)
                     } else {
@@ -229,6 +238,9 @@ class LogController {
             DispatchQueue.main.async {
                 if success && errorOccured == false {
                     if readyToComplete == true {
+                        DispatchQueue.main.async {
+                            ActivityController.shared.sortActivitesByNumTimes()
+                        }
                         completion(true)
                         self.logs.remove(at: index)
                     } else {

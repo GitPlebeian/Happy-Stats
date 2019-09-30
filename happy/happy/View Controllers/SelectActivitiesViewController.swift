@@ -245,6 +245,20 @@ class SelectActivitiesViewController: UIViewController {
         }
         didLoad = true
     }
+    
+    func sortDeselected() {
+        var unsortedNumbers = displayActivities[1].count
+        while unsortedNumbers > 0 {
+            for index in 1..<unsortedNumbers {
+                if displayActivities[1][index - 1].timesSelected < displayActivities[1][index].timesSelected {
+                    let tempActivity = displayActivities[1][index]
+                    displayActivities[1][index] = displayActivities[1][index - 1]
+                    displayActivities[1][index - 1] = tempActivity
+                }
+            }
+            unsortedNumbers -= 1
+        }
+    }
 } // End Of Class
 
 // MARK: - Extensions
@@ -385,6 +399,7 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
             displayActivities[0].append(movingActivity)
         }
         setAppliedVariables()
+        sortDeselected()
         activitiesTableView.reloadData()
     }
 }

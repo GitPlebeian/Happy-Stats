@@ -30,6 +30,7 @@ class LoadDataController {
                     }
                 } else {
                     errorOccured = true
+                    completion(false)
                 }
             }
         }
@@ -48,6 +49,7 @@ class LoadDataController {
                     }
                 } else {
                     errorOccured = true
+                    completion(false)
                 }
             }
         }
@@ -66,6 +68,7 @@ class LoadDataController {
                     }
                 } else {
                     errorOccured = true
+                    completion(false)
                 }
             }
         }
