@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hpj-me-0G6">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Light.otf">
+            <string>SFProDisplay-Light</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Item-->
+        <scene sceneID="pOS-PR-pS7">
+            <objects>
+                <viewController id="Hpj-me-0G6" customClass="ActivitiesViewController" customModule="happy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zyz-UP-HXj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wR9-MK-rI7">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="actionCell" rowHeight="104" id="w6E-Mv-6ML" customClass="ActivityTableViewCell" customModule="happy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="104"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w6E-Mv-6ML" id="J4z-53-SOz">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uX-ZN-roG">
+                                                    <rect key="frame" x="16" y="4" width="382" height="96"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Y7-43-F6W">
+                                                            <rect key="frame" x="332" y="25.5" width="45" height="45"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnl-fS-KcZ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                                                    <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="15"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="45" id="54H-LA-gvY"/>
+                                                                <constraint firstAttribute="width" secondItem="6Y7-43-F6W" secondAttribute="height" multiplier="1:1" id="61r-x8-JWq"/>
+                                                                <constraint firstItem="mnl-fS-KcZ" firstAttribute="width" secondItem="6Y7-43-F6W" secondAttribute="width" id="a3W-2m-vec"/>
+                                                                <constraint firstItem="mnl-fS-KcZ" firstAttribute="centerY" secondItem="6Y7-43-F6W" secondAttribute="centerY" id="nc7-cC-f9g"/>
+                                                                <constraint firstItem="mnl-fS-KcZ" firstAttribute="centerX" secondItem="6Y7-43-F6W" secondAttribute="centerX" id="neJ-UZ-rOz"/>
+                                                                <constraint firstItem="mnl-fS-KcZ" firstAttribute="height" secondItem="6Y7-43-F6W" secondAttribute="height" id="r9Z-Fa-TL0"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="C2x-vI-r9f">
+                                                            <rect key="frame" x="27.5" y="4" width="296.5" height="88"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Title)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpX-2q-4Nt">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="296.5" height="44"/>
+                                                                    <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="15"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Number of days applied)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRM-pD-Qwa">
+                                                                    <rect key="frame" x="0.0" y="44" width="296.5" height="44"/>
+                                                                    <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="15"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="C2x-vI-r9f" firstAttribute="top" secondItem="7uX-ZN-roG" secondAttribute="top" constant="4" id="2AM-rH-MOU"/>
+                                                        <constraint firstAttribute="bottom" secondItem="C2x-vI-r9f" secondAttribute="bottom" constant="4" id="3FJ-NB-11e"/>
+                                                        <constraint firstItem="6Y7-43-F6W" firstAttribute="centerY" secondItem="7uX-ZN-roG" secondAttribute="centerY" id="57p-Vi-bYc"/>
+                                                        <constraint firstAttribute="height" constant="55" id="N1j-6F-P0e"/>
+                                                        <constraint firstItem="6Y7-43-F6W" firstAttribute="leading" secondItem="C2x-vI-r9f" secondAttribute="trailing" constant="8" id="TEC-tY-0gM"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6Y7-43-F6W" secondAttribute="trailing" constant="5" id="fAZ-1z-MbG"/>
+                                                        <constraint firstItem="C2x-vI-r9f" firstAttribute="leading" secondItem="7uX-ZN-roG" secondAttribute="leading" constant="27.5" id="sRP-lG-mRx"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7uX-ZN-roG" firstAttribute="top" secondItem="J4z-53-SOz" secondAttribute="top" constant="4" id="7Gc-Je-gQT"/>
+                                                <constraint firstItem="7uX-ZN-roG" firstAttribute="leading" secondItem="J4z-53-SOz" secondAttribute="leading" constant="16" id="Ppy-Qg-DSZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="7uX-ZN-roG" secondAttribute="trailing" constant="16" id="kfT-wl-Gyd"/>
+                                                <constraint firstAttribute="bottom" secondItem="7uX-ZN-roG" secondAttribute="bottom" constant="4" id="xUz-gb-xcQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activityView" destination="7uX-ZN-roG" id="ctf-1e-g4x"/>
+                                            <outlet property="daysAppliedLabel" destination="rRM-pD-Qwa" id="4Bp-Yg-pyn"/>
+                                            <outlet property="ratingLabel" destination="mnl-fS-KcZ" id="vaK-7W-wzk"/>
+                                            <outlet property="ratingView" destination="6Y7-43-F6W" id="Vs7-ip-uh9"/>
+                                            <outlet property="titleLabel" destination="bpX-2q-4Nt" id="pG2-7r-6YA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Hpj-me-0G6" id="Mdx-8H-tD0"/>
+                                    <outlet property="delegate" destination="Hpj-me-0G6" id="feE-CP-DxN"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P76-Vt-eM1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Activities" id="kjp-g6-6tC">
+                                        <barButtonItem key="rightBarButtonItem" id="HPb-Wy-amI">
+                                            <connections>
+                                                <action selector="createNewActivityButtonTapped:" destination="Hpj-me-0G6" id="nbJ-uc-LRa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wR9-MK-rI7" firstAttribute="top" secondItem="P76-Vt-eM1" secondAttribute="bottom" id="BGw-4L-Jqm"/>
+                            <constraint firstItem="wR9-MK-rI7" firstAttribute="centerX" secondItem="gdP-Wn-eds" secondAttribute="centerX" id="HZ6-LE-eZB"/>
+                            <constraint firstItem="P76-Vt-eM1" firstAttribute="top" secondItem="gdP-Wn-eds" secondAttribute="top" id="L2c-fE-aDq"/>
+                            <constraint firstItem="P76-Vt-eM1" firstAttribute="leading" secondItem="gdP-Wn-eds" secondAttribute="leading" id="Toj-1x-cyD"/>
+                            <constraint firstAttribute="bottom" secondItem="wR9-MK-rI7" secondAttribute="bottom" id="WyF-Ot-Lo9"/>
+                            <constraint firstItem="P76-Vt-eM1" firstAttribute="trailing" secondItem="gdP-Wn-eds" secondAttribute="trailing" id="aY0-Jn-ddg"/>
+                            <constraint firstItem="wR9-MK-rI7" firstAttribute="width" secondItem="zyz-UP-HXj" secondAttribute="width" id="sbg-5W-1Hw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gdP-Wn-eds"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="menuIcon" id="nmy-Ea-1ez"/>
+                    <connections>
+                        <outlet property="activitiesNavigationBar" destination="P76-Vt-eM1" id="wzt-JP-Q2S"/>
+                        <outlet property="activityTableView" destination="wR9-MK-rI7" id="Isx-Xp-KjD"/>
+                        <outlet property="addActivityButton" destination="HPb-Wy-amI" id="rtH-5C-e7R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ava-6t-vjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2699" y="-91"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="menuIcon" width="30" height="30"/>
+    </resources>
+    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+</document>
