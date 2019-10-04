@@ -12,21 +12,18 @@ class LoadDataController {
     
     // Completes true when all data has been loaded to device
     static func loadAllData(completion: @escaping (Bool) -> Void) {
-        var loadedOne = true
-        var loadedTwo = false
+        var loaded = false
         var errorOccured = false
         
         LogController.shared.fetchAllLogs { (success) in
             DispatchQueue.main.async {
                 if errorOccured == false && success == true {
-                    if loadedOne == true && loadedTwo == true {
+                    if loaded == true {
                         LogController.shared.pairLogsAndActivities(completion: { () in
                             completion(true)
                         })
-                    } else if loadedOne == true {
-                        loadedTwo = true
                     } else {
-                        loadedOne = true
+                        loaded = true
                     }
                 } else {
                     errorOccured = true
@@ -38,14 +35,12 @@ class LoadDataController {
         ActivityController.shared.fetchAllActivities { (success) in
             DispatchQueue.main.async {
                 if errorOccured == false && success == true {
-                    if loadedOne == true && loadedTwo == true {
+                    if loaded == true {
                         LogController.shared.pairLogsAndActivities(completion: { () in
                             completion(true)
                         })
-                    } else if loadedOne == true {
-                        loadedTwo = true
                     } else {
-                        loadedOne = true
+                        loaded = true
                     }
                 } else {
                     errorOccured = true
