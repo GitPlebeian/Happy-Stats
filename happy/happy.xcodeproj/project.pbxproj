@@ -28,6 +28,7 @@
 		8675BBCF230B82AA00EE1382 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675BBCE230B82AA00EE1382 /* ColorHelper.swift */; };
 		8690403723200F1C004C2633 /* SelectActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690403623200F1C004C2633 /* SelectActivitiesTableViewCell.swift */; };
 		8690403923200F63004C2633 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8690403823200F63004C2633 /* SF-Pro-Display-Medium.otf */; };
+		86B661532347F2AC00F0F4BF /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B661522347F2AC00F0F4BF /* Calendar.storyboard */; };
 		86CCFD352306045800CDCC21 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCFD342306045800CDCC21 /* StatisticsViewController.swift */; };
 		86D11AD222FF9C330059A0B3 /* HistoricalLogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */; };
 		86E0F828231F36930025DE0E /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8654FC22230B6B3300A6202C /* SF-Pro-Display-Light.otf */; };
@@ -61,6 +62,7 @@
 		8675BBCE230B82AA00EE1382 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		8690403623200F1C004C2633 /* SelectActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectActivitiesTableViewCell.swift; sourceTree = "<group>"; };
 		8690403823200F63004C2633 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		86B661522347F2AC00F0F4BF /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		86CCFD342306045800CDCC21 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalLogsViewController.swift; sourceTree = "<group>"; };
 		86E0F829231F41A80025DE0E /* SelectActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectActivitiesViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				8624C44C2330072200B60BE7 /* happy.entitlements */,
 				864D19AB22F66B72009368ED /* Main.storyboard */,
+				86B661522347F2AC00F0F4BF /* Calendar.storyboard */,
 				864D198E22F6342A009368ED /* LaunchScreen.storyboard */,
 				864D199922F63471009368ED /* Models */,
 				864D19A422F641B5009368ED /* View Controllers */,
@@ -276,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86B661532347F2AC00F0F4BF /* Calendar.storyboard in Resources */,
 				86E0F828231F36930025DE0E /* SF-Pro-Display-Light.otf in Resources */,
 				8690403923200F63004C2633 /* SF-Pro-Display-Medium.otf in Resources */,
 				864D19AC22F66B72009368ED /* Main.storyboard in Resources */,
