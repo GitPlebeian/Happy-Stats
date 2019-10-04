@@ -54,7 +54,7 @@ class SettingsController {
                 })
                 return
             }
-            guard let records = records else {
+            guard let records = records, records.isEmpty == false else {
                 completion(false)
                 return
             }

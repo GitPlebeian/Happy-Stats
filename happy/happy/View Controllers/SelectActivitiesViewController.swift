@@ -18,11 +18,12 @@ class SelectActivitiesViewController: UIViewController {
     
     @IBOutlet weak var saveLogButton: UIButton!
     @IBOutlet weak var activitiesTableView: UITableView!
-    @IBOutlet weak var activitiesSearchBar: UISearchBar!
+//    @IBOutlet weak var activitiesSearchBar: UISearchBar!
     @IBOutlet weak var logRatingSlider: UISlider!
     @IBOutlet weak var logRatingLabel: UILabel!
     @IBOutlet weak var logRatingView: UIView!
     @IBOutlet weak var titleNavigationItem: UINavigationItem!
+    @IBOutlet weak var activitiesSearchTextField: UITextField!
     
     // MARK: - Properties
     
@@ -56,13 +57,19 @@ class SelectActivitiesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        activitiesSearchTextField.delegate = self
         activitiesTableView.delegate = self
         activitiesTableView.dataSource = self
         activitiesTableView.showsVerticalScrollIndicator = false
-        activitiesSearchBar.delegate = self
+//        activitiesSearchBar.delegate = self
         setupSearchBar()
         
+//        updateViews()
+//        updateViewsForRatingChange()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         updateViews()
         updateViewsForRatingChange()
     }
@@ -74,6 +81,29 @@ class SelectActivitiesViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func activitiesSearchTextFieldTextDidEndEditing(_ sender: UITextField) {
+        isSearching = false
+        sender.text = ""
+        activitiesTableView.reloadData()
+    }
+    
+    @IBAction func activitiesSearchTextFieldTextDidChange(_ sender: UITextField) {
+        guard let searchText = sender.text else {return}
+        isSearching = true
+
+        searchedActivities.removeAll(keepingCapacity: false)
+
+        for activity in ActivityController.shared.activities {
+            if activity.title.lowercased().contains(searchText.lowercased()){
+                searchedActivities.append(activity)
+            }
+        }
+        if searchText == "" {
+            isSearching = false
+        }
+
+        activitiesTableView.reloadData()
+    }
     @IBAction func deleteLogButtonTapped(_ sender: Any) {
         presentDeleteLogAlert()
     }
@@ -123,10 +153,12 @@ class SelectActivitiesViewController: UIViewController {
     
     func updateViews() {
         if DarkModeController.shared.darkMode.enabled  {
-            activitiesSearchBar.searchTextField.backgroundColor = .black
+//            activitiesSearchBar.searchTextField.backgroundColor = .black
         } else {
-            activitiesSearchBar.searchTextField.leftView = nil
-            activitiesSearchBar.searchTextField.tintColor = .black
+//            print(activitiesSearchBar)
+//            activitiesSearchBar.tintColor
+//            activitiesSearchBar.searchTextField.leftView = nil
+//            activitiesSearchBar.searchTextField.tintColor = .black
             activitiesTableView.backgroundColor = .white
             logRatingLabel.textColor = .black
         }
@@ -136,6 +168,8 @@ class SelectActivitiesViewController: UIViewController {
         logRatingView.layer.borderColor = UIColor.black.cgColor
         saveLogButton.layer.borderWidth = 1.5
         saveLogButton.layer.borderColor = UIColor.black.cgColor
+        activitiesSearchTextField.textColor = .black
+        activitiesSearchTextField.backgroundColor = UIColor(displayP3Red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
     }
     
     func updateNavBarTitle(title: String) {
@@ -202,10 +236,10 @@ class SelectActivitiesViewController: UIViewController {
     
     // Updates Search bar view
     func setupSearchBar() {
-        if let searchBarTextField = activitiesSearchBar.value(forKey: "searchField") as? UITextField {
-            searchBarTextField.textColor = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-            searchBarTextField.font = UIFont(name: "SFProDisplay-Light", size: 17)
-        }
+//        if let searchBarTextField = activitiesSearchBar.value(forKey: "searchField") as? UITextField {
+//            searchBarTextField.textColor = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+//            searchBarTextField.font = UIFont(name: "SFProDisplay-Light", size: 17)
+//        }
     }
     
     func updateCellsWithActivities() {
@@ -404,6 +438,12 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
     }
 }
 
+extension SelectActivitiesViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        activitiesSearchTextField.resignFirstResponder()
+    }
+}
+
 extension SelectActivitiesViewController: UISearchBarDelegate{
     
     // Searchbar text did change
@@ -426,7 +466,7 @@ extension SelectActivitiesViewController: UISearchBarDelegate{
     
     // Search Return tapped
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        activitiesSearchBar.resignFirstResponder()
+//        activitiesSearchBar.resignFirstResponder()
     }
     
     // Search Ended

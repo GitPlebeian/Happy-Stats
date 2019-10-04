@@ -189,6 +189,8 @@ class HistoricalLogsViewController: UIViewController{
         editLogButton.backgroundColor = color
     }
     
+    // MARK: - Navigation
+    
     // Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSelectActivities" {
@@ -200,7 +202,6 @@ class HistoricalLogsViewController: UIViewController{
                 guard let selectedDate = selectedDate else {return}
                 destinationVC.selectedDate = selectedDate
             }
-            
         }
     }
     
