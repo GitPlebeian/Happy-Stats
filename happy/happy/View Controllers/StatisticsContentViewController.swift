@@ -65,6 +65,8 @@ class StatisticsContentViewController: UIViewController {
     // MARK: - Custom Functions
     
     func updateViews() {
+        privacyPolicyButton.setTitleColor(.black, for: .normal)
+        
         past30DaysLabel.textColor = .black
         past30DaysResultsLabel.textColor = .black
         past30DaysResultsView.backgroundColor = .white

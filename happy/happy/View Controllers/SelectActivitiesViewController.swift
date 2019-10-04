@@ -32,14 +32,14 @@ class SelectActivitiesViewController: UIViewController {
         didSet {
             rating = Int(log!.rating)
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "M-d-yyyy"
+            dateFormatter.dateFormat = "EEEE M-d-yyyy"
             updateNavBarTitle(title: dateFormatter.string(from: log!.date))
         }
     }
     var selectedDate: Date? {
         didSet {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "M-d-yyyy"
+            dateFormatter.dateFormat = "EEEE M-d-yyyy"
             updateNavBarTitle(title: dateFormatter.string(from: selectedDate!))
         }
     }
@@ -162,6 +162,7 @@ class SelectActivitiesViewController: UIViewController {
         saveLogButton.layer.borderColor = UIColor.black.cgColor
         activitiesSearchTextField.textColor = .black
         activitiesSearchTextField.backgroundColor = UIColor(displayP3Red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        activitiesSearchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 1)])
     }
     
     func updateNavBarTitle(title: String) {
