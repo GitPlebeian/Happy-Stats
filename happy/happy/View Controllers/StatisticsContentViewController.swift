@@ -9,7 +9,7 @@
 import UIKit
 
 class StatisticsContentViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var privacyPolicyButton: UIButton!
     
@@ -65,27 +65,23 @@ class StatisticsContentViewController: UIViewController {
     // MARK: - Custom Functions
     
     func updateViews() {
-        if DarkModeController.shared.darkMode.enabled {
-            
-        } else {
-            past30DaysLabel.textColor = .black
-            past30DaysResultsLabel.textColor = .black
-            past30DaysResultsView.backgroundColor = .white
-            
-            past90DaysResultsView.backgroundColor = .white
-            past90DaysLabel.textColor = .black
-            past90DaysResultsLabel.textColor = .black
-            
-            past180DaysLabel.textColor = .black
-            past180DaysResultsLabel.textColor = .black
-            past180DaysResultsView.backgroundColor = .white
-            
-            pastYearLabel.textColor = .black
-            pastYearResultsLabel.textColor = .black
-            pastYearResultsView.backgroundColor = .white
-            
-            privacyPolicyButton.tintColor = .systemBlue
-        }
+        past30DaysLabel.textColor = .black
+        past30DaysResultsLabel.textColor = .black
+        past30DaysResultsView.backgroundColor = .white
+        
+        past90DaysResultsView.backgroundColor = .white
+        past90DaysLabel.textColor = .black
+        past90DaysResultsLabel.textColor = .black
+        
+        past180DaysLabel.textColor = .black
+        past180DaysResultsLabel.textColor = .black
+        past180DaysResultsView.backgroundColor = .white
+        
+        pastYearLabel.textColor = .black
+        pastYearResultsLabel.textColor = .black
+        pastYearResultsView.backgroundColor = .white
+        
+        privacyPolicyButton.tintColor = .systemBlue
         past30DaysView.layer.cornerRadius = 15
         past30DaysResultsView.layer.cornerRadius = past30DaysResultsView.frame.height / 2
         
@@ -120,7 +116,7 @@ class StatisticsContentViewController: UIViewController {
             past30DaysView.layer.borderWidth = 0
             past30DaysResultsLabel.text = "\(average30)"
         }
-    
+        
         past90DaysLabel.text = "90 Day Average"
         past90DaysView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(average90).rounded()))
         past90DaysResultsLabel.text = "\(average90)"

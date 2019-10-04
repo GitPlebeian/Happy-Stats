@@ -1,77 +1,71 @@
 //
-//  ActivityTableViewCell.swift
+//  ActivityForActivityViewTableViewCell.swift
 //  happy
 //
-//  Created by Jackson Tubbs on 9/4/19.
+//  Created by Jackson Tubbs on 9/5/19.
 //  Copyright © 2019 Jax Tubbs. All rights reserved.
 //
 
 import UIKit
 
 class ActivityTableViewCell: UITableViewCell {
-
+    
     // MARK: - Outlets
     
-    @IBOutlet weak var selectionDotView: UIView!
-    @IBOutlet weak var activityTitleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var daysAppliedLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var activityView: UIView!
     
     // MARK: - Properties
     
-    var activitiy: Activity? {
+    var activity: Activity? {
         didSet {
             updateViewForActivity()
         }
     }
-    var appliedToLog: Bool = false {
-        didSet {
-            updateViewForAppliedToLog()
-        }
-    }
+    
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        updateViews()
+        titleLabel.textColor = .black
+        daysAppliedLabel.textColor = .black
+        ratingLabel.textColor = .black
+        activityView.layer.cornerRadius = 55 / 2
+        ratingView.layer.cornerRadius = 45 / 2
+        ratingView.backgroundColor = .white
+        self.backgroundColor = .white
+    }
+    
+    // Set Highlighted
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        guard let activity = activity else {return}
+        if highlighted {
+            activityView.backgroundColor = activityView.backgroundColor?.darker(by: 15)
+        } else {
+            activityView.backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
+        }
     }
     
     // MARK: - Custom Functions
     
-    func updateViews() {
-        if DarkModeController.shared.darkMode.enabled {
-            backgroundColor = .black
-            activityTitleLabel.textColor = .white
-        } else {
-            backgroundColor = .white
-            activityTitleLabel.textColor = .black
-        }
-        activityView.layer.cornerRadius = activityView.frame.height / 2
-        selectionDotView.backgroundColor = .white
-        selectionDotView.layer.cornerRadius = selectionDotView.frame.width / 2
-    }
-    
-    // Updates View when activity is present
+    // Updates view for an activity
     func updateViewForActivity() {
-        guard let activity = activitiy else {return}
-        activityTitleLabel.text = activity.title
-        if activity.averageRating > -1 {
-            activityView.backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
-            selectionDotView.backgroundColor = .white
-            activityView.layer.borderWidth = 0
-        } else {
-            activityView.backgroundColor = .white
-            activityView.layer.borderColor = UIColor.black.cgColor
+        guard let activity = activity else {return}
+        if activity.timesSelected == 0 {
+            daysAppliedLabel.text = "No Days Selected"
+            ratingLabel.isHidden = true
             activityView.layer.borderWidth = 1.5
-            selectionDotView.backgroundColor = ColorHelper.getColorFoInt(number: 10)
-        }
-    }
-    
-    // Updates the cell if it is applied to a Log
-    func updateViewForAppliedToLog() {
-        if appliedToLog {
-            selectionDotView.isHidden = false
+            activityView.layer.borderColor = UIColor.black.cgColor
         } else {
-            selectionDotView.isHidden = true
+            ratingLabel.isHidden = false
+            daysAppliedLabel.text = "\(activity.timesSelected)"
+            activityView.layer.borderWidth = 0
         }
+        titleLabel.text = activity.title
+        activityView.backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
+        ratingLabel.text = "\(activity.averageRating)"
     }
 }

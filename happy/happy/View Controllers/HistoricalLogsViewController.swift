@@ -127,34 +127,19 @@ class HistoricalLogsViewController: UIViewController{
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backArrow")
         setNeedsStatusBarAppearanceUpdate()
         var titleColor: UIColor = UIColor.black
-        if DarkModeController.shared.darkMode.enabled {
-            monthLabel.textColor = .white
-            yearLabel.textColor = .white
-            sundayLabel.textColor = .white
-            mondayLabel.textColor = .white
-            tuesdayLabel.textColor = .white
-            wednesdayLabel.textColor = .white
-            thursdayLabel.textColor = .white
-            fridayLabel.textColor = .white
-            saturdayLabel.textColor = .white
-            navigationController?.navigationBar.barTintColor = UIColor.black
-            navigationController?.navigationBar.tintColor = .black
-            titleColor = .white
-        } else {
-            monthLabel.textColor = .black
-            yearLabel.textColor = .black
-            sundayLabel.textColor = .black
-            mondayLabel.textColor = .black
-            tuesdayLabel.textColor = .black
-            wednesdayLabel.textColor = .black
-            thursdayLabel.textColor = .black
-            fridayLabel.textColor = .black
-            saturdayLabel.textColor = .black
-            navigationController?.navigationBar.barTintColor = UIColor.white
-            navigationController?.navigationBar.tintColor = .white
-            titleColor = .black
-            monthAverageHappinessLabel.textColor = .black
-        }
+        monthLabel.textColor = .black
+        yearLabel.textColor = .black
+        sundayLabel.textColor = .black
+        mondayLabel.textColor = .black
+        tuesdayLabel.textColor = .black
+        wednesdayLabel.textColor = .black
+        thursdayLabel.textColor = .black
+        fridayLabel.textColor = .black
+        saturdayLabel.textColor = .black
+        navigationController?.navigationBar.barTintColor = UIColor.white
+        navigationController?.navigationBar.tintColor = .white
+        titleColor = .black
+        monthAverageHappinessLabel.textColor = .black
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!, NSAttributedString.Key.foregroundColor : titleColor]
         self.tabBarController?.tabBar.barTintColor = .white
         editLogButton.layer.cornerRadius = editLogButton.frame.height / 2
@@ -262,7 +247,7 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
         }
         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         selectionFeedbackGenerator.selectionChanged()
-
+        
         editLogButton.isHidden = false
         calendarCollectionView.reloadData()
     }

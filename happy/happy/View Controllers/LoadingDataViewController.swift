@@ -33,7 +33,6 @@ class LoadingDataViewController: UIViewController {
         if connectedToICloud == true {
             loadData()
         }
-        DarkModeController.shared.loadFromPersistentStore()
         updateViews()
     }
     
@@ -62,16 +61,12 @@ class LoadingDataViewController: UIViewController {
     
     func updateViews() {
         setNeedsStatusBarAppearanceUpdate()
-        if DarkModeController.shared.darkMode.enabled {
-            
-        } else {
-            loadingDataLabel.textColor = .black
-        }
+        loadingDataLabel.textColor = .black
     }
     
     // Presents alert telling the user that they need to sign into icloud in order for the app to work
     func presentSignInToICloudAlert() {
-        let alertController = UIAlertController(title: "ICloud", message: "This app uses ICloud to sync data across your devices. All data will not be saved unless you sign in to ICloud", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "iCloud", message: "This app uses iCloud to sync data across your devices. All data will not be saved unless you sign in to iCloud and enable iCloud Drive", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
             let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             var viewController: UIViewController
@@ -84,7 +79,7 @@ class LoadingDataViewController: UIViewController {
     }
     
     func presentInternetAlert() {
-        let alertController = UIAlertController(title: "Internet Connection", message: "Internet connection is not working or not strong enough. Please try again", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Internet Connection", message: "Internet connection is not working. Please try again", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
         }
         alertController.addAction(okAction)

@@ -17,7 +17,7 @@ class ActivitiesViewController: UIViewController{
     @IBOutlet weak var addActivityButton: UIBarButtonItem!
     
     // MARK: - Properties
-
+    
     var alertController: UIAlertController?
     
     override func viewDidLoad() {
@@ -44,16 +44,12 @@ class ActivitiesViewController: UIViewController{
     
     // Updates view attributes and colors
     func updateViews() {
-        if DarkModeController.shared.darkMode.enabled {
+        activityTableView.backgroundColor = .white
+        activitiesNavigationBar.barTintColor = .white
+        if var textAttributes = activitiesNavigationBar.titleTextAttributes {
+            textAttributes[NSAttributedString.Key.foregroundColor] = UIColor.black
+            activitiesNavigationBar.titleTextAttributes = textAttributes
             
-        } else {
-            activityTableView.backgroundColor = .white
-            activitiesNavigationBar.barTintColor = .white
-            if var textAttributes = activitiesNavigationBar.titleTextAttributes {
-                textAttributes[NSAttributedString.Key.foregroundColor] = UIColor.black
-                activitiesNavigationBar.titleTextAttributes = textAttributes
-                
-            }
         }
         activityTableView.separatorStyle = .none
         addActivityButton.image = UIImage(named: "addIcon")
@@ -189,7 +185,7 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Cell for row at
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = activityTableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as? ActivityForActivityViewTableViewCell else {return UITableViewCell()}
+        guard let cell = activityTableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as? ActivityTableViewCell else {return UITableViewCell()}
         
         let activity = ActivityController.shared.activities[indexPath.row]
         

@@ -18,16 +18,12 @@ class DateCollectionViewCell: UICollectionViewCell {
     // MARK: - Custom Functions
     
     func configure(indexPath: IndexPath, calendar: UICollectionView, selectedDate: Date?) {
-        if DarkModeController.shared.darkMode.enabled {
-            dateNumberLabel.textColor = .white
-        } else {
-            dateNumberLabel.textColor = .black
-        }
+        dateNumberLabel.textColor = .black
         
         // Makes the cell a circle
         dateView.layer.cornerRadius = (calendar.frame.width / 14) - 6
         dateView.layer.borderColor = UIColor.black.cgColor
-
+        
         // Function makes sure that the date will appear in their respective columns. Example: Sundays you always be in the first column and mondays in the second etc.
         let indexForRow = CalendarHelper.shared.getIndexForRow(indexPath: indexPath)
         if indexForRow < CalendarHelper.shared.months[indexPath.section].days.count && indexForRow >= 0{
@@ -46,7 +42,7 @@ class DateCollectionViewCell: UICollectionViewCell {
             } else {
                 dateView.backgroundColor = .clear
             }
-
+            
             if let selectedDate = selectedDate, date == selectedDate {
                 dateView.layer.borderWidth = 1.5
             } else {

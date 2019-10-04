@@ -18,7 +18,7 @@ class SelectActivitiesViewController: UIViewController {
     
     @IBOutlet weak var saveLogButton: UIButton!
     @IBOutlet weak var activitiesTableView: UITableView!
-//    @IBOutlet weak var activitiesSearchBar: UISearchBar!
+    //    @IBOutlet weak var activitiesSearchBar: UISearchBar!
     @IBOutlet weak var logRatingSlider: UISlider!
     @IBOutlet weak var logRatingLabel: UILabel!
     @IBOutlet weak var logRatingView: UIView!
@@ -61,11 +61,11 @@ class SelectActivitiesViewController: UIViewController {
         activitiesTableView.delegate = self
         activitiesTableView.dataSource = self
         activitiesTableView.showsVerticalScrollIndicator = false
-//        activitiesSearchBar.delegate = self
+        //        activitiesSearchBar.delegate = self
         setupSearchBar()
         
-//        updateViews()
-//        updateViewsForRatingChange()
+        //        updateViews()
+        //        updateViewsForRatingChange()
     }
     
     override func viewDidLayoutSubviews() {
@@ -90,9 +90,9 @@ class SelectActivitiesViewController: UIViewController {
     @IBAction func activitiesSearchTextFieldTextDidChange(_ sender: UITextField) {
         guard let searchText = sender.text else {return}
         isSearching = true
-
+        
         searchedActivities.removeAll(keepingCapacity: false)
-
+        
         for activity in ActivityController.shared.activities {
             if activity.title.lowercased().contains(searchText.lowercased()){
                 searchedActivities.append(activity)
@@ -101,7 +101,7 @@ class SelectActivitiesViewController: UIViewController {
         if searchText == "" {
             isSearching = false
         }
-
+        
         activitiesTableView.reloadData()
     }
     @IBAction func deleteLogButtonTapped(_ sender: Any) {
@@ -112,7 +112,7 @@ class SelectActivitiesViewController: UIViewController {
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
         let feedback = UINotificationFeedbackGenerator()
         feedback.prepare()
-
+        
         if let log = log {
             LogController.shared.updateLog(log: log, newRating: rating, newActivities: displayActivities[0]) { (log) in
                 DispatchQueue.main.async {
@@ -152,16 +152,8 @@ class SelectActivitiesViewController: UIViewController {
     // MARK: - Custom Functions
     
     func updateViews() {
-        if DarkModeController.shared.darkMode.enabled  {
-//            activitiesSearchBar.searchTextField.backgroundColor = .black
-        } else {
-//            print(activitiesSearchBar)
-//            activitiesSearchBar.tintColor
-//            activitiesSearchBar.searchTextField.leftView = nil
-//            activitiesSearchBar.searchTextField.tintColor = .black
-            activitiesTableView.backgroundColor = .white
-            logRatingLabel.textColor = .black
-        }
+        activitiesTableView.backgroundColor = .white
+        logRatingLabel.textColor = .black
         logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
         saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
         logRatingView.layer.borderWidth = 1.5
@@ -236,10 +228,10 @@ class SelectActivitiesViewController: UIViewController {
     
     // Updates Search bar view
     func setupSearchBar() {
-//        if let searchBarTextField = activitiesSearchBar.value(forKey: "searchField") as? UITextField {
-//            searchBarTextField.textColor = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-//            searchBarTextField.font = UIFont(name: "SFProDisplay-Light", size: 17)
-//        }
+        //        if let searchBarTextField = activitiesSearchBar.value(forKey: "searchField") as? UITextField {
+        //            searchBarTextField.textColor = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        //            searchBarTextField.font = UIFont(name: "SFProDisplay-Light", size: 17)
+        //        }
     }
     
     func updateCellsWithActivities() {
@@ -364,7 +356,7 @@ extension SelectActivitiesViewController: UITableViewDataSource, UITableViewDele
     
     // Configure cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = activitiesTableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as? ActivityTableViewCell else {return UITableViewCell()}
+        guard let cell = activitiesTableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as? SelectActivitiesTableViewCell else {return UITableViewCell()}
         if isSearching {
             let activity = searchedActivities[indexPath.row]
             cell.activitiy = activity
@@ -449,9 +441,9 @@ extension SelectActivitiesViewController: UISearchBarDelegate{
     // Searchbar text did change
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearching = true
-
+        
         searchedActivities.removeAll(keepingCapacity: false)
-
+        
         for activity in ActivityController.shared.activities {
             if activity.title.lowercased().contains(searchText.lowercased()){
                 searchedActivities.append(activity)
@@ -460,13 +452,13 @@ extension SelectActivitiesViewController: UISearchBarDelegate{
         if searchText == "" {
             isSearching = false
         }
-
+        
         activitiesTableView.reloadData()
     }
     
     // Search Return tapped
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        activitiesSearchBar.resignFirstResponder()
+        //        activitiesSearchBar.resignFirstResponder()
     }
     
     // Search Ended

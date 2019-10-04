@@ -21,13 +21,8 @@ class StatisticsViewController: UIViewController {
     // MARK: - Custom Functions
     
     func updateViews() {
-        var titleColor: UIColor = UIColor.black
-        if DarkModeController.shared.darkMode.enabled {
-            titleColor = .white
-        } else {
-            navigationController?.navigationBar.barTintColor = .white
-            navigationController?.navigationBar.tintColor = .white
-        }
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!, NSAttributedString.Key.foregroundColor : titleColor]
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!, NSAttributedString.Key.foregroundColor : UIColor.black]
     }
 }
