@@ -93,6 +93,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8628E5E9235E832500FD0E4B /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				864D19AB22F66B72009368ED /* Main.storyboard */,
+				86B661562347F2F500F0F4BF /* Statistics.storyboard */,
+				86B661542347F2E600F0F4BF /* Activities.storyboard */,
+				86B661522347F2AC00F0F4BF /* Calendar.storyboard */,
+				864D198E22F6342A009368ED /* LaunchScreen.storyboard */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		862998B522F747E300B74809 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,11 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				8624C44C2330072200B60BE7 /* happy.entitlements */,
-				864D19AB22F66B72009368ED /* Main.storyboard */,
-				86B661562347F2F500F0F4BF /* Statistics.storyboard */,
-				86B661542347F2E600F0F4BF /* Activities.storyboard */,
-				86B661522347F2AC00F0F4BF /* Calendar.storyboard */,
-				864D198E22F6342A009368ED /* LaunchScreen.storyboard */,
+				8628E5E9235E832500FD0E4B /* New Group */,
 				864D199922F63471009368ED /* Models */,
 				864D19A422F641B5009368ED /* View Controllers */,
 				864D199822F6345A009368ED /* Model Controllers */,
