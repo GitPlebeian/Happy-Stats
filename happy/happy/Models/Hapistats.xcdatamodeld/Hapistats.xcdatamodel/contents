@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A583" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Activity" representedClassName="Activity" syncable="YES">
+        <attribute name="averageRating" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="timesSelected" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="totalRating" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="logs" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Log"/>
+    </entity>
+    <entity name="Log" representedClassName="Log" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="rating" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="activities" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Activity"/>
+    </entity>
+    <elements>
+        <element name="Activity" positionX="111.734375" positionY="-5.09765625" width="128" height="118"/>
+        <element name="Log" positionX="-91.31640625" positionY="-75.8359375" width="128" height="88"/>
+    </elements>
+</model>

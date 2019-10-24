@@ -90,21 +90,21 @@ class HistoricalLogsViewController: UIViewController{
             guard let log = self.currentLog else {return}
             let feedback = UINotificationFeedbackGenerator()
             feedback.prepare()
-            LogController.shared.deleteLog(log: log, completion: { (success) in
-                DispatchQueue.main.async {
-                    if success {
-                        self.currentLog = nil
-                        feedback.notificationOccurred(.success)
-                        self.rating = -1
-                        self.updateDeleteLogBarButtonItem()
-                        self.calendarCollectionView.reloadData()
-                        self.updateViewsForRating()
-                        self.calculateMonthAverage()
-                    } else {
-                        feedback.notificationOccurred(.error)
-                    }
-                }
-            })
+//            LogController.shared.deleteLog(log: log, completion: { (success) in
+//                DispatchQueue.main.async {
+//                    if success {
+//                        self.currentLog = nil
+//                        feedback.notificationOccurred(.success)
+//                        self.rating = -1
+//                        self.updateDeleteLogBarButtonItem()
+//                        self.calendarCollectionView.reloadData()
+//                        self.updateViewsForRating()
+//                        self.calculateMonthAverage()
+//                    } else {
+//                        feedback.notificationOccurred(.error)
+//                    }
+//                }
+//            })
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(deleteAction)
@@ -151,16 +151,16 @@ class HistoricalLogsViewController: UIViewController{
     
     // Will update the month average label and view
     func updateMonthAverageViews(month: String, year: String) {
-        let averageHappiness = StatisticFunctions.getAverageHappinessForMonth(month: month, year: year)
-        if averageHappiness == -1 {
-            monthAverageHappinessLabel.text = "No Logs"
-            monthAverageHappinessView.layer.borderColor = UIColor.black.cgColor
-            monthAverageHappinessView.layer.borderWidth = 1.5
-        } else {
-            monthAverageHappinessLabel.text = "\(averageHappiness)"
-            monthAverageHappinessView.layer.borderWidth = 0
-        }
-        monthAverageHappinessView.backgroundColor = ColorHelper.getColorFoInt(number: Int(averageHappiness.rounded()))
+//        let averageHappiness = StatisticFunctions.getAverageHappinessForMonth(month: month, year: year)
+//        if averageHappiness == -1 {
+//            monthAverageHappinessLabel.text = "No Logs"
+//            monthAverageHappinessView.layer.borderColor = UIColor.black.cgColor
+//            monthAverageHappinessView.layer.borderWidth = 1.5
+//        } else {
+//            monthAverageHappinessLabel.text = "\(averageHappiness)"
+//            monthAverageHappinessView.layer.borderWidth = 0
+//        }
+//        monthAverageHappinessView.backgroundColor = ColorHelper.getColorFoInt(number: Int(averageHappiness.rounded()))
     }
     
     func calculateMonthAverage() {
@@ -199,7 +199,7 @@ extension HistoricalLogsViewController: SelectActivitiesViewControllerDelegate {
     func setCurrentLog(log: Log?) {
         if let log = log {
             currentLog = log
-            rating = log.rating
+            rating = Int(log.rating)
             updateViewsForRating()
         } else {
             currentLog = nil
@@ -236,7 +236,7 @@ extension HistoricalLogsViewController: UICollectionViewDelegate, UICollectionVi
         // Updates Selectedate. The cell has a did set on the isSelected and will update the view based on that
         selectedDate = CalendarHelper.shared.months[indexPath.section].days[CalendarHelper.shared.getIndexForRow(indexPath: indexPath)]
         guard let selectedDate = selectedDate else {return}
-        currentLog = LogController.shared.getLogForDate(date: selectedDate)
+//        currentLog = LogController.shared.getLogForDate(date: selectedDate)
         updateDeleteLogBarButtonItem()
         if let currentLog = currentLog {
             rating = Int(currentLog.rating)

@@ -33,7 +33,7 @@ class SelectActivitiesViewController: UIViewController {
             rating = Int(log!.rating)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE M-d-yyyy"
-            updateNavBarTitle(title: dateFormatter.string(from: log!.date))
+//            updateNavBarTitle(title: dateFormatter.string(from: log!.date))
         }
     }
     var selectedDate: Date? {
@@ -88,21 +88,21 @@ class SelectActivitiesViewController: UIViewController {
     }
     
     @IBAction func activitiesSearchTextFieldTextDidChange(_ sender: UITextField) {
-        guard let searchText = sender.text else {return}
-        isSearching = true
-        
-        searchedActivities.removeAll(keepingCapacity: false)
-        
-        for activity in ActivityController.shared.activities {
-            if activity.title.lowercased().contains(searchText.lowercased()){
-                searchedActivities.append(activity)
-            }
-        }
-        if searchText == "" {
-            isSearching = false
-        }
-        
-        activitiesTableView.reloadData()
+//        guard let searchText = sender.text else {return}
+//        isSearching = true
+//
+//        searchedActivities.removeAll(keepingCapacity: false)
+//
+//        for activity in ActivityController.shared.activities {
+//            if activity.title.lowercased().contains(searchText.lowercased()){
+//                searchedActivities.append(activity)
+//            }
+//        }
+//        if searchText == "" {
+//            isSearching = false
+//        }
+//        
+//        activitiesTableView.reloadData()
     }
     @IBAction func deleteLogButtonTapped(_ sender: Any) {
         presentDeleteLogAlert()
@@ -113,34 +113,34 @@ class SelectActivitiesViewController: UIViewController {
         let feedback = UINotificationFeedbackGenerator()
         feedback.prepare()
         
-        if let log = log {
-            LogController.shared.updateLog(log: log, newRating: rating, newActivities: displayActivities[0]) { (log) in
-                DispatchQueue.main.async {
-                    if let log = log {
-                        self.delegate?.setCurrentLog(log: log)
-                        feedback.notificationOccurred(.success)
-                        self.navigationController?.popViewController(animated: true)
-                    } else {
-                        feedback.notificationOccurred(.error)
-                        self.presentErrorAlert(message: "Unable to save to ICloud")
-                    }
-                }
-            }
-        } else {
-            guard let selectedDate = selectedDate else {return}
-            LogController.shared.createLog(date: selectedDate, rating: rating, activities: displayActivities[0]) { (log) in
-                DispatchQueue.main.async {
-                    if let log = log {
-                        self.delegate?.setCurrentLog(log: log)
-                        feedback.notificationOccurred(.success)
-                        self.navigationController?.popViewController(animated: true)
-                    } else {
-                        feedback.notificationOccurred(.error)
-                        self.presentErrorAlert(message: "Unable to save to ICloud")
-                    }
-                }
-            }
-        }
+//        if let log = log {
+//            LogController.shared.updateLog(log: log, newRating: rating, newActivities: displayActivities[0]) { (log) in
+//                DispatchQueue.main.async {
+//                    if let log = log {
+//                        self.delegate?.setCurrentLog(log: log)
+//                        feedback.notificationOccurred(.success)
+//                        self.navigationController?.popViewController(animated: true)
+//                    } else {
+//                        feedback.notificationOccurred(.error)
+//                        self.presentErrorAlert(message: "Unable to save to ICloud")
+//                    }
+//                }
+//            }
+//        } else {
+//            guard let selectedDate = selectedDate else {return}
+//            LogController.shared.createLog(date: selectedDate, rating: rating, activities: displayActivities[0]) { (log) in
+//                DispatchQueue.main.async {
+//                    if let log = log {
+//                        self.delegate?.setCurrentLog(log: log)
+//                        feedback.notificationOccurred(.success)
+//                        self.navigationController?.popViewController(animated: true)
+//                    } else {
+//                        feedback.notificationOccurred(.error)
+//                        self.presentErrorAlert(message: "Unable to save to ICloud")
+//                    }
+//                }
+//            }
+//        }
     }
     
     @IBAction func ratingSliderValueChanged(_ sender: Any) {
@@ -185,17 +185,17 @@ class SelectActivitiesViewController: UIViewController {
             guard let log = self.log else {return}
             let feedback = UINotificationFeedbackGenerator()
             feedback.prepare()
-            LogController.shared.deleteLog(log: log, completion: { (success) in
-                DispatchQueue.main.async {
-                    if success {
-                        self.delegate?.setCurrentLog(log: nil)
-                        feedback.notificationOccurred(.success)
-                    } else {
-                        feedback.notificationOccurred(.error)
-                    }
-                    self.navigationController?.popViewController(animated: true)
-                }
-            })
+//            LogController.shared.deleteLog(log: log, completion: { (success) in
+//                DispatchQueue.main.async {
+//                    if success {
+//                        self.delegate?.setCurrentLog(log: nil)
+//                        feedback.notificationOccurred(.success)
+//                    } else {
+//                        feedback.notificationOccurred(.error)
+//                    }
+//                    self.navigationController?.popViewController(animated: true)
+//                }
+//            })
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(deleteAction)
@@ -253,8 +253,8 @@ class SelectActivitiesViewController: UIViewController {
             displayActivities[1] = deselectedActivities
         } else {
             if let log = log {
-                displayActivities[0] = log.activities
-                displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
+//                displayActivities[0] = log.activities
+//                displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
             } else {
                 displayActivities[1] = ActivityController.shared.activities
             }
@@ -441,20 +441,20 @@ extension SelectActivitiesViewController: UISearchBarDelegate{
     
     // Searchbar text did change
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        isSearching = true
-        
-        searchedActivities.removeAll(keepingCapacity: false)
-        
-        for activity in ActivityController.shared.activities {
-            if activity.title.lowercased().contains(searchText.lowercased()){
-                searchedActivities.append(activity)
-            }
-        }
-        if searchText == "" {
-            isSearching = false
-        }
-        
-        activitiesTableView.reloadData()
+//        isSearching = true
+//        
+//        searchedActivities.removeAll(keepingCapacity: false)
+//        
+//        for activity in ActivityController.shared.activities {
+//            if activity.title.lowercased().contains(searchText.lowercased()){
+//                searchedActivities.append(activity)
+//            }
+//        }
+//        if searchText == "" {
+//            isSearching = false
+//        }
+//        
+//        activitiesTableView.reloadData()
     }
     
     // Search Return tapped

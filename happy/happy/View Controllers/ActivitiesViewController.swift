@@ -12,7 +12,7 @@ class ActivitiesViewController: UIViewController{
     
     // MARK: - Outlets
     
-    @IBOutlet weak var activityTableView: UITableView!
+    @IBOutlet weak var activitiesTableView: UITableView!
     @IBOutlet weak var activitiesNavigationBar: UINavigationBar!
     @IBOutlet weak var addActivityButton: UIBarButtonItem!
     
@@ -27,7 +27,7 @@ class ActivitiesViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        activityTableView.reloadData()
+//        activityTableView.reloadData()
     }
     
     // MARK: - Actions
@@ -44,14 +44,14 @@ class ActivitiesViewController: UIViewController{
     
     // Updates view attributes and colors
     func updateViews() {
-        activityTableView.backgroundColor = .white
+        activitiesTableView.backgroundColor = .white
         activitiesNavigationBar.barTintColor = .white
         if var textAttributes = activitiesNavigationBar.titleTextAttributes {
             textAttributes[NSAttributedString.Key.foregroundColor] = UIColor.black
             activitiesNavigationBar.titleTextAttributes = textAttributes
             
         }
-        activityTableView.separatorStyle = .none
+        activitiesTableView.separatorStyle = .none
         addActivityButton.image = UIImage(named: "addIcon")
     }
     
@@ -69,17 +69,8 @@ class ActivitiesViewController: UIViewController{
             if !activityTitle.isEmpty {
                 let feedback = UINotificationFeedbackGenerator()
                 feedback.prepare()
-                ActivityController.shared.createActivity(title: activityTitle, completion: { (success) in
-                    DispatchQueue.main.async {
-                        if success {
-                            feedback.notificationOccurred(.success)
-                            self.activityTableView.reloadData()
-                        } else {
-                            feedback.notificationOccurred(.error)
-                            self.presentBasicAlert(title: "Error", message: "Unable to save to ICloud")
-                        }
-                    }
-                })
+                ActivityController.shared.createActivity(title: activityTitle)
+                self.activitiesTableView.reloadData()
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -121,17 +112,8 @@ class ActivitiesViewController: UIViewController{
         let deleteAction = UIAlertAction(title: "I'm Sure", style: .destructive) { (_) in
             let feedback = UINotificationFeedbackGenerator()
             feedback.prepare()
-            ActivityController.shared.deleteActivity(activity: activity, completion: { (success) in
-                DispatchQueue.main.async {
-                    if success {
-                        feedback.notificationOccurred(.success)
-                        self.activityTableView.reloadData()
-                    } else {
-                        feedback.notificationOccurred(.error)
-                        self.presentBasicAlert(title: "Error", message: "Unable to delete activity from ICloud")
-                    }
-                }
-            })
+            ActivityController.shared.deleteActivity(activity: activity)
+            self.activitiesTableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
@@ -152,21 +134,8 @@ class ActivitiesViewController: UIViewController{
             guard let activityTitle = alertController.textFields?[0].text else {return}
             if !activityTitle.isEmpty {
                 let feedback = UINotificationFeedbackGenerator()
-                feedback.prepare()
-                let oldTitle = activity.title
-                activity.title = activityTitle
-                ActivityController.shared.updateActivities(activities: [activity], completion: { (success) in
-                    DispatchQueue.main.async {
-                        if success {
-                            feedback.notificationOccurred(.success)
-                            self.activityTableView.reloadData()
-                        } else {
-                            feedback.notificationOccurred(.error)
-                            self.presentBasicAlert(title: "Error", message: "Unable to update ICloud")
-                            activity.title = oldTitle
-                        }
-                    }
-                })
+                ActivityController.shared.renameActivity(title: activityTitle, activity: activity)
+                self.activitiesTableView.reloadData()
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -185,7 +154,7 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Cell for row at
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = activityTableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as? ActivityTableViewCell else {return UITableViewCell()}
+        guard let cell = activitiesTableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as? ActivityTableViewCell else {return UITableViewCell()}
         
         let activity = ActivityController.shared.activities[indexPath.row]
         

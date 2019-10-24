@@ -99,10 +99,10 @@ class StatisticsContentViewController: UIViewController {
     
     // Run calculations to average out time periods
     func runCalculations() {
-        average30 = StatisticFunctions.getAverageHappinessForDays(numDays: 30)
-        average90 = StatisticFunctions.getAverageHappinessForDays(numDays: 90)
-        average180 = StatisticFunctions.getAverageHappinessForDays(numDays: 180)
-        averageYear = StatisticFunctions.getAverageHappinessForDays(numDays: 365)
+//        average30 = StatisticFunctions.getAverageHappinessForDays(numDays: 30)
+//        average90 = StatisticFunctions.getAverageHappinessForDays(numDays: 90)
+//        average180 = StatisticFunctions.getAverageHappinessForDays(numDays: 180)
+//        averageYear = StatisticFunctions.getAverageHappinessForDays(numDays: 365)
     }
     
     // Updates view for calculations

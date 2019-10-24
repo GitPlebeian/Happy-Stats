@@ -12,10 +12,11 @@
 		861E112E23357A0300F627BC /* LoadDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E112D23357A0300F627BC /* LoadDataController.swift */; };
 		861E11302335825000F627BC /* LoadingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E112F2335825000F627BC /* LoadingDataViewController.swift */; };
 		8624C445232FE62C00B60BE7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C444232FE62C00B60BE7 /* Log.swift */; };
-		8624C447232FE88300B60BE7 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C446232FE88300B60BE7 /* Activity.swift */; };
+		8624C447232FE88300B60BE7 /* Activity+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C446232FE88300B60BE7 /* Activity+Convenience.swift */; };
 		8624C449232FF62E00B60BE7 /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C448232FF62E00B60BE7 /* LogController.swift */; };
 		8624C44B232FFCB000B60BE7 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C44A232FFCB000B60BE7 /* ActivityController.swift */; };
 		8624C44F2330072500B60BE7 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8624C44E2330072500B60BE7 /* CloudKit.framework */; };
+		8628E5EC235E83B300FD0E4B /* Hapistats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8628E5EA235E83B300FD0E4B /* Hapistats.xcdatamodeld */; };
 		86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */; };
 		864D198622F63429009368ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D198522F63429009368ED /* AppDelegate.swift */; };
 		864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D198E22F6342A009368ED /* LaunchScreen.storyboard */; };
@@ -31,11 +32,14 @@
 		86B661532347F2AC00F0F4BF /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B661522347F2AC00F0F4BF /* Calendar.storyboard */; };
 		86B661552347F2E600F0F4BF /* Activities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B661542347F2E600F0F4BF /* Activities.storyboard */; };
 		86B661572347F2F500F0F4BF /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B661562347F2F500F0F4BF /* Statistics.storyboard */; };
+		86C46F7F235F975300A99202 /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C46F7D235F975300A99202 /* Activity+CoreDataClass.swift */; };
+		86C46F80235F975300A99202 /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C46F7E235F975300A99202 /* Activity+CoreDataProperties.swift */; };
 		86CCFD352306045800CDCC21 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCFD342306045800CDCC21 /* StatisticsViewController.swift */; };
 		86D11AD222FF9C330059A0B3 /* HistoricalLogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */; };
 		86E0F828231F36930025DE0E /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8654FC22230B6B3300A6202C /* SF-Pro-Display-Light.otf */; };
 		86E0F82A231F41A80025DE0E /* SelectActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E0F829231F41A80025DE0E /* SelectActivitiesViewController.swift */; };
 		86E2D4082305936A00E9A910 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86E2D4072305936A00E9A910 /* Assets.xcassets */; };
+		86F3FD3C235F79E800FB2D41 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F3FD3B235F79E800FB2D41 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,10 +48,11 @@
 		861E112D23357A0300F627BC /* LoadDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataController.swift; sourceTree = "<group>"; };
 		861E112F2335825000F627BC /* LoadingDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDataViewController.swift; sourceTree = "<group>"; };
 		8624C444232FE62C00B60BE7 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		8624C446232FE88300B60BE7 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		8624C446232FE88300B60BE7 /* Activity+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+Convenience.swift"; sourceTree = "<group>"; };
 		8624C448232FF62E00B60BE7 /* LogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
 		8624C44A232FFCB000B60BE7 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		8624C44E2330072500B60BE7 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		8628E5EB235E83B300FD0E4B /* Hapistats.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hapistats.xcdatamodel; sourceTree = "<group>"; };
 		86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		864D198222F63429009368ED /* happy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		864D198522F63429009368ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,10 +71,13 @@
 		86B661522347F2AC00F0F4BF /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		86B661542347F2E600F0F4BF /* Activities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activities.storyboard; sourceTree = "<group>"; };
 		86B661562347F2F500F0F4BF /* Statistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
+		86C46F7D235F975300A99202 /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		86C46F7E235F975300A99202 /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		86CCFD342306045800CDCC21 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		86D11AD122FF9C330059A0B3 /* HistoricalLogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalLogsViewController.swift; sourceTree = "<group>"; };
 		86E0F829231F41A80025DE0E /* SelectActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectActivitiesViewController.swift; sourceTree = "<group>"; };
 		86E2D4072305936A00E9A910 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		86F3FD3B235F79E800FB2D41 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,8 +177,10 @@
 		864D199922F63471009368ED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				86C46F81235F979D00A99202 /* Activity */,
 				8624C444232FE62C00B60BE7 /* Log.swift */,
-				8624C446232FE88300B60BE7 /* Activity.swift */,
+				8628E5EA235E83B300FD0E4B /* Hapistats.xcdatamodeld */,
+				86F3FD3B235F79E800FB2D41 /* CoreDataStack.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,6 +233,16 @@
 				861E11232335515300F627BC /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		86C46F81235F979D00A99202 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				86C46F7D235F975300A99202 /* Activity+CoreDataClass.swift */,
+				86C46F7E235F975300A99202 /* Activity+CoreDataProperties.swift */,
+				8624C446232FE88300B60BE7 /* Activity+Convenience.swift */,
+			);
+			path = Activity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				861E11302335825000F627BC /* LoadingDataViewController.swift in Sources */,
+				86C46F7F235F975300A99202 /* Activity+CoreDataClass.swift in Sources */,
 				86D11AD222FF9C330059A0B3 /* HistoricalLogsViewController.swift in Sources */,
 				861E112E23357A0300F627BC /* LoadDataController.swift in Sources */,
 				8624C445232FE62C00B60BE7 /* Log.swift in Sources */,
@@ -318,14 +339,17 @@
 				86CCFD352306045800CDCC21 /* StatisticsViewController.swift in Sources */,
 				8650F1972321871A0016F2D3 /* ActivityTableViewCell.swift in Sources */,
 				8624C449232FF62E00B60BE7 /* LogController.swift in Sources */,
-				8624C447232FE88300B60BE7 /* Activity.swift in Sources */,
+				8624C447232FE88300B60BE7 /* Activity+Convenience.swift in Sources */,
 				8675BBCF230B82AA00EE1382 /* ColorHelper.swift in Sources */,
 				86E0F82A231F41A80025DE0E /* SelectActivitiesViewController.swift in Sources */,
 				861E11242335515300F627BC /* UIColorExtensions.swift in Sources */,
+				8628E5EC235E83B300FD0E4B /* Hapistats.xcdatamodeld in Sources */,
 				866354E823397ECB005805F7 /* StatisticsFunctions.swift in Sources */,
 				864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */,
 				864D198622F63429009368ED /* AppDelegate.swift in Sources */,
+				86F3FD3C235F79E800FB2D41 /* CoreDataStack.swift in Sources */,
 				866CAE722319A35C00C85FF8 /* CalenderHelper.swift in Sources */,
+				86C46F80235F975300A99202 /* Activity+CoreDataProperties.swift in Sources */,
 				861E11262335559800F627BC /* StatisticsContentViewController.swift in Sources */,
 				8624C44B232FFCB000B60BE7 /* ActivityController.swift in Sources */,
 				86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */,
@@ -466,7 +490,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = happy/happy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2WP5X762NJ;
 				INFOPLIST_FILE = "$(SRCROOT)/happy/Resources/Info.plist";
@@ -487,7 +510,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = happy/happy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2WP5X762NJ;
 				INFOPLIST_FILE = "$(SRCROOT)/happy/Resources/Info.plist";
@@ -526,6 +548,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8628E5EA235E83B300FD0E4B /* Hapistats.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8628E5EB235E83B300FD0E4B /* Hapistats.xcdatamodel */,
+			);
+			currentVersion = 8628E5EB235E83B300FD0E4B /* Hapistats.xcdatamodel */;
+			path = Hapistats.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 864D197A22F63429009368ED /* Project object */;
 }
