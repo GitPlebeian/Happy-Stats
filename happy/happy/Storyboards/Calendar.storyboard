@@ -373,9 +373,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yJ1-7Y-DMs"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Log" id="wqq-Kn-3cZ">
-                        <barButtonItem key="backBarButtonItem" title="bbb" image="plusIcon" id="xdA-bj-xUQ"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="New Log" id="wqq-Kn-3cZ"/>
                     <connections>
                         <outlet property="activitiesSearchTextField" destination="zq0-Cw-cQa" id="vhx-e2-CLQ"/>
                         <outlet property="activitiesTableView" destination="tKj-Ew-Md4" id="mnk-GN-V7Z"/>
@@ -412,7 +410,6 @@
     </scenes>
     <resources>
         <image name="calendarIcon" width="30" height="30"/>
-        <image name="plusIcon" width="30" height="30"/>
         <namedColor name="Black">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

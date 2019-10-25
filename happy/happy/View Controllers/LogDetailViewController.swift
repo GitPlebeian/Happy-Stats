@@ -152,6 +152,8 @@ class LogDetailViewController: UIViewController {
     // MARK: - Custom Functions
     
     func updateViews() {
+        navigationItem.backBarButtonItem?.title = "H"
+//        navigationController?.navigationItem.backBarButtonItem?.image = UIImage(named: "backArrow")
         activitiesTableView.backgroundColor = .white
         logRatingLabel.textColor = .black
         logRatingView.layer.cornerRadius = logRatingView.frame.height / 2

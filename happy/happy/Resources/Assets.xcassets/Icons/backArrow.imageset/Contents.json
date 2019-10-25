@@ -7,13 +7,14 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "1x",
+      "filename" : "backArrowDarkMode@1x.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
-      ]
+      ],
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
@@ -22,13 +23,14 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
+      "filename" : "backArrowDarkMode@2x.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
-      ]
+      ],
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
@@ -37,13 +39,14 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
+      "filename" : "backArrowDarkMode@3x.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
-      ]
+      ],
+      "scale" : "3x"
     }
   ],
   "info" : {
