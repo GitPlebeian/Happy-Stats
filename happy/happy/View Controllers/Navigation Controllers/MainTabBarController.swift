@@ -26,15 +26,36 @@ class MainTabBarController: UITabBarController {
             // Sets the selected image of all the icons
             switch index {
             case 0:
-                item.selectedImage = UIImage(named: "reportIconDark")
+                item.selectedImage = UIImage(named: "reportIconSelected")
+                item.image = UIImage(named: "reportIcon")
             case 1:
-                item.selectedImage = UIImage(named: "calendarIconDark")
+                item.selectedImage = UIImage(named: "calendarIconSelected")
+                item.image = UIImage(named: "calendarIcon")
             case 2:
-                item.selectedImage = UIImage(named: "menuIconDark")
+                item.selectedImage = UIImage(named: "menuIconSelected")
+                item.image = UIImage(named: "menuIcon")
             default:
                 print("Extra Tab Bar With No Selection Image")
             }
             index += 1
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if traitCollection.userInterfaceStyle == .light {
+            self.tabBar.items?[0].image = UIImage(named: "reportIcon")
+            self.tabBar.items?[0].selectedImage = UIImage(named: "reportIconSelected")
+            self.tabBar.items?[1].image = UIImage(named: "calendarIcon")
+            self.tabBar.items?[1].selectedImage = UIImage(named: "calendarIconSelected")
+            self.tabBar.items?[2].image = UIImage(named: "menuIcon")
+            self.tabBar.items?[2].selectedImage = UIImage(named: "menuIconSelected")
+        } else {
+            self.tabBar.items?[0].image = UIImage(named: "reportIconDarkMode")
+            self.tabBar.items?[0].selectedImage = UIImage(named: "reportIconSelectedDarkMode")
+            self.tabBar.items?[1].image = UIImage(named: "calendarIconDarkMode")
+            self.tabBar.items?[1].selectedImage = UIImage(named: "calendarIconSelectedDarkMode")
+            self.tabBar.items?[2].image = UIImage(named: "menuIconDarkMode")
+            self.tabBar.items?[2].selectedImage = UIImage(named: "menuIconSelectedDarkMode")
         }
     }
 } // End of Class

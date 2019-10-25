@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,14 +17,14 @@
         <!--Calendar-->
         <scene sceneID="gUS-B5-S9d">
             <objects>
-                <viewController id="dYV-1r-0gp" customClass="HistoricalLogsViewController" customModule="happy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dYV-1r-0gp" customClass="MainCalendarViewController" customModule="happy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ptb-vH-4nZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pYt-69-O6e">
-                                <rect key="frame" x="10.5" y="96" width="393" height="337"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="10.5" y="95.5" width="393" height="337"/>
+                                <color key="backgroundColor" name="White"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pYt-69-O6e" secondAttribute="height" multiplier="7:6" id="Qdx-mP-JZg"/>
                                 </constraints>
@@ -47,11 +48,11 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(#)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KE2-1K-foc">
                                                             <rect key="frame" x="0.0" y="0.0" width="103" height="103"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="15"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" name="Black"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" name="White"/>
                                                     <constraints>
                                                         <constraint firstItem="KE2-1K-foc" firstAttribute="width" secondItem="2oD-aT-5zS" secondAttribute="width" id="N7v-I1-MxO"/>
                                                         <constraint firstItem="KE2-1K-foc" firstAttribute="centerY" secondItem="2oD-aT-5zS" secondAttribute="centerY" id="d4q-S3-4Gb"/>
@@ -61,6 +62,7 @@
                                                 </view>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" name="White"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="2oD-aT-5zS" secondAttribute="bottom" constant="6" id="8Kd-ZD-1Xk"/>
                                             <constraint firstAttribute="trailing" secondItem="2oD-aT-5zS" secondAttribute="trailing" constant="6" id="DiL-uN-t5Q"/>
@@ -75,48 +77,48 @@
                                 </cells>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Mv3-HO-ccC">
-                                <rect key="frame" x="16.5" y="80" width="381" height="16"/>
+                                <rect key="frame" x="16.5" y="80" width="381" height="15.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkW-9A-xRn">
-                                        <rect key="frame" x="0.0" y="0.0" width="44" height="16"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="15.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJe-dw-XBG" userLabel="Mon">
-                                        <rect key="frame" x="56" y="0.0" width="44.5" height="16"/>
+                                        <rect key="frame" x="56" y="0.0" width="44.5" height="15.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBp-Jj-NEH">
-                                        <rect key="frame" x="112.5" y="0.0" width="44" height="16"/>
+                                        <rect key="frame" x="112.5" y="0.0" width="44" height="15.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ll-15-Ejc">
-                                        <rect key="frame" x="168.5" y="0.0" width="44" height="16"/>
+                                        <rect key="frame" x="168.5" y="0.0" width="44" height="15.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kz3-0W-WcF">
-                                        <rect key="frame" x="224.5" y="0.0" width="44" height="16"/>
+                                        <rect key="frame" x="224.5" y="0.0" width="44" height="15.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAw-bl-Jfd">
-                                        <rect key="frame" x="280.5" y="0.0" width="44.5" height="16"/>
+                                        <rect key="frame" x="280.5" y="0.0" width="44.5" height="15.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biy-Yv-3Un">
-                                        <rect key="frame" x="337" y="0.0" width="44" height="16"/>
+                                        <rect key="frame" x="337" y="0.0" width="44" height="15.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -125,15 +127,15 @@
                                 <rect key="frame" x="16.5" y="16" width="120" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Month)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgI-LC-tLY">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="24.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="20"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Year)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qld-1S-kt2">
-                                        <rect key="frame" x="0.0" y="32" width="120" height="16"/>
+                                        <rect key="frame" x="0.0" y="32.5" width="120" height="15.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -143,7 +145,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhy-WT-AKj">
-                                <rect key="frame" x="41.5" y="441" width="331" height="44"/>
+                                <rect key="frame" x="41.5" y="440.5" width="331" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="p6p-tj-XvK"/>
                                 </constraints>
@@ -181,7 +183,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="White"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="0P5-Tt-p3N"/>
@@ -231,7 +233,7 @@
         <!--New Log-->
         <scene sceneID="xS0-rh-3oX">
             <objects>
-                <viewController id="LCB-ky-qZD" customClass="SelectActivitiesViewController" customModule="happy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LCB-ky-qZD" customClass="LogDetailViewController" customModule="happy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2SH-TB-Cyd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -405,12 +407,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUv-dq-V2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1528.985507246377" y="602.67857142857144"/>
+            <point key="canvasLocation" x="1529" y="603"/>
         </scene>
     </scenes>
     <resources>
         <image name="calendarIcon" width="30" height="30"/>
         <image name="plusIcon" width="30" height="30"/>
+        <namedColor name="Black">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>

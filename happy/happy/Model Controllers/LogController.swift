@@ -7,39 +7,41 @@
 //
 
 import Foundation
-import CloudKit
+import CoreData
 
 class LogController {
     
-    let privateDB = CKContainer.default().privateCloudDatabase
-    
     static let shared = LogController()
     
-    var logs: [Log] = []
+    var logs: [Log] {
+        let fetchRequest: NSFetchRequest<Log> = Log.fetchRequest()
+        let results = (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
+        return results
+    }
     
     // MARK: - Functions
     
     // Get log for date
-//    func getLogForDate(date: Date) -> Log? {
-//        for log in logs {
-//            let logDate = log.date
-//            let calendar = Calendar.current
-//
-//            let year1 = calendar.component(.year, from: date)
-//            let year2 = calendar.component(.year, from: logDate)
-//            let month1 = calendar.component(.month, from: date)
-//            let month2 = calendar.component(.month, from: logDate)
-//            let day1 = calendar.component(.day, from: date)
-//            let day2 = calendar.component(.day, from: logDate)
-//
-//            if year1 == year2 &&
-//                month1 == month2 &&
-//                day1 == day2 {
-//                return log
-//            }
-//        }
-//        return nil
-//    }
+    func getLogForDate(date: Date) -> Log? {
+        for log in logs {
+            let logDate = log.date
+            let calendar = Calendar.current
+
+            let year1 = calendar.component(.year, from: date)
+            let year2 = calendar.component(.year, from: logDate)
+            let month1 = calendar.component(.month, from: date)
+            let month2 = calendar.component(.month, from: logDate)
+            let day1 = calendar.component(.day, from: date)
+            let day2 = calendar.component(.day, from: logDate)
+
+            if year1 == year2 &&
+                month1 == month2 &&
+                day1 == day2 {
+                return log
+            }
+        }
+        return nil
+    }
 //
 //    // Adds activities to logs bases on the log references
 //    func pairLogsAndActivities(completion: () -> Void) {
@@ -312,4 +314,27 @@ class LogController {
 //        log.activities = oldLogCopy.activities
 //        log.activityReferences = oldLogCopy.activityReferences
 //    }
+    func createLog(rating: Int, date: Date, activities: [Activity]) {
+        Log(rating: rating, date: date, activities: activities)
+        saveToPersistentStore()
+    }
+    
+    func editLog(log: Log, rating: Int, activities: [Activity]) {
+        log.rating = Int16(rating)
+        let activitiesOrderedSet = NSOrderedSet(array: activities)
+        log.activities = activitiesOrderedSet
+        saveToPersistentStore()
+    }
+    
+    func deleteLog(log: Log) {
+        CoreDataStack.context.delete(log)
+    }
+    
+    func saveToPersistentStore() {
+        if CoreDataStack.context.hasChanges{
+            try? CoreDataStack.context.save()
+        }
+    }
+    
+    
 }

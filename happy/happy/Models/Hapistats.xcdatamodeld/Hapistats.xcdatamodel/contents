@@ -7,7 +7,7 @@
         <attribute name="totalRating" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="logs" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Log"/>
     </entity>
-    <entity name="Log" representedClassName="Log" syncable="YES" codeGenerationType="class">
+    <entity name="Log" representedClassName="Log" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="rating" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="activities" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Activity"/>
