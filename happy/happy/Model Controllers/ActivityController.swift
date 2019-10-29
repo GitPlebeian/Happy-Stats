@@ -21,15 +21,15 @@ class ActivityController {
         return results
     }
     
-//    func getActivitiesNotInLog(log: Log) -> [Activity] {
-//        var activitiesNotInLog: [Activity] = []
-//        for activity in activities {
-//            if !log.activities.contains(activity) {
-//                activitiesNotInLog.append(activity)
-//            }
-//        }
-//        return activitiesNotInLog
-//    }
+    func getActivitiesNotInLog(log: Log) -> [Activity] {
+        var activitiesNotInLog: [Activity] = []
+        for activity in activities {
+            if !log.activities.contains(activity) {
+                activitiesNotInLog.append(activity)
+            }
+        }
+        return activitiesNotInLog
+    }
 //
 //    func sortActivitesByNumTimes() {
 //        var unsortedNumbers = activities.count

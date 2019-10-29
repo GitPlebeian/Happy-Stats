@@ -39,7 +39,6 @@ class SelectActivitiesTableViewCell: UITableViewCell {
     
     func updateViews() {
         backgroundColor = .white
-        activityTitleLabel.textColor = .black
         activityView.layer.cornerRadius = activityView.frame.height / 2
         selectionDotView.backgroundColor = .white
         selectionDotView.layer.cornerRadius = selectionDotView.frame.width / 2
@@ -50,12 +49,19 @@ class SelectActivitiesTableViewCell: UITableViewCell {
         guard let activity = activitiy else {return}
         activityTitleLabel.text = activity.title
         if activity.averageRating > -1 {
-            activityView.backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
+            let backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
+            activityView.backgroundColor = backgroundColor
             selectionDotView.backgroundColor = .white
             activityView.layer.borderWidth = 0
+            if backgroundColor.useDarkText() {
+                activityTitleLabel.textColor = UIColor.black
+            } else {
+                activityTitleLabel.textColor = UIColor.white
+            }
         } else {
-            activityView.backgroundColor = .white
-            activityView.layer.borderColor = UIColor.black.cgColor
+            activityTitleLabel.textColor = UIColor(named: "Black")
+            activityView.backgroundColor = UIColor(named: "White")
+            activityView.layer.borderColor = UIColor(named: "Black")!.cgColor
             activityView.layer.borderWidth = 1.5
             selectionDotView.backgroundColor = ColorHelper.getColorFoInt(number: 10)
         }

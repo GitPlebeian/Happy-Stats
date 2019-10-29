@@ -42,6 +42,8 @@ class MainTabBarController: UITabBarController {
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
         if traitCollection.userInterfaceStyle == .light {
             self.tabBar.items?[0].image = UIImage(named: "reportIcon")
             self.tabBar.items?[0].selectedImage = UIImage(named: "reportIconSelected")

@@ -61,11 +61,7 @@ class LogDetailViewController: UIViewController {
         activitiesTableView.delegate = self
         activitiesTableView.dataSource = self
         activitiesTableView.showsVerticalScrollIndicator = false
-        //        activitiesSearchBar.delegate = self
         setupSearchBar()
-        
-        //        updateViews()
-        //        updateViewsForRatingChange()
     }
     
     override func viewDidLayoutSubviews() {
@@ -88,21 +84,21 @@ class LogDetailViewController: UIViewController {
     }
     
     @IBAction func activitiesSearchTextFieldTextDidChange(_ sender: UITextField) {
-//        guard let searchText = sender.text else {return}
-//        isSearching = true
-//
-//        searchedActivities.removeAll(keepingCapacity: false)
-//
-//        for activity in ActivityController.shared.activities {
-//            if activity.title.lowercased().contains(searchText.lowercased()){
-//                searchedActivities.append(activity)
-//            }
-//        }
-//        if searchText == "" {
-//            isSearching = false
-//        }
-//        
-//        activitiesTableView.reloadData()
+        guard let searchText = sender.text else {return}
+        isSearching = true
+
+        searchedActivities.removeAll(keepingCapacity: false)
+
+        for activity in ActivityController.shared.activities {
+            if activity.title.lowercased().contains(searchText.lowercased()){
+                searchedActivities.append(activity)
+            }
+        }
+        if searchText == "" {
+            isSearching = false
+        }
+        
+        activitiesTableView.reloadData()
     }
     @IBAction func deleteLogButtonTapped(_ sender: Any) {
         presentDeleteLogAlert()
@@ -112,35 +108,19 @@ class LogDetailViewController: UIViewController {
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
         let feedback = UINotificationFeedbackGenerator()
         feedback.prepare()
-        
-//        if let log = log {
-//            LogController.shared.updateLog(log: log, newRating: rating, newActivities: displayActivities[0]) { (log) in
-//                DispatchQueue.main.async {
-//                    if let log = log {
-//                        self.delegate?.setCurrentLog(log: log)
-//                        feedback.notificationOccurred(.success)
-//                        self.navigationController?.popViewController(animated: true)
-//                    } else {
-//                        feedback.notificationOccurred(.error)
-//                        self.presentErrorAlert(message: "Unable to save to ICloud")
-//                    }
-//                }
-//            }
-//        } else {
-//            guard let selectedDate = selectedDate else {return}
-//            LogController.shared.createLog(date: selectedDate, rating: rating, activities: displayActivities[0]) { (log) in
-//                DispatchQueue.main.async {
-//                    if let log = log {
-//                        self.delegate?.setCurrentLog(log: log)
-//                        feedback.notificationOccurred(.success)
-//                        self.navigationController?.popViewController(animated: true)
-//                    } else {
-//                        feedback.notificationOccurred(.error)
-//                        self.presentErrorAlert(message: "Unable to save to ICloud")
-//                    }
-//                }
-//            }
-//        }
+        if let log = log {
+            LogController.shared.editLog(log: log, rating: rating, activities: displayActivities[0])
+            self.delegate?.setCurrentLog(log: log)
+            feedback.notificationOccurred(.success)
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            guard let selectedDate = selectedDate else {return}
+            LogController.shared.createLog(rating: rating, date: selectedDate, activities: displayActivities[0]) { (log) in
+                self.delegate?.setCurrentLog(log: log)
+                feedback.notificationOccurred(.success)
+                navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     @IBAction func ratingSliderValueChanged(_ sender: Any) {
@@ -151,20 +131,29 @@ class LogDetailViewController: UIViewController {
     
     // MARK: - Custom Functions
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        navigationItem.rightBarButtonItem?.image = UIImage(named: "deleteIcon")
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backArrow")
+        activitiesTableView.reloadData()
+    }
+    
     func updateViews() {
-        navigationItem.backBarButtonItem?.title = "H"
+        navigationController?.navigationBar.topItem?.backBarButtonItem? = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(backBarButtonItemClicked))
+//        navigationItem.backBarButtonItem?.tintColor = .cyan
 //        navigationController?.navigationItem.backBarButtonItem?.image = UIImage(named: "backArrow")
-        activitiesTableView.backgroundColor = .white
+        activitiesTableView.backgroundColor = UIColor(named: "White")
         logRatingLabel.textColor = .black
         logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
         saveLogButton.layer.cornerRadius = saveLogButton.frame.height / 2
-        logRatingView.layer.borderWidth = 1.5
-        logRatingView.layer.borderColor = UIColor.black.cgColor
-        saveLogButton.layer.borderWidth = 1.5
-        saveLogButton.layer.borderColor = UIColor.black.cgColor
-        activitiesSearchTextField.textColor = .black
-        activitiesSearchTextField.backgroundColor = UIColor(displayP3Red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
-        activitiesSearchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 1)])
+        activitiesSearchTextField.textColor = UIColor(named: "Black")
+        activitiesSearchTextField.tintColor = UIColor(named: "Black")
+        activitiesSearchTextField.backgroundColor = UIColor(named: "White")
+        activitiesSearchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Gray")!])
+    }
+    
+    @objc func backBarButtonItemClicked() {
+        navigationController?.popViewController(animated: true)
     }
     
     func updateNavBarTitle(title: String) {
@@ -186,18 +175,10 @@ class LogDetailViewController: UIViewController {
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             guard let log = self.log else {return}
             let feedback = UINotificationFeedbackGenerator()
-            feedback.prepare()
-//            LogController.shared.deleteLog(log: log, completion: { (success) in
-//                DispatchQueue.main.async {
-//                    if success {
-//                        self.delegate?.setCurrentLog(log: nil)
-//                        feedback.notificationOccurred(.success)
-//                    } else {
-//                        feedback.notificationOccurred(.error)
-//                    }
-//                    self.navigationController?.popViewController(animated: true)
-//                }
-//            })
+            LogController.shared.deleteLog(log: log)
+            self.delegate?.setCurrentLog(log: nil)
+            feedback.notificationOccurred(.success)
+            self.navigationController?.popViewController(animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(deleteAction)
@@ -255,8 +236,8 @@ class LogDetailViewController: UIViewController {
             displayActivities[1] = deselectedActivities
         } else {
             if let log = log {
-//                displayActivities[0] = log.activities
-//                displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
+                displayActivities[0] = log.activities.array as! [Activity]
+                displayActivities[1] = ActivityController.shared.getActivitiesNotInLog(log: log)
             } else {
                 displayActivities[1] = ActivityController.shared.activities
             }
@@ -310,12 +291,12 @@ extension LogDetailViewController: UITableViewDataSource, UITableViewDelegate {
             return nil
         }
         let headerView = UIView()
-        headerView.backgroundColor = .white
+        headerView.backgroundColor = UIColor(named: "White")
         let headerLabel: UILabel = {
             let label = UILabel()
             label.frame = CGRect(x: 2, y: 0, width: 150, height: 24)
             label.font = UIFont(name: "SFProDisplay-Medium", size: 17)
-            label.textColor = .black
+            label.textColor = UIColor(named: "Black")
             if allActivities {
                 label.text = "Activities"
             } else if allApplied {

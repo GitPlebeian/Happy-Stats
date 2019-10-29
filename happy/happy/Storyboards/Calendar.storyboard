@@ -146,12 +146,13 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhy-WT-AKj">
                                 <rect key="frame" x="41.5" y="440.5" width="331" height="44"/>
+                                <color key="backgroundColor" name="White"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="p6p-tj-XvK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
                                 <state key="normal" title="Log">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" name="Black"/>
                                 </state>
                                 <connections>
                                     <segue destination="LCB-ky-qZD" kind="show" identifier="showSelectActivities" id="Rf0-IF-9NF"/>
@@ -167,7 +168,7 @@
                                             <constraint firstAttribute="width" constant="85" id="kP1-L3-tDI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -178,9 +179,10 @@
                                     <constraint firstItem="I5u-cY-koN" firstAttribute="centerX" secondItem="bb2-nX-Qqh" secondAttribute="centerX" id="vyh-UV-B5R"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vc9-Ls-fhe">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vc9-Ls-fhe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="730"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="White"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" name="White"/>
@@ -195,19 +197,17 @@
                             <constraint firstItem="bb2-nX-Qqh" firstAttribute="trailing" secondItem="Mv3-HO-ccC" secondAttribute="trailing" id="SLS-po-Yox"/>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="top" secondItem="Vfe-6A-vBU" secondAttribute="bottom" constant="16" id="TUu-O0-bSH"/>
                             <constraint firstItem="yhy-WT-AKj" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="cBJ-ls-Ex5"/>
-                            <constraint firstItem="vc9-Ls-fhe" firstAttribute="bottom" secondItem="A9P-L1-ocC" secondAttribute="bottom" id="cQ2-AW-7aH"/>
-                            <constraint firstItem="vc9-Ls-fhe" firstAttribute="trailing" secondItem="A9P-L1-ocC" secondAttribute="trailing" id="fLj-5T-Vjp"/>
-                            <constraint firstItem="vc9-Ls-fhe" firstAttribute="leading" secondItem="A9P-L1-ocC" secondAttribute="leading" id="gFg-Wq-PMa"/>
                             <constraint firstItem="Vfe-6A-vBU" firstAttribute="leading" secondItem="Mv3-HO-ccC" secondAttribute="leading" id="hIP-Su-BO6"/>
                             <constraint firstItem="Vfe-6A-vBU" firstAttribute="top" secondItem="A9P-L1-ocC" secondAttribute="top" constant="16" id="kH2-uQ-Tj6"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="top" secondItem="Mv3-HO-ccC" secondAttribute="bottom" id="msP-Yd-s0m"/>
                             <constraint firstItem="bb2-nX-Qqh" firstAttribute="leading" secondItem="Vfe-6A-vBU" secondAttribute="trailing" constant="16" id="sSA-1D-rMg"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="uQs-aR-L93"/>
-                            <constraint firstItem="vc9-Ls-fhe" firstAttribute="top" secondItem="A9P-L1-ocC" secondAttribute="top" id="uhb-xN-9Pb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A9P-L1-ocC"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar" id="Vai-ga-mCa"/>
+                    <navigationItem key="navigationItem" title="Calendar" id="Vai-ga-mCa">
+                        <barButtonItem key="backBarButtonItem" title=" " id="54X-Pu-gfA"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendarCollectionView" destination="pYt-69-O6e" id="sbu-xD-AEq"/>
                         <outlet property="calendarNavigationItem" destination="Vai-ga-mCa" id="aQV-g3-Xno"/>
@@ -288,7 +288,10 @@
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tKj-Ew-Md4">
                                 <rect key="frame" x="16" y="50" width="382" height="577"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="White"/>
+                                <color key="tintColor" name="White"/>
+                                <color key="sectionIndexColor" name="Black"/>
+                                <color key="sectionIndexBackgroundColor" name="White"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="activityCell" rowHeight="48" id="zYN-Bc-UPv" customClass="SelectActivitiesTableViewCell" customModule="happy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="382" height="48"/>
@@ -306,7 +309,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0L-Fy-2gp">
                                                                     <rect key="frame" x="0.0" y="0.0" width="315" height="25"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" name="Black"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZeB-oX-lh1">
@@ -329,6 +332,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" name="White"/>
                                             <constraints>
                                                 <constraint firstItem="SrD-TE-RAU" firstAttribute="leading" secondItem="jI9-l5-6Nt" secondAttribute="leading" id="AR3-wc-gnp"/>
                                                 <constraint firstAttribute="trailing" secondItem="SrD-TE-RAU" secondAttribute="trailing" id="FnB-85-zrs"/>
@@ -336,6 +340,7 @@
                                                 <constraint firstItem="SrD-TE-RAU" firstAttribute="top" secondItem="jI9-l5-6Nt" secondAttribute="top" constant="4" id="r91-jU-aVq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="White"/>
                                         <connections>
                                             <outlet property="activityTitleLabel" destination="b0L-Fy-2gp" id="2FG-Pb-f6A"/>
                                             <outlet property="activityView" destination="SrD-TE-RAU" id="WpD-ab-ZaU"/>
@@ -346,7 +351,8 @@
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zq0-Cw-cQa">
                                 <rect key="frame" x="16" y="8" width="382" height="34"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" name="White"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
@@ -355,7 +361,7 @@
                                 </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="White"/>
                         <constraints>
                             <constraint firstItem="zq0-Cw-cQa" firstAttribute="top" secondItem="yJ1-7Y-DMs" secondAttribute="top" constant="8" id="9rV-Cz-6nX"/>
                             <constraint firstItem="lLa-el-9tE" firstAttribute="width" secondItem="2SH-TB-Cyd" secondAttribute="width" multiplier="0.8" id="C5F-FI-9rO"/>
@@ -373,7 +379,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yJ1-7Y-DMs"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Log" id="wqq-Kn-3cZ"/>
+                    <navigationItem key="navigationItem" title="New Log" id="wqq-Kn-3cZ">
+                        <barButtonItem key="backBarButtonItem" title="asd" id="1Cq-T9-15v"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activitiesSearchTextField" destination="zq0-Cw-cQa" id="vhx-e2-CLQ"/>
                         <outlet property="activitiesTableView" destination="tKj-Ew-Md4" id="mnk-GN-V7Z"/>
@@ -394,7 +402,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o2q-ii-NiJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="calendarIcon" id="stU-mQ-ZIc"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="RET-gt-K0L">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" backIndicatorImage="backArrow" backIndicatorTransitionMaskImage="backArrow" id="RET-gt-K0L">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -409,6 +417,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backArrow" width="25" height="25"/>
         <image name="calendarIcon" width="30" height="30"/>
         <namedColor name="Black">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

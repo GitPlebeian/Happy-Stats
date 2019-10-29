@@ -30,17 +30,18 @@ class DateCollectionViewCell: UICollectionViewCell {
             // Sets date label to the date number
             
             dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: date)
-//            if let log = LogController.shared.getLogForDate(date: date) {
-//                let color = ColorHelper.getColorFoInt(number: Int(log.rating))
-//                dateView.backgroundColor = color
-//                if color.useDarkText() {
-//                    dateNumberLabel.textColor = .black
-//                } else {
-//                    dateNumberLabel.textColor = .white
-//                }
-//            } else {
-//                dateView.backgroundColor = .clear
-//            }
+            if let log = LogController.shared.getLogForDate(date: date) {
+                let color = ColorHelper.getColorFoInt(number: Int(log.rating))
+                dateView.backgroundColor = color
+                if color.useDarkText() {
+                    dateNumberLabel.textColor = .black
+                } else {
+                    dateNumberLabel.textColor = .white
+                }
+            } else {
+                dateNumberLabel.textColor = UIColor(named: "Black")
+                dateView.backgroundColor = .clear
+            }
             
             if let selectedDate = selectedDate, date == selectedDate {
                 dateView.layer.borderWidth = 1.5

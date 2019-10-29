@@ -68,38 +68,38 @@ class LogController {
 //        }
 //    }
 //
-//    func getRatingsForTimePeriod(days: Int) -> [Int] {
-//        var arrayOfAllowedDates: [String] = []
-//        var resultsArray: [Int] = []
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd-MM-yyyy"
-//        var incrementDate = Date()
-//        var count = 0
-//        while count < days {
-//            arrayOfAllowedDates.append(formatter.string(from: incrementDate))
-//            incrementDate = Calendar.current.date(byAdding: .day, value: -1, to: incrementDate) ?? Date()
-//            count += 1
-//        }
-//        for log in logs {
-//            if arrayOfAllowedDates.contains(formatter.string(from: log.date)) {
-//                resultsArray.append(log.rating)
-//            }
-//        }
-//        return resultsArray
-//    }
-//
-//    func getRatingsForMonth(month: String, year: String) -> [Int] {
-//        var resultsArray: [Int] = []
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "MMMM yyyy"
-//        let allowedDate = "\(month) \(year)"
-//        for log in logs {
-//            if formatter.string(from: log.date) == allowedDate {
-//                resultsArray.append(log.rating)
-//            }
-//        }
-//        return resultsArray
-//    }
+    func getRatingsForTimePeriod(days: Int) -> [Int] {
+        var arrayOfAllowedDates: [String] = []
+        var resultsArray: [Int] = []
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        var incrementDate = Date()
+        var count = 0
+        while count < days {
+            arrayOfAllowedDates.append(formatter.string(from: incrementDate))
+            incrementDate = Calendar.current.date(byAdding: .day, value: -1, to: incrementDate) ?? Date()
+            count += 1
+        }
+        for log in logs {
+            if arrayOfAllowedDates.contains(formatter.string(from: log.date)) {
+                resultsArray.append(Int(log.rating))
+            }
+        }
+        return resultsArray
+    }
+
+    func getRatingsForMonth(month: String, year: String) -> [Int] {
+        var resultsArray: [Int] = []
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        let allowedDate = "\(month) \(year)"
+        for log in logs {
+            if formatter.string(from: log.date) == allowedDate {
+                resultsArray.append(Int(log.rating))
+            }
+        }
+        return resultsArray
+    }
 //
 //    // MARK: - CRUD
 //
@@ -314,8 +314,9 @@ class LogController {
 //        log.activities = oldLogCopy.activities
 //        log.activityReferences = oldLogCopy.activityReferences
 //    }
-    func createLog(rating: Int, date: Date, activities: [Activity]) {
-        Log(rating: rating, date: date, activities: activities)
+    func createLog(rating: Int, date: Date, activities: [Activity], completion: (Log) -> Void) {
+        let newLog = Log(rating: rating, date: date, activities: activities)
+        completion(newLog)
         saveToPersistentStore()
     }
     
@@ -328,6 +329,7 @@ class LogController {
     
     func deleteLog(log: Log) {
         CoreDataStack.context.delete(log)
+        saveToPersistentStore()
     }
     
     func saveToPersistentStore() {

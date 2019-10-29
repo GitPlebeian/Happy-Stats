@@ -83,28 +83,31 @@ class MainCalendarViewController: UIViewController{
     
     // MARK: - Custom Functions
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        navigationItem.rightBarButtonItem?.image = UIImage(named: "deleteIcon")
+        editLogButton.layer.borderColor = UIColor(named: "Black")?.cgColor
+        if currentLog == nil {
+            editLogButton.setTitleColor(UIColor(named: "Black"), for: .normal)
+        }
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backArrow")
+        calendarCollectionView.reloadData()
+    }
+    
     // Alert for deleting a log and its data
     func presentDeleteLogAlert() {
         let alertController = UIAlertController(title: "Delete Log", message: "Are you sure?", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             guard let log = self.currentLog else {return}
             let feedback = UINotificationFeedbackGenerator()
-            feedback.prepare()
-//            LogController.shared.deleteLog(log: log, completion: { (success) in
-//                DispatchQueue.main.async {
-//                    if success {
-//                        self.currentLog = nil
-//                        feedback.notificationOccurred(.success)
-//                        self.rating = -1
-//                        self.updateDeleteLogBarButtonItem()
-//                        self.calendarCollectionView.reloadData()
-//                        self.updateViewsForRating()
-//                        self.calculateMonthAverage()
-//                    } else {
-//                        feedback.notificationOccurred(.error)
-//                    }
-//                }
-//            })
+            LogController.shared.deleteLog(log: log)
+            self.currentLog = nil
+            feedback.notificationOccurred(.success)
+            self.rating = -1
+            self.updateDeleteLogBarButtonItem()
+            self.calendarCollectionView.reloadData()
+            self.updateViewsForRating()
+            self.calculateMonthAverage()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(deleteAction)
@@ -123,35 +126,35 @@ class MainCalendarViewController: UIViewController{
     }
     
     func updateViews() {
-        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backArrow")
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backArrow")
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!, NSAttributedString.Key.foregroundColor : UIColor(named: "Black")]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!, NSAttributedString.Key.foregroundColor : UIColor(named: "Black")!]
         navigationController?.navigationBar.barTintColor = UIColor(named: "NavigationBar")
         self.tabBarController?.tabBar.barTintColor = UIColor(named: "NavigationBar")
         self.tabBarController?.tabBar.isTranslucent = false
         
         self.setNeedsStatusBarAppearanceUpdate()
         editLogButton.layer.cornerRadius = editLogButton.frame.height / 2
-        editLogButton.layer.borderColor = UIColor.black.cgColor
+        editLogButton.layer.borderColor = UIColor(named: "Black")?.cgColor
         editLogButton.layer.borderWidth = 1.5
         editLogButton.isHidden = true
         monthAverageHappinessView.layer.cornerRadius = 15
-        
-        
     }
     
     // Will update the month average label and view
     func updateMonthAverageViews(month: String, year: String) {
-//        let averageHappiness = StatisticFunctions.getAverageHappinessForMonth(month: month, year: year)
-//        if averageHappiness == -1 {
-//            monthAverageHappinessLabel.text = "No Logs"
-//            monthAverageHappinessView.layer.borderColor = UIColor.black.cgColor
-//            monthAverageHappinessView.layer.borderWidth = 1.5
-//        } else {
-//            monthAverageHappinessLabel.text = "\(averageHappiness)"
-//            monthAverageHappinessView.layer.borderWidth = 0
-//        }
-//        monthAverageHappinessView.backgroundColor = ColorHelper.getColorFoInt(number: Int(averageHappiness.rounded()))
+        let averageHappiness = StatisticFunctions.getAverageHappinessForMonth(month: month, year: year)
+        if averageHappiness == -1 {
+            monthAverageHappinessLabel.text = ""
+            monthAverageHappinessView.layer.borderColor = UIColor.black.cgColor
+        } else {
+            monthAverageHappinessLabel.text = "\(averageHappiness)"
+        }
+        let backgroundColor = ColorHelper.getColorFoInt(number: Int(averageHappiness.rounded()))
+        monthAverageHappinessView.backgroundColor = backgroundColor
+        if backgroundColor.useDarkText() {
+            monthAverageHappinessLabel.textColor = UIColor.black
+        } else {
+            monthAverageHappinessLabel.textColor = UIColor.white
+        }
     }
     
     func calculateMonthAverage() {
@@ -162,6 +165,16 @@ class MainCalendarViewController: UIViewController{
     // Updates colors for when the rating is changed
     func updateViewsForRating() {
         let color = ColorHelper.getColorFoInt(number: rating)
+        if color.useDarkText() {
+            editLogButton.setTitleColor(UIColor.black, for: .normal)
+        } else {
+            editLogButton.setTitleColor(UIColor.white, for: .normal)
+        }
+        if currentLog != nil {
+            editLogButton.layer.borderWidth = 0
+        } else {
+            editLogButton.layer.borderWidth = 1.5
+        }
         editLogButton.backgroundColor = color
     }
     
