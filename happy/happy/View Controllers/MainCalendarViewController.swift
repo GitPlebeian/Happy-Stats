@@ -52,6 +52,12 @@ class MainCalendarViewController: UIViewController{
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.showsVerticalScrollIndicator = false
         calendarCollectionView.scrollsToTop = false
+//
+//        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (_) in
+//            if LogController.shared.logs[0].activities.count <= 0 {
+//                print("BADBADBAD")
+//            }
+//        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

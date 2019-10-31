@@ -27,7 +27,7 @@ class ActivitiesViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        activityTableView.reloadData()
+        activitiesTableView.reloadData()
     }
     
     // MARK: - Actions

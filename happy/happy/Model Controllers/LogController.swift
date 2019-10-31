@@ -15,9 +15,21 @@ class LogController {
     
     var logs: [Log] {
         let fetchRequest: NSFetchRequest<Log> = Log.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         let results = (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
         return results
     }
+    
+//    let fetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
+//    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
+//    let resultsController: NSFetchedResultsController<Entry> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+//
+//    fetchedResultController = resultsController
+//    do {
+//        try fetchedResultController.performFetch()
+//    } catch {
+//        print("There was an error performing the fetch \(#function) \(error.localizedDescription)")
+//    }
     
     // MARK: - Functions
     
@@ -315,20 +327,26 @@ class LogController {
 //        log.activityReferences = oldLogCopy.activityReferences
 //    }
     func createLog(rating: Int, date: Date, activities: [Activity], completion: (Log) -> Void) {
+        print(date)
         let newLog = Log(rating: rating, date: date, activities: activities)
         completion(newLog)
+        ActivityController.shared.addLogData(log: newLog, activities: activities)
         saveToPersistentStore()
     }
     
     func editLog(log: Log, rating: Int, activities: [Activity]) {
+        ActivityController.shared.removeLogData(log: log)
         log.rating = Int16(rating)
+        log.removeFromActivities(log.activities)
         let activitiesOrderedSet = NSOrderedSet(array: activities)
-        log.activities = activitiesOrderedSet
+        log.addToActivities(activitiesOrderedSet)
+        ActivityController.shared.addLogData(log: log, activities: activities)
         saveToPersistentStore()
     }
     
     func deleteLog(log: Log) {
         CoreDataStack.context.delete(log)
+        ActivityController.shared.removeLogData(log: log)
         saveToPersistentStore()
     }
     
@@ -337,6 +355,4 @@ class LogController {
             try? CoreDataStack.context.save()
         }
     }
-    
-    
 }

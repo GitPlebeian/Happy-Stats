@@ -2,7 +2,7 @@
 //  Activity+CoreDataClass.swift
 //  happy
 //
-//  Created by Jackson Tubbs on 10/22/19.
+//  Created by Jackson Tubbs on 10/29/19.
 //  Copyright © 2019 Jax Tubbs. All rights reserved.
 //
 //

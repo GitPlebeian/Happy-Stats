@@ -18,7 +18,6 @@ class LogDetailViewController: UIViewController {
     
     @IBOutlet weak var saveLogButton: UIButton!
     @IBOutlet weak var activitiesTableView: UITableView!
-    //    @IBOutlet weak var activitiesSearchBar: UISearchBar!
     @IBOutlet weak var logRatingSlider: UISlider!
     @IBOutlet weak var logRatingLabel: UILabel!
     @IBOutlet weak var logRatingView: UIView!
@@ -33,7 +32,8 @@ class LogDetailViewController: UIViewController {
             rating = Int(log!.rating)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE M-d-yyyy"
-//            updateNavBarTitle(title: dateFormatter.string(from: log!.date))
+            print("Log Activities Count \(log!.activities.count)")
+            print("Log Date \(log!.date)")
         }
     }
     var selectedDate: Date? {
@@ -41,6 +41,7 @@ class LogDetailViewController: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE M-d-yyyy"
             updateNavBarTitle(title: dateFormatter.string(from: selectedDate!))
+            print("Selected Date \(selectedDate!)")
         }
     }
     // Display activites is used to have seperate sections for selected and deselected activites

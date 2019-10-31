@@ -30,7 +30,7 @@ class ActivityController {
         }
         return activitiesNotInLog
     }
-//
+    
 //    func sortActivitesByNumTimes() {
 //        var unsortedNumbers = activities.count
 //        while unsortedNumbers > 0 {
@@ -47,30 +47,43 @@ class ActivityController {
 //
 //    // MARK: - Updating Average Rating
 //
-//    func removeLogData(rating: Int, activities: [Activity]) {
-//        for activity in activities {
-//            activity.totalRating -= rating
-//            activity.timesSelected -= 1
-//            calculateAverageRating(activity: activity)
-//        }
-//    }
-//
-//    func addLogData(rating: Int, activities: [Activity]) {
-//        for activity in activities {
-//            activity.totalRating += rating
-//            activity.timesSelected += 1
-//            calculateAverageRating(activity: activity)
-//        }
-//    }
-//
-//    func calculateAverageRating(activity: Activity) {
-//        if activity.timesSelected == 0 {
-//            activity.averageRating = -1
-//        } else {
-//            let averageRating = floor((Double(activity.totalRating) / Double(activity.timesSelected) * 100)) / 100
-//            activity.averageRating = averageRating
-//        }
-//    }
+    func removeLogData(log: Log, activities: [Activity]? = nil) {
+        if let activities = activities {
+            for activity in activities {
+                activity.totalRating -= Int32(log.rating)
+                activity.timesSelected -= 1
+//                activity.removeFromLogs(log)
+                calculateAverageRating(activity: activity)
+            }
+        } else {
+            let activitiesToChange = log.activities.array as! [Activity]
+            for activity in activitiesToChange {
+                activity.totalRating -= Int32(log.rating)
+                activity.timesSelected -= 1
+//                activity.removeFromLogs(log)
+                calculateAverageRating(activity: activity)
+            }
+        }
+    }
+
+    func addLogData(log: Log, activities: [Activity]) {
+        for activity in activities {
+            activity.totalRating += Int32(log.rating)
+            activity.timesSelected += 1
+            activity.addToLogs(log)
+            calculateAverageRating(activity: activity)
+        }
+    }
+
+    func calculateAverageRating(activity: Activity) {
+        if activity.timesSelected == 0 {
+            activity.averageRating = -1
+        } else {
+            let averageRating = floor((Double(activity.totalRating) / Double(activity.timesSelected) * 100)) / 100
+            activity.averageRating = averageRating
+        }
+        saveToPersistentStore()
+    }
 //
 //    // MARK: - CRUD
 //
