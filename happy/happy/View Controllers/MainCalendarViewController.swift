@@ -192,6 +192,8 @@ class MainCalendarViewController: UIViewController{
             guard let destinationVC = segue.destination as? LogDetailViewController else {return}
             destinationVC.delegate = self
             if let log = currentLog {
+                print("\nSegue Log: \(log)")
+                LogController.shared.printData()
                 destinationVC.log = log
             } else {
                 guard let selectedDate = selectedDate else {return}

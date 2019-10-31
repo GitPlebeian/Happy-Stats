@@ -70,7 +70,7 @@ class ActivityController {
         for activity in activities {
             activity.totalRating += Int32(log.rating)
             activity.timesSelected += 1
-            activity.addToLogs(log)
+//            activity.addToLogs(log)
             calculateAverageRating(activity: activity)
         }
     }

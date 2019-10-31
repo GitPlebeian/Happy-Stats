@@ -335,12 +335,12 @@ class LogController {
     }
     
     func editLog(log: Log, rating: Int, activities: [Activity]) {
-        ActivityController.shared.removeLogData(log: log)
+//        ActivityController.shared.removeLogData(log: log)
         log.rating = Int16(rating)
         log.removeFromActivities(log.activities)
         let activitiesOrderedSet = NSOrderedSet(array: activities)
         log.addToActivities(activitiesOrderedSet)
-        ActivityController.shared.addLogData(log: log, activities: activities)
+//        ActivityController.shared.addLogData(log: log, activities: activities)
         saveToPersistentStore()
     }
     
@@ -354,5 +354,18 @@ class LogController {
         if CoreDataStack.context.hasChanges{
             try? CoreDataStack.context.save()
         }
+        print("\nAftersave")
+        printData()
+    }
+    
+    func printData() {
+        print("")
+        let log = self.logs[0]
+        print("\(log.date)")
+        print(log)
+        for activity in log.activities {
+            print("\(activity)")
+        }
+        print("Activities Count: \(log.activities.count)")
     }
 }

@@ -2,7 +2,7 @@
 //  Log+CoreDataClass.swift
 //  happy
 //
-//  Created by Jackson Tubbs on 10/24/19.
+//  Created by Jackson Tubbs on 10/31/19.
 //  Copyright © 2019 Jax Tubbs. All rights reserved.
 //
 //

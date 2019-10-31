@@ -32,8 +32,8 @@ class LogDetailViewController: UIViewController {
             rating = Int(log!.rating)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE M-d-yyyy"
-            print("Log Activities Count \(log!.activities.count)")
-            print("Log Date \(log!.date)")
+//            print("Log Activities Count \(log!.activities.count)")
+//            print("Log Date \(log!.date)")
         }
     }
     var selectedDate: Date? {
@@ -41,7 +41,7 @@ class LogDetailViewController: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE M-d-yyyy"
             updateNavBarTitle(title: dateFormatter.string(from: selectedDate!))
-            print("Selected Date \(selectedDate!)")
+//            print("Selected Date \(selectedDate!)")
         }
     }
     // Display activites is used to have seperate sections for selected and deselected activites
@@ -110,14 +110,16 @@ class LogDetailViewController: UIViewController {
         let feedback = UINotificationFeedbackGenerator()
         feedback.prepare()
         if let log = log {
+            LogController.shared.printData()
             LogController.shared.editLog(log: log, rating: rating, activities: displayActivities[0])
-            self.delegate?.setCurrentLog(log: log)
+            LogController.shared.printData()
+//            self.delegate?.setCurrentLog(log: log)
             feedback.notificationOccurred(.success)
             self.navigationController?.popViewController(animated: true)
         } else {
             guard let selectedDate = selectedDate else {return}
             LogController.shared.createLog(rating: rating, date: selectedDate, activities: displayActivities[0]) { (log) in
-                self.delegate?.setCurrentLog(log: log)
+//                self.delegate?.setCurrentLog(log: log)
                 feedback.notificationOccurred(.success)
                 navigationController?.popViewController(animated: true)
             }

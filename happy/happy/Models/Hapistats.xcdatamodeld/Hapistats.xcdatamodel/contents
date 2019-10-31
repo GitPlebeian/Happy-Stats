@@ -5,7 +5,6 @@
         <attribute name="timesSelected" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
         <attribute name="totalRating" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="logs" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Log"/>
     </entity>
     <entity name="Log" representedClassName="Log" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
@@ -13,7 +12,7 @@
         <relationship name="activities" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Activity"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="111.734375" positionY="-5.09765625" width="128" height="118"/>
+        <element name="Activity" positionX="111.734375" positionY="-5.09765625" width="128" height="103"/>
         <element name="Log" positionX="-91.31640625" positionY="-75.8359375" width="128" height="88"/>
     </elements>
 </model>
