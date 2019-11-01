@@ -17,6 +17,7 @@ class ActivityController {
     
     var activities: [Activity] {
         let fetchRequest: NSFetchRequest<Activity> = Activity.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timesSelected", ascending: false)]
         let results = (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
         return results
     }
@@ -52,7 +53,7 @@ class ActivityController {
             for activity in activities {
                 activity.totalRating -= Int32(log.rating)
                 activity.timesSelected -= 1
-//                activity.removeFromLogs(log)
+                activity.removeFromLogs(log)
                 calculateAverageRating(activity: activity)
             }
         } else {
@@ -60,7 +61,7 @@ class ActivityController {
             for activity in activitiesToChange {
                 activity.totalRating -= Int32(log.rating)
                 activity.timesSelected -= 1
-//                activity.removeFromLogs(log)
+                activity.removeFromLogs(log)
                 calculateAverageRating(activity: activity)
             }
         }
@@ -70,7 +71,7 @@ class ActivityController {
         for activity in activities {
             activity.totalRating += Int32(log.rating)
             activity.timesSelected += 1
-//            activity.addToLogs(log)
+            activity.addToLogs(log)
             calculateAverageRating(activity: activity)
         }
     }
@@ -82,7 +83,6 @@ class ActivityController {
             let averageRating = floor((Double(activity.totalRating) / Double(activity.timesSelected) * 100)) / 100
             activity.averageRating = averageRating
         }
-        saveToPersistentStore()
     }
 //
 //    // MARK: - CRUD

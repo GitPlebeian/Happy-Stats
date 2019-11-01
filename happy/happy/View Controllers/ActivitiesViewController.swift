@@ -44,10 +44,11 @@ class ActivitiesViewController: UIViewController{
     
     // Updates view attributes and colors
     func updateViews() {
-        activitiesTableView.backgroundColor = .white
-        activitiesNavigationBar.barTintColor = .white
+        activitiesTableView.backgroundColor = UIColor(named: "White")
+        activitiesNavigationBar.barTintColor = UIColor(named: "White")
+        activitiesNavigationBar.isTranslucent = false
         if var textAttributes = activitiesNavigationBar.titleTextAttributes {
-            textAttributes[NSAttributedString.Key.foregroundColor] = UIColor.black
+            textAttributes[NSAttributedString.Key.foregroundColor] = UIColor(named: "Black")
             activitiesNavigationBar.titleTextAttributes = textAttributes
             
         }

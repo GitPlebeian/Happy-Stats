@@ -27,8 +27,8 @@
 		866354E823397ECB005805F7 /* StatisticsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866354E723397ECB005805F7 /* StatisticsFunctions.swift */; };
 		866CAE722319A35C00C85FF8 /* CalenderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866CAE712319A35C00C85FF8 /* CalenderHelper.swift */; };
 		8675BBCF230B82AA00EE1382 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675BBCE230B82AA00EE1382 /* ColorHelper.swift */; };
-		8687BDD2236B9AC300DE60F1 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8687BDD0236B9AC300DE60F1 /* Log+CoreDataClass.swift */; };
-		8687BDD3236B9AC300DE60F1 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8687BDD1236B9AC300DE60F1 /* Log+CoreDataProperties.swift */; };
+		8687BDD6236CB72400DE60F1 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8687BDD4236CB72400DE60F1 /* Log+CoreDataClass.swift */; };
+		8687BDD7236CB72400DE60F1 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8687BDD5236CB72400DE60F1 /* Log+CoreDataProperties.swift */; };
 		8690403723200F1C004C2633 /* SelectActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690403623200F1C004C2633 /* SelectActivitiesTableViewCell.swift */; };
 		8690403923200F63004C2633 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8690403823200F63004C2633 /* SF-Pro-Display-Medium.otf */; };
 		86B661532347F2AC00F0F4BF /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B661522347F2AC00F0F4BF /* Calendar.storyboard */; };
@@ -68,8 +68,8 @@
 		866354E723397ECB005805F7 /* StatisticsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsFunctions.swift; sourceTree = "<group>"; };
 		866CAE712319A35C00C85FF8 /* CalenderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderHelper.swift; sourceTree = "<group>"; };
 		8675BBCE230B82AA00EE1382 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
-		8687BDD0236B9AC300DE60F1 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8687BDD1236B9AC300DE60F1 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8687BDD4236CB72400DE60F1 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8687BDD5236CB72400DE60F1 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8690403623200F1C004C2633 /* SelectActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectActivitiesTableViewCell.swift; sourceTree = "<group>"; };
 		8690403823200F63004C2633 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		86B661522347F2AC00F0F4BF /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		86BBB0622368634E006DEEC8 /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		86CCFD342306045800CDCC21 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		86D11AD122FF9C330059A0B3 /* MainCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarViewController.swift; sourceTree = "<group>"; };
-		86E0F829231F41A80025DE0E /* LogDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
+		86E0F829231F41A80025DE0E /* LogDetailViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		86E2D4072305936A00E9A910 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86F3FD3B235F79E800FB2D41 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -207,8 +207,8 @@
 		8650FDF6236246B500E53A05 /* Log Model */ = {
 			isa = PBXGroup;
 			children = (
-				8687BDD0236B9AC300DE60F1 /* Log+CoreDataClass.swift */,
-				8687BDD1236B9AC300DE60F1 /* Log+CoreDataProperties.swift */,
+				8687BDD4236CB72400DE60F1 /* Log+CoreDataClass.swift */,
+				8687BDD5236CB72400DE60F1 /* Log+CoreDataProperties.swift */,
 				8624C444232FE62C00B60BE7 /* Log+Convenience.swift */,
 			);
 			path = "Log Model";
@@ -347,7 +347,7 @@
 				861E11302335825000F627BC /* LoadingDataViewController.swift in Sources */,
 				86D11AD222FF9C330059A0B3 /* MainCalendarViewController.swift in Sources */,
 				861E112E23357A0300F627BC /* LoadDataController.swift in Sources */,
-				8687BDD2236B9AC300DE60F1 /* Log+CoreDataClass.swift in Sources */,
+				8687BDD6236CB72400DE60F1 /* Log+CoreDataClass.swift in Sources */,
 				86BBB0632368634E006DEEC8 /* Activity+CoreDataClass.swift in Sources */,
 				8624C445232FE62C00B60BE7 /* Log+Convenience.swift in Sources */,
 				864D19AE22F67378009368ED /* MainTabBarController.swift in Sources */,
@@ -359,7 +359,7 @@
 				8675BBCF230B82AA00EE1382 /* ColorHelper.swift in Sources */,
 				86E0F82A231F41A80025DE0E /* LogDetailViewController.swift in Sources */,
 				861E11242335515300F627BC /* UIColorExtensions.swift in Sources */,
-				8687BDD3236B9AC300DE60F1 /* Log+CoreDataProperties.swift in Sources */,
+				8687BDD7236CB72400DE60F1 /* Log+CoreDataProperties.swift in Sources */,
 				8628E5EC235E83B300FD0E4B /* Hapistats.xcdatamodeld in Sources */,
 				866354E823397ECB005805F7 /* StatisticsFunctions.swift in Sources */,
 				864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */,

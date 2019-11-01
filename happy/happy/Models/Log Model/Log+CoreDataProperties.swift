@@ -2,7 +2,7 @@
 //  Log+CoreDataProperties.swift
 //  happy
 //
-//  Created by Jackson Tubbs on 10/31/19.
+//  Created by Jackson Tubbs on 11/1/19.
 //  Copyright © 2019 Jax Tubbs. All rights reserved.
 //
 //
@@ -20,6 +20,7 @@ extension Log {
     @NSManaged public var date: Date
     @NSManaged public var rating: Int16
     @NSManaged public var activities: NSOrderedSet
+
 }
 
 // MARK: Generated accessors for activities

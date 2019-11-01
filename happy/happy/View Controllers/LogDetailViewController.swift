@@ -32,8 +32,8 @@ class LogDetailViewController: UIViewController {
             rating = Int(log!.rating)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE M-d-yyyy"
-//            print("Log Activities Count \(log!.activities.count)")
-//            print("Log Date \(log!.date)")
+            //            print("Log Activities Count \(log!.activities.count)")
+            //            print("Log Date \(log!.date)")
         }
     }
     var selectedDate: Date? {
@@ -41,7 +41,7 @@ class LogDetailViewController: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE M-d-yyyy"
             updateNavBarTitle(title: dateFormatter.string(from: selectedDate!))
-//            print("Selected Date \(selectedDate!)")
+            //            print("Selected Date \(selectedDate!)")
         }
     }
     // Display activites is used to have seperate sections for selected and deselected activites
@@ -76,6 +76,17 @@ class LogDetailViewController: UIViewController {
         updateCellsWithActivities()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("Will Disappear")
+        LogController.shared.printData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("Did Disappear")
+        LogController.shared.printData()
+    }
     // MARK: - Actions
     
     @IBAction func activitiesSearchTextFieldTextDidEndEditing(_ sender: UITextField) {
@@ -87,9 +98,9 @@ class LogDetailViewController: UIViewController {
     @IBAction func activitiesSearchTextFieldTextDidChange(_ sender: UITextField) {
         guard let searchText = sender.text else {return}
         isSearching = true
-
+        
         searchedActivities.removeAll(keepingCapacity: false)
-
+        
         for activity in ActivityController.shared.activities {
             if activity.title.lowercased().contains(searchText.lowercased()){
                 searchedActivities.append(activity)
@@ -109,17 +120,19 @@ class LogDetailViewController: UIViewController {
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
         let feedback = UINotificationFeedbackGenerator()
         feedback.prepare()
+        print(log)
         if let log = log {
+            print(log)
             LogController.shared.printData()
             LogController.shared.editLog(log: log, rating: rating, activities: displayActivities[0])
-            LogController.shared.printData()
-//            self.delegate?.setCurrentLog(log: log)
+//            LogController.shared.printData()
+            //            self.delegate?.setCurrentLog(log: log)
             feedback.notificationOccurred(.success)
             self.navigationController?.popViewController(animated: true)
         } else {
             guard let selectedDate = selectedDate else {return}
             LogController.shared.createLog(rating: rating, date: selectedDate, activities: displayActivities[0]) { (log) in
-//                self.delegate?.setCurrentLog(log: log)
+                self.delegate?.setCurrentLog(log: log)
                 feedback.notificationOccurred(.success)
                 navigationController?.popViewController(animated: true)
             }
@@ -143,8 +156,8 @@ class LogDetailViewController: UIViewController {
     
     func updateViews() {
         navigationController?.navigationBar.topItem?.backBarButtonItem? = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(backBarButtonItemClicked))
-//        navigationItem.backBarButtonItem?.tintColor = .cyan
-//        navigationController?.navigationItem.backBarButtonItem?.image = UIImage(named: "backArrow")
+        //        navigationItem.backBarButtonItem?.tintColor = .cyan
+        //        navigationController?.navigationItem.backBarButtonItem?.image = UIImage(named: "backArrow")
         activitiesTableView.backgroundColor = UIColor(named: "White")
         logRatingLabel.textColor = .black
         logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
@@ -427,20 +440,20 @@ extension LogDetailViewController: UISearchBarDelegate{
     
     // Searchbar text did change
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        isSearching = true
-//        
-//        searchedActivities.removeAll(keepingCapacity: false)
-//        
-//        for activity in ActivityController.shared.activities {
-//            if activity.title.lowercased().contains(searchText.lowercased()){
-//                searchedActivities.append(activity)
-//            }
-//        }
-//        if searchText == "" {
-//            isSearching = false
-//        }
-//        
-//        activitiesTableView.reloadData()
+        //        isSearching = true
+        //
+        //        searchedActivities.removeAll(keepingCapacity: false)
+        //
+        //        for activity in ActivityController.shared.activities {
+        //            if activity.title.lowercased().contains(searchText.lowercased()){
+        //                searchedActivities.append(activity)
+        //            }
+        //        }
+        //        if searchText == "" {
+        //            isSearching = false
+        //        }
+        //
+        //        activitiesTableView.reloadData()
     }
     
     // Search Return tapped

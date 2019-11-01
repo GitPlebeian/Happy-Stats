@@ -30,13 +30,13 @@ class ActivityTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.textColor = .black
-        daysAppliedLabel.textColor = .black
-        ratingLabel.textColor = .black
+        titleLabel.textColor = UIColor(named: "Black")
+        daysAppliedLabel.textColor = UIColor(named: "Black")
+        ratingLabel.textColor = UIColor(named: "Black")
         activityView.layer.cornerRadius = 55 / 2
         ratingView.layer.cornerRadius = 45 / 2
-        ratingView.backgroundColor = .white
-        self.backgroundColor = .white
+        ratingView.backgroundColor = UIColor(named: "White")
+        self.backgroundColor = UIColor(named: "White")
     }
     
     // Set Highlighted
@@ -55,10 +55,9 @@ class ActivityTableViewCell: UITableViewCell {
     func updateViewForActivity() {
         guard let activity = activity else {return}
         if activity.timesSelected == 0 {
-            daysAppliedLabel.text = "No Days Selected"
             ratingLabel.isHidden = true
             activityView.layer.borderWidth = 1.5
-            activityView.layer.borderColor = UIColor.black.cgColor
+            activityView.layer.borderColor = UIColor(named: "Black")?.cgColor
         } else {
             ratingLabel.isHidden = false
             daysAppliedLabel.text = "\(activity.timesSelected)"
