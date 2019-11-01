@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,6 +27,7 @@
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvn-Fu-e2m">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                                        <color key="backgroundColor" name="White"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="600" id="u1U-qP-rpM"/>
                                         </constraints>
@@ -34,6 +36,7 @@
                                         </connections>
                                     </containerView>
                                 </subviews>
+                                <color key="backgroundColor" name="White"/>
                                 <constraints>
                                     <constraint firstItem="gvn-Fu-e2m" firstAttribute="leading" secondItem="zLl-XE-ufy" secondAttribute="leading" id="GmT-0m-zsi"/>
                                     <constraint firstAttribute="bottom" secondItem="gvn-Fu-e2m" secondAttribute="bottom" id="J8g-zw-PlE"/>
@@ -99,7 +102,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="White"/>
                                 <constraints>
                                     <constraint firstItem="hJ8-vT-PG4" firstAttribute="centerY" secondItem="SzC-3M-JTj" secondAttribute="centerY" id="2D9-G8-SMl"/>
                                     <constraint firstItem="PlS-m7-fa0" firstAttribute="leading" secondItem="SzC-3M-JTj" secondAttribute="leading" constant="12" id="LQl-n9-lkN"/>
@@ -252,7 +255,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="White"/>
                         <constraints>
                             <constraint firstItem="7sc-xY-8JF" firstAttribute="width" secondItem="z2q-Wd-i3D" secondAttribute="width" multiplier="0.9" id="049-DI-3pl"/>
                             <constraint firstItem="7sc-xY-8JF" firstAttribute="top" secondItem="r8j-ab-aTe" secondAttribute="bottom" constant="16" id="1A5-1m-d5Z"/>
@@ -317,6 +320,9 @@
     </scenes>
     <resources>
         <image name="reportIcon" width="30" height="30"/>
+        <namedColor name="White">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>

@@ -59,29 +59,33 @@ class StatisticsContentViewController: UIViewController {
         if let url = URL(string: "https://sites.google.com/view/hapistats-privacy-policy/home") {
             UIApplication.shared.open(url)
         }
-        
     }
     
     // MARK: - Custom Functions
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateViewsForCalculations()
+    }
+    
     func updateViews() {
-        privacyPolicyButton.setTitleColor(.black, for: .normal)
+        privacyPolicyButton.setTitleColor((UIColor(named: "Black")), for: .normal)
         
-        past30DaysLabel.textColor = .black
-        past30DaysResultsLabel.textColor = .black
-        past30DaysResultsView.backgroundColor = .white
-        
-        past90DaysResultsView.backgroundColor = .white
-        past90DaysLabel.textColor = .black
-        past90DaysResultsLabel.textColor = .black
-        
-        past180DaysLabel.textColor = .black
-        past180DaysResultsLabel.textColor = .black
-        past180DaysResultsView.backgroundColor = .white
-        
-        pastYearLabel.textColor = .black
-        pastYearResultsLabel.textColor = .black
-        pastYearResultsView.backgroundColor = .white
+//        past30DaysLabel.textColor =
+//        past30DaysResultsLabel.textColor = .black
+//        past30DaysResultsView.backgroundColor = .white
+//        
+//        past90DaysResultsView.backgroundColor = .white
+//        past90DaysLabel.textColor = .black
+//        past90DaysResultsLabel.textColor = .black
+//        
+//        past180DaysLabel.textColor = .black
+//        past180DaysResultsLabel.textColor = .black
+//        past180DaysResultsView.backgroundColor = .white
+//        
+//        pastYearLabel.textColor = .black
+//        pastYearResultsLabel.textColor = .black
+//        pastYearResultsView.backgroundColor = .white
         
         privacyPolicyButton.tintColor = .systemBlue
         past30DaysView.layer.cornerRadius = 15
@@ -99,60 +103,84 @@ class StatisticsContentViewController: UIViewController {
     
     // Run calculations to average out time periods
     func runCalculations() {
-//        average30 = StatisticFunctions.getAverageHappinessForDays(numDays: 30)
-//        average90 = StatisticFunctions.getAverageHappinessForDays(numDays: 90)
-//        average180 = StatisticFunctions.getAverageHappinessForDays(numDays: 180)
-//        averageYear = StatisticFunctions.getAverageHappinessForDays(numDays: 365)
+        average30 = StatisticFunctions.getAverageHappinessForDays(numDays: 30)
+        average90 = StatisticFunctions.getAverageHappinessForDays(numDays: 90)
+        average180 = StatisticFunctions.getAverageHappinessForDays(numDays: 180)
+        averageYear = StatisticFunctions.getAverageHappinessForDays(numDays: 365)
     }
     
     // Updates view for calculations
     func updateViewsForCalculations() {
         loadViewIfNeeded()
         past30DaysLabel.text = "30 Day Average"
-        past30DaysView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(average30).rounded()))
+        var color = ColorHelper.getColorFoInt(number: Int(Double(average30).rounded()))
+        past30DaysView.backgroundColor = color
         if average30 == -1 {
-            past30DaysView.layer.borderColor = UIColor.black.cgColor
+            past30DaysView.layer.borderColor = UIColor(named: "Black")!.cgColor
             past30DaysView.layer.borderWidth = 1.5
             past30DaysResultsLabel.text = ""
         } else {
             past30DaysView.layer.borderWidth = 0
             past30DaysResultsLabel.text = "\(average30)"
+            if color.useDarkText() {
+                past30DaysLabel.textColor = .black
+            } else {
+                past30DaysLabel.textColor = .white
+            }
         }
         
         past90DaysLabel.text = "90 Day Average"
-        past90DaysView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(average90).rounded()))
+        color = ColorHelper.getColorFoInt(number: Int(Double(average90).rounded()))
+        past90DaysView.backgroundColor = color
         past90DaysResultsLabel.text = "\(average90)"
         if average90 == -1 {
-            past90DaysView.layer.borderColor = UIColor.black.cgColor
+            past90DaysView.layer.borderColor = UIColor(named: "Black")!.cgColor
             past90DaysView.layer.borderWidth = 1.5
             past90DaysResultsLabel.text = ""
         } else {
             past90DaysView.layer.borderWidth = 0
             past90DaysResultsLabel.text = "\(average90)"
+            if color.useDarkText() {
+                past90DaysLabel.textColor = .black
+            } else {
+                past90DaysLabel.textColor = .white
+            }
         }
         
         past180DaysLabel.text = "180 Day Average"
-        past180DaysView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(average180).rounded()))
+        color = ColorHelper.getColorFoInt(number: Int(Double(average180).rounded()))
+        past180DaysView.backgroundColor = color
         past180DaysResultsLabel.text = "\(average180)"
         if average180 == -1 {
-            past180DaysView.layer.borderColor = UIColor.black.cgColor
+            past180DaysView.layer.borderColor = UIColor(named: "Black")!.cgColor
             past180DaysView.layer.borderWidth = 1.5
             past180DaysResultsLabel.text = ""
         } else {
             past180DaysView.layer.borderWidth = 0
             past180DaysResultsLabel.text = "\(average180)"
+            if color.useDarkText() {
+                past180DaysLabel.textColor = .black
+            } else {
+                past180DaysLabel.textColor = .white
+            }
         }
         
         pastYearLabel.text = "Year Average"
-        pastYearView.backgroundColor = ColorHelper.getColorFoInt(number: Int(Double(averageYear).rounded()))
+        color = ColorHelper.getColorFoInt(number: Int(Double(averageYear).rounded()))
+        pastYearView.backgroundColor = color
         pastYearResultsLabel.text = "\(averageYear)"
         if averageYear == -1 {
-            pastYearView.layer.borderColor = UIColor.black.cgColor
+            pastYearView.layer.borderColor = UIColor(named: "Black")!.cgColor
             pastYearView.layer.borderWidth = 1.5
             pastYearResultsLabel.text = ""
         } else {
             pastYearView.layer.borderWidth = 0
             pastYearResultsLabel.text = "\(averageYear)"
+            if color.useDarkText() {
+                pastYearLabel.textColor = .black
+            } else {
+                pastYearLabel.textColor = .white
+            }
         }
     }
 }

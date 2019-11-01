@@ -42,6 +42,11 @@ class ActivitiesViewController: UIViewController{
     
     // MARK: - Custom Functions
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        addActivityButton.image = UIImage(named: "addIcon")
+    }
+    
     // Updates view attributes and colors
     func updateViews() {
         activitiesTableView.backgroundColor = UIColor(named: "White")

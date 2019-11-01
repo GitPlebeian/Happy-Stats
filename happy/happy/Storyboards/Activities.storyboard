@@ -36,52 +36,61 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uX-ZN-roG">
                                                     <rect key="frame" x="16" y="4" width="382" height="96"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Y7-43-F6W">
-                                                            <rect key="frame" x="332" y="25.5" width="45" height="45"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Weh-v2-Kfq">
+                                                            <rect key="frame" x="293" y="4" width="85" height="88"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnl-fS-KcZ">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Number of days applied)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRM-pD-Qwa">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="43.5" height="88"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="15"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" name="Black"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0q-w6-iMP">
+                                                                    <rect key="frame" x="42" y="4" width="1.5" height="80"/>
+                                                                    <color key="backgroundColor" name="Black"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="1.5" id="LZk-XC-fEV"/>
+                                                                    </constraints>
+                                                                </view>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnl-fS-KcZ">
+                                                                    <rect key="frame" x="42" y="0.0" width="43" height="88"/>
+                                                                    <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="15"/>
+                                                                    <color key="textColor" name="Black"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" name="White"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="45" id="54H-LA-gvY"/>
-                                                                <constraint firstAttribute="width" secondItem="6Y7-43-F6W" secondAttribute="height" multiplier="1:1" id="61r-x8-JWq"/>
-                                                                <constraint firstItem="mnl-fS-KcZ" firstAttribute="width" secondItem="6Y7-43-F6W" secondAttribute="width" id="a3W-2m-vec"/>
-                                                                <constraint firstItem="mnl-fS-KcZ" firstAttribute="centerY" secondItem="6Y7-43-F6W" secondAttribute="centerY" id="nc7-cC-f9g"/>
-                                                                <constraint firstItem="mnl-fS-KcZ" firstAttribute="centerX" secondItem="6Y7-43-F6W" secondAttribute="centerX" id="neJ-UZ-rOz"/>
-                                                                <constraint firstItem="mnl-fS-KcZ" firstAttribute="height" secondItem="6Y7-43-F6W" secondAttribute="height" id="r9Z-Fa-TL0"/>
+                                                                <constraint firstAttribute="bottom" secondItem="mnl-fS-KcZ" secondAttribute="bottom" id="4Tm-j0-n8E"/>
+                                                                <constraint firstAttribute="bottom" secondItem="L0q-w6-iMP" secondAttribute="bottom" constant="4" id="6lO-zP-o6I"/>
+                                                                <constraint firstItem="mnl-fS-KcZ" firstAttribute="top" secondItem="Weh-v2-Kfq" secondAttribute="top" id="7oR-5N-vIt"/>
+                                                                <constraint firstItem="rRM-pD-Qwa" firstAttribute="trailing" secondItem="L0q-w6-iMP" secondAttribute="trailing" id="N27-z3-ZjC"/>
+                                                                <constraint firstItem="mnl-fS-KcZ" firstAttribute="leading" secondItem="L0q-w6-iMP" secondAttribute="leading" id="V7H-bT-lk6"/>
+                                                                <constraint firstAttribute="trailing" secondItem="mnl-fS-KcZ" secondAttribute="trailing" id="VRu-Wb-PUL"/>
+                                                                <constraint firstAttribute="bottom" secondItem="rRM-pD-Qwa" secondAttribute="bottom" id="bhi-9b-dnz"/>
+                                                                <constraint firstAttribute="width" constant="85" id="gF6-0J-goA"/>
+                                                                <constraint firstItem="rRM-pD-Qwa" firstAttribute="leading" secondItem="Weh-v2-Kfq" secondAttribute="leading" id="ihG-GJ-5yW"/>
+                                                                <constraint firstItem="L0q-w6-iMP" firstAttribute="centerX" secondItem="Weh-v2-Kfq" secondAttribute="centerX" id="oh9-Ob-sbj"/>
+                                                                <constraint firstItem="L0q-w6-iMP" firstAttribute="top" secondItem="Weh-v2-Kfq" secondAttribute="top" constant="4" id="utu-qb-RxX"/>
+                                                                <constraint firstItem="rRM-pD-Qwa" firstAttribute="top" secondItem="Weh-v2-Kfq" secondAttribute="top" id="uxW-hy-LRv"/>
                                                             </constraints>
                                                         </view>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="C2x-vI-r9f">
-                                                            <rect key="frame" x="27.5" y="4" width="296.5" height="88"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Title)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpX-2q-4Nt">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="296.5" height="44"/>
-                                                                    <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="15"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Number of days applied)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRM-pD-Qwa">
-                                                                    <rect key="frame" x="0.0" y="44" width="296.5" height="44"/>
-                                                                    <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="15"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Title)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpX-2q-4Nt">
+                                                            <rect key="frame" x="15" y="4" width="274" height="88"/>
+                                                            <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="C2x-vI-r9f" firstAttribute="top" secondItem="7uX-ZN-roG" secondAttribute="top" constant="4" id="2AM-rH-MOU"/>
-                                                        <constraint firstAttribute="bottom" secondItem="C2x-vI-r9f" secondAttribute="bottom" constant="4" id="3FJ-NB-11e"/>
-                                                        <constraint firstItem="6Y7-43-F6W" firstAttribute="centerY" secondItem="7uX-ZN-roG" secondAttribute="centerY" id="57p-Vi-bYc"/>
-                                                        <constraint firstAttribute="height" constant="55" id="N1j-6F-P0e"/>
-                                                        <constraint firstItem="6Y7-43-F6W" firstAttribute="leading" secondItem="C2x-vI-r9f" secondAttribute="trailing" constant="8" id="TEC-tY-0gM"/>
-                                                        <constraint firstAttribute="trailing" secondItem="6Y7-43-F6W" secondAttribute="trailing" constant="5" id="fAZ-1z-MbG"/>
-                                                        <constraint firstItem="C2x-vI-r9f" firstAttribute="leading" secondItem="7uX-ZN-roG" secondAttribute="leading" constant="27.5" id="sRP-lG-mRx"/>
+                                                        <constraint firstItem="Weh-v2-Kfq" firstAttribute="top" secondItem="7uX-ZN-roG" secondAttribute="top" constant="4" id="H0W-WY-XKH"/>
+                                                        <constraint firstAttribute="height" constant="40" id="N1j-6F-P0e"/>
+                                                        <constraint firstItem="Weh-v2-Kfq" firstAttribute="leading" secondItem="bpX-2q-4Nt" secondAttribute="trailing" constant="4" id="S0o-6w-0os"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Weh-v2-Kfq" secondAttribute="trailing" constant="4" id="Sfx-Tf-Htt"/>
+                                                        <constraint firstItem="bpX-2q-4Nt" firstAttribute="top" secondItem="7uX-ZN-roG" secondAttribute="top" constant="4" id="aEe-Ja-Eot"/>
+                                                        <constraint firstItem="bpX-2q-4Nt" firstAttribute="leading" secondItem="7uX-ZN-roG" secondAttribute="leading" constant="15" id="lcs-vb-Z2m"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Weh-v2-Kfq" secondAttribute="bottom" constant="4" id="lxs-IQ-ADL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="bpX-2q-4Nt" secondAttribute="bottom" constant="4" id="tUD-9E-SRu"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -97,7 +106,7 @@
                                             <outlet property="activityView" destination="7uX-ZN-roG" id="ctf-1e-g4x"/>
                                             <outlet property="daysAppliedLabel" destination="rRM-pD-Qwa" id="4Bp-Yg-pyn"/>
                                             <outlet property="ratingLabel" destination="mnl-fS-KcZ" id="vaK-7W-wzk"/>
-                                            <outlet property="ratingView" destination="6Y7-43-F6W" id="Vs7-ip-uh9"/>
+                                            <outlet property="timesSelectedAverageRatingParentView" destination="Weh-v2-Kfq" id="SVM-W0-hU2"/>
                                             <outlet property="titleLabel" destination="bpX-2q-4Nt" id="pG2-7r-6YA"/>
                                         </connections>
                                     </tableViewCell>
@@ -150,6 +159,9 @@
     </scenes>
     <resources>
         <image name="menuIcon" width="30" height="30"/>
+        <namedColor name="Black">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="White">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

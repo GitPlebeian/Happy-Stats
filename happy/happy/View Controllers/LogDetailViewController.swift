@@ -151,6 +151,7 @@ class LogDetailViewController: UIViewController {
         super.traitCollectionDidChange(previousTraitCollection)
         navigationItem.rightBarButtonItem?.image = UIImage(named: "deleteIcon")
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backArrow")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backArrow")
         activitiesTableView.reloadData()
     }
     
