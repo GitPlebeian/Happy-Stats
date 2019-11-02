@@ -20,6 +20,8 @@ class ActivitiesViewController: UIViewController{
     
     var alertController: UIAlertController?
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
@@ -39,13 +41,15 @@ class ActivitiesViewController: UIViewController{
     @IBAction func createNewActivityButtonTapped(_ sender: Any) {
         createActivityAlert()
     }
+    // MARK: - Override Functions
     
-    // MARK: - Custom Functions
-    
+    // Updates view for when the dark mode changes
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         addActivityButton.image = UIImage(named: "addIcon")
     }
+    
+    // MARK: - Custom Functions
     
     // Updates view attributes and colors
     func updateViews() {
@@ -74,7 +78,7 @@ class ActivitiesViewController: UIViewController{
             guard let activityTitle = self.alertController?.textFields?[0].text else {return}
             if !activityTitle.isEmpty {
                 let feedback = UINotificationFeedbackGenerator()
-                feedback.prepare()
+                feedback.notificationOccurred(.success)
                 ActivityController.shared.createActivity(title: activityTitle)
                 self.activitiesTableView.reloadData()
             }
@@ -117,7 +121,7 @@ class ActivitiesViewController: UIViewController{
         let alertController = UIAlertController(title: "Delete Activity", message: "Are you sure you want to delete this activity? This will remove the activity from any logs it has been applied too.", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "I'm Sure", style: .destructive) { (_) in
             let feedback = UINotificationFeedbackGenerator()
-            feedback.prepare()
+            feedback.notificationOccurred(.success)
             ActivityController.shared.deleteActivity(activity: activity)
             self.activitiesTableView.reloadData()
         }
@@ -140,6 +144,7 @@ class ActivitiesViewController: UIViewController{
             guard let activityTitle = alertController.textFields?[0].text else {return}
             if !activityTitle.isEmpty {
                 let feedback = UINotificationFeedbackGenerator()
+                feedback.notificationOccurred(.success)
                 ActivityController.shared.renameActivity(title: activityTitle, activity: activity)
                 self.activitiesTableView.reloadData()
             }

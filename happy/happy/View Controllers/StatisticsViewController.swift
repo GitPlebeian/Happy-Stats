@@ -17,7 +17,6 @@ class StatisticsViewController: UIViewController {
         updateViews()
     }
     
-    
     // MARK: - Custom Functions
     
     func updateViews() {

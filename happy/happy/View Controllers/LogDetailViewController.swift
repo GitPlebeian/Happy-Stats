@@ -32,8 +32,7 @@ class LogDetailViewController: UIViewController {
             rating = Int(log!.rating)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE M-d-yyyy"
-            //            print("Log Activities Count \(log!.activities.count)")
-            //            print("Log Date \(log!.date)")
+            updateNavBarTitle(title: dateFormatter.string(from: log!.date))
         }
     }
     var selectedDate: Date? {
@@ -41,17 +40,16 @@ class LogDetailViewController: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE M-d-yyyy"
             updateNavBarTitle(title: dateFormatter.string(from: selectedDate!))
-            //            print("Selected Date \(selectedDate!)")
         }
     }
-    // Display activites is used to have seperate sections for selected and deselected activites
+    
+    // displayActivities is used to have seperate sections for selected and deselected activites
     var displayActivities: [[Activity]] = [[],[]]
     var allApplied = false
     var allActivities = false
     var searchedActivities: [Activity] = []
     var isSearching = false
     var didLoad = false
-    
     var rating = 5
     
     // MARK: - Lifecycle
@@ -62,7 +60,6 @@ class LogDetailViewController: UIViewController {
         activitiesTableView.delegate = self
         activitiesTableView.dataSource = self
         activitiesTableView.showsVerticalScrollIndicator = false
-        setupSearchBar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -76,25 +73,16 @@ class LogDetailViewController: UIViewController {
         updateCellsWithActivities()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("Will Disappear")
-        LogController.shared.printData()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("Did Disappear")
-        LogController.shared.printData()
-    }
     // MARK: - Actions
     
+    // Did end editing in the searchTextField
     @IBAction func activitiesSearchTextFieldTextDidEndEditing(_ sender: UITextField) {
         isSearching = false
         sender.text = ""
         activitiesTableView.reloadData()
     }
     
+    // Updates tableview with activities that mach the user's search
     @IBAction func activitiesSearchTextFieldTextDidChange(_ sender: UITextField) {
         guard let searchText = sender.text else {return}
         isSearching = true
@@ -112,40 +100,37 @@ class LogDetailViewController: UIViewController {
         
         activitiesTableView.reloadData()
     }
+    
+    // Presents delete log alert
     @IBAction func deleteLogButtonTapped(_ sender: Any) {
         presentDeleteLogAlert()
     }
     
     // Saves log and updates activities
     @IBAction func saveActivitiesButtonTapped(_ sender: Any) {
-        let feedback = UINotificationFeedbackGenerator()
-        feedback.prepare()
-        print(log)
         if let log = log {
-            print(log)
-            LogController.shared.printData()
             LogController.shared.editLog(log: log, rating: rating, activities: displayActivities[0])
-//            LogController.shared.printData()
-            //            self.delegate?.setCurrentLog(log: log)
-            feedback.notificationOccurred(.success)
+            self.delegate?.setCurrentLog(log: log)
             self.navigationController?.popViewController(animated: true)
         } else {
             guard let selectedDate = selectedDate else {return}
             LogController.shared.createLog(rating: rating, date: selectedDate, activities: displayActivities[0]) { (log) in
                 self.delegate?.setCurrentLog(log: log)
-                feedback.notificationOccurred(.success)
                 navigationController?.popViewController(animated: true)
             }
         }
+        let feedback = UINotificationFeedbackGenerator()
+        feedback.notificationOccurred(.success)
     }
     
+    // Updates rating to the slider's value
     @IBAction func ratingSliderValueChanged(_ sender: Any) {
         rating = Int(logRatingSlider.value.rounded())
         logRatingSlider.value = Float(rating)
         updateViewsForRatingChange()
     }
     
-    // MARK: - Custom Functions
+    // MARK: - Override Functions
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
@@ -155,10 +140,10 @@ class LogDetailViewController: UIViewController {
         activitiesTableView.reloadData()
     }
     
+    // MARK: - Custom Functions
+    
+    // Updates views for viewDidLoad
     func updateViews() {
-        navigationController?.navigationBar.topItem?.backBarButtonItem? = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(backBarButtonItemClicked))
-        //        navigationItem.backBarButtonItem?.tintColor = .cyan
-        //        navigationController?.navigationItem.backBarButtonItem?.image = UIImage(named: "backArrow")
         activitiesTableView.backgroundColor = UIColor(named: "White")
         logRatingLabel.textColor = .black
         logRatingView.layer.cornerRadius = logRatingView.frame.height / 2
@@ -169,15 +154,12 @@ class LogDetailViewController: UIViewController {
         activitiesSearchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Gray")!])
     }
     
-    @objc func backBarButtonItemClicked() {
-        navigationController?.popViewController(animated: true)
-    }
-    
+    // Updates navBarTitle
     func updateNavBarTitle(title: String) {
         self.title = title
     }
     
-    // Presents an error alert
+    // Presents an error alert with message
     func presentErrorAlert(message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
@@ -187,13 +169,14 @@ class LogDetailViewController: UIViewController {
         present(alertController, animated: true)
     }
     
+    // Presents delete log alert
     func presentDeleteLogAlert() {
         let alertController = UIAlertController(title: "Delete Log", message: "Are you sure?", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             guard let log = self.log else {return}
-            let feedback = UINotificationFeedbackGenerator()
             LogController.shared.deleteLog(log: log)
             self.delegate?.setCurrentLog(log: nil)
+            let feedback = UINotificationFeedbackGenerator()
             feedback.notificationOccurred(.success)
             self.navigationController?.popViewController(animated: true)
         }
@@ -227,14 +210,7 @@ class LogDetailViewController: UIViewController {
         }
     }
     
-    // Updates Search bar view
-    func setupSearchBar() {
-        //        if let searchBarTextField = activitiesSearchBar.value(forKey: "searchField") as? UITextField {
-        //            searchBarTextField.textColor = UIColor(displayP3Red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-        //            searchBarTextField.font = UIFont(name: "SFProDisplay-Light", size: 17)
-        //        }
-    }
-    
+    // Updates activity cells
     func updateCellsWithActivities() {
         loadViewIfNeeded()
         if didLoad {
@@ -434,38 +410,5 @@ extension LogDetailViewController: UITableViewDataSource, UITableViewDelegate {
 extension LogDetailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         activitiesSearchTextField.resignFirstResponder()
-    }
-}
-
-extension LogDetailViewController: UISearchBarDelegate{
-    
-    // Searchbar text did change
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //        isSearching = true
-        //
-        //        searchedActivities.removeAll(keepingCapacity: false)
-        //
-        //        for activity in ActivityController.shared.activities {
-        //            if activity.title.lowercased().contains(searchText.lowercased()){
-        //                searchedActivities.append(activity)
-        //            }
-        //        }
-        //        if searchText == "" {
-        //            isSearching = false
-        //        }
-        //
-        //        activitiesTableView.reloadData()
-    }
-    
-    // Search Return tapped
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //        activitiesSearchBar.resignFirstResponder()
-    }
-    
-    // Search Ended
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        isSearching = false
-        searchBar.text = ""
-        activitiesTableView.reloadData()
     }
 }

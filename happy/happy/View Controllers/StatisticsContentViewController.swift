@@ -60,32 +60,18 @@ class StatisticsContentViewController: UIViewController {
             UIApplication.shared.open(url)
         }
     }
-    
-    // MARK: - Custom Functions
+    // MARK: - Override Functions
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateViewsForCalculations()
     }
     
+    // MARK: - Custom Functions
+    
+    // Updates views for viewDidLoad
     func updateViews() {
         privacyPolicyButton.setTitleColor((UIColor(named: "Black")), for: .normal)
-        
-//        past30DaysLabel.textColor =
-//        past30DaysResultsLabel.textColor = .black
-//        past30DaysResultsView.backgroundColor = .white
-//        
-//        past90DaysResultsView.backgroundColor = .white
-//        past90DaysLabel.textColor = .black
-//        past90DaysResultsLabel.textColor = .black
-//        
-//        past180DaysLabel.textColor = .black
-//        past180DaysResultsLabel.textColor = .black
-//        past180DaysResultsView.backgroundColor = .white
-//        
-//        pastYearLabel.textColor = .black
-//        pastYearResultsLabel.textColor = .black
-//        pastYearResultsView.backgroundColor = .white
         
         privacyPolicyButton.tintColor = .systemBlue
         past30DaysView.layer.cornerRadius = 15

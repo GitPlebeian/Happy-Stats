@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import os.log
 
 class MainCalendarViewController: UIViewController{
     
@@ -52,13 +51,8 @@ class MainCalendarViewController: UIViewController{
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.showsVerticalScrollIndicator = false
         calendarCollectionView.scrollsToTop = false
-//
-//        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (_) in
-//            if LogController.shared.logs[0].activities.count <= 0 {
-//                print("BADBADBAD")
-//            }
-//        }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         calendarCollectionView.reloadData()
@@ -87,8 +81,9 @@ class MainCalendarViewController: UIViewController{
         presentDeleteLogAlert()
     }
     
-    // MARK: - Custom Functions
+    // MARK: - Override Functions
     
+    // Updates the views for when dark mode changes
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         navigationItem.rightBarButtonItem?.image = UIImage(named: "deleteIcon")
@@ -99,6 +94,8 @@ class MainCalendarViewController: UIViewController{
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backArrow")
         calendarCollectionView.reloadData()
     }
+    
+    // MARK: - Custom Functions
     
     // Alert for deleting a log and its data
     func presentDeleteLogAlert() {
@@ -131,18 +128,23 @@ class MainCalendarViewController: UIViewController{
         }
     }
     
+    // Updates views for viewDidLoad
     func updateViews() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Light", size: 17)!, NSAttributedString.Key.foregroundColor : UIColor(named: "Black")!]
         navigationController?.navigationBar.barTintColor = UIColor(named: "NavigationBar")
         self.tabBarController?.tabBar.barTintColor = UIColor(named: "NavigationBar")
         self.tabBarController?.tabBar.isTranslucent = false
         
-        self.setNeedsStatusBarAppearanceUpdate()
         editLogButton.layer.cornerRadius = editLogButton.frame.height / 2
         editLogButton.layer.borderColor = UIColor(named: "Black")?.cgColor
         editLogButton.layer.borderWidth = 1.5
         editLogButton.isHidden = true
         monthAverageHappinessView.layer.cornerRadius = 15
+    }
+    
+    func calculateMonthAverage() {
+        guard let month = viewMonth, let year = viewYear else {return}
+        updateMonthAverageViews(month: month, year: year)
     }
     
     // Will update the month average label and view
@@ -161,11 +163,6 @@ class MainCalendarViewController: UIViewController{
         } else {
             monthAverageHappinessLabel.textColor = UIColor.white
         }
-    }
-    
-    func calculateMonthAverage() {
-        guard let month = viewMonth, let year = viewYear else {return}
-        updateMonthAverageViews(month: month, year: year)
     }
     
     // Updates colors for when the rating is changed
