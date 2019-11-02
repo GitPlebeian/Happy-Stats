@@ -77,6 +77,9 @@ class MainCalendarViewController: UIViewController{
     
     // MARK: - Actions
     
+    @IBAction func searchActivitiesButtonTapped(_ sender: Any) {
+        
+    }
     @IBAction func deleteLogButtonTapped(_ sender: Any) {
         presentDeleteLogAlert()
     }
@@ -196,6 +199,9 @@ class MainCalendarViewController: UIViewController{
                 guard let selectedDate = selectedDate else {return}
                 destinationVC.selectedDate = selectedDate
             }
+        } else if segue.identifier == "searchActivities" {
+            guard let destinationVC = segue.destination as? SearchActivitiesViewController else {return}
+            destinationVC.delegate = self
         }
     }
     
@@ -284,4 +290,10 @@ extension MainCalendarViewController: UICollectionViewDelegate, UICollectionView
         }
     }
     
+}
+
+extension MainCalendarViewController: SearchActivityViewControllerDelegate {
+    func userSelectedActivityToSearch(activity: Activity) {
+        print(activity)
+    }
 }

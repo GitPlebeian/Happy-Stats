@@ -16,6 +16,8 @@
 		8624C44F2330072500B60BE7 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8624C44E2330072500B60BE7 /* CloudKit.framework */; };
 		8628E5EC235E83B300FD0E4B /* Hapistats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8628E5EA235E83B300FD0E4B /* Hapistats.xcdatamodeld */; };
 		86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */; };
+		8649125F236E1B7600C885AD /* SearchActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8649125E236E1B7600C885AD /* SearchActivitiesViewController.swift */; };
+		86491261236E1BD400C885AD /* SearchActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86491260236E1BD400C885AD /* SearchActivities.storyboard */; };
 		864D198622F63429009368ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D198522F63429009368ED /* AppDelegate.swift */; };
 		864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864D198E22F6342A009368ED /* LaunchScreen.storyboard */; };
 		864D19A822F65033009368ED /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D19A722F65033009368ED /* ActivitiesViewController.swift */; };
@@ -52,6 +54,8 @@
 		8624C44E2330072500B60BE7 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8628E5EB235E83B300FD0E4B /* Hapistats.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hapistats.xcdatamodel; sourceTree = "<group>"; };
 		86395CED23174CBA003AFD08 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		8649125E236E1B7600C885AD /* SearchActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchActivitiesViewController.swift; sourceTree = "<group>"; };
+		86491260236E1BD400C885AD /* SearchActivities.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchActivities.storyboard; sourceTree = "<group>"; };
 		864D198222F63429009368ED /* happy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		864D198522F63429009368ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		864D198F22F6342A009368ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				86B661542347F2E600F0F4BF /* Activities.storyboard */,
 				86B661522347F2AC00F0F4BF /* Calendar.storyboard */,
 				864D198E22F6342A009368ED /* LaunchScreen.storyboard */,
+				86491260236E1BD400C885AD /* SearchActivities.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				865311F822FA33DB00E198BC /* Navigation Controllers */,
+				8649125E236E1B7600C885AD /* SearchActivitiesViewController.swift */,
 				864D19A722F65033009368ED /* ActivitiesViewController.swift */,
 				86D11AD122FF9C330059A0B3 /* MainCalendarViewController.swift */,
 				86E0F829231F41A80025DE0E /* LogDetailViewController.swift */,
@@ -326,6 +332,7 @@
 				864D199022F6342A009368ED /* LaunchScreen.storyboard in Resources */,
 				86E2D4082305936A00E9A910 /* Assets.xcassets in Resources */,
 				86B661552347F2E600F0F4BF /* Activities.storyboard in Resources */,
+				86491261236E1BD400C885AD /* SearchActivities.storyboard in Resources */,
 				86B661572347F2F500F0F4BF /* Statistics.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +365,7 @@
 				864D198622F63429009368ED /* AppDelegate.swift in Sources */,
 				86F3FD3C235F79E800FB2D41 /* CoreDataStack.swift in Sources */,
 				866CAE722319A35C00C85FF8 /* CalenderHelper.swift in Sources */,
+				8649125F236E1B7600C885AD /* SearchActivitiesViewController.swift in Sources */,
 				861E11262335559800F627BC /* StatisticsContentViewController.swift in Sources */,
 				8624C44B232FFCB000B60BE7 /* ActivityController.swift in Sources */,
 				86395CEE23174CBA003AFD08 /* DateCollectionViewCell.swift in Sources */,
@@ -501,7 +509,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2WP5X762NJ;
 				INFOPLIST_FILE = "$(SRCROOT)/happy/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -521,7 +529,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2WP5X762NJ;
 				INFOPLIST_FILE = "$(SRCROOT)/happy/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

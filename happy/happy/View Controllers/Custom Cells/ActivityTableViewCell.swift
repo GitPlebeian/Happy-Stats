@@ -35,7 +35,7 @@ class ActivityTableViewCell: UITableViewCell {
         ratingLabel.textColor = UIColor(named: "Black")
         activityView.layer.cornerRadius = 40 / 2
         timesSelectedAverageRatingParentView.layer.cornerRadius = 32 / 2
-        self.backgroundColor = UIColor(named: "White")
+        self.backgroundColor = UIColor(named: "Background")
     }
     
     // Set Highlighted
@@ -44,8 +44,16 @@ class ActivityTableViewCell: UITableViewCell {
         if highlighted {
             activityView.backgroundColor = activityView.backgroundColor?.darker(by: 15)
         } else {
-            activityView.backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
+            if activity.timesSelected == 0 {
+                activityView.backgroundColor = UIColor(named: "System Background Color")
+            } else {
+                activityView.backgroundColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
+            }
         }
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        backgroundColor = UIColor(named: "System Background Color")
     }
     
     // MARK: - Custom Functions
@@ -58,13 +66,15 @@ class ActivityTableViewCell: UITableViewCell {
     // Updates view for an activity
     func updateViewForActivity() {
         guard let activity = activity else {return}
-        let activityColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
         if activity.timesSelected == 0 {
             ratingLabel.isHidden = true
             activityView.layer.borderWidth = 1.5
             activityView.layer.borderColor = UIColor(named: "Black")?.cgColor
+            activityView.backgroundColor = UIColor.blue
             timesSelectedAverageRatingParentView.isHidden = true
+            titleLabel.textColor = UIColor(named: "Black")
         } else {
+            let activityColor = ColorHelper.getColorFoInt(number: Int(activity.averageRating.rounded()))
             timesSelectedAverageRatingParentView.isHidden = false
             if activityColor.useDarkText() {
                 titleLabel.textColor = UIColor.black
@@ -74,9 +84,9 @@ class ActivityTableViewCell: UITableViewCell {
             ratingLabel.isHidden = false
             daysAppliedLabel.text = "\(activity.timesSelected)"
             activityView.layer.borderWidth = 0
+            activityView.backgroundColor = activityColor
         }
         titleLabel.text = activity.title
-        activityView.backgroundColor = activityColor
         ratingLabel.text = "\(activity.averageRating)"
     }
 }

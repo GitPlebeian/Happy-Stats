@@ -14,6 +14,16 @@
         </array>
     </customFonts>
     <scenes>
+        <!--SearchActivities-->
+        <scene sceneID="dLV-Ku-Ydr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SearchActivities" id="f6u-xc-Ies" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5I4-vr-cAy"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Cc-ao-Ndp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2670" y="143"/>
+        </scene>
         <!--Calendar-->
         <scene sceneID="gUS-B5-S9d">
             <objects>
@@ -207,6 +217,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Calendar" id="Vai-ga-mCa">
                         <barButtonItem key="backBarButtonItem" title=" " id="54X-Pu-gfA"/>
+                        <barButtonItem key="leftBarButtonItem" image="magnifyingglass" catalog="system" id="5d0-B2-hxt">
+                            <color key="tintColor" name="Black"/>
+                            <connections>
+                                <action selector="searchActivitiesButtonTapped:" destination="dYV-1r-0gp" id="d7r-lB-gyB"/>
+                                <segue destination="f6u-xc-Ies" kind="popoverPresentation" identifier="searchActivities" popoverAnchorBarButtonItem="5d0-B2-hxt" id="Lkq-n8-YZ2">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="calendarCollectionView" destination="pYt-69-O6e" id="sbu-xD-AEq"/>
@@ -419,6 +438,7 @@
     <resources>
         <image name="backArrow" width="25" height="25"/>
         <image name="calendarIcon" width="30" height="30"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="60"/>
         <namedColor name="Black">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
