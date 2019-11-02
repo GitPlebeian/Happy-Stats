@@ -11,8 +11,15 @@ import CoreData
 
 class CoreDataStack {
     
+    static var debug: Bool = true
+    
     static let container: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Hapistats")
+        let container: NSPersistentContainer
+        if debug == true {
+            container = NSPersistentContainer(name: "debug")
+        } else {
+            container = NSPersistentContainer(name: "Hapistats")
+        }
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error{
                 fatalError("Failed to Load Persistent Store \(error)")

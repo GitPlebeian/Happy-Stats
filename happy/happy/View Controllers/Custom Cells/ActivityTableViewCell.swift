@@ -65,6 +65,7 @@ class ActivityTableViewCell: UITableViewCell {
             activityView.layer.borderColor = UIColor(named: "Black")?.cgColor
             timesSelectedAverageRatingParentView.isHidden = true
         } else {
+            timesSelectedAverageRatingParentView.isHidden = false
             if activityColor.useDarkText() {
                 titleLabel.textColor = UIColor.black
             } else {
