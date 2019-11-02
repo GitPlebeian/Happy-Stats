@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		861E11242335515300F627BC /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E11232335515300F627BC /* UIColorExtensions.swift */; };
 		861E11262335559800F627BC /* StatisticsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E11252335559800F627BC /* StatisticsContentViewController.swift */; };
-		861E112E23357A0300F627BC /* LoadDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E112D23357A0300F627BC /* LoadDataController.swift */; };
-		861E11302335825000F627BC /* LoadingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E112F2335825000F627BC /* LoadingDataViewController.swift */; };
 		8624C445232FE62C00B60BE7 /* Log+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C444232FE62C00B60BE7 /* Log+Convenience.swift */; };
 		8624C447232FE88300B60BE7 /* Activity+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C446232FE88300B60BE7 /* Activity+Convenience.swift */; };
 		8624C449232FF62E00B60BE7 /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624C448232FF62E00B60BE7 /* LogController.swift */; };
@@ -47,8 +45,6 @@
 /* Begin PBXFileReference section */
 		861E11232335515300F627BC /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = "happy/View Controllers/Navigation Controllers/UIColorExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		861E11252335559800F627BC /* StatisticsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsContentViewController.swift; sourceTree = "<group>"; };
-		861E112D23357A0300F627BC /* LoadDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataController.swift; sourceTree = "<group>"; };
-		861E112F2335825000F627BC /* LoadingDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDataViewController.swift; sourceTree = "<group>"; };
 		8624C444232FE62C00B60BE7 /* Log+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Convenience.swift"; sourceTree = "<group>"; };
 		8624C446232FE88300B60BE7 /* Activity+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+Convenience.swift"; sourceTree = "<group>"; };
 		8624C448232FF62E00B60BE7 /* LogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
@@ -173,7 +169,6 @@
 			children = (
 				8624C448232FF62E00B60BE7 /* LogController.swift */,
 				8624C44A232FFCB000B60BE7 /* ActivityController.swift */,
-				861E112D23357A0300F627BC /* LoadDataController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -198,7 +193,6 @@
 				86E0F829231F41A80025DE0E /* LogDetailViewController.swift */,
 				86CCFD342306045800CDCC21 /* StatisticsViewController.swift */,
 				861E11252335559800F627BC /* StatisticsContentViewController.swift */,
-				861E112F2335825000F627BC /* LoadingDataViewController.swift */,
 				862998B522F747E300B74809 /* Custom Cells */,
 			);
 			path = "View Controllers";
@@ -344,9 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86BBB0642368634E006DEEC8 /* Activity+CoreDataProperties.swift in Sources */,
-				861E11302335825000F627BC /* LoadingDataViewController.swift in Sources */,
 				86D11AD222FF9C330059A0B3 /* MainCalendarViewController.swift in Sources */,
-				861E112E23357A0300F627BC /* LoadDataController.swift in Sources */,
 				8687BDD6236CB72400DE60F1 /* Log+CoreDataClass.swift in Sources */,
 				86BBB0632368634E006DEEC8 /* Activity+CoreDataClass.swift in Sources */,
 				8624C445232FE62C00B60BE7 /* Log+Convenience.swift in Sources */,

@@ -60,6 +60,7 @@ class StatisticsContentViewController: UIViewController {
             UIApplication.shared.open(url)
         }
     }
+    
     // MARK: - Override Functions
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

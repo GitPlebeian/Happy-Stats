@@ -9,6 +9,8 @@
 import UIKit
 
 extension UIColor {
+    
+    // Tells caller wheather or not they should use dark text or light text based on a color
     func useDarkText() -> Bool {
         var red: CGFloat = 0
         var green: CGFloat = 0
@@ -25,14 +27,17 @@ extension UIColor {
         return true
     }
     
+    // Returns a color just a little bit lighter
     func lighter(by percentage: CGFloat = 30.0) -> UIColor? {
         return self.adjust(by: abs(percentage) )
     }
 
+    // Returns a color just a little bit darker
     func darker(by percentage: CGFloat = 30.0) -> UIColor? {
         return self.adjust(by: -1 * abs(percentage) )
     }
     
+    // Returns a color for an adjustment
     func adjust(by percentage: CGFloat = 30.0) -> UIColor? {
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
