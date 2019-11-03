@@ -29,6 +29,7 @@ class MainCalendarViewController: UIViewController{
     
     @IBOutlet weak var calendarNavigationItem: UINavigationItem!
     @IBOutlet weak var editLogButton: UIButton!
+    @IBOutlet weak var cancelSearchButton: UIButton!
     
     
     // MARK: - Properties
@@ -40,6 +41,7 @@ class MainCalendarViewController: UIViewController{
     var currentLog: Log?
     var viewMonth: String?
     var viewYear: String?
+    var activityToSearch: Activity?
     
     // MARK: - Lifecycle
     
@@ -57,6 +59,7 @@ class MainCalendarViewController: UIViewController{
         super.viewWillAppear(animated)
         calendarCollectionView.reloadData()
         calculateMonthAverage()
+        updateSearchActivitiesBarButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,11 +80,14 @@ class MainCalendarViewController: UIViewController{
     
     // MARK: - Actions
     
-    @IBAction func searchActivitiesButtonTapped(_ sender: Any) {
-        
-    }
     @IBAction func deleteLogButtonTapped(_ sender: Any) {
         presentDeleteLogAlert()
+    }
+    
+    @IBAction func cancelSearchButtonTapped(_ sender: UIButton) {
+        sender.isHidden = true
+        activityToSearch = nil
+        calendarCollectionView.reloadData()
     }
     
     // MARK: - Override Functions
@@ -99,6 +105,15 @@ class MainCalendarViewController: UIViewController{
     }
     
     // MARK: - Custom Functions
+    
+    // Updates the left bar button item to search activities
+    func updateSearchActivitiesBarButton() {
+        if ActivityController.shared.activities.count > 0 {
+            navigationItem.leftBarButtonItem?.isEnabled = true
+        } else {
+            navigationItem.leftBarButtonItem?.isEnabled = false
+        }
+    }
     
     // Alert for deleting a log and its data
     func presentDeleteLogAlert() {
@@ -143,6 +158,10 @@ class MainCalendarViewController: UIViewController{
         editLogButton.layer.borderWidth = 1.5
         editLogButton.isHidden = true
         monthAverageHappinessView.layer.cornerRadius = 15
+        cancelSearchButton.layer.cornerRadius = cancelSearchButton.frame.height / 2
+        cancelSearchButton.layer.borderColor = UIColor(named: "Black")?.cgColor
+        cancelSearchButton.layer.borderWidth = 1.5
+        cancelSearchButton.isHidden = true
     }
     
     func calculateMonthAverage() {
@@ -241,7 +260,7 @@ extension MainCalendarViewController: UICollectionViewDelegate, UICollectionView
     // Cell For Item At
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = calendarCollectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as? DateCollectionViewCell else {return UICollectionViewCell()}
-        cell.configure(indexPath: indexPath, calendar: calendarCollectionView, selectedDate: selectedDate)
+        cell.configure(indexPath: indexPath, calendar: calendarCollectionView, selectedDate: selectedDate, activityToSearch: activityToSearch)
         
         return cell
     }
@@ -294,6 +313,9 @@ extension MainCalendarViewController: UICollectionViewDelegate, UICollectionView
 
 extension MainCalendarViewController: SearchActivityViewControllerDelegate {
     func userSelectedActivityToSearch(activity: Activity) {
-        print(activity)
+        activityToSearch = activity
+        calendarCollectionView.reloadData()
+        cancelSearchButton.isHidden = false
+        cancelSearchButton.setTitle("Cancel Search For \(activity.title)", for: .normal)
     }
 }

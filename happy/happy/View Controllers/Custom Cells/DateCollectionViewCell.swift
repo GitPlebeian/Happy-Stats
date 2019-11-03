@@ -17,7 +17,7 @@ class DateCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Custom Functions
     
-    func configure(indexPath: IndexPath, calendar: UICollectionView, selectedDate: Date?) {
+    func configure(indexPath: IndexPath, calendar: UICollectionView, selectedDate: Date?, activityToSearch: Activity?) {
         
         // Makes the cell a circle
         dateView.layer.cornerRadius = (calendar.frame.width / 14) - 6
@@ -31,12 +31,26 @@ class DateCollectionViewCell: UICollectionViewCell {
             
             dateNumberLabel.text = CalendarHelper.shared.stringOfDayNumberForDate(date: date)
             if let log = LogController.shared.getLogForDate(date: date) {
-                let color = ColorHelper.getColorFoInt(number: Int(log.rating))
-                dateView.backgroundColor = color
-                if color.useDarkText() {
-                    dateNumberLabel.textColor = .black
+                if let activityToSearch = activityToSearch {
+                    if log.activities.contains(activityToSearch) {
+                        let color = ColorHelper.getColorFoInt(number: Int(log.rating))
+                        dateView.backgroundColor = color
+                        if color.useDarkText() {
+                            dateNumberLabel.textColor = .black
+                        } else {
+                            dateNumberLabel.textColor = .white
+                        }
+                    } else {
+                        dateView.backgroundColor = .clear
+                    }
                 } else {
-                    dateNumberLabel.textColor = .white
+                    let color = ColorHelper.getColorFoInt(number: Int(log.rating))
+                    dateView.backgroundColor = color
+                    if color.useDarkText() {
+                        dateNumberLabel.textColor = .black
+                    } else {
+                        dateNumberLabel.textColor = .white
+                    }
                 }
             } else {
                 dateNumberLabel.textColor = UIColor(named: "Black")

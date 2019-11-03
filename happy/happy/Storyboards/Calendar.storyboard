@@ -22,7 +22,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Cc-ao-Ndp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2670" y="143"/>
+            <point key="canvasLocation" x="2751" y="140"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="gUS-B5-S9d">
@@ -32,8 +32,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vc9-Ls-fhe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="White"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pYt-69-O6e">
-                                <rect key="frame" x="10.5" y="95.5" width="393" height="337"/>
+                                <rect key="frame" x="10.5" y="96" width="393" height="337"/>
                                 <color key="backgroundColor" name="White"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pYt-69-O6e" secondAttribute="height" multiplier="7:6" id="Qdx-mP-JZg"/>
@@ -87,46 +92,46 @@
                                 </cells>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Mv3-HO-ccC">
-                                <rect key="frame" x="16.5" y="80" width="381" height="15.5"/>
+                                <rect key="frame" x="16.5" y="80" width="381" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkW-9A-xRn">
-                                        <rect key="frame" x="0.0" y="0.0" width="44" height="15.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
                                         <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJe-dw-XBG" userLabel="Mon">
-                                        <rect key="frame" x="56" y="0.0" width="44.5" height="15.5"/>
+                                        <rect key="frame" x="56" y="0.0" width="44.5" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
                                         <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBp-Jj-NEH">
-                                        <rect key="frame" x="112.5" y="0.0" width="44" height="15.5"/>
+                                        <rect key="frame" x="112.5" y="0.0" width="44" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
                                         <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ll-15-Ejc">
-                                        <rect key="frame" x="168.5" y="0.0" width="44" height="15.5"/>
+                                        <rect key="frame" x="168.5" y="0.0" width="44" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
                                         <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kz3-0W-WcF">
-                                        <rect key="frame" x="224.5" y="0.0" width="44" height="15.5"/>
+                                        <rect key="frame" x="224.5" y="0.0" width="44" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
                                         <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAw-bl-Jfd">
-                                        <rect key="frame" x="280.5" y="0.0" width="44.5" height="15.5"/>
+                                        <rect key="frame" x="280.5" y="0.0" width="44.5" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
                                         <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biy-Yv-3Un">
-                                        <rect key="frame" x="337" y="0.0" width="44" height="15.5"/>
+                                        <rect key="frame" x="337" y="0.0" width="44" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
                                         <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
@@ -137,13 +142,13 @@
                                 <rect key="frame" x="16.5" y="16" width="120" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Month)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgI-LC-tLY">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="24"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="20"/>
                                         <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Year)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qld-1S-kt2">
-                                        <rect key="frame" x="0.0" y="32.5" width="120" height="15.5"/>
+                                        <rect key="frame" x="0.0" y="32" width="120" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
                                         <color key="textColor" name="Black"/>
                                         <nil key="highlightedColor"/>
@@ -155,7 +160,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhy-WT-AKj">
-                                <rect key="frame" x="41.5" y="440.5" width="331" height="44"/>
+                                <rect key="frame" x="41.5" y="441" width="331" height="44"/>
                                 <color key="backgroundColor" name="White"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="p6p-tj-XvK"/>
@@ -189,17 +194,23 @@
                                     <constraint firstItem="I5u-cY-koN" firstAttribute="centerX" secondItem="bb2-nX-Qqh" secondAttribute="centerX" id="vyh-UV-B5R"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vc9-Ls-fhe">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="730"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="White"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ck7-qf-mwe">
+                                <rect key="frame" x="41.5" y="493" width="331" height="44"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
+                                <state key="normal" title="Cancel Search"/>
+                                <connections>
+                                    <action selector="cancelSearchButtonTapped:" destination="dYV-1r-0gp" eventType="touchUpInside" id="8R7-5s-QId"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="White"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="0P5-Tt-p3N"/>
+                            <constraint firstItem="ck7-qf-mwe" firstAttribute="centerX" secondItem="yhy-WT-AKj" secondAttribute="centerX" id="7Sc-I2-GxA"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.95" id="9bI-jY-e1k"/>
+                            <constraint firstItem="ck7-qf-mwe" firstAttribute="top" secondItem="yhy-WT-AKj" secondAttribute="bottom" constant="8" id="ANQ-q0-bXr"/>
+                            <constraint firstItem="ck7-qf-mwe" firstAttribute="width" secondItem="yhy-WT-AKj" secondAttribute="width" id="GlW-Ug-GXM"/>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.92" id="Hn2-wi-krV"/>
                             <constraint firstItem="yhy-WT-AKj" firstAttribute="top" secondItem="pYt-69-O6e" secondAttribute="bottom" constant="8" id="IIC-8Y-BMl"/>
                             <constraint firstItem="yhy-WT-AKj" firstAttribute="width" secondItem="Ptb-vH-4nZ" secondAttribute="width" multiplier="0.8" id="JHg-Be-0kC"/>
@@ -207,6 +218,7 @@
                             <constraint firstItem="bb2-nX-Qqh" firstAttribute="trailing" secondItem="Mv3-HO-ccC" secondAttribute="trailing" id="SLS-po-Yox"/>
                             <constraint firstItem="Mv3-HO-ccC" firstAttribute="top" secondItem="Vfe-6A-vBU" secondAttribute="bottom" constant="16" id="TUu-O0-bSH"/>
                             <constraint firstItem="yhy-WT-AKj" firstAttribute="centerX" secondItem="A9P-L1-ocC" secondAttribute="centerX" id="cBJ-ls-Ex5"/>
+                            <constraint firstItem="ck7-qf-mwe" firstAttribute="height" secondItem="yhy-WT-AKj" secondAttribute="height" id="ccN-KZ-GdD"/>
                             <constraint firstItem="Vfe-6A-vBU" firstAttribute="leading" secondItem="Mv3-HO-ccC" secondAttribute="leading" id="hIP-Su-BO6"/>
                             <constraint firstItem="Vfe-6A-vBU" firstAttribute="top" secondItem="A9P-L1-ocC" secondAttribute="top" constant="16" id="kH2-uQ-Tj6"/>
                             <constraint firstItem="pYt-69-O6e" firstAttribute="top" secondItem="Mv3-HO-ccC" secondAttribute="bottom" id="msP-Yd-s0m"/>
@@ -217,10 +229,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Calendar" id="Vai-ga-mCa">
                         <barButtonItem key="backBarButtonItem" title=" " id="54X-Pu-gfA"/>
-                        <barButtonItem key="leftBarButtonItem" image="magnifyingglass" catalog="system" id="5d0-B2-hxt">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="5d0-B2-hxt">
                             <color key="tintColor" name="Black"/>
                             <connections>
-                                <action selector="searchActivitiesButtonTapped:" destination="dYV-1r-0gp" id="d7r-lB-gyB"/>
                                 <segue destination="f6u-xc-Ies" kind="popoverPresentation" identifier="searchActivities" popoverAnchorBarButtonItem="5d0-B2-hxt" id="Lkq-n8-YZ2">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
@@ -230,6 +241,7 @@
                     <connections>
                         <outlet property="calendarCollectionView" destination="pYt-69-O6e" id="sbu-xD-AEq"/>
                         <outlet property="calendarNavigationItem" destination="Vai-ga-mCa" id="aQV-g3-Xno"/>
+                        <outlet property="cancelSearchButton" destination="ck7-qf-mwe" id="tVI-MK-N5L"/>
                         <outlet property="coverView" destination="vc9-Ls-fhe" id="nZn-TW-aMd"/>
                         <outlet property="editLogButton" destination="yhy-WT-AKj" id="aGx-Us-12p"/>
                         <outlet property="fridayLabel" destination="TAw-bl-Jfd" id="lWz-cT-Icz"/>
